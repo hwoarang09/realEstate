@@ -1,0 +1,700 @@
+{
+  "opn": [
+    {
+      "id": 1,
+      "openableCategories": ["치과", "미용", "감기", "통증", "한의원"],
+      "recommendedCategories": ["치과", "미용", "감기", "통증", "한의원"],
+      "tags": [],
+      "buildingInfo": {
+        "address": "서울특별시 강서구 마곡동 B01",
+        "buildingName": "쿠쿠마곡타워",
+        "scale": {
+          "groundFloors": 12,
+          "totalFloors": 6
+        },
+        "completionDate": "20210126",
+        "elevators": 3,
+        "parkingSpots": 270,
+        "HC_Availability": 2,
+        "totalRentableFloors": 5,
+        "SMSAvailability": "전체 가능",
+        "SMSAvailabilityInput": "",
+        "Disabled Facilities": {
+          "elevator": 0,
+          "parkingSpots": 0,
+          "ramp": 1,
+          "restroom": 1
+        }
+      },
+      "rentInfo": {
+        "deposit": "18000",
+        "monthlyRent": "1800",
+        "maintenanceFee": "598만원",
+        "rentalFloor": {
+          "rentalFloorInput": "B1",
+          "rentalType": 0
+        },
+        "exclusiveArea": "207",
+        "rentalArea": "377",
+        "moveIn": {
+          "moveInASAP": 0,
+          "moveInDate": ""
+        },
+        "freeParking": 2,
+        "visitorParking": 2,
+        "transferOfLease": 0,
+        "keyMoney": 0
+      },
+      "images": {
+        "exterior": [
+          {
+            "url": "https://picsum.photos/seed/1/50/50",
+            "description": "외관 이미지 1, 50x50"
+          }
+        ],
+        "interior": [],
+        "floorPlan": []
+      },
+      "memo": {
+        "text": "매물 찾는데 소중한 시간을 낭비하지 마세요. 연락 주시면 원하시는 매물 바로 안내해 드리겠습니다.",
+        "contact": {
+          "agencyName": "노른자공인중개사사무소",
+          "representative": "정윤호",
+          "phone": "02-2135-2425"
+        }
+      },
+      "contactInfo": [
+        {
+          "role": "매물 담당자",
+          "type": "자동생성",
+          "agency": "일반부동산",
+          "name": "김진옥",
+          "phone": "02-3661-8238",
+          "company": "주식회사 마곡제이부"
+        }
+      ],
+      "settings": {
+        "shopTypes": ["상권", "역세권", "유통권", "주거권"],
+        "level": 0,
+        "progress": 0,
+        "openApp": false,
+        "propertySecured": false
+      },
+      "contractInfo": {
+        "completed": false,
+        "openDoctorMediated": true,
+        "registrationDate": "2024-07-11T11:10:24",
+        "modificationDate": "2024-07-11T11:11:40"
+      }
+    },
+    {
+      "id": 2,
+      "openableCategories": ["치과", "미용", "감기", "통증", "한의원"],
+      "recommendedCategories": ["치과", "미용", "감기", "통증", "한의원"],
+      "tags": [],
+      "buildingInfo": {
+        "address": "서울특별시 강남구 역삼동 678",
+        "buildingName": "역삼빌딩",
+        "scale": {
+          "groundFloors": 15,
+          "totalFloors": 10
+        },
+        "completionDate": "20191231",
+        "elevators": 4,
+        "parkingSpots": 300,
+        "HC_Availability": 3,
+        "totalRentableFloors": 7,
+        "SMSAvailability": "일부 가능",
+        "SMSAvailabilityInput": "",
+        "Disabled Facilities": {
+          "elevator": 1,
+          "parkingSpots": 2,
+          "ramp": 1,
+          "restroom": 1
+        }
+      },
+      "rentInfo": {
+        "deposit": "25000",
+        "monthlyRent": "2000",
+        "maintenanceFee": "700만원",
+        "rentalFloor": {
+          "rentalFloorInput": "3F",
+          "rentalType": 1
+        },
+        "exclusiveArea": "300",
+        "rentalArea": "450",
+        "moveIn": {
+          "moveInASAP": 1,
+          "moveInDate": "2024-08-01"
+        },
+        "freeParking": 3,
+        "visitorParking": 3,
+        "transferOfLease": 1,
+        "keyMoney": 5000
+      },
+      "images": {
+        "exterior": [
+          {
+            "url": "https://picsum.photos/seed/2/50/50",
+            "description": "외관 이미지 2, 50x50"
+          }
+        ],
+        "interior": [],
+        "floorPlan": []
+      },
+      "memo": {
+        "text": "고객의 시간을 절약해 드립니다. 문의 주시면 원하시는 매물을 바로 안내해 드리겠습니다.",
+        "contact": {
+          "agencyName": "강남공인중개사사무소",
+          "representative": "이민호",
+          "phone": "02-1234-5678"
+        }
+      },
+      "contactInfo": [
+        {
+          "role": "매물 담당자",
+          "type": "자동생성",
+          "agency": "일반부동산",
+          "name": "박지은",
+          "phone": "02-8765-4321",
+          "company": "주식회사 강남부동산"
+        }
+      ],
+      "settings": {
+        "shopTypes": ["상권", "역세권", "유통권", "주거권"],
+        "level": 1,
+        "progress": 50,
+        "openApp": true,
+        "propertySecured": true
+      },
+      "contractInfo": {
+        "completed": true,
+        "openDoctorMediated": false,
+        "registrationDate": "2024-06-01T09:00:00",
+        "modificationDate": "2024-07-10T10:00:00"
+      }
+    },
+    {
+      "id": 3,
+      "openableCategories": ["치과", "미용", "감기", "통증", "한의원"],
+      "recommendedCategories": ["치과", "미용", "감기", "통증", "한의원"],
+      "tags": [],
+      "buildingInfo": {
+        "address": "서울특별시 서초구 서초동 1234",
+        "buildingName": "서초빌딩",
+        "scale": {
+          "groundFloors": 10,
+          "totalFloors": 8
+        },
+        "completionDate": "20201111",
+        "elevators": 2,
+        "parkingSpots": 150,
+        "HC_Availability": 1,
+        "totalRentableFloors": 6,
+        "SMSAvailability": "전체 가능",
+        "SMSAvailabilityInput": "",
+        "Disabled Facilities": {
+          "elevator": 0,
+          "parkingSpots": 1,
+          "ramp": 0,
+          "restroom": 1
+        }
+      },
+      "rentInfo": {
+        "deposit": "15000",
+        "monthlyRent": "1500",
+        "maintenanceFee": "500만원",
+        "rentalFloor": {
+          "rentalFloorInput": "2F",
+          "rentalType": 0
+        },
+        "exclusiveArea": "180",
+        "rentalArea": "300",
+        "moveIn": {
+          "moveInASAP": 1,
+          "moveInDate": ""
+        },
+        "freeParking": 2,
+        "visitorParking": 1,
+        "transferOfLease": 0,
+        "keyMoney": 0
+      },
+      "images": {
+        "exterior": [
+          {
+            "url": "https://picsum.photos/seed/3/50/50",
+            "description": "외관 이미지 3, 50x50"
+          }
+        ],
+        "interior": [],
+        "floorPlan": []
+      },
+      "memo": {
+        "text": "시간을 절약하세요. 원하시는 매물을 바로 안내해 드리겠습니다.",
+        "contact": {
+          "agencyName": "서초공인중개사사무소",
+          "representative": "홍길동",
+          "phone": "02-2345-6789"
+        }
+      },
+      "contactInfo": [
+        {
+          "role": "매물 담당자",
+          "type": "자동생성",
+          "agency": "일반부동산",
+          "name": "최은영",
+          "phone": "02-4321-5678",
+          "company": "주식회사 서초부동산"
+        }
+      ],
+      "settings": {
+        "shopTypes": ["상권", "역세권", "유통권", "주거권"],
+        "level": 2,
+        "progress": 75,
+        "openApp": false,
+        "propertySecured": false
+      },
+      "contractInfo": {
+        "completed": false,
+        "openDoctorMediated": true,
+        "registrationDate": "2024-05-15T08:00:00",
+        "modificationDate": "2024-06-30T09:00:00"
+      }
+    },
+    {
+      "id": 4,
+      "openableCategories": ["치과", "미용", "감기", "통증", "한의원"],
+      "recommendedCategories": ["치과", "미용", "감기", "통증", "한의원"],
+      "tags": [],
+      "buildingInfo": {
+        "address": "서울특별시 송파구 잠실동 567",
+        "buildingName": "잠실타워",
+        "scale": {
+          "groundFloors": 20,
+          "totalFloors": 15
+        },
+        "completionDate": "20200301",
+        "elevators": 5,
+        "parkingSpots": 400,
+        "HC_Availability": 4,
+        "totalRentableFloors": 10,
+        "SMSAvailability": "일부 가능",
+        "SMSAvailabilityInput": "",
+        "Disabled Facilities": {
+          "elevator": 2,
+          "parkingSpots": 3,
+          "ramp": 1,
+          "restroom": 2
+        }
+      },
+      "rentInfo": {
+        "deposit": "30000",
+        "monthlyRent": "2500",
+        "maintenanceFee": "800만원",
+        "rentalFloor": {
+          "rentalFloorInput": "5F",
+          "rentalType": 1
+        },
+        "exclusiveArea": "350",
+        "rentalArea": "500",
+        "moveIn": {
+          "moveInASAP": 0,
+          "moveInDate": "2024-09-01"
+        },
+        "freeParking": 4,
+        "visitorParking": 4,
+        "transferOfLease": 1,
+        "keyMoney": 8000
+      },
+      "images": {
+        "exterior": [
+          {
+            "url": "https://picsum.photos/seed/4/50/50",
+            "description": "외관 이미지 4, 50x50"
+          }
+        ],
+        "interior": [],
+        "floorPlan": []
+      },
+      "memo": {
+        "text": "시간을 절약하세요. 문의 주시면 바로 안내해 드리겠습니다.",
+        "contact": {
+          "agencyName": "송파공인중개사사무소",
+          "representative": "이순신",
+          "phone": "02-3456-7890"
+        }
+      },
+      "contactInfo": [
+        {
+          "role": "매물 담당자",
+          "type": "자동생성",
+          "agency": "일반부동산",
+          "name": "박민수",
+          "phone": "02-5432-6789",
+          "company": "주식회사 송파부동산"
+        }
+      ],
+      "settings": {
+        "shopTypes": ["상권", "역세권", "유통권", "주거권"],
+        "level": 3,
+        "progress": 100,
+        "openApp": true,
+        "propertySecured": true
+      },
+      "contractInfo": {
+        "completed": true,
+        "openDoctorMediated": false,
+        "registrationDate": "2024-04-01T07:00:00",
+        "modificationDate": "2024-07-01T08:00:00"
+      }
+    },
+    {
+      "id": 5,
+      "openableCategories": ["치과", "미용", "감기", "통증", "한의원"],
+      "recommendedCategories": ["치과", "미용", "감기", "통증", "한의원"],
+      "tags": [],
+      "buildingInfo": {
+        "address": "서울특별시 마포구 상암동 234",
+        "buildingName": "상암빌딩",
+        "scale": {
+          "groundFloors": 8,
+          "totalFloors": 6
+        },
+        "completionDate": "20200915",
+        "elevators": 2,
+        "parkingSpots": 200,
+        "HC_Availability": 2,
+        "totalRentableFloors": 5,
+        "SMSAvailability": "전체 가능",
+        "SMSAvailabilityInput": "",
+        "Disabled Facilities": {
+          "elevator": 1,
+          "parkingSpots": 2,
+          "ramp": 1,
+          "restroom": 1
+        }
+      },
+      "rentInfo": {
+        "deposit": "18000",
+        "monthlyRent": "1800",
+        "maintenanceFee": "600만원",
+        "rentalFloor": {
+          "rentalFloorInput": "B1",
+          "rentalType": 0
+        },
+        "exclusiveArea": "200",
+        "rentalArea": "350",
+        "moveIn": {
+          "moveInASAP": 0,
+          "moveInDate": ""
+        },
+        "freeParking": 2,
+        "visitorParking": 2,
+        "transferOfLease": 0,
+        "keyMoney": 0
+      },
+      "images": {
+        "exterior": [
+          {
+            "url": "https://picsum.photos/seed/5/50/50",
+            "description": "외관 이미지 5, 50x50"
+          }
+        ],
+        "interior": [],
+        "floorPlan": []
+      },
+      "memo": {
+        "text": "고객의 시간을 절약해 드립니다. 문의 주시면 바로 안내해 드리겠습니다.",
+        "contact": {
+          "agencyName": "마포공인중개사사무소",
+          "representative": "박지훈",
+          "phone": "02-4567-8901"
+        }
+      },
+      "contactInfo": [
+        {
+          "role": "매물 담당자",
+          "type": "자동생성",
+          "agency": "일반부동산",
+          "name": "이수민",
+          "phone": "02-6543-7890",
+          "company": "주식회사 마포부동산"
+        }
+      ],
+      "settings": {
+        "shopTypes": ["상권", "역세권", "유통권", "주거권"],
+        "level": 4,
+        "progress": 25,
+        "openApp": false,
+        "propertySecured": false
+      },
+      "contractInfo": {
+        "completed": false,
+        "openDoctorMediated": true,
+        "registrationDate": "2024-03-01T06:00:00",
+        "modificationDate": "2024-06-01T07:00:00"
+      }
+    },
+    {
+      "id": 6,
+      "openableCategories": ["치과", "미용", "감기", "통증", "한의원"],
+      "recommendedCategories": ["치과", "미용", "감기", "통증", "한의원"],
+      "tags": [],
+      "buildingInfo": {
+        "address": "서울특별시 강동구 천호동 456",
+        "buildingName": "천호빌딩",
+        "scale": {
+          "groundFloors": 12,
+          "totalFloors": 9
+        },
+        "completionDate": "20200801",
+        "elevators": 3,
+        "parkingSpots": 250,
+        "HC_Availability": 3,
+        "totalRentableFloors": 6,
+        "SMSAvailability": "일부 가능",
+        "SMSAvailabilityInput": "",
+        "Disabled Facilities": {
+          "elevator": 1,
+          "parkingSpots": 1,
+          "ramp": 0,
+          "restroom": 2
+        }
+      },
+      "rentInfo": {
+        "deposit": "20000",
+        "monthlyRent": "1900",
+        "maintenanceFee": "650만원",
+        "rentalFloor": {
+          "rentalFloorInput": "4F",
+          "rentalType": 1
+        },
+        "exclusiveArea": "220",
+        "rentalArea": "380",
+        "moveIn": {
+          "moveInASAP": 1,
+          "moveInDate": "2024-07-15"
+        },
+        "freeParking": 3,
+        "visitorParking": 2,
+        "transferOfLease": 0,
+        "keyMoney": 0
+      },
+      "images": {
+        "exterior": [
+          {
+            "url": "https://picsum.photos/seed/6/50/50",
+            "description": "외관 이미지 6, 50x50"
+          }
+        ],
+        "interior": [],
+        "floorPlan": []
+      },
+      "memo": {
+        "text": "시간을 절약하세요. 문의 주시면 원하시는 매물을 바로 안내해 드리겠습니다.",
+        "contact": {
+          "agencyName": "강동공인중개사사무소",
+          "representative": "최민호",
+          "phone": "02-5678-9012"
+        }
+      },
+      "contactInfo": [
+        {
+          "role": "매물 담당자",
+          "type": "자동생성",
+          "agency": "일반부동산",
+          "name": "정하나",
+          "phone": "02-7654-8901",
+          "company": "주식회사 강동부동산"
+        }
+      ],
+      "settings": {
+        "shopTypes": ["상권", "역세권", "유통권", "주거권"],
+        "level": 5,
+        "progress": 50,
+        "openApp": true,
+        "propertySecured": true
+      },
+      "contractInfo": {
+        "completed": true,
+        "openDoctorMediated": false,
+        "registrationDate": "2024-02-01T05:00:00",
+        "modificationDate": "2024-05-01T06:00:00"
+      }
+    },
+    {
+      "id": 7,
+      "openableCategories": ["치과", "미용", "감기", "통증", "한의원"],
+      "recommendedCategories": ["치과", "미용", "감기", "통증", "한의원"],
+      "tags": [],
+      "buildingInfo": {
+        "address": "서울특별시 영등포구 여의도동 789",
+        "buildingName": "여의도타워",
+        "scale": {
+          "groundFloors": 25,
+          "totalFloors": 20
+        },
+        "completionDate": "20200515",
+        "elevators": 6,
+        "parkingSpots": 500,
+        "HC_Availability": 5,
+        "totalRentableFloors": 15,
+        "SMSAvailability": "전체 가능",
+        "SMSAvailabilityInput": "",
+        "Disabled Facilities": {
+          "elevator": 3,
+          "parkingSpots": 4,
+          "ramp": 2,
+          "restroom": 3
+        }
+      },
+      "rentInfo": {
+        "deposit": "35000",
+        "monthlyRent": "3000",
+        "maintenanceFee": "1000만원",
+        "rentalFloor": {
+          "rentalFloorInput": "6F",
+          "rentalType": 0
+        },
+        "exclusiveArea": "400",
+        "rentalArea": "600",
+        "moveIn": {
+          "moveInASAP": 0,
+          "moveInDate": "2024-10-01"
+        },
+        "freeParking": 5,
+        "visitorParking": 4,
+        "transferOfLease": 1,
+        "keyMoney": 10000
+      },
+      "images": {
+        "exterior": [
+          {
+            "url": "https://picsum.photos/seed/7/50/50",
+            "description": "외관 이미지 7, 50x50"
+          }
+        ],
+        "interior": [],
+        "floorPlan": []
+      },
+      "memo": {
+        "text": "시간을 절약하세요. 문의 주시면 바로 안내해 드리겠습니다.",
+        "contact": {
+          "agencyName": "영등포공인중개사사무소",
+          "representative": "김영수",
+          "phone": "02-6789-0123"
+        }
+      },
+      "contactInfo": [
+        {
+          "role": "매물 담당자",
+          "type": "자동생성",
+          "agency": "일반부동산",
+          "name": "박지훈",
+          "phone": "02-8765-4321",
+          "company": "주식회사 영등포부동산"
+        }
+      ],
+      "settings": {
+        "shopTypes": ["상권", "역세권", "유통권", "주거권"],
+        "level": 6,
+        "progress": 75,
+        "openApp": false,
+        "propertySecured": false
+      },
+      "contractInfo": {
+        "completed": false,
+        "openDoctorMediated": true,
+        "registrationDate": "2024-01-01T04:00:00",
+        "modificationDate": "2024-04-01T05:00:00"
+      }
+    },
+    {
+      "id": 8,
+      "openableCategories": ["치과", "미용", "감기", "통증", "한의원"],
+      "recommendedCategories": ["치과", "미용", "감기", "통증", "한의원"],
+      "tags": [],
+      "buildingInfo": {
+        "address": "서울특별시 성동구 성수동 123",
+        "buildingName": "성수빌딩",
+        "scale": {
+          "groundFloors": 10,
+          "totalFloors": 8
+        },
+        "completionDate": "20200229",
+        "elevators": 3,
+        "parkingSpots": 220,
+        "HC_Availability": 2,
+        "totalRentableFloors": 6,
+        "SMSAvailability": "일부 가능",
+        "SMSAvailabilityInput": "",
+        "Disabled Facilities": {
+          "elevator": 1,
+          "parkingSpots": 1,
+          "ramp": 1,
+          "restroom": 1
+        }
+      },
+      "rentInfo": {
+        "deposit": "16000",
+        "monthlyRent": "1700",
+        "maintenanceFee": "550만원",
+        "rentalFloor": {
+          "rentalFloorInput": "2F",
+          "rentalType": 0
+        },
+        "exclusiveArea": "210",
+        "rentalArea": "360",
+        "moveIn": {
+          "moveInASAP": 1,
+          "moveInDate": ""
+        },
+        "freeParking": 2,
+        "visitorParking": 1,
+        "transferOfLease": 0,
+        "keyMoney": 0
+      },
+      "images": {
+        "exterior": [
+          {
+            "url": "https://picsum.photos/seed/8/50/50",
+            "description": "외관 이미지 8, 50x50"
+          }
+        ],
+        "interior": [],
+        "floorPlan": []
+      },
+      "memo": {
+        "text": "고객의 시간을 절약해 드립니다. 문의 주시면 원하시는 매물을 바로 안내해 드리겠습니다.",
+        "contact": {
+          "agencyName": "성동공인중개사사무소",
+          "representative": "박민호",
+          "phone": "02-7890-1234"
+        }
+      },
+      "contactInfo": [
+        {
+          "role": "매물 담당자",
+          "type": "자동생성",
+          "agency": "일반부동산",
+          "name": "최지은",
+          "phone": "02-9876-5432",
+          "company": "주식회사 성동부동산"
+        }
+      ],
+      "settings": {
+        "shopTypes": ["상권", "역세권", "유통권", "주거권"],
+        "level": 7,
+        "progress": 25,
+        "openApp": true,
+        "propertySecured": true
+      },
+      "contractInfo": {
+        "completed": true,
+        "openDoctorMediated": false,
+        "registrationDate": "2023-12-01T03:00:00",
+        "modificationDate": "2024-03-01T04:00:00"
+      }
+    }
+  ]
+}
