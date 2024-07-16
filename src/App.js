@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import Header from "./components/Header";
-import PropertyList from "./components/PropertyList";
-import MapViewTab from "./components/MapViewTab";
+import Header from "./pages/Header";
+import PropertyList from "./pages/PropertyList";
+import MapViewTab from "./pages/MapViewTab";
 import axios from "axios";
 
 const URL = "http://localhost:3002/opn";
