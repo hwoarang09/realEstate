@@ -1,7 +1,7 @@
-import { useState } from "react";
+//import { useState } from "react";
 
 function PropertyItem({ property, onEdit }) {
-  const [showEdit, setShowEdit] = useState(false);
+  //const [showEdit, setShowEdit] = useState(false);
 
   return (
     <div className="book-show">

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import PropertyList from "./components/PropertyList";
+import MapViewTab from "./components/MapViewTab";
 import axios from "axios";
 
 const URL = "http://localhost:3002/opn";
@@ -36,6 +37,7 @@ function App() {
     <div className="app">
       <Header />
       <PropertyList properties={properties} onEdit={editPropertyById} />
+      <MapViewTab />
     </div>
   );
 }
