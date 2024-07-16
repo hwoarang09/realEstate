@@ -37,6 +37,8 @@ function Button({
   );
 }
 
+
+//추후에 typescript로 대체
 Button.propTypes = {
   checkVariationValue: ({
     primary,
