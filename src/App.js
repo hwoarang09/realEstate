@@ -1,43 +1,21 @@
-import { useState, useEffect } from "react";
-import Header from "./pages/Header";
-import PropertyList from "./pages/PropertyList";
-import MapViewTab from "./pages/MapViewTab";
-import axios from "axios";
-
-const URL = "http://localhost:3002/opn";
+import PropertyItemInfoPage from "./pages/Property/modalpages/PropertyItemInfoPage";
+import PropertyItemAddPage from "./pages/Property/modalpages/PropertyItemAddPage";
+import MapViewPage from "./pages/Property/modalpages/MapViewPage";
+import BookmarkPage from "./pages/Property/pages/BookmarkPage";
+import PropertyPage from "./pages/Property/pages/PropertyPage";
+import Route from "./components/Route";
+import { NavigationProvider } from "./context/navigation";
 function App() {
-  const [properties, setProperties] = useState([]);
-
-  const fetchProperties = async () => {
-    const response = await axios.get(URL);
-
-    setProperties(response.data);
-  };
-
-  useEffect(() => {
-    fetchProperties();
-  }, []);
-
-  const editPropertyById = async (id, formData) => {
-    const response = await axios.put(URL + "/" + id, formData);
-
-    const updatedProperties = properties.map((property) => {
-      console.log(property);
-      if (property.id === id) {
-        return { ...property, ...response.data };
-      }
-
-      return property;
-    });
-
-    setProperties(updatedProperties);
-  };
-
   return (
-    <div className="app">
-      <Header />
-      <PropertyList properties={properties} onEdit={editPropertyById} />
-      <MapViewTab />
+    <div className="container mx-auto grid grid-cols-6 gap-4 mt-4">
+      <div className="col-span-5">
+        <Route path="/bookmark">
+          <BookmarkPage />
+        </Route>
+        <Route path="/">
+          <PropertyPage />
+        </Route>
+      </div>
     </div>
   );
 }

@@ -1,5 +1,5 @@
-import Button from "../components/Button";
-import "../styles/index.css";
+import Button from "../../../components/Button";
+import "../../../styles/index.css";
 
 function MapViewTab() {
   return (
