@@ -7,15 +7,13 @@ import Route from "./components/Route";
 import { NavigationProvider } from "./context/navigation";
 function App() {
   return (
-    <div className="container mx-auto grid grid-cols-6 gap-4 mt-4">
-      <div className="col-span-5">
-        <Route path="/bookmark">
-          <BookmarkPage />
-        </Route>
-        <Route path="/">
-          <PropertyPage />
-        </Route>
-      </div>
+    <div className="col-span-5">
+      <Route path="/bookmark">
+        <BookmarkPage />
+      </Route>
+      <Route path="/">
+        <PropertyPage />
+      </Route>
     </div>
   );
 }
