@@ -30,9 +30,9 @@ const Header = () => {
           <TfiMenu />
         </div>
       </div>
-      <div className="second-header">
+      <div className="flex justify-between items-center">
         <div className="">{renderedLinks}</div>
-        <div className="second-header-right">
+        <div className="flex items-center">
           <Button primary_add>
             <GrAdd />
             매물 등록
