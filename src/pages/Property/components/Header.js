@@ -15,8 +15,8 @@ const Header = () => {
       <Link
         key={link.label}
         to={link.path}
-        className="mb-5"
-        activeClassName="font-bold"
+        className="mb-5 mr-2 text-black hover:text-blue-500"
+        activeClassName="font-bold text-blue-500"
       >
         {link.label}
       </Link>
@@ -25,12 +25,10 @@ const Header = () => {
 
   return (
     <header>
-      <div className="first-header">
-        <div className="menu-icon">
-          <TfiMenu />
-        </div>
+      <div className="first-header border border-gray-300 p-4">
+        <TfiMenu className="w-8 h-8" />
       </div>
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center p-4">
         <div className="">{renderedLinks}</div>
         <div className="flex items-center">
           <Button primary_add>

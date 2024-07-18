@@ -7,7 +7,7 @@ import Route from "./components/Route";
 import { NavigationProvider } from "./context/navigation";
 function App() {
   return (
-    <div className="col-span-5 w-[414px]">
+    <div className="col-span-5 w-[414px] border p-3">
       <Route path="/bookmark">
         <BookmarkPage />
       </Route>
