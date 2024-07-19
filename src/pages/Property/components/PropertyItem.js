@@ -1,36 +1,13 @@
-//import { useState } from "react";
+import React from "react";
 import { CiBookmarkPlus } from "react-icons/ci";
 import { IoMdDownload } from "react-icons/io";
 import Button from "../../../components/Button";
 import useModal from "../../../hooks/use-modal";
+import PropertyItemInfoModal from "../modalpages/PropertyItemInfoPage";
 
 function PropertyItem({ property, onEdit }) {
-  //const [showEdit, setShowEdit] = useState(false);
   const { isOpen, openModal, closeModal, ModalComponent } = useModal();
 
-  const modal = (
-    <ModalComponent>
-      <div className="p-5">
-        <h1 className="text-xl font-bold">매물 정보</h1>
-
-        <div className="text-xl font-bold mb-4">
-          <div>
-            <Button primary onClick={closeModal}>
-              뒤로가기
-            </Button>
-          </div>
-
-          <div className="text-gray-500">{property.id}</div>
-          <div className="text-gray-500">{property.buildingInfo.address}</div>
-          <div className="text-gray-500">
-            {property.buildingInfo.buildingName}
-          </div>
-          <div className="text-gray-500">{property.rentInfo.deposit}</div>
-          <div className="text-gray-500">{property.rentInfo.monthlyRent}</div>
-        </div>
-      </div>
-    </ModalComponent>
-  );
   return (
     <div className="bg-white p-4 shadow-md rounded mb-1 pb-20">
       <img
@@ -40,12 +17,11 @@ function PropertyItem({ property, onEdit }) {
       />
       <div className="mt-2">
         <div className="flex items-center space-x-5 text-lg">
-          <a onClick={openModal} className="text-blue-600">
+          <div onClick={openModal} className="text-blue-600">
             {property.id}
-          </a>
-          {isOpen && modal}
-          <CiBookmarkPlus></CiBookmarkPlus>
-          <IoMdDownload></IoMdDownload>
+          </div>
+          <CiBookmarkPlus />
+          <IoMdDownload />
         </div>
 
         <div className="flex flex-col justify-between">
@@ -56,12 +32,17 @@ function PropertyItem({ property, onEdit }) {
               {property.rentInfo.exclusiveArea}평
             </span>
             <span className="text-sm">
-              <span className="font-bold">임대</span>
+              <span className="font-bold">임대</span>{" "}
               {property.rentInfo.rentalArea}평
             </span>
           </div>
         </div>
       </div>
+      {isOpen && (
+        <ModalComponent>
+          <PropertyItemInfoModal property={property} closeModal={closeModal} />
+        </ModalComponent>
+      )}
     </div>
   );
 }
