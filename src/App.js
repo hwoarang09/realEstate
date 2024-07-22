@@ -1,21 +1,38 @@
-import PropertyItemInfoPage from "./pages/Property/modalpages/PropertyItemInfoPage";
-import PropertyItemAddPage from "./pages/Property/modalpages/PropertyItemAddPage";
-import MapViewPage from "./pages/Property/modalpages/MapViewPage";
 import BookmarkPage from "./pages/Property/pages/BookmarkPage";
 import PropertyPage from "./pages/Property/pages/PropertyPage";
-import Route from "./commonComponents/Route";
-import { NavigationProvider } from "./context/navigation";
+import PropertyItemInfoPage from "./pages/Property/modalpages/PropertyItemInfoPage";
+
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Root from "./pages/Property/pages/Root";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root />,
+    children: [
+      {
+        index: true,
+        element: <PropertyPage />,
+      },
+      {
+        path: "/property",
+        element: <PropertyPage />,
+        children: [
+          {
+            path: ":id",
+            element: <PropertyItemInfoPage />,
+          },
+        ],
+      },
+      {
+        path: "/bookmark",
+        element: <BookmarkPage />,
+      },
+    ],
+  },
+]);
 function App() {
-  return (
-    <div className="col-span-5 w-[414px] border p-3">
-      <Route path="/bookmark">
-        <BookmarkPage />
-      </Route>
-      <Route path="/">
-        <PropertyPage />
-      </Route>
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

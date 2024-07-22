@@ -7,34 +7,43 @@ const openable = ["치과", "미용", "감기", "통증", "한의원"];
 const recommended = ["치과", "미용", "감기", "통증", "한의원"];
 
 const PropertyItemInfoModal = ({ property, closeModal }) => {
+
   const openableFilter = openable.map((cate) => {
     if (property.openableCategories.includes(cate)) {
       return (
-        <Button option_select rounded>
-          V {cate}
-        </Button>
+        <div key={`openSelect` + cate}>
+          <Button option_select rounded>
+            V {cate}
+          </Button>
+        </div>
       );
     } else {
       return (
-        <Button option_noselect rounded>
-          {cate}
-        </Button>
+        <div key={`openNoSelect` + cate}>
+          <Button option_noselect rounded>
+            {cate}
+          </Button>
+        </div>
       );
     }
   });
   const recommendedFilter = recommended.map((cate) => {
     if (property.recommendedCategories.includes(cate)) {
       return (
-        <Button option_select rounded>
-          <span>V</span>
-          <span>{cate}</span>
-        </Button>
+        <div key={`recommSelect` + cate}>
+          <Button option_select rounded>
+            <span>V</span>
+            <span>{cate}</span>
+          </Button>
+        </div>
       );
     } else {
       return (
-        <Button option_noselect rounded>
-          {cate}
-        </Button>
+        <div key={`recommNoSelect` + cate}>
+          <Button option_noselect rounded>
+            {cate}
+          </Button>
+        </div>
       );
     }
   });

@@ -1,5 +1,6 @@
 import ReactDOM from "react-dom";
 import { useEffect } from "react";
+
 function Modal({ onClose, children }) {
   useEffect(() => {
     document.body.classList.add("overflow-hidden");

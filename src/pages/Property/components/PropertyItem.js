@@ -5,9 +5,10 @@ import { IoMdDownload } from "react-icons/io";
 import useModal from "../../../hooks/use-modal";
 import PropertyItemInfoModal from "../modalpages/PropertyItemInfoPage";
 
+
 function PropertyItem({ property, onEdit }) {
   const { isOpen, openModal, closeModal, ModalComponent } = useModal();
-
+  const path = "/property/" + property.id;
   return (
     <div className="bg-white p-4 shadow-md rounded mb-1 pb-20">
       <img
@@ -17,7 +18,10 @@ function PropertyItem({ property, onEdit }) {
       />
       <div className="mt-2">
         <div className="flex items-center space-x-5 text-lg">
-          <div onClick={openModal} className="text-blue-600 cursor-pointer">
+          <div
+            onClick={() => openModal(path)}
+            className="text-blue-600 cursor-pointer"
+          >
             {property.id}
           </div>
           <FaRegBookmark />

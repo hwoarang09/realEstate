@@ -1,8 +1,9 @@
 import PropertyItem from "../components/PropertyItem";
 import axios from "axios";
 import { useState, useEffect } from "react";
+
 const URL = "http://localhost:3002/opn";
-function PropertyList({}) {
+function PropertyList() {
   const [properties, setProperties] = useState([]);
 
   const fetchProperties = async () => {
