@@ -2,8 +2,8 @@
   "opn": [
     {
       "id": 1,
-      "openableCategories": ["치과", "미용", "감기", "통증", "한의원"],
-      "recommendedCategories": ["치과", "미용", "감기", "통증", "한의원"],
+      "openableCategories": ["치과", "미용", "감기", "통증"],
+      "recommendedCategories": ["치과", "미용", "감기", "통증"],
       "tags": [],
       "buildingInfo": {
         "address": "서울특별시 강서구 마곡동 B01",

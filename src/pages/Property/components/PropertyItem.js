@@ -1,7 +1,7 @@
 import React from "react";
 import { FaRegBookmark } from "react-icons/fa";
 import { IoMdDownload } from "react-icons/io";
-import Button from "../../../commonComponents/Button";
+
 import useModal from "../../../hooks/use-modal";
 import PropertyItemInfoModal from "../modalpages/PropertyItemInfoPage";
 

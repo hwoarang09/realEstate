@@ -8,6 +8,8 @@ function Button({
   success,
   warning,
   danger,
+  option_select,
+  option_noselect,
   outline,
   rounded,
   ...rest
@@ -20,6 +22,10 @@ function Button({
       "border-green-500 bg-green-500 text-white": success,
       "border-yellow-400 bg-yellow-400 text-white": warning,
       "border-red-500 bg-red-500 text-white": danger,
+      "border-purple-200 bg-purple-200 text-black font-bold py-0.5 px-5 w-24 flex justify-between items-center ":
+        option_select,
+      "border-gray-200 bg-gray-200 text-black w-24": option_noselect,
+
       "rounded-full": rounded,
       "bg-white": outline,
       "text-blue-500": outline && (primary || primary_add),
