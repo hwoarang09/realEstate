@@ -1,30 +1,32 @@
-import { useState, useEffect } from "react";
-import Modal from "../commonComponents/Modal";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
+import {
+  openModal as openModalAction,
+  closeModal as closeModalAction,
+} from "../store/slices/modalSlice";
+import Modal from "../commonComponents/Modal";
 
 function useModal() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const [isOpen, setIsOpen] = useState(false);
-  const [modalPath, setModalPath] = useState(null);
+  const { isOpen, modalPath } = useSelector((state) => state.modal);
 
   useEffect(() => {
     if (modalPath && location.pathname !== modalPath) {
-      setIsOpen(false);
-      setModalPath(null);
+      dispatch(closeModalAction());
     }
-  }, [location, modalPath]);
+  }, [location, modalPath, dispatch]);
 
   const openModal = (path) => {
-    setIsOpen(true);
-    setModalPath(path);
-    navigate(path);
+    dispatch(openModalAction(path));
+    navigate(path); // navigate를 여기서 호출
   };
 
   const closeModal = () => {
-    setIsOpen(false);
-    setModalPath(null);
-    navigate(-1);
+    dispatch(closeModalAction());
+    navigate(-1); // navigate를 여기서 호출
   };
 
   const ModalComponent = ({ children }) => {
