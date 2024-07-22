@@ -9,6 +9,12 @@ import PropertyItemInfoModal from "../modalpages/PropertyItemInfoPage";
 function PropertyItem({ property, onEdit }) {
   const { isOpen, openModal, closeModal, ModalComponent } = useModal();
   const path = "/property/" + property.id;
+
+
+  const handleClick = (path, property) => {
+    openModal(path);
+    console.log(path, property);
+  };
   return (
     <div className="bg-white p-4 shadow-md rounded mb-1 pb-20">
       <img
@@ -19,7 +25,7 @@ function PropertyItem({ property, onEdit }) {
       <div className="mt-2">
         <div className="flex items-center space-x-5 text-lg">
           <div
-            onClick={() => openModal(path)}
+            onClick={() => handleClick(path, property)}
             className="text-blue-600 cursor-pointer"
           >
             {property.id}

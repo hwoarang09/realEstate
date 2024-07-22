@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import {
   openModal as openModalAction,
   closeModal as closeModalAction,
+  setModalPath,
 } from "../store/slices/modalSlice";
 import Modal from "../commonComponents/Modal";
 
@@ -18,7 +19,12 @@ function useModal() {
       dispatch(closeModalAction());
     }
   }, [location, modalPath, dispatch]);
-
+  useEffect(() => {
+    const path = location.pathname;
+    if (path.includes("/property/")) {
+      dispatch(setModalPath(path));
+    }
+  }, [location.pathname, dispatch]);
   const openModal = (path) => {
     dispatch(openModalAction(path));
     navigate(path); // navigate를 여기서 호출
