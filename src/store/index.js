@@ -3,7 +3,7 @@ import { modalReducer, openModal, closeModal } from "./slices/modalSlice";
 
 const store = configureStore({
   reducer: {
-    modal: modalReducer,
+    modals: modalReducer,
   },
 });
 

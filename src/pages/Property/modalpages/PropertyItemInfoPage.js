@@ -1,13 +1,51 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Button from "../../../commonComponents/Button";
-
 import { formatDate } from "../../../utils/dateHelper";
+import axios from "axios";
 
+const URL = "http://localhost:3002/opn";
 const openable = ["치과", "미용", "감기", "통증", "한의원"];
 const recommended = ["치과", "미용", "감기", "통증", "한의원"];
 
-const PropertyItemInfoModal = ({ property, closeModal }) => {
+const PropertyItemInfoModal = ({ modalPath, closeModal }) => {
+  const [properties, setProperties] = useState([]);
+  const [loading, setLoading] = useState(true); // 로딩 상태 추가
+  const [error, setError] = useState(null); // 에러 상태 추가
 
+  const fetchProperties = async () => {
+    try {
+      const response = await axios.get(URL);
+      console.log(`response.data`, response.data); // API 응답 확인
+      setProperties(response.data);
+      setLoading(false); // 로딩 완료
+    } catch (error) {
+      console.error("Failed to fetch properties", error);
+      setError(error);
+      setLoading(false); // 로딩 완료
+    }
+  };
+
+  useEffect(() => {
+    fetchProperties();
+  }, []);
+  // console.log(`property`, JSON.stringify(properties));
+  console.log("proper");
+  // const property = properties.find(
+  //   (propert) => propert.id === modalPath.split("property/")[1]
+  // );
+  if (loading) {
+    console.log("loading ", loading);
+    return <div>Loading...</div>; // 로딩 중일 때 출력할 내용
+  }
+
+  if (error) {
+    console.log("error ", error);
+    return <div>Error: {error.message}</div>; // 에러 발생 시 출력할 내용
+  }
+  const propertyId = modalPath.split("property/")[1];
+  const property = properties.find(
+    (propert) => Number(propert.id) === Number(propertyId)
+  );
   const openableFilter = openable.map((cate) => {
     if (property.openableCategories.includes(cate)) {
       return (

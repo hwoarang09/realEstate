@@ -1,14 +1,17 @@
 import React from "react";
 import Button from "../../../commonComponents/Button";
 import "../../../styles/index.css";
-
 import { Link } from "react-router-dom";
 import useModal from "../../../hooks/use-modal";
-import PropertyAddModal from "../modalpages/PropertyItemAddPage";
+
 const PropertyMenu = ({ add }) => {
-  console.log("inMenu add : ", add);
-  const addBtnPath = "/property/add";
-  const { isOpen, openModal } = useModal();
+  const { showModal } = useModal();
+  const handleClick = () => {
+    const modalPath = "/property/add";
+    console.log(`in PropertyMenu, modalPath ${modalPath}`);
+    showModal({ modalPath });
+  };
+
   const links = [
     { label: "매물관리", path: "/property" },
     { label: "즐겨찾기", path: "/bookmark" },
@@ -29,12 +32,11 @@ const PropertyMenu = ({ add }) => {
       <div className="flex justify-between items-center p-4 mt-14 min-h-20 ">
         <div className="flex items-center space-x-4">{renderedLinks}</div>
         <div className="flex items-center ">
-          {add && (
-            <Button primary onClick={() => openModal(addBtnPath)}>
+          {add === "add" && (
+            <Button primary onClick={handleClick}>
               + 매물 등록
             </Button>
           )}
-          {isOpen && <PropertyAddModal />}
         </div>
       </div>
     </div>

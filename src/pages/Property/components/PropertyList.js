@@ -28,7 +28,7 @@ function PropertyList() {
 
     setProperties(updatedProperties);
   };
-
+console.log("in list", properties);
   const renderedProperties = properties.map((property) => {
     return (
       <PropertyItem

@@ -7,13 +7,15 @@ import PropertyItemInfoModal from "../modalpages/PropertyItemInfoPage";
 
 
 function PropertyItem({ property, onEdit }) {
-  const { isOpen, openModal, closeModal, ModalComponent } = useModal();
-  const path = "/property/" + property.id;
-
-
-  const handleClick = (path, property) => {
-    openModal(path);
-    console.log(path, property);
+  const { isOpen, showModal } = useModal();
+  const modalPath = "/property/" + property.id;
+  const selectedProperty = property;
+  const handleClick = ({ modalPath, selectedProperty }) => {
+    showModal({ modalPath, selectedProperty });
+    console.log(
+      `in PropertyItem, handleClick....modalPath ${modalPath}, 
+      property ${JSON.stringify(property)}`
+    );
   };
   return (
     <div className="bg-white p-4 shadow-md rounded mb-1 pb-20">
@@ -25,7 +27,7 @@ function PropertyItem({ property, onEdit }) {
       <div className="mt-2">
         <div className="flex items-center space-x-5 text-lg">
           <div
-            onClick={() => handleClick(path, property)}
+            onClick={() => handleClick({ modalPath, selectedProperty })}
             className="text-blue-600 cursor-pointer"
           >
             {property.id}
@@ -66,11 +68,6 @@ function PropertyItem({ property, onEdit }) {
           </div>
         </div>
       </div>
-      {isOpen && (
-        <ModalComponent>
-          <PropertyItemInfoModal property={property} closeModal={closeModal} />
-        </ModalComponent>
-      )}
     </div>
   );
 }
