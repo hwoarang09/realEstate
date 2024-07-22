@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../../../components/Button";
+import Button from "../../../commonComponents/Button";
 import useModal from "../../../hooks/use-modal";
 
 const PropertyItemInfoModal = ({ property, closeModal }) => {

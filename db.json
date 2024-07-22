@@ -29,7 +29,7 @@
       "rentInfo": {
         "deposit": "18000",
         "monthlyRent": "1800",
-        "maintenanceFee": "598만원",
+        "maintenanceFee": "598",
         "rentalFloor": {
           "rentalFloorInput": "B1",
           "rentalType": 0
@@ -122,7 +122,7 @@
       "rentInfo": {
         "deposit": "25000",
         "monthlyRent": "2000",
-        "maintenanceFee": "700만원",
+        "maintenanceFee": "700",
         "rentalFloor": {
           "rentalFloorInput": "3F",
           "rentalType": 1
@@ -215,7 +215,7 @@
       "rentInfo": {
         "deposit": "15000",
         "monthlyRent": "1500",
-        "maintenanceFee": "500만원",
+        "maintenanceFee": "500",
         "rentalFloor": {
           "rentalFloorInput": "2F",
           "rentalType": 0
@@ -308,7 +308,7 @@
       "rentInfo": {
         "deposit": "30000",
         "monthlyRent": "2500",
-        "maintenanceFee": "800만원",
+        "maintenanceFee": "800",
         "rentalFloor": {
           "rentalFloorInput": "5F",
           "rentalType": 1
@@ -401,7 +401,7 @@
       "rentInfo": {
         "deposit": "18000",
         "monthlyRent": "1800",
-        "maintenanceFee": "600만원",
+        "maintenanceFee": "600",
         "rentalFloor": {
           "rentalFloorInput": "B1",
           "rentalType": 0
@@ -494,7 +494,7 @@
       "rentInfo": {
         "deposit": "20000",
         "monthlyRent": "1900",
-        "maintenanceFee": "650만원",
+        "maintenanceFee": "650",
         "rentalFloor": {
           "rentalFloorInput": "4F",
           "rentalType": 1
@@ -587,7 +587,7 @@
       "rentInfo": {
         "deposit": "35000",
         "monthlyRent": "3000",
-        "maintenanceFee": "1000만원",
+        "maintenanceFee": "1000",
         "rentalFloor": {
           "rentalFloorInput": "6F",
           "rentalType": 0
@@ -680,7 +680,7 @@
       "rentInfo": {
         "deposit": "16000",
         "monthlyRent": "1700",
-        "maintenanceFee": "550만원",
+        "maintenanceFee": "550",
         "rentalFloor": {
           "rentalFloorInput": "2F",
           "rentalType": 0

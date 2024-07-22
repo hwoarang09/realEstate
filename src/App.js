@@ -3,7 +3,7 @@ import PropertyItemAddPage from "./pages/Property/modalpages/PropertyItemAddPage
 import MapViewPage from "./pages/Property/modalpages/MapViewPage";
 import BookmarkPage from "./pages/Property/pages/BookmarkPage";
 import PropertyPage from "./pages/Property/pages/PropertyPage";
-import Route from "./components/Route";
+import Route from "./commonComponents/Route";
 import { NavigationProvider } from "./context/navigation";
 function App() {
   return (
