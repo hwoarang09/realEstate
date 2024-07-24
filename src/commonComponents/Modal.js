@@ -12,9 +12,9 @@ function Modal({ onClose, children }) {
     <div>
       <div
         onClick={onClose}
-        className="fixed inset-0 bg-gray-300 opacity-80"
+        className="fixed inset-0 bg-gray-300 opacity-80 "
       ></div>
-      <div className="fixed top-0 left-0 w-[414px] h-screen m-0 p-5 bg-white z-50">
+      <div className="fixed top-0 left-0 w-[448px] h-screen m-0 bg-white z-50">
         <div className="flex flex-col justify-between h-full">{children}</div>
       </div>
     </div>,

@@ -8,6 +8,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 const URL = "http://localhost:3002/opn"; // API URL 설정
 const ModalWrapper = () => {
+  console.log("in ModalWrapper");
   const [properties, setProperties] = useState([]);
 
   const fetchProperties = async () => {
@@ -46,7 +47,7 @@ const ModalWrapper = () => {
     );
   }
 
-  return <div>주소 맞냐?</div>;
+  return <div>주소맞나확인??</div>;
 };
 
 export default ModalWrapper;

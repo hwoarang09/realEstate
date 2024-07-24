@@ -8,7 +8,8 @@ import {
 } from "../store/slices/modalSlice";
 import Modal from "../commonComponents/Modal";
 
-function useModal() {
+function useModal(props) {
+  console.log("in USEMODAL caller", props?.caller);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
@@ -24,7 +25,9 @@ function useModal() {
 
   useEffect(() => {
     const modalPath = location.pathname;
-    console.log(`in useModal, modalPath ${modalPath}`);
+    console.log(
+      `in useModal EFFECT modalPath ${modalPath} caller ${props?.caller}`
+    );
     if (modalPath.includes("/property/")) {
       console.log("here??");
       dispatch(setModalPath({ modalPath }));

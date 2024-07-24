@@ -15,25 +15,30 @@ function Button({
   ...rest
 }) {
   const classes = twMerge(
-    className(rest.className, "px-3 py-1.5 border flex items-center", {
-      "border-blue-500 bg-blue-500 text-white": primary,
-      "border-blue-500 bg-blue-500 text-black font-bold": primary_add,
-      "border-gray-900 bg-gray-900 text-white": secondary,
-      "border-green-500 bg-green-500 text-white": success,
-      "border-yellow-400 bg-yellow-400 text-white": warning,
-      "border-red-500 bg-red-500 text-white": danger,
-      "border-purple-200 bg-purple-200 text-black font-bold py-0.5 px-5 w-24 flex justify-between items-center ":
-        option_select,
-      "border-gray-200 bg-gray-200 text-black w-24": option_noselect,
+    className(
+      "px-3 py-1.5 border flex items-center",
+      {
+        "border-blue-500 bg-blue-500 text-white": primary,
+        "border-blue-500 bg-blue-500 text-black font-bold": primary_add,
+        "border-gray-900 bg-gray-900 text-white": secondary,
+        "border-green-500 bg-green-500 text-white": success,
+        "border-yellow-400 bg-yellow-400 text-white": warning,
+        "border-red-500 bg-red-500 text-white": danger,
 
-      "rounded-full": rounded,
-      "bg-white": outline,
-      "text-blue-500": outline && (primary || primary_add),
-      "text-gray-900": outline && secondary,
-      "text-green-500": outline && success,
-      "text-yellow-400": outline && warning,
-      "text-red-500": outline && danger,
-    })
+        "border-purple-200 bg-purple-200 text-black font-bold  text-sm py-1 px-4 mx-0.5 w-20 justify-between":
+          option_select,
+        "border-gray-200 bg-gray-200 text-black text-sm py-1": option_noselect,
+
+        "rounded-full": rounded,
+        "bg-white": outline,
+        "text-blue-500": outline && (primary || primary_add),
+        "text-gray-900": outline && secondary,
+        "text-green-500": outline && success,
+        "text-yellow-400": outline && warning,
+        "text-red-500": outline && danger,
+      },
+      rest.className
+    )
   );
 
   return (

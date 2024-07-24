@@ -6,8 +6,9 @@ import useModal from "../../../hooks/use-modal";
 import PropertyItemInfoModal from "../modalpages/PropertyItemInfoPage";
 
 
-function PropertyItem({ property, onEdit }) {
-  const { isOpen, showModal } = useModal();
+function PropertyItem({ property, showModal }) {
+  console.log(`in PropertyItem, every item useModal`);
+
   const modalPath = "/property/" + property.id;
   const selectedProperty = property;
   const handleClick = ({ modalPath, selectedProperty }) => {
@@ -72,4 +73,5 @@ function PropertyItem({ property, onEdit }) {
   );
 }
 
-export default PropertyItem;
+// export default PropertyItem;
+export default React.memo(PropertyItem);
