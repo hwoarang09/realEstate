@@ -25,9 +25,9 @@ function Button({
         "border-yellow-400 bg-yellow-400 text-white": warning,
         "border-red-500 bg-red-500 text-white": danger,
 
-        "border-purple-200 bg-purple-200 text-black font-bold  text-sm py-1 px-4 mx-0.5 w-20 justify-between":
+        "border-purple-200 bg-purple-200 text-black font-bold  text-xs py-1 px-4 mx-0.5 w-20 justify-between":
           option_select,
-        "border-gray-200 bg-gray-200 text-black text-sm py-1": option_noselect,
+        "border-gray-200 bg-gray-200 text-black text-xs py-1": option_noselect,
 
         "rounded-full": rounded,
         "bg-white": outline,

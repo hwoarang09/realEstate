@@ -41,6 +41,7 @@ function useModal(props) {
     navigate(modalPath);
   };
   const hideModal = () => {
+    console.log("hideModal");
     dispatch(closeModal());
     navigate(-1);
   };

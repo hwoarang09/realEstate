@@ -13,10 +13,6 @@ function PropertyItem({ property, showModal }) {
   const selectedProperty = property;
   const handleClick = ({ modalPath, selectedProperty }) => {
     showModal({ modalPath, selectedProperty });
-    console.log(
-      `in PropertyItem, handleClick....modalPath ${modalPath}, 
-      property ${JSON.stringify(property)}`
-    );
   };
   return (
     <div className="bg-white p-4 shadow-md rounded mb-1 pb-20">

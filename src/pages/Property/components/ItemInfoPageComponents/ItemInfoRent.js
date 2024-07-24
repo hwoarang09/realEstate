@@ -1,4 +1,8 @@
-const ItemInfoRent = ({ property }) => {
+const ItemInfoRent = ({ property, setProperty }) => {
+  if (!property) {
+    console.log(" !property rend");
+    return;
+  }
   return (
     <div className="rentInfo my-6">
       <div className="mb-2 text-gray-500">

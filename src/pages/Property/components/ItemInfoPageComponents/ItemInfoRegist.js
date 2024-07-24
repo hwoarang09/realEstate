@@ -1,6 +1,10 @@
 import { formatDate } from "../../../../utils/dateHelper";
 
 const ItemInfoRegist = ({ property }) => {
+  if (!property) {
+    console.log(" !property regist");
+    return;
+  }
   return (
     <div className="registInfo my-6">
       <div className="mb-2 text-gray-500">매물 ID: {property.id}</div>

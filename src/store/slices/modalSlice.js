@@ -14,7 +14,6 @@ const modalSlice = createSlice({
       state.isOpen = true;
       state.modalPath = action.payload.modalPath;
       state.selectedProperty = action.payload.selectedProperty;
-      console.log(`in openModal, state ${JSON.stringify(state)}`);
     },
     closeModal: (state) => {
       state.isOpen = false;
@@ -24,12 +23,7 @@ const modalSlice = createSlice({
     setModalPath: (state, action) => {
       state.isOpen = true;
       state.modalPath = action.payload.modalPath;
-      //state.selectedProperty = action.payload.selectedProperty;
-      console.log(
-        `in setModalPath, state ${JSON.stringify(
-          state
-        )} action ${JSON.stringify(action)}`
-      );
+
     },
   },
 });
