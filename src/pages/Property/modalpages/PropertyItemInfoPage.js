@@ -19,7 +19,7 @@ const PropertyItemInfoModal = ({ modalPath, closeModal }) => {
   const fetchProperties = async () => {
     try {
       const response = await axios.get(
-        process.env.REACT_APP_API_BASE_URL + "detail"
+        process.env.REACT_APP_API_BASE_URL + "item"
       );
       setProperties(response.data);
       setLoading(false); // 로딩 완료
