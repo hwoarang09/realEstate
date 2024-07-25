@@ -1,6 +1,6 @@
 import BookmarkPage from "./pages/Property/pages/BookmarkPage";
 import PropertyPage from "./pages/Property/pages/PropertyPage";
-import PropertyItemInfoPage from "./pages/Property/modalpages/PropertyItemInfoPage";
+
 import ModalWrapper from "./pages/Property/components/ModalWrapper";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./pages/Property/pages/Root";
@@ -32,7 +32,6 @@ const router = createBrowserRouter([
   },
 ]);
 function App() {
-  console.log("APP");
   return <RouterProvider router={router} />;
 }
 

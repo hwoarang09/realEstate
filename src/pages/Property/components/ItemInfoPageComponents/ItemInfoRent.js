@@ -1,6 +1,6 @@
 const ItemInfoRent = ({ property, setProperty }) => {
   if (!property) {
-    console.log(" !property rend");
+
     return;
   }
   return (

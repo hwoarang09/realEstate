@@ -2,13 +2,7 @@ import React from "react";
 import { FaRegBookmark } from "react-icons/fa";
 import { IoMdDownload } from "react-icons/io";
 
-import useModal from "../../../hooks/use-modal";
-import PropertyItemInfoModal from "../modalpages/PropertyItemInfoPage";
-
-
 function PropertyItem({ property, showModal }) {
-  console.log(`in PropertyItem, every item useModal`);
-
   const modalPath = "/property/" + property.id;
   const selectedProperty = property;
   const handleClick = ({ modalPath, selectedProperty }) => {

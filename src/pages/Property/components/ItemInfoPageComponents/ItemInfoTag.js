@@ -1,6 +1,6 @@
 const ItemInfoTag = ({ property, setProperty }) => {
   if (!property) {
-    console.log(" !property tag");
+
     return;
   }
   return (

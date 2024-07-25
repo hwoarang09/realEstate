@@ -2,7 +2,7 @@ import { formatDate } from "../../../../utils/dateHelper";
 
 const ItemInfoRegist = ({ property }) => {
   if (!property) {
-    console.log(" !property regist");
+
     return;
   }
   return (

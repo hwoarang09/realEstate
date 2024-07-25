@@ -1,10 +1,8 @@
-import Header from "../components/Header";
 import MapViewTab from "../components/MapViewTab";
 import PropertyList from "../components/PropertyList";
 import PropertyMenu from "../components/Menu";
 import { Outlet } from "react-router-dom";
 function PropertyPage() {
-  console.log("PROPERTY PAGE");
   return (
     <div>
       <PropertyMenu add={"add"} />

@@ -5,11 +5,9 @@ import { Link } from "react-router-dom";
 import useModal from "../../../hooks/use-modal";
 
 const PropertyMenu = ({ add }) => {
-  console.log("first usemodal? ", add);
   const { showModal } = useModal({ caller: "PropertyMenu" });
   const handleClick = () => {
     const modalPath = "/property/add";
-    console.log(`in PropertyMenu, modalPath ${modalPath}`);
     showModal({ modalPath });
   };
 

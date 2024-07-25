@@ -1,5 +1,5 @@
 {
-  "opn": [
+  "detail": [
     {
       "id": 1,
       "openableCategories": ["치과", "미용", "감기", "통증"],
@@ -17,7 +17,7 @@
         "parkingSpots": 270,
         "HC_Availability": 2,
         "totalRentableFloors": 5,
-        "SMSAvailability": "전체 가능",
+        "SMSAvailability": ["부분 가능"],
         "SMSAvailabilityInput": "",
         "Disabled Facilities": {
           "elevator": 0,
@@ -742,6 +742,465 @@
         "openDoctorMediated": false,
         "registrationDate": "2023-12-01T03:00:00",
         "modificationDate": "2024-03-01T04:00:00"
+      }
+    }
+  ],
+  "list": [
+    {
+      "id": 1,
+      "openableCategories": ["치과", "미용", "감기", "통증"],
+      "recommendedCategories": ["치과", "미용", "감기", "통증"],
+      "tags": [],
+      "buildingInfo": {
+        "address": "서울특별시 강서구 마곡동 B01",
+        "buildingName": "쿠쿠마곡타워",
+        "scale": {
+          "groundFloors": 12,
+          "totalFloors": 6
+        },
+        "completionDate": "20210126",
+        "elevators": 3,
+        "parkingSpots": 270,
+        "HC_Availability": 2,
+        "totalRentableFloors": 5,
+        "SMSAvailability": ["부분 가능"],
+        "SMSAvailabilityInput": "",
+        "Disabled Facilities": {
+          "elevator": 0,
+          "parkingSpots": 0,
+          "ramp": 1,
+          "restroom": 1
+        }
+      },
+      "rentInfo": {
+        "deposit": "18000",
+        "monthlyRent": "1800",
+        "maintenanceFee": "598",
+        "rentalFloor": {
+          "rentalFloorInput": "B1",
+          "rentalType": 0
+        },
+        "exclusiveArea": "207",
+        "rentalArea": "377",
+        "moveIn": {
+          "moveInASAP": 0,
+          "moveInDate": ""
+        },
+        "freeParking": 2,
+        "visitorParking": 2,
+        "transferOfLease": 0,
+        "keyMoney": 0
+      },
+      "images": {
+        "main": [
+          {
+            "url": "https://picsum.photos/seed/1/400/200",
+            "description": "메인 이미지 1, 400x200"
+          }
+        ]
+      },
+      "contractInfo": {
+        "completed": false
+      }
+    },
+    {
+      "id": 2,
+      "openableCategories": ["치과", "미용", "감기", "통증", "한의원"],
+      "recommendedCategories": ["치과", "미용", "감기", "통증", "한의원"],
+      "tags": [],
+      "buildingInfo": {
+        "address": "서울특별시 강남구 역삼동 678",
+        "buildingName": "역삼빌딩",
+        "scale": {
+          "groundFloors": 15,
+          "totalFloors": 10
+        },
+        "completionDate": "20191231",
+        "elevators": 4,
+        "parkingSpots": 300,
+        "HC_Availability": 3,
+        "totalRentableFloors": 7,
+        "SMSAvailability": "일부 가능",
+        "SMSAvailabilityInput": "",
+        "Disabled Facilities": {
+          "elevator": 1,
+          "parkingSpots": 2,
+          "ramp": 1,
+          "restroom": 1
+        }
+      },
+      "rentInfo": {
+        "deposit": "25000",
+        "monthlyRent": "2000",
+        "maintenanceFee": "700",
+        "rentalFloor": {
+          "rentalFloorInput": "3F",
+          "rentalType": 1
+        },
+        "exclusiveArea": "300",
+        "rentalArea": "450",
+        "moveIn": {
+          "moveInASAP": 1,
+          "moveInDate": "2024-08-01"
+        },
+        "freeParking": 3,
+        "visitorParking": 3,
+        "transferOfLease": 1,
+        "keyMoney": 5000
+      },
+      "images": {
+        "main": [
+          {
+            "url": "https://picsum.photos/seed/2/400/200",
+            "description": "메인 이미지 2, 400x200"
+          }
+        ]
+      },
+      "contractInfo": {
+        "completed": true
+      }
+    },
+    {
+      "id": 3,
+      "openableCategories": ["치과", "미용", "감기", "통증", "한의원"],
+      "recommendedCategories": ["치과", "미용", "감기", "통증", "한의원"],
+      "tags": [],
+      "buildingInfo": {
+        "address": "서울특별시 서초구 서초동 1234",
+        "buildingName": "서초빌딩",
+        "scale": {
+          "groundFloors": 10,
+          "totalFloors": 8
+        },
+        "completionDate": "20201111",
+        "elevators": 2,
+        "parkingSpots": 150,
+        "HC_Availability": 1,
+        "totalRentableFloors": 6,
+        "SMSAvailability": "전체 가능",
+        "SMSAvailabilityInput": "",
+        "Disabled Facilities": {
+          "elevator": 0,
+          "parkingSpots": 1,
+          "ramp": 0,
+          "restroom": 1
+        }
+      },
+      "rentInfo": {
+        "deposit": "15000",
+        "monthlyRent": "1500",
+        "maintenanceFee": "500",
+        "rentalFloor": {
+          "rentalFloorInput": "2F",
+          "rentalType": 0
+        },
+        "exclusiveArea": "180",
+        "rentalArea": "300",
+        "moveIn": {
+          "moveInASAP": 1,
+          "moveInDate": ""
+        },
+        "freeParking": 2,
+        "visitorParking": 1,
+        "transferOfLease": 0,
+        "keyMoney": 0
+      },
+      "images": {
+        "main": [
+          {
+            "url": "https://picsum.photos/seed/3/400/200",
+            "description": "메인 이미지 3, 400x200"
+          }
+        ]
+      },
+      "contractInfo": {
+        "completed": false
+      }
+    },
+    {
+      "id": 4,
+      "openableCategories": ["치과", "미용", "감기", "통증", "한의원"],
+      "recommendedCategories": ["치과", "미용", "감기", "통증", "한의원"],
+      "tags": [],
+      "buildingInfo": {
+        "address": "서울특별시 송파구 잠실동 567",
+        "buildingName": "잠실타워",
+        "scale": {
+          "groundFloors": 20,
+          "totalFloors": 15
+        },
+        "completionDate": "20200301",
+        "elevators": 5,
+        "parkingSpots": 400,
+        "HC_Availability": 4,
+        "totalRentableFloors": 10,
+        "SMSAvailability": "일부 가능",
+        "SMSAvailabilityInput": "",
+        "Disabled Facilities": {
+          "elevator": 2,
+          "parkingSpots": 3,
+          "ramp": 1,
+          "restroom": 2
+        }
+      },
+      "rentInfo": {
+        "deposit": "30000",
+        "monthlyRent": "2500",
+        "maintenanceFee": "800",
+        "rentalFloor": {
+          "rentalFloorInput": "5F",
+          "rentalType": 1
+        },
+        "exclusiveArea": "350",
+        "rentalArea": "500",
+        "moveIn": {
+          "moveInASAP": 0,
+          "moveInDate": "2024-09-01"
+        },
+        "freeParking": 4,
+        "visitorParking": 4,
+        "transferOfLease": 1,
+        "keyMoney": 8000
+      },
+      "images": {
+        "main": [
+          {
+            "url": "https://picsum.photos/seed/4/400/200",
+            "description": "메인 이미지 4, 400x200"
+          }
+        ]
+      },
+      "contractInfo": {
+        "completed": true
+      }
+    },
+    {
+      "id": 5,
+      "openableCategories": ["치과", "미용", "감기", "통증", "한의원"],
+      "recommendedCategories": ["치과", "미용", "감기", "통증", "한의원"],
+      "tags": [],
+      "buildingInfo": {
+        "address": "서울특별시 마포구 상암동 234",
+        "buildingName": "상암빌딩",
+        "scale": {
+          "groundFloors": 8,
+          "totalFloors": 6
+        },
+        "completionDate": "20200915",
+        "elevators": 2,
+        "parkingSpots": 200,
+        "HC_Availability": 2,
+        "totalRentableFloors": 5,
+        "SMSAvailability": "전체 가능",
+        "SMSAvailabilityInput": "",
+        "Disabled Facilities": {
+          "elevator": 1,
+          "parkingSpots": 2,
+          "ramp": 1,
+          "restroom": 1
+        }
+      },
+      "rentInfo": {
+        "deposit": "18000",
+        "monthlyRent": "1800",
+        "maintenanceFee": "600",
+        "rentalFloor": {
+          "rentalFloorInput": "B1",
+          "rentalType": 0
+        },
+        "exclusiveArea": "200",
+        "rentalArea": "350",
+        "moveIn": {
+          "moveInASAP": 0,
+          "moveInDate": ""
+        },
+        "freeParking": 2,
+        "visitorParking": 2,
+        "transferOfLease": 0,
+        "keyMoney": 0
+      },
+      "images": {
+        "main": [
+          {
+            "url": "https://picsum.photos/seed/5/400/200",
+            "description": "메인 이미지 5, 400x200"
+          }
+        ]
+      },
+
+      "contractInfo": {
+        "completed": false
+      }
+    },
+    {
+      "id": 6,
+      "openableCategories": ["치과", "미용", "감기", "통증", "한의원"],
+      "recommendedCategories": ["치과", "미용", "감기", "통증", "한의원"],
+      "tags": [],
+      "buildingInfo": {
+        "address": "서울특별시 강동구 천호동 456",
+        "buildingName": "천호빌딩",
+        "scale": {
+          "groundFloors": 12,
+          "totalFloors": 9
+        },
+        "completionDate": "20200801",
+        "elevators": 3,
+        "parkingSpots": 250,
+        "HC_Availability": 3,
+        "totalRentableFloors": 6,
+        "SMSAvailability": "일부 가능",
+        "SMSAvailabilityInput": "",
+        "Disabled Facilities": {
+          "elevator": 1,
+          "parkingSpots": 1,
+          "ramp": 0,
+          "restroom": 2
+        }
+      },
+      "rentInfo": {
+        "deposit": "20000",
+        "monthlyRent": "1900",
+        "maintenanceFee": "650",
+        "rentalFloor": {
+          "rentalFloorInput": "4F",
+          "rentalType": 1
+        },
+        "exclusiveArea": "220",
+        "rentalArea": "380",
+        "moveIn": {
+          "moveInASAP": 1,
+          "moveInDate": "2024-07-15"
+        },
+        "freeParking": 3,
+        "visitorParking": 2,
+        "transferOfLease": 0,
+        "keyMoney": 0
+      },
+      "images": {
+        "main": [
+          {
+            "url": "https://picsum.photos/seed/6/400/200",
+            "description": "메인 이미지 6, 400x200"
+          }
+        ]
+      },
+      "contractInfo": {
+        "completed": true
+      }
+    },
+    {
+      "id": 7,
+      "openableCategories": ["치과", "미용", "감기", "통증", "한의원"],
+      "recommendedCategories": ["치과", "미용", "감기", "통증", "한의원"],
+      "tags": [],
+      "buildingInfo": {
+        "address": "서울특별시 영등포구 여의도동 789",
+        "buildingName": "여의도타워",
+        "scale": {
+          "groundFloors": 25,
+          "totalFloors": 20
+        },
+        "completionDate": "20200515",
+        "elevators": 6,
+        "parkingSpots": 500,
+        "HC_Availability": 5,
+        "totalRentableFloors": 15,
+        "SMSAvailability": "전체 가능",
+        "SMSAvailabilityInput": "",
+        "Disabled Facilities": {
+          "elevator": 3,
+          "parkingSpots": 4,
+          "ramp": 2,
+          "restroom": 3
+        }
+      },
+      "rentInfo": {
+        "deposit": "35000",
+        "monthlyRent": "3000",
+        "maintenanceFee": "1000",
+        "rentalFloor": {
+          "rentalFloorInput": "6F",
+          "rentalType": 0
+        },
+        "exclusiveArea": "400",
+        "rentalArea": "600",
+        "moveIn": {
+          "moveInASAP": 0,
+          "moveInDate": "2024-10-01"
+        },
+        "freeParking": 5,
+        "visitorParking": 4,
+        "transferOfLease": 1,
+        "keyMoney": 10000
+      },
+      "images": {
+        "main": [
+          {
+            "url": "https://picsum.photos/seed/7/400/200",
+            "description": "메인 이미지 7, 400x200"
+          }
+        ]
+      },
+      "contractInfo": {
+        "completed": false
+      }
+    },
+    {
+      "id": 8,
+      "openableCategories": ["치과", "미용", "감기", "통증", "한의원"],
+      "recommendedCategories": ["치과", "미용", "감기", "통증", "한의원"],
+      "tags": [],
+      "buildingInfo": {
+        "address": "서울특별시 성동구 성수동 123",
+        "buildingName": "성수빌딩",
+        "scale": {
+          "groundFloors": 10,
+          "totalFloors": 8
+        },
+        "completionDate": "20200229",
+        "elevators": 3,
+        "parkingSpots": 220,
+        "HC_Availability": 2,
+        "totalRentableFloors": 6,
+        "SMSAvailability": "일부 가능",
+        "SMSAvailabilityInput": "",
+        "Disabled Facilities": {
+          "elevator": 1,
+          "parkingSpots": 1,
+          "ramp": 1,
+          "restroom": 1
+        }
+      },
+      "rentInfo": {
+        "deposit": "16000",
+        "monthlyRent": "1700",
+        "maintenanceFee": "550",
+        "rentalFloor": {
+          "rentalFloorInput": "2F",
+          "rentalType": 0
+        },
+        "exclusiveArea": "210",
+        "rentalArea": "360",
+        "moveIn": {
+          "moveInASAP": 1,
+          "moveInDate": ""
+        },
+        "freeParking": 2,
+        "visitorParking": 1,
+        "transferOfLease": 0,
+        "keyMoney": 0
+      },
+      "images": {
+        "main": [
+          {
+            "url": "https://picsum.photos/seed/8/400/200",
+            "description": "메인 이미지 8, 400x200"
+          }
+        ]
+      },
+      "contractInfo": {
+        "completed": true
       }
     }
   ]

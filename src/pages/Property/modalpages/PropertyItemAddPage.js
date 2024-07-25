@@ -2,10 +2,7 @@ import React from "react";
 import Button from "../../../commonComponents/Button";
 import "../../../styles/index.css";
 
-import useModal from "../../../hooks/use-modal";
-
 const PropertyAddModal = ({ closeModal }) => {
-  console.log("in PropertyAddModal");
   return (
     <div className="p-5">
       <h1 className="text-xl font-bold">매물 등록</h1>

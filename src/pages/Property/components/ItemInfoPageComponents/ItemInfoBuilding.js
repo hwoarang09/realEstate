@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import Button from "../../../../commonComponents/Button";
-import { FaChevronUp, FaChevronDown } from "react-icons/fa";
+import { FaCheck, FaChevronUp, FaChevronDown } from "react-icons/fa";
 
-const AllSMSAvailabilityCategories = ["전체 가능", "부분 가능", "불가능"];
+const allCategories = { key: ["전체 가능", "부분 가능", "불가능"] };
 
 const ItemInfoBuilding = ({ property, setProperty }) => {
   const [showMoreInfo, setShowMoreInfo] = useState(false);
 
   if (!property) {
-    console.log(" !property building");
     return;
   }
   const handleChange = (keyList, value) => {
@@ -29,7 +28,43 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
   const getValue = (keyList) => {
     return keyList.reduce((obj, key) => obj[key], property);
   };
+  const handleSingleCategoryClick = (cate, cateList) => {
+    setProperty((prevProperty) => {
+      const newProperty = { ...prevProperty };
+      const lastKey = cateList.pop();
+      const target = cateList.reduce((obj, key) => obj[key], newProperty);
 
+      target[lastKey] = [cate];
+
+      return newProperty;
+    });
+  };
+  const renderCategoryButtons = (cateKey, cateJsonKeyList, clickFuncion) => {
+    return allCategories[cateKey].map((cate) => {
+      const isSelected = cateJsonKeyList
+        .reduce((obj, key) => obj[key], property)
+        .includes(cate);
+      return (
+        <div key={`${cateKey}Select` + cate}>
+          <Button
+            onClick={() => clickFuncion(cate, cateJsonKeyList)}
+            option_select={isSelected}
+            option_noselect={!isSelected}
+            rounded
+            type="button"
+          >
+            {isSelected && <FaCheck />}
+            <span>{cate}</span>
+          </Button>
+        </div>
+      );
+    });
+  };
+  const btns = renderCategoryButtons(
+    "key",
+    ["buildingInfo", "SMSAvailability"],
+    handleSingleCategoryClick
+  );
   return (
     <div className="my-6">
       <div className="mb-4">
@@ -148,7 +183,7 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
               <div className="text-sm flex items-center font-bold w-24">
                 주차수
               </div>
-              <div className="w-40">
+              <div className="">
                 <input
                   type="text"
                   name="parkingSpots"
@@ -169,20 +204,7 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
               <div className="text-sm flex items-center font-bold w-24">
                 병의원 가능 여부
               </div>
-              <div className="w-40">
-                <input
-                  type="text"
-                  name="HC_Availability"
-                  value={property.buildingInfo.HC_Availability}
-                  onChange={(e) =>
-                    handleChange(
-                      ["buildingInfo", "HC_Availability"],
-                      e.target.value
-                    )
-                  }
-                  className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-20 mx-2"
-                />
-              </div>
+              <div className="flex">{btns}</div>
             </div>
             <div className="flex mb-2">
               <div className="text-sm flex items-center font-bold w-32">

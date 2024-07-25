@@ -1,4 +1,3 @@
-import Header from "../components/Header";
 import MapViewTab from "../components/MapViewTab";
 import PropertyMenu from "../components/Menu";
 import { Outlet } from "react-router-dom";

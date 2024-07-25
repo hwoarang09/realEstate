@@ -10,7 +10,7 @@ const allCategories = {
 const ItemInfoCate = ({ property, setProperty }) => {
   const [showRecommended, setShowRecommended] = useState(false);
   if (!property) {
-    console.log(" !property cate");
+
     return;
   }
   const handleCategoryClick = (cate, cateList) => {
@@ -40,6 +40,7 @@ const ItemInfoCate = ({ property, setProperty }) => {
             option_noselect={!isSelected}
             rounded
             type="button"
+            className="mr-2 mb-2"
           >
             {isSelected && <FaCheck />}
             <span>{cate}</span>
