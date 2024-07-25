@@ -7,35 +7,20 @@ import ItemInfoHeader from "../components/ItemInfoPageComponents/ItemInfoHeader"
 import ItemInfoTag from "../components/ItemInfoPageComponents/ItemInfoTag";
 import ItemInfoBuilding from "../components/ItemInfoPageComponents/ItemInfoBuilding";
 import axios from "axios";
-
-
+import { useFetchItemsQuery } from "../../../store";
 
 const PropertyItemInfoModal = ({ modalPath, closeModal }) => {
-  const [properties, setProperties] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [formData, setFormData] = useState(null);
+  const propertyId = modalPath.split("property/")[1];
 
-  const fetchProperties = async () => {
-    try {
-      const response = await axios.get(
-        process.env.REACT_APP_API_BASE_URL + "item"
-      );
-      setProperties(response.data);
-      setLoading(false); // 로딩 완료
-    } catch (error) {
-      setError(error);
-      setLoading(false); // 로딩 완료
-    }
-  };
-
-  useEffect(() => {
-    fetchProperties();
-  }, []);
+  const {
+    data: properties = [],
+    error,
+    isLoading,
+  } = useFetchItemsQuery({ id: propertyId });
 
   useEffect(() => {
     if (properties.length > 0) {
-      const propertyId = modalPath.split("property/")[1];
       const property = properties.find(
         (propert) => Number(propert.id) === Number(propertyId)
       );
@@ -43,20 +28,18 @@ const PropertyItemInfoModal = ({ modalPath, closeModal }) => {
         setFormData(property);
       }
     }
-  }, [properties, modalPath]);
+  }, [properties, modalPath, propertyId]);
 
   const handleSaveChanges = (event) => {
-
     event.preventDefault();
     closeModal();
   };
 
   const handleDeleteProperty = (event) => {
-
     event.preventDefault();
     closeModal();
   };
-  if (loading) {
+  if (isLoading) {
     return <div>Loading...</div>; // 로딩 중일 때 출력할 내용
   }
 

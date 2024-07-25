@@ -5,16 +5,16 @@ const itemApi = createApi({
   reducerPath: "item",
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.REACT_APP_API_BASE_URL,
-    fetchFn: async (...args) => {
-      await pause(1000);
-      return fetch(...args);
-    },
+    // fetchFn: async (...args) => {
+    //   await pause(1000);
+    //   return fetch(...args);
+    // },
   }),
   endpoints(builder) {
     return {
       removeItem: builder.mutation({
         invalidatesTags: (result, error, arg) => {
-          console.log("arg : ", arg);
+          console.log("in itemApi, removeItem, arg : ", arg);
           return [{ type: "item", id: arg.id }];
         },
         query: (item) => {
@@ -26,6 +26,7 @@ const itemApi = createApi({
       }),
       addItem: builder.mutation({
         invalidatesTags: (result, error, arg) => {
+          console.log("in itemApi, addItem, arg : ", arg);
           return [{ type: "item", id: arg.id }];
         },
         query: (user) => {
@@ -45,6 +46,8 @@ const itemApi = createApi({
             return { type: "item", id: item.id };
           });
           tags.push({ type: "Items..?", id: arg.id });
+          console.log("in itemApi, fetchItems, arg : ", arg);
+          console.log("in itemApi, fetchItems, tags : ", tags);
           return tags;
         },
         query: (user) => {
@@ -64,3 +67,4 @@ const itemApi = createApi({
 export const { useFetchItemsQuery, useAddItemMutation, useRemoveItemMutation } =
   itemApi;
 export { itemApi };
+

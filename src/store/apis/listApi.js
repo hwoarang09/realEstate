@@ -5,10 +5,10 @@ const listApi = createApi({
   reducerPath: "list",
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.REACT_APP_API_BASE_URL,
-    fetchFn: async (...args) => {
-      await pause(1000);
-      return fetch(...args);
-    },
+    // fetchFn: async (...args) => {
+    //   await pause(1000);
+    //   return fetch(...args);
+    // },
   }),
   endpoints(builder) {
     return {
@@ -47,11 +47,12 @@ const listApi = createApi({
           tags.push({ type: "lists..?", id: arg.id });
           return tags;
         },
-        query: (user) => {
+        query: (list) => {
+          console.log("listApi, query, list : ", list);
           return {
             url: "/list",
             params: {
-              userId: user.id,
+              pageNum: list.pageNum,
             },
             method: "GET",
           };
