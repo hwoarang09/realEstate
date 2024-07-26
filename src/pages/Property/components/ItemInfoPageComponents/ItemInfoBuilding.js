@@ -1,69 +1,62 @@
 import React, { useState } from "react";
 import Button from "../../../../commonComponents/Button";
-import { FaCheck, FaChevronUp, FaChevronDown } from "react-icons/fa";
+import { FaChevronUp, FaChevronDown } from "react-icons/fa";
+import {
+  renderCategoryButtons,
+  handleChange,
+} from "../../../../utils/formUtils";
 
-const allCategories = { key: ["전체 가능", "부분 가능", "불가능"] };
+const categoriesHC = ["전체 가능", "부분 가능", "불가능"];
+const categoriesSame = ["가능", "불가능"];
+const categoriesExist = ["유", "무"];
 
 const ItemInfoBuilding = ({ property, setProperty }) => {
   const [showMoreInfo, setShowMoreInfo] = useState(false);
 
-  if (!property) {
-    return;
-  }
-  const handleChange = (keyList, value) => {
-    setProperty((prevProperty) => {
-      const newProperty = { ...prevProperty };
-      let target = newProperty;
+  if (!property) return;
 
-      for (let i = 0; i < keyList.length - 1; i++) {
-        target = target[keyList[i]];
-      }
-
-      target[keyList[keyList.length - 1]] = value;
-
-      return newProperty;
-    });
-  };
-
-  const getValue = (keyList) => {
-    return keyList.reduce((obj, key) => obj[key], property);
-  };
-  const handleSingleCategoryClick = (cate, cateList) => {
-    setProperty((prevProperty) => {
-      const newProperty = { ...prevProperty };
-      const lastKey = cateList.pop();
-      const target = cateList.reduce((obj, key) => obj[key], newProperty);
-
-      target[lastKey] = [cate];
-
-      return newProperty;
-    });
-  };
-  const renderCategoryButtons = (cateKey, cateJsonKeyList, clickFuncion) => {
-    return allCategories[cateKey].map((cate) => {
-      const isSelected = cateJsonKeyList
-        .reduce((obj, key) => obj[key], property)
-        .includes(cate);
-      return (
-        <div key={`${cateKey}Select` + cate}>
-          <Button
-            onClick={() => clickFuncion(cate, cateJsonKeyList)}
-            option_select={isSelected}
-            option_noselect={!isSelected}
-            rounded
-            type="button"
-          >
-            {isSelected && <FaCheck />}
-            <span>{cate}</span>
-          </Button>
-        </div>
-      );
-    });
-  };
-  const btns = renderCategoryButtons(
-    "key",
+  const hcAvailBtns = renderCategoryButtons(
+    categoriesHC,
+    ["buildingInfo", "HC_Availability"],
+    "single",
+    property,
+    setProperty
+  );
+  const sameCateBtns = renderCategoryButtons(
+    categoriesSame,
     ["buildingInfo", "SMSAvailability"],
-    handleSingleCategoryClick
+    "single",
+    property,
+    setProperty
+  );
+
+  const elevatorsCateBtns = renderCategoryButtons(
+    categoriesExist,
+    ["buildingInfo", "Disabled Facilities", "elevator"],
+    "single",
+    property,
+    setProperty
+  );
+  const parkingSpotsCateBtns = renderCategoryButtons(
+    categoriesExist,
+    ["buildingInfo", "Disabled Facilities", "parkingSpots"],
+    "single",
+    property,
+    setProperty
+  );
+  const rampCateBtns = renderCategoryButtons(
+    categoriesExist,
+    ["buildingInfo", "Disabled Facilities", "ramp"],
+    "single",
+    property,
+    setProperty
+  );
+  const restroomCateBtns = renderCategoryButtons(
+    categoriesExist,
+    ["buildingInfo", "Disabled Facilities", "restroom"],
+    "single",
+    property,
+    setProperty
   );
   return (
     <div className="my-6">
@@ -75,9 +68,13 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
             <input
               type="text"
               name="address"
-              value={getValue(["buildingInfo", "address"])}
+              value={property.buildingInfo.address}
               onChange={(e) =>
-                handleChange(["buildingInfo", "address"], e.target.value)
+                handleChange(
+                  ["buildingInfo", "address"],
+                  e.target.value,
+                  setProperty
+                )
               }
               className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-full"
             />
@@ -93,11 +90,12 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
                 <input
                   type="text"
                   name="buildingName"
-                  value={getValue(["buildingInfo", "buildingName"])}
+                  value={property.buildingInfo.buildingName}
                   onChange={(e) =>
                     handleChange(
                       ["buildingInfo", "buildingName"],
-                      e.target.value
+                      e.target.value,
+                      setProperty
                     )
                   }
                   className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-full"
@@ -114,11 +112,12 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
                   <input
                     type="text"
                     name="groundFloors"
-                    value={getValue(["buildingInfo", "scale", "groundFloors"])}
+                    value={property.buildingInfo.scale.groundFloors}
                     onChange={(e) =>
                       handleChange(
                         ["buildingInfo", "scale", "groundFloors"],
-                        e.target.value
+                        e.target.value,
+                        setProperty
                       )
                     }
                     className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-20 mx-2"
@@ -130,11 +129,12 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
                   <input
                     type="text"
                     name="totalFloors"
-                    value={getValue(["buildingInfo", "scale", "totalFloors"])}
+                    value={property.buildingInfo.scale.totalFloors}
                     onChange={(e) =>
                       handleChange(
                         ["buildingInfo", "scale", "groundFloors"],
-                        e.target.value
+                        e.target.value,
+                        setProperty
                       )
                     }
                     className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-20 mx-2"
@@ -151,11 +151,12 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
                 <input
                   type="text"
                   name="completionDate"
-                  value={getValue(["buildingInfo", "completionDate"])}
+                  value={property.buildingInfo.completionDate}
                   onChange={(e) =>
                     handleChange(
                       ["buildingInfo", "completionDate"],
-                      e.target.value
+                      e.target.value,
+                      setProperty
                     )
                   }
                   className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-full"
@@ -172,7 +173,11 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
                   name="elevators"
                   value={property.buildingInfo.elevators}
                   onChange={(e) =>
-                    handleChange(["buildingInfo", "elevators"], e.target.value)
+                    handleChange(
+                      ["buildingInfo", "elevators"],
+                      e.target.value,
+                      setProperty
+                    )
                   }
                   className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-20 mx-2"
                 />
@@ -191,7 +196,8 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
                   onChange={(e) =>
                     handleChange(
                       ["buildingInfo", "parkingSpots"],
-                      e.target.value
+                      e.target.value,
+                      setProperty
                     )
                   }
                   className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-20 mx-2"
@@ -201,10 +207,10 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
             </div>
 
             <div className="flex mb-2">
-              <div className="text-sm flex items-center font-bold w-24">
+              <div className="text-sm flex items-center font-bold">
                 병의원 가능 여부
               </div>
-              <div className="flex">{btns}</div>
+              <div className="flex ml-4">{hcAvailBtns}</div>
             </div>
             <div className="flex mb-2">
               <div className="text-sm flex items-center font-bold w-32">
@@ -218,11 +224,70 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
                   onChange={(e) =>
                     handleChange(
                       ["buildingInfo", "totalRentableFloors"],
-                      e.target.value
+                      e.target.value,
+                      setProperty
                     )
                   }
                   className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-20 mx-2"
                 />
+              </div>
+            </div>
+            <div className="mb-2">
+              <div className="flex w-full mb-2">
+                <div className="text-sm flex items-center font-bold w-full">
+                  동종진료과 가능 여부
+                </div>
+              </div>
+              <div className="flex">
+                <div className="flex">{sameCateBtns}</div>
+                <div className="ml-2">
+                  <input
+                    type="text"
+                    name="SMSAvailabilityInput"
+                    value={property.buildingInfo.SMSAvailabilityInput}
+                    onChange={(e) =>
+                      handleChange(
+                        ["buildingInfo", "SMSAvailabilityInput"],
+                        e.target.value,
+                        setProperty
+                      )
+                    }
+                    className="border rounded p-1 ml-2 focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-40"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="mb-2">
+              <div className="flex w-full mb-2">
+                <div className="text-sm flex items-center font-bold w-full">
+                  장애인 시설
+                </div>
+              </div>
+              <div className="flex flex-wrap">
+                <div className="w-1/2 p-2">
+                  <div className="text-sm flex items-center font-bold">
+                    승강기
+                  </div>
+                  <div className="flex">{elevatorsCateBtns}</div>
+                </div>
+                <div className="w-1/2 p-2">
+                  <div className="text-sm flex items-center font-bold">
+                    경사로
+                  </div>
+                  <div className="flex">{rampCateBtns}</div>
+                </div>
+                <div className="w-1/2 p-2">
+                  <div className="text-sm flex items-center font-bold">
+                    주차장
+                  </div>
+                  <div className="flex">{parkingSpotsCateBtns}</div>
+                </div>
+                <div className="w-1/2 p-2">
+                  <div className="text-sm flex items-center font-bold">
+                    화장실
+                  </div>
+                  <div className="flex">{restroomCateBtns}</div>
+                </div>
               </div>
             </div>
           </>

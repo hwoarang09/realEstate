@@ -18,8 +18,8 @@ function Button({
     className(
       "px-3 py-1.5 border flex items-center",
       {
-        "border-blue-500 bg-blue-500 text-white": primary,
-        "border-blue-500 bg-blue-500 text-black font-bold": primary_add,
+        "border-blue-900 bg-blue-900 text-white": primary,
+        "border-blue-900 bg-blue-900 text-black font-bold": primary_add,
         "border-gray-900 bg-gray-900 text-white": secondary,
         "border-green-500 bg-green-500 text-white": success,
         "border-yellow-400 bg-yellow-400 text-white": warning,
@@ -27,7 +27,8 @@ function Button({
 
         "border-purple-200 bg-purple-200 text-black font-bold  text-xs py-1 px-2 mx-0.5 justify-between":
           option_select,
-        "border-gray-200 bg-gray-200 text-black text-xs py-1": option_noselect,
+        "border-gray-200 bg-gray-200 text-black text-xs py-1 mx-1":
+          option_noselect,
 
         "rounded-full": rounded,
         "bg-white": outline,

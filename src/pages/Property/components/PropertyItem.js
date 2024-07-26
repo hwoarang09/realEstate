@@ -8,15 +8,36 @@ function PropertyItem({ property, showModal }) {
   const handleClick = ({ modalPath, selectedProperty }) => {
     showModal({ modalPath, selectedProperty });
   };
+  const cateArray = ["치과", "미용", "감기", "통증", "한의원"];
+  const content = cateArray.map((cate) => {
+    if (property.openableCategories.includes(cate)) {
+      return (
+        <span
+          key={`${cate}cate${property.id}`}
+          className="text-sm font-bold mr-3"
+        >
+          {cate}
+        </span>
+      );
+    } else
+      return (
+        <span
+          key={`${cate}cate${property.id}`}
+          className="text-sm font-bold mr-3 text-gray-300"
+        >
+          {cate}
+        </span>
+      );
+  });
   return (
-    <div className="bg-white p-4 shadow-md rounded mb-1 pb-20">
+    <div className="bg-white p-1 shadow-md rounded pb-2 border-b">
       <img
         src={property.images.main[0].url}
         alt="Listing"
-        className="w-full h-48 object-cover rounded p-2"
+        className="w-full h-40 object-cover rounded"
       />
-      <div className="mt-2">
-        <div className="flex items-center space-x-5 text-lg">
+      <div className="mt-1.5 px-4">
+        <div className="flex items-center space-x-5 text-base">
           <div
             onClick={() => handleClick({ modalPath, selectedProperty })}
             className="text-blue-600 cursor-pointer"
@@ -26,14 +47,15 @@ function PropertyItem({ property, showModal }) {
           <FaRegBookmark />
           <IoMdDownload />
           <div className="flex-grow"></div>
-          <div className="text-base ">
-            확보 : {property.contractInfo.completed ? "O" : "X"}
+          <div className="text-base text-sm">
+            확보 {property.contractInfo.completed ? "O" : "X"}
           </div>
         </div>
-
-        <div className="flex flex-col justify-between">
+        <div className="mt-1">
           <p className="text-sm">{property.buildingInfo.address}</p>
-          <div className="flex justify-end mt-2 space-x-4">
+        </div>
+        <div className="flex flex-col justify-between">
+          <div className="flex justify-end space-x-4">
             <span className="text-sm">
               <span className="font-bold">전용</span>{" "}
               {property.rentInfo.exclusiveArea}평
@@ -46,18 +68,25 @@ function PropertyItem({ property, showModal }) {
         </div>
         <div className="mt-2 flex text-sm">
           <div className="flex-grow text-left">
-            <span className="text-gray-500">보 </span>
-            {property.rentInfo.deposit}만원
+            <span className="text-gray-400 font-bold">보 </span>
+            {Number(property.rentInfo.deposit) > 10000
+              ? `${Number(property.rentInfo.deposit) / 10000}억원`
+              : `${property.rentInfo.deposit} 만원`}
           </div>
           <div className="flex-grow text-center ">
-            <span className="text-gray-500">임 </span>
-            {property.rentInfo.monthlyRent}만원
+            <span className="text-gray-400 font-bold">임 </span>
+            {Number(property.rentInfo.monthlyRent) > 10000
+              ? `${Number(property.rentInfo.monthlyRent) / 10000}억원`
+              : `${property.rentInfo.monthlyRent} 만원`}
           </div>
           <div className="flex-grow text-right">
-            <span className="text-gray-500">관 </span>
-            {property.rentInfo.maintenanceFee}만원
+            <span className="text-gray-400 font-bold">관 </span>
+            {Number(property.rentInfo.maintenanceFee) > 10000
+              ? `${Number(property.rentInfo.maintenanceFee) / 10000}억원`
+              : `${property.rentInfo.maintenanceFee} 만원`}
           </div>
         </div>
+        <div className="mt-1.5 mb-2">{content}</div>
       </div>
     </div>
   );

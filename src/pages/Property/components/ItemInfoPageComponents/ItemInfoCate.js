@@ -1,61 +1,39 @@
 import React, { useState } from "react";
 import Button from "../../../../commonComponents/Button";
 import { FaCheck, FaChevronUp, FaChevronDown } from "react-icons/fa";
+import {
+  renderCategoryButtons,
+  handleChange,
+  getValue,
+  handleSingleCategoryClick,
+  handleMultiCategoryClick,
+} from "../../../../utils/formUtils";
 
-const allCategories = {
-  openable: ["치과", "미용", "감기", "통증", "한의원"],
-  recommended: ["치과", "미용", "감기", "통증", "한의원"],
-};
+const cateArray = ["치과", "미용", "감기", "통증", "한의원"];
+
 
 const ItemInfoCate = ({ property, setProperty }) => {
   const [showRecommended, setShowRecommended] = useState(false);
   if (!property) {
-
     return;
   }
-  const handleCategoryClick = (cate, cateList) => {
-    setProperty((prevProperty) => {
-      const newProperty = { ...prevProperty };
-      const lastKey = cateList.pop();
-      const target = cateList.reduce((obj, key) => obj[key], newProperty);
 
-      const newCategories = target[lastKey].includes(cate)
-        ? target[lastKey].filter((category) => category !== cate)
-        : [...target[lastKey], cate];
-
-      target[lastKey] = newCategories;
-
-      return newProperty;
-    });
-  };
-
-  const renderCategoryButtons = (cateKey, cateJsonKey) => {
-    return allCategories[cateKey].map((cate) => {
-      const isSelected = property[cateJsonKey].includes(cate);
-      return (
-        <div key={`${cateKey}Select` + cate}>
-          <Button
-            onClick={() => handleCategoryClick(cate, cateJsonKey)}
-            option_select={isSelected}
-            option_noselect={!isSelected}
-            rounded
-            type="button"
-            className="mr-2 mb-2"
-          >
-            {isSelected && <FaCheck />}
-            <span>{cate}</span>
-          </Button>
-        </div>
-      );
-    });
-  };
-
-  const openableFilter = renderCategoryButtons("openable", [
-    "openableCategories",
-  ]);
-  const recommendedFilter = renderCategoryButtons("recommended", [
-    "recommendedCategories",
-  ]);
+  const openableFilter = renderCategoryButtons(
+    cateArray,
+    ["openableCategories"],
+    "multi",
+    property,
+    setProperty
+  );
+  const recommendedFilter = renderCategoryButtons(
+    cateArray,
+    ["recommendedCategories"],
+    "multi",
+    property,
+    setProperty
+  );
+  console.log("open", property.openableCategories);
+  console.log("recom", property.recommendedCategories);
   return (
     <div className="categoryInfo my-6">
       <div className="mb-4">
