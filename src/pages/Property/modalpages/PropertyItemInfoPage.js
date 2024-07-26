@@ -3,10 +3,10 @@ import Button from "../../../commonComponents/Button";
 import ItemInfoRegist from "../components/ItemInfoPageComponents/ItemInfoRegist";
 import ItemInfoCate from "../components/ItemInfoPageComponents/ItemInfoCate";
 import ItemInfoHeader from "../components/ItemInfoPageComponents/ItemInfoHeader";
-// import ItemInfoRent from "../components/ItemInfoPageComponents/ItemInfoRent";
+import ItemInfoRent from "../components/ItemInfoPageComponents/ItemInfoRent";
 import ItemInfoTag from "../components/ItemInfoPageComponents/ItemInfoTag";
 import ItemInfoBuilding from "../components/ItemInfoPageComponents/ItemInfoBuilding";
-import axios from "axios";
+
 import { useFetchItemsQuery } from "../../../store";
 
 const PropertyItemInfoModal = ({ modalPath, closeModal }) => {
@@ -54,6 +54,7 @@ const PropertyItemInfoModal = ({ modalPath, closeModal }) => {
         <ItemInfoCate property={formData} setProperty={setFormData} />
         <ItemInfoTag property={formData} setProperty={setFormData} />
         <ItemInfoBuilding property={formData} setProperty={setFormData} />
+        <ItemInfoRent property={formData} setProperty={setFormData} />
         <ItemInfoRegist property={formData} setProperty={setFormData} />
         <div className="flex justify-end mt-5">
           <Button primary onClick={handleSaveChanges}>

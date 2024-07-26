@@ -63,7 +63,9 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
       <div className="mb-4">
         <div className="text-blue-600 text-base font-bold mb-2">건물정보</div>
         <div className="flex mb-2">
-          <div className="text-sm flex items-center font-bold w-24">주소</div>
+          <div className="text-sm flex items-center font-bold w-24">
+            주소<span className="text-red-500 font-bold text-xl">*</span>
+          </div>
           <div className="w-80">
             <input
               type="text"
