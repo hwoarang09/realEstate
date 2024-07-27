@@ -20,12 +20,12 @@ const handleMultiCategoryClick = (cate, cateList, setFunction) => {
 
 const handleSingleCategoryClick = (cate, cateList, setFunction) => {
   setFunction((prevProperty) => {
-    //const newProperty = JSON.parse(JSON.stringify(prevProperty));
     const newProperty = _.cloneDeep(prevProperty);
-    const lastKey = cateList.pop();
-    const target = cateList.reduce((obj, key) => obj[key], newProperty);
+    const newCateList = [...cateList];
+    const lastKey = newCateList.pop();
+    const target = newCateList.reduce((obj, key) => obj[key], newProperty);
 
-    target[lastKey] = cate;
+    target[lastKey] = target[lastKey] === cate ? "" : cate; // 선택 해제 추가
 
     return newProperty;
   });

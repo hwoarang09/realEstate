@@ -15,6 +15,7 @@ const itemApi = createApi({
       removeItem: builder.mutation({
         invalidatesTags: (result, error, arg) => {
           console.log("in itemApi, removeItem, arg : ", arg);
+
           return [{ type: "item", id: arg.id }];
         },
         query: (item) => {
@@ -45,16 +46,18 @@ const itemApi = createApi({
           const tags = result.map((item) => {
             return { type: "item", id: item.id };
           });
-          tags.push({ type: "Items..?", id: arg.id });
+          tags.push({ type: "item", id: arg.id });
           console.log("in itemApi, fetchItems, arg : ", arg);
           console.log("in itemApi, fetchItems, tags : ", tags);
+
           return tags;
         },
-        query: (user) => {
+        query: (id) => {
+          console.log("in fetchItems, id : ", id);
           return {
             url: "/item",
             params: {
-              userId: user.id,
+              id: id.id,
             },
             method: "GET",
           };

@@ -6,7 +6,7 @@ import {
   handleChange,
 } from "../../../../utils/formUtils";
 
-const categoriesHC = ["전체 가능", "부분 가능", "불가능"];
+const categoriesBDHS = ["전체 가능", "부분 가능", "불가능"];
 const categoriesSame = ["가능", "불가능"];
 const categoriesExist = ["유", "무"];
 
@@ -15,16 +15,16 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
 
   if (!property) return;
 
-  const hcAvailBtns = renderCategoryButtons(
-    categoriesHC,
-    ["buildingInfo", "HC_Availability"],
+  const bdhsAvailBtns = renderCategoryButtons(
+    categoriesBDHS,
+    ["extra", "bd_hs_available"],
     "single",
     property,
     setProperty
   );
   const sameCateBtns = renderCategoryButtons(
     categoriesSame,
-    ["buildingInfo", "SMSAvailability"],
+    ["extra", "sm_md_open_available"],
     "single",
     property,
     setProperty
@@ -32,32 +32,36 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
 
   const elevatorsCateBtns = renderCategoryButtons(
     categoriesExist,
-    ["buildingInfo", "Disabled Facilities", "elevator"],
+    ["extra", "handicap_ele"],
     "single",
     property,
     setProperty
   );
   const parkingSpotsCateBtns = renderCategoryButtons(
     categoriesExist,
-    ["buildingInfo", "Disabled Facilities", "parkingSpots"],
+    ["extra", "handicap_parking"],
     "single",
     property,
     setProperty
   );
   const rampCateBtns = renderCategoryButtons(
     categoriesExist,
-    ["buildingInfo", "Disabled Facilities", "ramp"],
+    ["extra", "handicap_ramp"],
     "single",
     property,
     setProperty
   );
   const restroomCateBtns = renderCategoryButtons(
     categoriesExist,
-    ["buildingInfo", "Disabled Facilities", "restroom"],
+    ["extra", "handicap_wc"],
     "single",
     property,
     setProperty
   );
+
+  const getValue = (value) =>
+    value !== null && value !== undefined ? value : "";
+
   return (
     <div className="my-6">
       <div className="mb-4">
@@ -70,13 +74,9 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
             <input
               type="text"
               name="address"
-              value={property.buildingInfo.address}
+              value={getValue(property.address)}
               onChange={(e) =>
-                handleChange(
-                  ["buildingInfo", "address"],
-                  e.target.value,
-                  setProperty
-                )
+                handleChange(["address"], e.target.value, setProperty)
               }
               className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-full"
             />
@@ -91,14 +91,10 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
               <div className="w-80">
                 <input
                   type="text"
-                  name="buildingName"
-                  value={property.buildingInfo.buildingName}
+                  name="building_name"
+                  value={getValue(property.building_name)}
                   onChange={(e) =>
-                    handleChange(
-                      ["buildingInfo", "buildingName"],
-                      e.target.value,
-                      setProperty
-                    )
+                    handleChange(["building_name"], e.target.value, setProperty)
                   }
                   className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-full"
                 />
@@ -113,31 +109,23 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
                   지상
                   <input
                     type="text"
-                    name="groundFloors"
-                    value={property.buildingInfo.scale.groundFloors}
+                    name="max_floor"
+                    value={getValue(property.max_floor)}
                     onChange={(e) =>
-                      handleChange(
-                        ["buildingInfo", "scale", "groundFloors"],
-                        e.target.value,
-                        setProperty
-                      )
+                      handleChange(["max_floor"], e.target.value, setProperty)
                     }
                     className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-20 mx-2"
                   />
                   층
                 </div>
                 <div className="text-sm">
-                  지상
+                  지하
                   <input
                     type="text"
-                    name="totalFloors"
-                    value={property.buildingInfo.scale.totalFloors}
+                    name="min_floor"
+                    value={getValue(property.min_floor)}
                     onChange={(e) =>
-                      handleChange(
-                        ["buildingInfo", "scale", "groundFloors"],
-                        e.target.value,
-                        setProperty
-                      )
+                      handleChange(["min_floor"], e.target.value, setProperty)
                     }
                     className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-20 mx-2"
                   />
@@ -152,11 +140,11 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
               <div className="w-80">
                 <input
                   type="text"
-                  name="completionDate"
-                  value={property.buildingInfo.completionDate}
+                  name="completion_date"
+                  value={getValue(property.completion_date)}
                   onChange={(e) =>
                     handleChange(
-                      ["buildingInfo", "completionDate"],
+                      ["completion_date"],
                       e.target.value,
                       setProperty
                     )
@@ -172,11 +160,11 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
               <div className="w-40">
                 <input
                   type="text"
-                  name="elevators"
-                  value={property.buildingInfo.elevators}
+                  name="elevator_customer"
+                  value={getValue(property.elevator_customer)}
                   onChange={(e) =>
                     handleChange(
-                      ["buildingInfo", "elevators"],
+                      ["elevator_customer"],
                       e.target.value,
                       setProperty
                     )
@@ -193,14 +181,10 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
               <div className="">
                 <input
                   type="text"
-                  name="parkingSpots"
-                  value={property.buildingInfo.parkingSpots}
+                  name="total_parking"
+                  value={getValue(property.total_parking)}
                   onChange={(e) =>
-                    handleChange(
-                      ["buildingInfo", "parkingSpots"],
-                      e.target.value,
-                      setProperty
-                    )
+                    handleChange(["total_parking"], e.target.value, setProperty)
                   }
                   className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-20 mx-2"
                 />
@@ -212,7 +196,7 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
               <div className="text-sm flex items-center font-bold">
                 병의원 가능 여부
               </div>
-              <div className="flex ml-4">{hcAvailBtns}</div>
+              <div className="flex ml-4">{bdhsAvailBtns}</div>
             </div>
             <div className="flex mb-2">
               <div className="text-sm flex items-center font-bold w-32">
@@ -221,11 +205,11 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
               <div className="">
                 <input
                   type="text"
-                  name="totalRentableFloors"
-                  value={property.buildingInfo.totalRentableFloors}
+                  name="pt_hs_available_floor"
+                  value={getValue(property.extra.pt_hs_available_floor)}
                   onChange={(e) =>
                     handleChange(
-                      ["buildingInfo", "totalRentableFloors"],
+                      ["extra", "pt_hs_available_floor"],
                       e.target.value,
                       setProperty
                     )
@@ -245,11 +229,11 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
                 <div className="ml-2">
                   <input
                     type="text"
-                    name="SMSAvailabilityInput"
-                    value={property.buildingInfo.SMSAvailabilityInput}
+                    name="pt_hs_available_floor"
+                    value={getValue(property.extra.sm_md_open_available)}
                     onChange={(e) =>
                       handleChange(
-                        ["buildingInfo", "SMSAvailabilityInput"],
+                        ["extra", "sm_md_open_available"],
                         e.target.value,
                         setProperty
                       )

@@ -18,8 +18,8 @@ function Button({
     className(
       "px-3 py-1.5 border flex items-center",
       {
-        "border-blue-900 bg-blue-900 text-white": primary,
-        "border-blue-900 bg-blue-900 text-black font-bold": primary_add,
+        "border-blue-800 bg-blue-800 text-white": primary,
+        "border-blue-800 bg-blue-800 text-black font-bold": primary_add,
         "border-gray-900 bg-gray-900 text-white": secondary,
         "border-green-500 bg-green-500 text-white": success,
         "border-yellow-400 bg-yellow-400 text-white": warning,

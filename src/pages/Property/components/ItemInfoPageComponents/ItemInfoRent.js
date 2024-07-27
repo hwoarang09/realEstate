@@ -7,24 +7,46 @@ import {
 } from "../../../../utils/formUtils";
 
 const rentalTypeCategories = ["전층", "일부"];
-const moveInCategories = ["즉시", "협의"];
+const availDateCategories = ["즉시", "협의"];
+const transferMoneyCategories = ["양수도 매물임"];
+const parkingCategories = ["가능", "불가능", "협의"];
 const ItemInfoRent = ({ property, setProperty }) => {
   const [showMoreInfo, setShowMoreInfo] = useState(false);
 
-  if (!property) {
-    console.log("??");
-    return;
-  }
-  const moveInBtns = renderCategoryButtons(
-    moveInCategories,
-    ["rentInfo", "moveIn", "moveInASAP"],
+  if (!property) return;
+
+  const availDateBtns = renderCategoryButtons(
+    availDateCategories,
+    ["available_date"],
     "single",
     property,
     setProperty
   );
   const rentalTypeBtns = renderCategoryButtons(
     rentalTypeCategories,
-    ["rentInfo", "rentalFloor", "rentalType"],
+    ["floor"],
+    "single",
+    property,
+    setProperty
+  );
+  const transferMoneyBtns = renderCategoryButtons(
+    transferMoneyCategories,
+    ["transferMoney"],
+    "single",
+    property,
+    setProperty
+  );
+
+  const visitorParkingBtns = renderCategoryButtons(
+    parkingCategories,
+    ["visit_parking"],
+    "single",
+    property,
+    setProperty
+  );
+  const freeParkingBtns = renderCategoryButtons(
+    parkingCategories,
+    ["free_parking_str"],
     "single",
     property,
     setProperty
@@ -40,14 +62,10 @@ const ItemInfoRent = ({ property, setProperty }) => {
           <div className="w-80">
             <input
               type="text"
-              name="address"
-              value={property.rentInfo.deposit}
+              name="deposit"
+              value={property.deposit}
               onChange={(e) =>
-                handleChange(
-                  ["rentInfo", "deposit"],
-                  e.target.value,
-                  setProperty
-                )
+                handleChange(["deposit"], e.target.value, setProperty)
               }
               className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-full"
             />
@@ -60,14 +78,10 @@ const ItemInfoRent = ({ property, setProperty }) => {
           <div className="w-80">
             <input
               type="text"
-              name="address"
-              value={property.rentInfo.monthlyRent}
+              name="monthly_rent"
+              value={property.monthly_rent}
               onChange={(e) =>
-                handleChange(
-                  ["rentInfo", "monthlyRent"],
-                  e.target.value,
-                  setProperty
-                )
+                handleChange(["monthly_rent"], e.target.value, setProperty)
               }
               className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-full"
             />
@@ -80,11 +94,11 @@ const ItemInfoRent = ({ property, setProperty }) => {
           <div className="w-80">
             <input
               type="text"
-              name="address"
-              value={property.rentInfo.maintenanceFee}
+              name="maintenance_cost_str"
+              value={property.maintenance_cost_str}
               onChange={(e) =>
                 handleChange(
-                  ["rentInfo", "maintenanceFee"],
+                  ["maintenance_cost_str"],
                   e.target.value,
                   setProperty
                 )
@@ -102,14 +116,10 @@ const ItemInfoRent = ({ property, setProperty }) => {
 
             <input
               type="text"
-              name="address"
-              value={property.rentInfo.rentalFloor.rentalFloorInput}
+              name="floor"
+              value={property.floor}
               onChange={(e) =>
-                handleChange(
-                  ["rentInfo", "moveIn", "moveInASAP"],
-                  e.target.value,
-                  setProperty
-                )
+                handleChange(["floor"], e.target.value, setProperty)
               }
               className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-40"
             />
@@ -123,14 +133,10 @@ const ItemInfoRent = ({ property, setProperty }) => {
             <input
               required
               type="text"
-              name="address"
-              value={property.rentInfo.exclusiveArea}
+              name="exclusive_area"
+              value={property.exclusive_area}
               onChange={(e) =>
-                handleChange(
-                  ["rentInfo", "exclusiveArea"],
-                  e.target.value,
-                  setProperty
-                )
+                handleChange(["exclusive_area"], e.target.value, setProperty)
               }
               className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-full"
             />
@@ -143,14 +149,10 @@ const ItemInfoRent = ({ property, setProperty }) => {
           <div className="w-80">
             <input
               type="text"
-              name="address"
-              value={property.rentInfo.rentalArea}
+              name="contact_area"
+              value={property.contact_area}
               onChange={(e) =>
-                handleChange(
-                  ["rentInfo", "exclusiveArea"],
-                  e.target.value,
-                  setProperty
-                )
+                handleChange(["contact_area"], e.target.value, setProperty)
               }
               className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-full"
             />
@@ -163,18 +165,58 @@ const ItemInfoRent = ({ property, setProperty }) => {
                 입주시기
               </div>
               <div className="flex items-center space-x-4">
-                <div className="flex">{moveInBtns}</div>
+                <div className="flex">{availDateBtns}</div>
 
                 <input
                   type="text"
-                  name="address"
-                  value={property.rentInfo.moveIn.moveInASAP}
+                  name="available_date"
+                  value={property.available_date}
                   onChange={(e) =>
                     handleChange(
-                      ["rentInfo", "moveIn", "moveInASAP"],
+                      ["available_date"],
                       e.target.value,
                       setProperty
                     )
+                  }
+                  className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-40"
+                />
+              </div>
+            </div>
+            <div className="flex mb-2">
+              <div className="text-sm flex items-center font-bold w-24">
+                무료주차
+              </div>
+              <div className="flex items-center space-x-4">
+                <div className="flex">{freeParkingBtns}</div>
+              </div>
+            </div>
+            <div className="flex mb-2">
+              <div className="text-sm flex items-center font-bold w-24">
+                방문주차
+              </div>
+              <div className="flex items-center space-x-4">
+                <div className="flex">{visitorParkingBtns}</div>
+              </div>
+            </div>
+            <div className="flex mb-2">
+              <div className="text-sm flex items-center font-bold w-24">
+                양도양수
+              </div>
+              <div className="flex items-center space-x-4">
+                <div className="flex">{transferMoneyBtns}</div>
+              </div>
+            </div>
+            <div className="flex mb-2">
+              <div className="text-sm flex items-center font-bold w-24">
+                권리금
+              </div>
+              <div className="flex items-center space-x-4">
+                <input
+                  type="text"
+                  name="key_money"
+                  value={property.key_money}
+                  onChange={(e) =>
+                    handleChange(["key_money"], e.target.value, setProperty)
                   }
                   className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-40"
                 />
@@ -188,7 +230,7 @@ const ItemInfoRent = ({ property, setProperty }) => {
             rounded
             outline
             className="mb-4 flex justify-between py-0.5 px-1"
-            type="button" // 버튼의 기본 타입을 button으로 설정하여 submit 방지
+            type="button"
             onClick={() => setShowMoreInfo(!showMoreInfo)}
           >
             {showMoreInfo ? (

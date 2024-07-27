@@ -10,7 +10,7 @@ function PropertyItem({ property, showModal }) {
   };
   const cateArray = ["치과", "미용", "감기", "통증", "한의원"];
   const content = cateArray.map((cate) => {
-    if (property.openableCategories.includes(cate)) {
+    if (property.available_md_name_fixed.includes(cate)) {
       return (
         <span
           key={`${cate}cate${property.id}`}
@@ -32,7 +32,7 @@ function PropertyItem({ property, showModal }) {
   return (
     <div className="bg-white p-1 shadow-md rounded pb-2 border-b">
       <img
-        src={property.images.main[0].url}
+        src={property.file.image_outside[0].url}
         alt="Listing"
         className="w-full h-40 object-cover rounded"
       />
@@ -48,42 +48,40 @@ function PropertyItem({ property, showModal }) {
           <IoMdDownload />
           <div className="flex-grow"></div>
           <div className="text-base text-sm">
-            확보 {property.contractInfo.completed ? "O" : "X"}
+            확보 {property.is_verified ? "O" : "X"}
           </div>
         </div>
         <div className="mt-1">
-          <p className="text-sm">{property.buildingInfo.address}</p>
+          <p className="text-sm">{property.address}</p>
         </div>
         <div className="flex flex-col justify-between">
           <div className="flex justify-end space-x-4">
             <span className="text-sm">
-              <span className="font-bold">전용</span>{" "}
-              {property.rentInfo.exclusiveArea}평
+              <span className="font-bold">전용</span> {property.major_use}평
             </span>
             <span className="text-sm">
-              <span className="font-bold">임대</span>{" "}
-              {property.rentInfo.rentalArea}평
+              <span className="font-bold">임대</span> {property.rent_scale}평
             </span>
           </div>
         </div>
         <div className="mt-2 flex text-sm">
           <div className="flex-grow text-left">
             <span className="text-gray-400 font-bold">보 </span>
-            {Number(property.rentInfo.deposit) > 10000
-              ? `${Number(property.rentInfo.deposit) / 10000}억원`
-              : `${property.rentInfo.deposit} 만원`}
+            {Number(property.deposit) > 10000
+              ? `${Number(property.deposit) / 10000}억원`
+              : `${property.deposit} 만원`}
           </div>
           <div className="flex-grow text-center ">
             <span className="text-gray-400 font-bold">임 </span>
-            {Number(property.rentInfo.monthlyRent) > 10000
-              ? `${Number(property.rentInfo.monthlyRent) / 10000}억원`
-              : `${property.rentInfo.monthlyRent} 만원`}
+            {Number(property.monthly_rent) > 10000
+              ? `${Number(property.monthly_rent) / 10000}억원`
+              : `${property.monthly_rent} 만원`}
           </div>
           <div className="flex-grow text-right">
             <span className="text-gray-400 font-bold">관 </span>
-            {Number(property.rentInfo.maintenanceFee) > 10000
-              ? `${Number(property.rentInfo.maintenanceFee) / 10000}억원`
-              : `${property.rentInfo.maintenanceFee} 만원`}
+            {Number(property.maintenance_cost) > 10000
+              ? `${Number(property.maintenance_cost) / 10000}억원`
+              : `${property.maintenance_cost} 만원`}
           </div>
         </div>
         <div className="mt-1.5 mb-2">{content}</div>

@@ -7,7 +7,11 @@ import ItemInfoRent from "../components/ItemInfoPageComponents/ItemInfoRent";
 import ItemInfoTag from "../components/ItemInfoPageComponents/ItemInfoTag";
 import ItemInfoBuilding from "../components/ItemInfoPageComponents/ItemInfoBuilding";
 
-import { useFetchItemsQuery } from "../../../store";
+import {
+  useFetchItemsQuery,
+  useRemoveItemMutation,
+  useRemoveListMutation,
+} from "../../../store";
 
 const PropertyItemInfoModal = ({ modalPath, closeModal }) => {
   const [formData, setFormData] = useState(null);
@@ -19,6 +23,8 @@ const PropertyItemInfoModal = ({ modalPath, closeModal }) => {
     isLoading,
   } = useFetchItemsQuery({ id: propertyId });
 
+  const [removeItem] = useRemoveItemMutation();
+  const [removeList] = useRemoveListMutation();
   useEffect(() => {
     if (properties.length > 0) {
       const property = properties.find(
@@ -37,6 +43,9 @@ const PropertyItemInfoModal = ({ modalPath, closeModal }) => {
 
   const handleDeleteProperty = (event) => {
     event.preventDefault();
+    removeItem({ id: propertyId });
+    removeList({ id: propertyId });
+
     closeModal();
   };
   if (isLoading) {
@@ -47,6 +56,7 @@ const PropertyItemInfoModal = ({ modalPath, closeModal }) => {
     return <div>Error: {error.message}</div>; // 에러 발생 시 출력할 내용
   }
 
+  console.log("formData", formData);
   return (
     <div className="p-4 w-[448px] h-[1200px] overflow-y-auto">
       <ItemInfoHeader onClick={closeModal} />
@@ -55,6 +65,7 @@ const PropertyItemInfoModal = ({ modalPath, closeModal }) => {
         <ItemInfoTag property={formData} setProperty={setFormData} />
         <ItemInfoBuilding property={formData} setProperty={setFormData} />
         <ItemInfoRent property={formData} setProperty={setFormData} />
+
         <ItemInfoRegist property={formData} setProperty={setFormData} />
         <div className="flex justify-end mt-5">
           <Button primary onClick={handleSaveChanges}>

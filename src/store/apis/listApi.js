@@ -44,7 +44,7 @@ const listApi = createApi({
           const tags = result.map((list) => {
             return { type: "list", id: list.id };
           });
-          tags.push({ type: "lists..?", id: arg.id });
+          tags.push({ type: "listPage", id: arg.id });
           return tags;
         },
         query: (list) => {

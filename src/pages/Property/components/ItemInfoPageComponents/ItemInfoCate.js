@@ -1,16 +1,9 @@
 import React, { useState } from "react";
 import Button from "../../../../commonComponents/Button";
-import { FaCheck, FaChevronUp, FaChevronDown } from "react-icons/fa";
-import {
-  renderCategoryButtons,
-  handleChange,
-  getValue,
-  handleSingleCategoryClick,
-  handleMultiCategoryClick,
-} from "../../../../utils/formUtils";
+import { FaChevronUp, FaChevronDown } from "react-icons/fa";
+import { renderCategoryButtons } from "../../../../utils/formUtils";
 
 const cateArray = ["치과", "미용", "감기", "통증", "한의원"];
-
 
 const ItemInfoCate = ({ property, setProperty }) => {
   const [showRecommended, setShowRecommended] = useState(false);
@@ -20,20 +13,18 @@ const ItemInfoCate = ({ property, setProperty }) => {
 
   const openableFilter = renderCategoryButtons(
     cateArray,
-    ["openableCategories"],
+    ["available_md_name_fixed"],
     "multi",
     property,
     setProperty
   );
   const recommendedFilter = renderCategoryButtons(
     cateArray,
-    ["recommendedCategories"],
+    ["recommended_md_name_fixed"],
     "multi",
     property,
     setProperty
   );
-  console.log("open", property.openableCategories);
-  console.log("recom", property.recommendedCategories);
   return (
     <div className="categoryInfo my-6">
       <div className="mb-4">
