@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { faker } from "@faker-js/faker";
-import pause from "../../utils/pause";
+// import pause from "../../utils/pause";
 const itemApi = createApi({
   reducerPath: "item",
   baseQuery: fetchBaseQuery({
@@ -12,6 +12,16 @@ const itemApi = createApi({
   }),
   endpoints(builder) {
     return {
+      updateItem: builder.mutation({
+        invalidatesTags: (result, error, arg) => {
+          return [{ type: "item", id: arg.id }];
+        },
+        query: ({ id, ...patch }) => ({
+          url: `/item/${id}`,
+          method: "PATCH",
+          body: patch,
+        }),
+      }),
       removeItem: builder.mutation({
         invalidatesTags: (result, error, arg) => {
           console.log("in itemApi, removeItem, arg : ", arg);
@@ -67,7 +77,11 @@ const itemApi = createApi({
   },
 });
 
-export const { useFetchItemsQuery, useAddItemMutation, useRemoveItemMutation } =
-  itemApi;
+export const {
+  useFetchItemsQuery,
+  useAddItemMutation,
+  useRemoveItemMutation,
+  useUpdateItemMutation,
+} = itemApi;
 export { itemApi };
 

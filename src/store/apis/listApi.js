@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { faker } from "@faker-js/faker";
-import pause from "../../utils/pause";
+// import pause from "../../utils/pause";
 const listApi = createApi({
   reducerPath: "list",
   baseQuery: fetchBaseQuery({
@@ -12,6 +12,16 @@ const listApi = createApi({
   }),
   endpoints(builder) {
     return {
+      updateList: builder.mutation({
+        invalidatesTags: (result, error, arg) => {
+          return [{ type: "list", id: arg.id }];
+        },
+        query: ({ id, ...patch }) => ({
+          url: `/list/${id}`,
+          method: "PATCH",
+          body: patch,
+        }),
+      }),
       removeList: builder.mutation({
         invalidatesTags: (result, error, arg) => {
           console.log("arg : ", arg);
@@ -62,6 +72,6 @@ const listApi = createApi({
   },
 });
 
-export const { useFetchListsQuery, useAddListMutation, useRemoveListMutation } =
+export const { useFetchListsQuery, useAddListMutation, useRemoveListMutation,useUpdateListMutation } =
   listApi;
 export { listApi };

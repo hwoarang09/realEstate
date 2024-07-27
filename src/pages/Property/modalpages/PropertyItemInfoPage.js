@@ -11,6 +11,8 @@ import {
   useFetchItemsQuery,
   useRemoveItemMutation,
   useRemoveListMutation,
+  useUpdateItemMutation,
+  useUpdateListMutation,
 } from "../../../store";
 
 const PropertyItemInfoModal = ({ modalPath, closeModal }) => {
@@ -22,9 +24,11 @@ const PropertyItemInfoModal = ({ modalPath, closeModal }) => {
     error,
     isLoading,
   } = useFetchItemsQuery({ id: propertyId });
-
   const [removeItem] = useRemoveItemMutation();
   const [removeList] = useRemoveListMutation();
+  const [updateItem] = useUpdateItemMutation();
+  const [updateList] = useUpdateListMutation();
+
   useEffect(() => {
     if (properties.length > 0) {
       const property = properties.find(
@@ -36,8 +40,10 @@ const PropertyItemInfoModal = ({ modalPath, closeModal }) => {
     }
   }, [properties, modalPath, propertyId]);
 
-  const handleSaveChanges = (event) => {
+  const handleUpdateChanges = (event) => {
     event.preventDefault();
+    updateItem(formData);
+    updateList(formData);
     closeModal();
   };
 
@@ -68,7 +74,7 @@ const PropertyItemInfoModal = ({ modalPath, closeModal }) => {
 
         <ItemInfoRegist property={formData} setProperty={setFormData} />
         <div className="flex justify-end mt-5">
-          <Button primary onClick={handleSaveChanges}>
+          <Button primary onClick={handleUpdateChanges}>
             저장
           </Button>
           <Button danger onClick={handleDeleteProperty} className="ml-2">

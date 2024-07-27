@@ -29,13 +29,18 @@
       "toilet": "건물 내 공용화장실",
       "latitude": 37.43294069974996,
       "longitude": 126.98291018150488,
-      "recommended_md_name": ["미용", "한의원"],
-      "available_md_name": ["미용", "한의원"],
+      "recommended_md_name": null,
+      "available_md_name": null,
       "exclusive_area": 853,
       "contact_area": 1678,
-      "area_type": ["역세권", "유통권"],
+      "area_type": [
+        "역세권",
+        "유통권"
+      ],
       "extra": {
-        "tags": ["새태그4"],
+        "tags": [
+          "새태그4"
+        ],
         "contact": {
           "staffName": "자동생성",
           "contactList": [
@@ -60,13 +65,20 @@
         "sm_md_open_available": null,
         "pt_hs_available_floor": null
       },
-      "recommended_md_name_fixed": ["미용", "한의원"],
-      "available_md_name_fixed": ["미용", "한의원"],
+      "recommended_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
+      "available_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
       "completion_date": "20100406",
       "building_name": "1번건물",
       "rooms": [],
       "comment": {
         "count": 1,
+        "last_comment": null,
         "data": [
           {
             "id": 3497,
@@ -75,8 +87,7 @@
             "username": "admin(슈퍼계정)",
             "is_editable": false
           }
-        ],
-        "last_comment": null
+        ]
       },
       "bookmark_id": null,
       "bookmark_cnt": 0,
@@ -90,8 +101,32 @@
             "is_thumbnail": true
           }
         ],
-        "image_inside": null
-      }
+        "image_inside": [],
+        "image_map": [],
+        "file": []
+      },
+      "contact_list_cnt": 0,
+      "room_cnt": 0,
+      "max_floor": 33,
+      "min_floor": 3,
+      "elevator_customer": 1,
+      "total_parking": 11,
+      "facing_direction": "",
+      "description": "",
+      "updated_by": {
+        "id": 4,
+        "username": "admin(슈퍼계정)",
+        "phone": "1111",
+        "email": "admin@admin.com",
+        "is_staff": true,
+        "is_denied": false
+      },
+      "household": 20280,
+      "hospital": [],
+      "pharmacy": [],
+      "tags": [
+        "새태그4"
+      ]
     },
     {
       "id": 53654,
@@ -122,13 +157,24 @@
       "toilet": "건물 내 공용화장실",
       "latitude": 37.43603962617072,
       "longitude": 126.98927230607374,
-      "recommended_md_name": ["미용", "한의원"],
-      "available_md_name": ["미용", "한의원"],
+      "recommended_md_name": [
+        "미용",
+        "한의원"
+      ],
+      "available_md_name": [
+        "미용",
+        "한의원"
+      ],
       "exclusive_area": 853,
       "contact_area": 1678,
-      "area_type": ["역세권", "유통권"],
+      "area_type": [
+        "역세권",
+        "유통권"
+      ],
       "extra": {
-        "tags": ["새태그4"],
+        "tags": [
+          "새태그4"
+        ],
         "contact": {
           "staffName": "자동생성",
           "contactList": [
@@ -153,8 +199,14 @@
         "sm_md_open_available": null,
         "pt_hs_available_floor": null
       },
-      "recommended_md_name_fixed": ["미용", "한의원"],
-      "available_md_name_fixed": ["미용", "한의원"],
+      "recommended_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
+      "available_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
       "completion_date": "20100406",
       "building_name": "2번건물",
       "rooms": [],
@@ -215,13 +267,24 @@
       "toilet": "건물 내 공용화장실",
       "latitude": 37.42458609634356,
       "longitude": 126.99964528200428,
-      "recommended_md_name": ["미용", "한의원"],
-      "available_md_name": ["미용", "한의원"],
+      "recommended_md_name": [
+        "미용",
+        "한의원"
+      ],
+      "available_md_name": [
+        "미용",
+        "한의원"
+      ],
       "exclusive_area": 853,
       "contact_area": 1678,
-      "area_type": ["역세권", "유통권"],
+      "area_type": [
+        "역세권",
+        "유통권"
+      ],
       "extra": {
-        "tags": ["새태그4"],
+        "tags": [
+          "새태그4"
+        ],
         "contact": {
           "staffName": "자동생성",
           "contactList": [
@@ -246,8 +309,14 @@
         "sm_md_open_available": null,
         "pt_hs_available_floor": null
       },
-      "recommended_md_name_fixed": ["미용", "한의원"],
-      "available_md_name_fixed": ["미용", "한의원"],
+      "recommended_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
+      "available_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
       "completion_date": "20100406",
       "building_name": "3번건물",
       "rooms": [],
@@ -308,13 +377,24 @@
       "toilet": "건물 내 공용화장실",
       "latitude": 37.43864010033526,
       "longitude": 126.99041748255019,
-      "recommended_md_name": ["미용", "한의원"],
-      "available_md_name": ["미용", "한의원"],
+      "recommended_md_name": [
+        "미용",
+        "한의원"
+      ],
+      "available_md_name": [
+        "미용",
+        "한의원"
+      ],
       "exclusive_area": 853,
       "contact_area": 1678,
-      "area_type": ["역세권", "유통권"],
+      "area_type": [
+        "역세권",
+        "유통권"
+      ],
       "extra": {
-        "tags": ["새태그4"],
+        "tags": [
+          "새태그4"
+        ],
         "contact": {
           "staffName": "자동생성",
           "contactList": [
@@ -339,8 +419,14 @@
         "sm_md_open_available": null,
         "pt_hs_available_floor": null
       },
-      "recommended_md_name_fixed": ["미용", "한의원"],
-      "available_md_name_fixed": ["미용", "한의원"],
+      "recommended_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
+      "available_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
       "completion_date": "20100406",
       "building_name": "",
       "rooms": [],
@@ -365,7 +451,7 @@
           {
             "id": 10314,
             "key": "서울 강북구 수유동 707-10",
-            "url": "https://opn-backend-bucket.s3.ap-northeast-2.amazonaws.com/media/property_image/관리 매물/경기/서울 강북구 수유동 707-10/서울 강북구 수유동 707-10.png",
+            "url": "https://opn-backend-bucket.s3.ap-northeast-2.amazonaws.com/media/property_image/2024-07-24/1721805402880_스크린샷 2024-07-24 161359.png",
             "is_thumbnail": true
           }
         ],
@@ -401,13 +487,24 @@
       "toilet": "건물 내 공용화장실",
       "latitude": 37.42892792089361,
       "longitude": 126.99245465625364,
-      "recommended_md_name": ["미용", "한의원"],
-      "available_md_name": ["미용", "한의원"],
+      "recommended_md_name": [
+        "미용",
+        "한의원"
+      ],
+      "available_md_name": [
+        "미용",
+        "한의원"
+      ],
       "exclusive_area": 853,
       "contact_area": 1678,
-      "area_type": ["역세권", "유통권"],
+      "area_type": [
+        "역세권",
+        "유통권"
+      ],
       "extra": {
-        "tags": ["새태그4"],
+        "tags": [
+          "새태그4"
+        ],
         "contact": {
           "staffName": "자동생성",
           "contactList": [
@@ -432,8 +529,14 @@
         "sm_md_open_available": null,
         "pt_hs_available_floor": null
       },
-      "recommended_md_name_fixed": ["미용", "한의원"],
-      "available_md_name_fixed": ["미용", "한의원"],
+      "recommended_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
+      "available_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
       "completion_date": "20100406",
       "building_name": "",
       "rooms": [],
@@ -458,7 +561,7 @@
           {
             "id": 10314,
             "key": "서울 강북구 수유동 707-10",
-            "url": "https://opn-backend-bucket.s3.ap-northeast-2.amazonaws.com/media/property_image/관리 매물/경기/서울 강북구 수유동 707-10/서울 강북구 수유동 707-10.png",
+            "url": "https://opn-backend-bucket.s3.ap-northeast-2.amazonaws.com/media/property_image/2024-07-24/1721805402880_스크린샷 2024-07-24 161359.png",
             "is_thumbnail": true
           }
         ],
@@ -494,13 +597,24 @@
       "toilet": "건물 내 공용화장실",
       "latitude": 37.42604351611639,
       "longitude": 126.99650095734168,
-      "recommended_md_name": ["미용", "한의원"],
-      "available_md_name": ["미용", "한의원"],
+      "recommended_md_name": [
+        "미용",
+        "한의원"
+      ],
+      "available_md_name": [
+        "미용",
+        "한의원"
+      ],
       "exclusive_area": 853,
       "contact_area": 1678,
-      "area_type": ["역세권", "유통권"],
+      "area_type": [
+        "역세권",
+        "유통권"
+      ],
       "extra": {
-        "tags": ["새태그4"],
+        "tags": [
+          "새태그4"
+        ],
         "contact": {
           "staffName": "자동생성",
           "contactList": [
@@ -525,8 +639,14 @@
         "sm_md_open_available": null,
         "pt_hs_available_floor": null
       },
-      "recommended_md_name_fixed": ["미용", "한의원"],
-      "available_md_name_fixed": ["미용", "한의원"],
+      "recommended_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
+      "available_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
       "completion_date": "20100406",
       "building_name": "",
       "rooms": [],
@@ -551,7 +671,7 @@
           {
             "id": 10314,
             "key": "서울 강북구 수유동 707-10",
-            "url": "https://opn-backend-bucket.s3.ap-northeast-2.amazonaws.com/media/property_image/관리 매물/경기/서울 강북구 수유동 707-10/서울 강북구 수유동 707-10.png",
+            "url": "https://opn-backend-bucket.s3.ap-northeast-2.amazonaws.com/media/property_image/2024-07-24/1721805402880_스크린샷 2024-07-24 161359.png",
             "is_thumbnail": true
           }
         ],
@@ -587,13 +707,24 @@
       "toilet": "건물 내 공용화장실",
       "latitude": 37.43190492424366,
       "longitude": 126.99635610098476,
-      "recommended_md_name": ["미용", "한의원"],
-      "available_md_name": ["미용", "한의원"],
+      "recommended_md_name": [
+        "미용",
+        "한의원"
+      ],
+      "available_md_name": [
+        "미용",
+        "한의원"
+      ],
       "exclusive_area": 853,
       "contact_area": 1678,
-      "area_type": ["역세권", "유통권"],
+      "area_type": [
+        "역세권",
+        "유통권"
+      ],
       "extra": {
-        "tags": ["새태그4"],
+        "tags": [
+          "새태그4"
+        ],
         "contact": {
           "staffName": "자동생성",
           "contactList": [
@@ -618,8 +749,14 @@
         "sm_md_open_available": null,
         "pt_hs_available_floor": null
       },
-      "recommended_md_name_fixed": ["미용", "한의원"],
-      "available_md_name_fixed": ["미용", "한의원"],
+      "recommended_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
+      "available_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
       "completion_date": "20100406",
       "building_name": "",
       "rooms": [],
@@ -644,7 +781,7 @@
           {
             "id": 10314,
             "key": "서울 강북구 수유동 707-10",
-            "url": "https://opn-backend-bucket.s3.ap-northeast-2.amazonaws.com/media/property_image/관리 매물/경기/서울 강북구 수유동 707-10/서울 강북구 수유동 707-10.png",
+            "url": "https://opn-backend-bucket.s3.ap-northeast-2.amazonaws.com/media/property_image/2024-07-24/1721805402880_스크린샷 2024-07-24 161359.png",
             "is_thumbnail": true
           }
         ],
@@ -680,13 +817,24 @@
       "toilet": "건물 내 공용화장실",
       "latitude": 37.42002408332314,
       "longitude": 126.99249403536271,
-      "recommended_md_name": ["미용", "한의원"],
-      "available_md_name": ["미용", "한의원"],
+      "recommended_md_name": [
+        "미용",
+        "한의원"
+      ],
+      "available_md_name": [
+        "미용",
+        "한의원"
+      ],
       "exclusive_area": 853,
       "contact_area": 1678,
-      "area_type": ["역세권", "유통권"],
+      "area_type": [
+        "역세권",
+        "유통권"
+      ],
       "extra": {
-        "tags": ["새태그4"],
+        "tags": [
+          "새태그4"
+        ],
         "contact": {
           "staffName": "자동생성",
           "contactList": [
@@ -711,8 +859,14 @@
         "sm_md_open_available": null,
         "pt_hs_available_floor": null
       },
-      "recommended_md_name_fixed": ["미용", "한의원"],
-      "available_md_name_fixed": ["미용", "한의원"],
+      "recommended_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
+      "available_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
       "completion_date": "20100406",
       "building_name": "",
       "rooms": [],
@@ -737,7 +891,7 @@
           {
             "id": 10314,
             "key": "서울 강북구 수유동 707-10",
-            "url": "https://opn-backend-bucket.s3.ap-northeast-2.amazonaws.com/media/property_image/관리 매물/경기/서울 강북구 수유동 707-10/서울 강북구 수유동 707-10.png",
+            "url": "https://opn-backend-bucket.s3.ap-northeast-2.amazonaws.com/media/property_image/2024-07-24/1721805402880_스크린샷 2024-07-24 161359.png",
             "is_thumbnail": true
           }
         ],
@@ -773,13 +927,24 @@
       "toilet": "건물 내 공용화장실",
       "latitude": 37.43814967861057,
       "longitude": 126.99660302793765,
-      "recommended_md_name": ["미용", "한의원"],
-      "available_md_name": ["미용", "한의원"],
+      "recommended_md_name": [
+        "미용",
+        "한의원"
+      ],
+      "available_md_name": [
+        "미용",
+        "한의원"
+      ],
       "exclusive_area": 853,
       "contact_area": 1678,
-      "area_type": ["역세권", "유통권"],
+      "area_type": [
+        "역세권",
+        "유통권"
+      ],
       "extra": {
-        "tags": ["새태그4"],
+        "tags": [
+          "새태그4"
+        ],
         "contact": {
           "staffName": "자동생성",
           "contactList": [
@@ -804,8 +969,14 @@
         "sm_md_open_available": null,
         "pt_hs_available_floor": null
       },
-      "recommended_md_name_fixed": ["미용", "한의원"],
-      "available_md_name_fixed": ["미용", "한의원"],
+      "recommended_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
+      "available_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
       "completion_date": "20100406",
       "building_name": "",
       "rooms": [],
@@ -830,7 +1001,7 @@
           {
             "id": 10314,
             "key": "서울 강북구 수유동 707-10",
-            "url": "https://opn-backend-bucket.s3.ap-northeast-2.amazonaws.com/media/property_image/관리 매물/경기/서울 강북구 수유동 707-10/서울 강북구 수유동 707-10.png",
+            "url": "https://opn-backend-bucket.s3.ap-northeast-2.amazonaws.com/media/property_image/2024-07-24/1721805402880_스크린샷 2024-07-24 161359.png",
             "is_thumbnail": true
           }
         ],
@@ -866,13 +1037,24 @@
       "toilet": "건물 내 공용화장실",
       "latitude": 37.434298721213466,
       "longitude": 126.99544078465838,
-      "recommended_md_name": ["미용", "한의원"],
-      "available_md_name": ["미용", "한의원"],
+      "recommended_md_name": [
+        "미용",
+        "한의원"
+      ],
+      "available_md_name": [
+        "미용",
+        "한의원"
+      ],
       "exclusive_area": 853,
       "contact_area": 1678,
-      "area_type": ["역세권", "유통권"],
+      "area_type": [
+        "역세권",
+        "유통권"
+      ],
       "extra": {
-        "tags": ["새태그4"],
+        "tags": [
+          "새태그4"
+        ],
         "contact": {
           "staffName": "자동생성",
           "contactList": [
@@ -897,8 +1079,14 @@
         "sm_md_open_available": null,
         "pt_hs_available_floor": null
       },
-      "recommended_md_name_fixed": ["미용", "한의원"],
-      "available_md_name_fixed": ["미용", "한의원"],
+      "recommended_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
+      "available_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
       "completion_date": "20100406",
       "building_name": "",
       "rooms": [],
@@ -923,7 +1111,7 @@
           {
             "id": 10314,
             "key": "서울 강북구 수유동 707-10",
-            "url": "https://opn-backend-bucket.s3.ap-northeast-2.amazonaws.com/media/property_image/관리 매물/경기/서울 강북구 수유동 707-10/서울 강북구 수유동 707-10.png",
+            "url": "https://opn-backend-bucket.s3.ap-northeast-2.amazonaws.com/media/property_image/2024-07-24/1721805402880_스크린샷 2024-07-24 161359.png",
             "is_thumbnail": true
           }
         ],
@@ -966,9 +1154,14 @@
       "available_md_name": null,
       "exclusive_area": 853,
       "contact_area": 1678,
-      "area_type": ["역세권", "유통권"],
+      "area_type": [
+        "역세권",
+        "유통권"
+      ],
       "extra": {
-        "tags": ["새태그4"],
+        "tags": [
+          "새태그4"
+        ],
         "contact": {
           "staffName": "자동생성",
           "contactList": [
@@ -994,8 +1187,14 @@
         "pt_hs_available_floor": null
       },
       "room_cnt": 0,
-      "available_md_name_fixed": ["미용", "한의원"],
-      "recommended_md_name_fixed": ["미용", "한의원"],
+      "available_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
+      "recommended_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
       "completion_date": "20100406",
       "max_floor": 33,
       "min_floor": 3,
@@ -1041,7 +1240,9 @@
       },
       "hospital": [],
       "pharmacy": [],
-      "tags": ["새태그4"]
+      "tags": [
+        "새태그4"
+      ]
     },
     {
       "contact_list_cnt": 0,
@@ -1077,9 +1278,14 @@
       "available_md_name": null,
       "exclusive_area": 853,
       "contact_area": 1678,
-      "area_type": ["역세권", "유통권"],
+      "area_type": [
+        "역세권",
+        "유통권"
+      ],
       "extra": {
-        "tags": ["새태그4"],
+        "tags": [
+          "새태그4"
+        ],
         "contact": {
           "staffName": "자동생성",
           "contactList": [
@@ -1105,8 +1311,14 @@
         "pt_hs_available_floor": null
       },
       "room_cnt": 0,
-      "available_md_name_fixed": ["미용", "한의원"],
-      "recommended_md_name_fixed": ["미용", "한의원"],
+      "available_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
+      "recommended_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
       "completion_date": "20100406",
       "max_floor": null,
       "min_floor": null,
@@ -1152,7 +1364,9 @@
       },
       "hospital": [],
       "pharmacy": [],
-      "tags": ["새태그4"]
+      "tags": [
+        "새태그4"
+      ]
     },
     {
       "contact_list_cnt": 0,
@@ -1188,9 +1402,14 @@
       "available_md_name": null,
       "exclusive_area": 853,
       "contact_area": 1678,
-      "area_type": ["역세권", "유통권"],
+      "area_type": [
+        "역세권",
+        "유통권"
+      ],
       "extra": {
-        "tags": ["새태그4"],
+        "tags": [
+          "새태그4"
+        ],
         "contact": {
           "staffName": "자동생성",
           "contactList": [
@@ -1216,8 +1435,14 @@
         "pt_hs_available_floor": null
       },
       "room_cnt": 0,
-      "available_md_name_fixed": ["미용", "한의원"],
-      "recommended_md_name_fixed": ["미용", "한의원"],
+      "available_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
+      "recommended_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
       "completion_date": "20100406",
       "max_floor": null,
       "min_floor": null,
@@ -1263,7 +1488,9 @@
       },
       "hospital": [],
       "pharmacy": [],
-      "tags": ["새태그4"]
+      "tags": [
+        "새태그4"
+      ]
     },
     {
       "contact_list_cnt": 0,
@@ -1299,9 +1526,14 @@
       "available_md_name": null,
       "exclusive_area": 853,
       "contact_area": 1678,
-      "area_type": ["역세권", "유통권"],
+      "area_type": [
+        "역세권",
+        "유통권"
+      ],
       "extra": {
-        "tags": ["새태그4"],
+        "tags": [
+          "새태그4"
+        ],
         "contact": {
           "staffName": "자동생성",
           "contactList": [
@@ -1327,8 +1559,14 @@
         "pt_hs_available_floor": null
       },
       "room_cnt": 0,
-      "available_md_name_fixed": ["미용", "한의원"],
-      "recommended_md_name_fixed": ["미용", "한의원"],
+      "available_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
+      "recommended_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
       "completion_date": "20100406",
       "max_floor": null,
       "min_floor": null,
@@ -1351,7 +1589,7 @@
           {
             "id": 10314,
             "key": "서울 강북구 수유동 707-10",
-            "url": "https://opn-backend-bucket.s3.ap-northeast-2.amazonaws.com/media/property_image/관리 매물/경기/서울 강북구 수유동 707-10/서울 강북구 수유동 707-10.png",
+            "url": "https://opn-backend-bucket.s3.ap-northeast-2.amazonaws.com/media/property_image/2024-07-24/1721805402880_스크린샷 2024-07-24 161359.png",
             "is_thumbnail": true
           }
         ],
@@ -1374,7 +1612,9 @@
       },
       "hospital": [],
       "pharmacy": [],
-      "tags": ["새태그4"]
+      "tags": [
+        "새태그4"
+      ]
     },
     {
       "contact_list_cnt": 0,
@@ -1410,9 +1650,14 @@
       "available_md_name": null,
       "exclusive_area": 853,
       "contact_area": 1678,
-      "area_type": ["역세권", "유통권"],
+      "area_type": [
+        "역세권",
+        "유통권"
+      ],
       "extra": {
-        "tags": ["새태그4"],
+        "tags": [
+          "새태그4"
+        ],
         "contact": {
           "staffName": "자동생성",
           "contactList": [
@@ -1438,8 +1683,14 @@
         "pt_hs_available_floor": null
       },
       "room_cnt": 0,
-      "available_md_name_fixed": ["미용", "한의원"],
-      "recommended_md_name_fixed": ["미용", "한의원"],
+      "available_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
+      "recommended_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
       "completion_date": "20100406",
       "max_floor": null,
       "min_floor": null,
@@ -1462,7 +1713,7 @@
           {
             "id": 10314,
             "key": "서울 강북구 수유동 707-10",
-            "url": "https://opn-backend-bucket.s3.ap-northeast-2.amazonaws.com/media/property_image/관리 매물/경기/서울 강북구 수유동 707-10/서울 강북구 수유동 707-10.png",
+            "url": "https://opn-backend-bucket.s3.ap-northeast-2.amazonaws.com/media/property_image/2024-07-24/1721805402880_스크린샷 2024-07-24 161359.png",
             "is_thumbnail": true
           }
         ],
@@ -1485,7 +1736,9 @@
       },
       "hospital": [],
       "pharmacy": [],
-      "tags": ["새태그4"]
+      "tags": [
+        "새태그4"
+      ]
     },
     {
       "contact_list_cnt": 0,
@@ -1521,9 +1774,14 @@
       "available_md_name": null,
       "exclusive_area": 853,
       "contact_area": 1678,
-      "area_type": ["역세권", "유통권"],
+      "area_type": [
+        "역세권",
+        "유통권"
+      ],
       "extra": {
-        "tags": ["새태그4"],
+        "tags": [
+          "새태그4"
+        ],
         "contact": {
           "staffName": "자동생성",
           "contactList": [
@@ -1549,8 +1807,14 @@
         "pt_hs_available_floor": null
       },
       "room_cnt": 0,
-      "available_md_name_fixed": ["미용", "한의원"],
-      "recommended_md_name_fixed": ["미용", "한의원"],
+      "available_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
+      "recommended_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
       "completion_date": "20100406",
       "max_floor": null,
       "min_floor": null,
@@ -1573,7 +1837,7 @@
           {
             "id": 10314,
             "key": "서울 강북구 수유동 707-10",
-            "url": "https://opn-backend-bucket.s3.ap-northeast-2.amazonaws.com/media/property_image/관리 매물/경기/서울 강북구 수유동 707-10/서울 강북구 수유동 707-10.png",
+            "url": "https://opn-backend-bucket.s3.ap-northeast-2.amazonaws.com/media/property_image/2024-07-24/1721805402880_스크린샷 2024-07-24 161359.png",
             "is_thumbnail": true
           }
         ],
@@ -1596,7 +1860,9 @@
       },
       "hospital": [],
       "pharmacy": [],
-      "tags": ["새태그4"]
+      "tags": [
+        "새태그4"
+      ]
     },
     {
       "contact_list_cnt": 0,
@@ -1632,9 +1898,14 @@
       "available_md_name": null,
       "exclusive_area": 853,
       "contact_area": 1678,
-      "area_type": ["역세권", "유통권"],
+      "area_type": [
+        "역세권",
+        "유통권"
+      ],
       "extra": {
-        "tags": ["새태그4"],
+        "tags": [
+          "새태그4"
+        ],
         "contact": {
           "staffName": "자동생성",
           "contactList": [
@@ -1660,8 +1931,14 @@
         "pt_hs_available_floor": null
       },
       "room_cnt": 0,
-      "available_md_name_fixed": ["미용", "한의원"],
-      "recommended_md_name_fixed": ["미용", "한의원"],
+      "available_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
+      "recommended_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
       "completion_date": "20100406",
       "max_floor": null,
       "min_floor": null,
@@ -1684,7 +1961,7 @@
           {
             "id": 10314,
             "key": "서울 강북구 수유동 707-10",
-            "url": "https://opn-backend-bucket.s3.ap-northeast-2.amazonaws.com/media/property_image/관리 매물/경기/서울 강북구 수유동 707-10/서울 강북구 수유동 707-10.png",
+            "url": "https://opn-backend-bucket.s3.ap-northeast-2.amazonaws.com/media/property_image/2024-07-24/1721805402880_스크린샷 2024-07-24 161359.png",
             "is_thumbnail": true
           }
         ],
@@ -1707,7 +1984,9 @@
       },
       "hospital": [],
       "pharmacy": [],
-      "tags": ["새태그4"]
+      "tags": [
+        "새태그4"
+      ]
     },
     {
       "contact_list_cnt": 0,
@@ -1743,9 +2022,14 @@
       "available_md_name": null,
       "exclusive_area": 853,
       "contact_area": 1678,
-      "area_type": ["역세권", "유통권"],
+      "area_type": [
+        "역세권",
+        "유통권"
+      ],
       "extra": {
-        "tags": ["새태그4"],
+        "tags": [
+          "새태그4"
+        ],
         "contact": {
           "staffName": "자동생성",
           "contactList": [
@@ -1771,8 +2055,14 @@
         "pt_hs_available_floor": null
       },
       "room_cnt": 0,
-      "available_md_name_fixed": ["미용", "한의원"],
-      "recommended_md_name_fixed": ["미용", "한의원"],
+      "available_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
+      "recommended_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
       "completion_date": "20100406",
       "max_floor": null,
       "min_floor": null,
@@ -1795,7 +2085,7 @@
           {
             "id": 10314,
             "key": "서울 강북구 수유동 707-10",
-            "url": "https://opn-backend-bucket.s3.ap-northeast-2.amazonaws.com/media/property_image/관리 매물/경기/서울 강북구 수유동 707-10/서울 강북구 수유동 707-10.png",
+            "url": "https://opn-backend-bucket.s3.ap-northeast-2.amazonaws.com/media/property_image/2024-07-24/1721805402880_스크린샷 2024-07-24 161359.png",
             "is_thumbnail": true
           }
         ],
@@ -1818,7 +2108,9 @@
       },
       "hospital": [],
       "pharmacy": [],
-      "tags": ["새태그4"]
+      "tags": [
+        "새태그4"
+      ]
     },
     {
       "contact_list_cnt": 0,
@@ -1854,9 +2146,14 @@
       "available_md_name": null,
       "exclusive_area": 853,
       "contact_area": 1678,
-      "area_type": ["역세권", "유통권"],
+      "area_type": [
+        "역세권",
+        "유통권"
+      ],
       "extra": {
-        "tags": ["새태그4"],
+        "tags": [
+          "새태그4"
+        ],
         "contact": {
           "staffName": "자동생성",
           "contactList": [
@@ -1882,8 +2179,14 @@
         "pt_hs_available_floor": null
       },
       "room_cnt": 0,
-      "available_md_name_fixed": ["미용", "한의원"],
-      "recommended_md_name_fixed": ["미용", "한의원"],
+      "available_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
+      "recommended_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
       "completion_date": "20100406",
       "max_floor": null,
       "min_floor": null,
@@ -1906,7 +2209,7 @@
           {
             "id": 10314,
             "key": "서울 강북구 수유동 707-10",
-            "url": "https://opn-backend-bucket.s3.ap-northeast-2.amazonaws.com/media/property_image/관리 매물/경기/서울 강북구 수유동 707-10/서울 강북구 수유동 707-10.png",
+            "url": "https://opn-backend-bucket.s3.ap-northeast-2.amazonaws.com/media/property_image/2024-07-24/1721805402880_스크린샷 2024-07-24 161359.png",
             "is_thumbnail": true
           }
         ],
@@ -1929,7 +2232,9 @@
       },
       "hospital": [],
       "pharmacy": [],
-      "tags": ["새태그4"]
+      "tags": [
+        "새태그4"
+      ]
     },
     {
       "contact_list_cnt": 0,
@@ -1965,9 +2270,14 @@
       "available_md_name": null,
       "exclusive_area": 853,
       "contact_area": 1678,
-      "area_type": ["역세권", "유통권"],
+      "area_type": [
+        "역세권",
+        "유통권"
+      ],
       "extra": {
-        "tags": ["새태그4"],
+        "tags": [
+          "새태그4"
+        ],
         "contact": {
           "staffName": "자동생성",
           "contactList": [
@@ -1993,8 +2303,14 @@
         "pt_hs_available_floor": null
       },
       "room_cnt": 0,
-      "available_md_name_fixed": ["미용", "한의원"],
-      "recommended_md_name_fixed": ["미용", "한의원"],
+      "available_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
+      "recommended_md_name_fixed": [
+        "미용",
+        "한의원"
+      ],
       "completion_date": "20100406",
       "max_floor": null,
       "min_floor": null,
@@ -2017,7 +2333,7 @@
           {
             "id": 10314,
             "key": "서울 강북구 수유동 707-10",
-            "url": "https://opn-backend-bucket.s3.ap-northeast-2.amazonaws.com/media/property_image/관리 매물/경기/서울 강북구 수유동 707-10/서울 강북구 수유동 707-10.png",
+            "url": "https://opn-backend-bucket.s3.ap-northeast-2.amazonaws.com/media/property_image/2024-07-24/1721805402880_스크린샷 2024-07-24 161359.png",
             "is_thumbnail": true
           }
         ],
@@ -2040,7 +2356,9 @@
       },
       "hospital": [],
       "pharmacy": [],
-      "tags": ["새태그4"]
+      "tags": [
+        "새태그4"
+      ]
     }
   ]
 }

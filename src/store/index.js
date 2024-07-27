@@ -22,10 +22,12 @@ export {
   useFetchItemsQuery,
   useAddItemMutation,
   useRemoveItemMutation,
+  useUpdateItemMutation,
 } from "./apis/itemApi";
 
 export {
   useFetchListsQuery,
   useAddListMutation,
   useRemoveListMutation,
+  useUpdateListMutation,
 } from "./apis/listApi";
