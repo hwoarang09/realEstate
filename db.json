@@ -55,14 +55,14 @@
         "key_money": null,
         "handicap_wc": null,
         "handicap_elv": null,
-        "handicap_ramp": null,
+        "handicap_ramp": "",
         "key_money_bool": null,
         "transfer_money": null,
-        "bd_hs_available": null,
+        "bd_hs_available": "",
         "current_industry": null,
         "facing_direction": "",
         "handicap_parking": null,
-        "sm_md_open_available": null,
+        "sm_md_open_available": "불가능33",
         "pt_hs_available_floor": null
       },
       "recommended_md_name_fixed": [
@@ -157,14 +157,8 @@
       "toilet": "건물 내 공용화장실",
       "latitude": 37.43603962617072,
       "longitude": 126.98927230607374,
-      "recommended_md_name": [
-        "미용",
-        "한의원"
-      ],
-      "available_md_name": [
-        "미용",
-        "한의원"
-      ],
+      "recommended_md_name": null,
+      "available_md_name": null,
       "exclusive_area": 853,
       "contact_area": 1678,
       "area_type": [
@@ -200,8 +194,8 @@
         "pt_hs_available_floor": null
       },
       "recommended_md_name_fixed": [
-        "미용",
-        "한의원"
+        "한의원",
+        "미용"
       ],
       "available_md_name_fixed": [
         "미용",
@@ -212,6 +206,7 @@
       "rooms": [],
       "comment": {
         "count": 1,
+        "last_comment": null,
         "data": [
           {
             "id": 3497,
@@ -220,8 +215,7 @@
             "username": "admin(슈퍼계정)",
             "is_editable": false
           }
-        ],
-        "last_comment": null
+        ]
       },
       "bookmark_id": null,
       "bookmark_cnt": 0,
@@ -235,8 +229,32 @@
             "is_thumbnail": true
           }
         ],
-        "image_inside": null
-      }
+        "image_inside": [],
+        "image_map": [],
+        "file": []
+      },
+      "contact_list_cnt": 0,
+      "room_cnt": 0,
+      "max_floor": null,
+      "min_floor": null,
+      "elevator_customer": null,
+      "total_parking": null,
+      "facing_direction": "",
+      "description": "",
+      "updated_by": {
+        "id": 4,
+        "username": "admin(슈퍼계정)",
+        "phone": "1111",
+        "email": "admin@admin.com",
+        "is_staff": true,
+        "is_denied": false
+      },
+      "household": 20280,
+      "hospital": [],
+      "pharmacy": [],
+      "tags": [
+        "새태그4"
+      ]
     },
     {
       "id": 53655,
@@ -1176,14 +1194,14 @@
         "key_money": null,
         "handicap_wc": null,
         "handicap_elv": null,
-        "handicap_ramp": null,
+        "handicap_ramp": "",
         "key_money_bool": null,
         "transfer_money": null,
-        "bd_hs_available": null,
+        "bd_hs_available": "",
         "current_industry": null,
         "facing_direction": "",
         "handicap_parking": null,
-        "sm_md_open_available": null,
+        "sm_md_open_available": "불가능33",
         "pt_hs_available_floor": null
       },
       "room_cnt": 0,
@@ -1316,8 +1334,8 @@
         "한의원"
       ],
       "recommended_md_name_fixed": [
-        "미용",
-        "한의원"
+        "한의원",
+        "미용"
       ],
       "completion_date": "20100406",
       "max_floor": null,
