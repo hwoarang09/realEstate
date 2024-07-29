@@ -55,7 +55,8 @@ const renderCategoryButtons = (
   cateJsonKeyList,
   chkSingleMulti,
   property,
-  setProperty
+  setProperty,
+  mapppedValue
 ) => {
   const clickFunction =
     chkSingleMulti === "single"
@@ -82,7 +83,7 @@ const renderCategoryButtons = (
           type="button"
         >
           {isSelected && <FaCheck />}
-          <span>{cate}</span>
+          <span>{mapppedValue ? mapppedValue[cate] : cate}</span>
         </Button>
       </div>
     );

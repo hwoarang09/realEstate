@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Button from "../../../commonComponents/Button";
+// import Button from "../../../commonComponents/Button";
 import ItemInfoRegist from "../components/ItemInfoPageComponents/ItemInfoRegist";
 import ItemInfoCate from "../components/ItemInfoPageComponents/ItemInfoCate";
 import ItemInfoHeader from "../components/ItemInfoPageComponents/ItemInfoHeader";

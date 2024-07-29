@@ -16,7 +16,7 @@
       "floor": "12층",
       "available_date": "협의",
       "is_active": false,
-      "is_verified": false,
+      "is_verified": true,
       "is_contract_completed": true,
       "is_contract_completed_by_own": false,
       "free_parking_str": "협의",
@@ -67,7 +67,8 @@
       },
       "recommended_md_name_fixed": [
         "미용",
-        "한의원"
+        "한의원",
+        "통증"
       ],
       "available_md_name_fixed": [
         "미용",
@@ -1155,7 +1156,7 @@
       "floor": "12층",
       "available_date": "협의",
       "is_active": false,
-      "is_verified": false,
+      "is_verified": true,
       "is_contract_completed": true,
       "is_contract_completed_by_own": false,
       "free_parking_str": "협의",
@@ -1211,7 +1212,8 @@
       ],
       "recommended_md_name_fixed": [
         "미용",
-        "한의원"
+        "한의원",
+        "통증"
       ],
       "completion_date": "20100406",
       "max_floor": 33,
