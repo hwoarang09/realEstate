@@ -17,7 +17,7 @@
       "available_date": "협의",
       "is_active": false,
       "is_verified": false,
-      "is_contract_completed": false,
+      "is_contract_completed": true,
       "is_contract_completed_by_own": false,
       "free_parking_str": "협의",
       "visit_parking": "협의",
@@ -32,7 +32,7 @@
       "recommended_md_name": null,
       "available_md_name": null,
       "exclusive_area": 853,
-      "contact_area": 1678,
+      "contact_area": "1678",
       "area_type": [
         "역세권",
         "유통권"
@@ -1156,7 +1156,7 @@
       "available_date": "협의",
       "is_active": false,
       "is_verified": false,
-      "is_contract_completed": false,
+      "is_contract_completed": true,
       "is_contract_completed_by_own": false,
       "free_parking_str": "협의",
       "visit_parking": "협의",
@@ -1171,7 +1171,7 @@
       "recommended_md_name": null,
       "available_md_name": null,
       "exclusive_area": 853,
-      "contact_area": 1678,
+      "contact_area": "1678",
       "area_type": [
         "역세권",
         "유통권"

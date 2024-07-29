@@ -28,7 +28,7 @@ const ItemInfoCate = ({ property, setProperty }) => {
   return (
     <div className="categoryInfo my-6">
       <div className="mb-4">
-        <div className="cateHeader text-blue-600 text-base font-bold mb-2">
+        <div className="text-blue-600 text-base font-bold mb-2">
           개원 가능 진료과
         </div>
         <div className="flex flex-wrap">{openableFilter}</div>

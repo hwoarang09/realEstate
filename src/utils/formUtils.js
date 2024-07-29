@@ -35,7 +35,7 @@ const handleChange = (keyList, value, setFunction) => {
   setFunction((prevProperty) => {
     const newProperty = { ...prevProperty };
     let target = newProperty;
-
+    console.log("vlaue : ", value);
     for (let i = 0; i < keyList.length - 1; i++) {
       target[keyList[i]] = { ...target[keyList[i]] };
       target = target[keyList[i]];
