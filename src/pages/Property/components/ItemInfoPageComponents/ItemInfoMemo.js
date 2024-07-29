@@ -53,6 +53,8 @@ const ItemInfoMemo = ({ property, setProperty }) => {
     setProperty((prevProperty) => {
       const newProperty = _.cloneDeep(prevProperty);
       newProperty.comment.data[currentMemoIndex].value = newValue;
+      newProperty.comment.data[currentMemoIndex].updated_at =
+        new Date().toISOString();
       return newProperty;
     });
     closeModal();
