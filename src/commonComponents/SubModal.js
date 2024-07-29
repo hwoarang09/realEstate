@@ -3,10 +3,14 @@ import ReactDOM from "react-dom";
 import Button from "./Button";
 function SubModal({ isOpen, onClose, onSave, initialValue }) {
   const [value, setValue] = useState(initialValue);
-  useEffect(() => {
-    setValue(initialValue);
-  }, [initialValue]);
 
+  useEffect(() => {
+    console.log("in useEffect1", initialValue);
+    if (initialValue !== value) {
+      console.log("in useEffect2", initialValue);
+      setValue(initialValue);
+    }
+  }, [initialValue, value]);
   if (!isOpen) return null;
 
   console.log("in SubModal ini", initialValue);

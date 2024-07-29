@@ -109,12 +109,7 @@ const ItemInfoMemo = ({ property, setProperty }) => {
             >
               복사
             </MdOutlineContentCopy>
-            <SubModal
-              isOpen={isModalOpen}
-              onClose={closeModal}
-              onSave={saveMemo}
-              initialValue={currentMemoValue}
-            />
+
             <MdEdit
               type="button"
               onClick={() => {
@@ -197,6 +192,12 @@ const ItemInfoMemo = ({ property, setProperty }) => {
           )}
         </Button>
       </div>
+      <SubModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        onSave={saveMemo}
+        initialValue={currentMemoValue}
+      />
     </div>
   );
 };
