@@ -47,8 +47,14 @@
             {
               "name": "김현기",
               "note": "나무공인중개사사무소",
-              "type": "agent",
+              "type": "agent1333",
               "phone": "02-507-8989"
+            },
+            {
+              "name": "",
+              "note": "",
+              "type": "ㄶㄴㅇㅎㄴ",
+              "phone": "256236236"
             }
           ]
         },
@@ -78,7 +84,7 @@
       "building_name": "1번건물",
       "rooms": [],
       "comment": {
-        "count": 1,
+        "count": 3,
         "last_comment": null,
         "data": [
           {
@@ -87,6 +93,20 @@
             "updated_at": "2024-07-11T03:24:12.687Z",
             "username": "admin(슈퍼계정)",
             "is_editable": false
+          },
+          {
+            "id": 1722270827321,
+            "value": "메모ttt",
+            "updated_at": "2024-07-29T16:33:47.321Z",
+            "username": "현재 사용자",
+            "is_editable": true
+          },
+          {
+            "id": 1722272432155,
+            "value": "ㅌㅊㅍㅌ츄",
+            "updated_at": "2024-07-29T17:00:32.155Z",
+            "username": "admin 윤성원!",
+            "is_editable": true
           }
         ]
       },
@@ -147,7 +167,7 @@
       "is_active": false,
       "is_verified": false,
       "is_contract_completed": false,
-      "is_contract_completed_by_own": false,
+      "is_contract_completed_by_own": true,
       "free_parking_str": "협의",
       "visit_parking": "협의",
       "grade": "중",
@@ -171,12 +191,12 @@
           "새태그4"
         ],
         "contact": {
-          "staffName": "자동생성",
+          "staffName": "윤성원",
           "contactList": [
             {
               "name": "김현기",
               "note": "나무공인중개사사무소",
-              "type": "agent",
+              "type": "agentㅊㅊㅊ",
               "phone": "02-507-8989"
             }
           ]
@@ -206,7 +226,7 @@
       "building_name": "2번건물",
       "rooms": [],
       "comment": {
-        "count": 1,
+        "count": 2,
         "last_comment": null,
         "data": [
           {
@@ -215,6 +235,13 @@
             "updated_at": "2024-07-11T03:24:12.687Z",
             "username": "admin(슈퍼계정)",
             "is_editable": false
+          },
+          {
+            "id": 1722270764325,
+            "value": "메모 테스트",
+            "updated_at": "2024-07-29T16:32:44.325Z",
+            "username": "현재 사용자",
+            "is_editable": true
           }
         ]
       },
@@ -1082,6 +1109,12 @@
               "note": "나무공인중개사사무소",
               "type": "agent",
               "phone": "02-507-8989"
+            },
+            {
+              "name": "김현기2",
+              "note": "고무공인중개사사무소",
+              "type": "agent2",
+              "phone": "02-507-8989"
             }
           ]
         },
@@ -1187,8 +1220,14 @@
             {
               "name": "김현기",
               "note": "나무공인중개사사무소",
-              "type": "agent",
+              "type": "agent1333",
               "phone": "02-507-8989"
+            },
+            {
+              "name": "",
+              "note": "",
+              "type": "ㄶㄴㅇㅎㄴ",
+              "phone": "256236236"
             }
           ]
         },
@@ -1246,7 +1285,7 @@
         "file": []
       },
       "comment": {
-        "count": 1,
+        "count": 3,
         "last_comment": null,
         "data": [
           {
@@ -1255,6 +1294,20 @@
             "updated_at": "2024-07-11T03:24:12.687Z",
             "username": "admin(슈퍼계정)",
             "is_editable": false
+          },
+          {
+            "id": 1722270827321,
+            "value": "메모ttt",
+            "updated_at": "2024-07-29T16:33:47.321Z",
+            "username": "현재 사용자",
+            "is_editable": true
+          },
+          {
+            "id": 1722272432155,
+            "value": "ㅌㅊㅍㅌ츄",
+            "updated_at": "2024-07-29T17:00:32.155Z",
+            "username": "admin 윤성원!",
+            "is_editable": true
           }
         ]
       },
@@ -1283,7 +1336,7 @@
       "is_active": false,
       "is_verified": false,
       "is_contract_completed": false,
-      "is_contract_completed_by_own": false,
+      "is_contract_completed_by_own": true,
       "free_parking_str": "협의",
       "visit_parking": "협의",
       "grade": "중",
@@ -1307,12 +1360,12 @@
           "새태그4"
         ],
         "contact": {
-          "staffName": "자동생성",
+          "staffName": "윤성원",
           "contactList": [
             {
               "name": "김현기",
               "note": "나무공인중개사사무소",
-              "type": "agent",
+              "type": "agentㅊㅊㅊ",
               "phone": "02-507-8989"
             }
           ]
@@ -1370,7 +1423,7 @@
         "file": []
       },
       "comment": {
-        "count": 1,
+        "count": 2,
         "last_comment": null,
         "data": [
           {
@@ -1379,6 +1432,13 @@
             "updated_at": "2024-07-11T03:24:12.687Z",
             "username": "admin(슈퍼계정)",
             "is_editable": false
+          },
+          {
+            "id": 1722270764325,
+            "value": "메모 테스트",
+            "updated_at": "2024-07-29T16:32:44.325Z",
+            "username": "현재 사용자",
+            "is_editable": true
           }
         ]
       },

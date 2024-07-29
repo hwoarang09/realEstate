@@ -30,25 +30,49 @@ const handleSingleCategoryClick = (cate, cateList, setFunction) => {
     return newProperty;
   });
 };
-
 const handleChange = (keyList, value, setFunction) => {
   setFunction((prevProperty) => {
     const newProperty = { ...prevProperty };
     let target = newProperty;
-    console.log("vlaue : ", value);
     for (let i = 0; i < keyList.length - 1; i++) {
-      target[keyList[i]] = { ...target[keyList[i]] };
+      if (Array.isArray(target[keyList[i]])) {
+        target[keyList[i]] = [...target[keyList[i]]];
+      } else {
+        target[keyList[i]] = { ...target[keyList[i]] };
+      }
       target = target[keyList[i]];
     }
-    target[keyList[keyList.length - 1]] = value;
-
+    if (Array.isArray(target)) {
+      target[parseInt(keyList[keyList.length - 1])] = value;
+    } else {
+      target[keyList[keyList.length - 1]] = value;
+    }
+    return newProperty;
+  });
+};
+const removeContact = (index, setFunction) => {
+  setFunction((prevProperty) => {
+    const newProperty = _.cloneDeep(prevProperty);
+    newProperty.extra.contact.contactList = [
+      ...newProperty.extra.contact.contactList.slice(0, index),
+      ...newProperty.extra.contact.contactList.slice(index + 1),
+    ];
     return newProperty;
   });
 };
 
-const getValue = (keyList, property) => {
-  return keyList.reduce((obj, key) => obj[key], property);
+const addContact = (setFunction) => {
+  setFunction((prevProperty) => {
+    const newProperty = _.cloneDeep(prevProperty);
+    newProperty.extra.contact.contactList = [
+      ...newProperty.extra.contact.contactList,
+      { name: "", note: "", type: "", phone: "" },
+    ];
+    return newProperty;
+  });
 };
+const getValue = (value) =>
+  value !== null && value !== undefined ? value : "";
 
 const renderCategoryButtons = (
   categories,
@@ -96,4 +120,6 @@ export {
   getValue,
   handleSingleCategoryClick,
   handleMultiCategoryClick,
+  removeContact,
+  addContact,
 };

@@ -1,12 +1,9 @@
-import { handleChange } from "../../../../utils/formUtils";
+import { handleChange, getValue } from "../../../../utils/formUtils";
 
 const ItemInfoContract = ({ property, setProperty }) => {
   if (!property) {
     return;
   }
-
-  const getValue = (value) =>
-    value !== null && value !== undefined ? value : "";
 
   return (
     <div className="my-6">
