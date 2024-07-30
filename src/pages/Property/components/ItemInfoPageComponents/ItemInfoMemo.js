@@ -101,16 +101,18 @@ const ItemInfoMemo = ({ property, setProperty }) => {
   const memos = property.comment.data.map((memo, index) => {
     return (
       <div key={index} className="comment mb-4 p-2">
-        <div className="flex justify-between items-center mb-2">
-          <div>{memo.username}</div>
-          <div>{getTimeDifference(memo.updated_at)}</div>
-          <div className="flex space-x-2">
+        <div className="flex justify-between items-center mb-4">
+          <div className="mr-3 font-bold">{memo.username}</div>
+          <div className="text-gray-500">
+            {getTimeDifference(memo.updated_at)}
+          </div>
+          <div className="flex-grow"></div>
+          <div className="flex justify-end space-x-2 text-xl ">
             <MdOutlineContentCopy
               type="button"
               onClick={() => copyValue(memo.value)}
-            >
-              복사
-            </MdOutlineContentCopy>
+              className="cursor-pointer"
+            ></MdOutlineContentCopy>
 
             <MdEdit
               type="button"
@@ -118,12 +120,13 @@ const ItemInfoMemo = ({ property, setProperty }) => {
                 openModal(index, memo.value);
                 console.log(index, memo.value);
               }}
-            >
-              수정
-            </MdEdit>
-            <FaTrashAlt type="button" onClick={() => deleteMemo(index)}>
-              삭제
-            </FaTrashAlt>
+              className="cursor-pointer"
+            ></MdEdit>
+            <FaTrashAlt
+              type="button"
+              onClick={() => deleteMemo(index)}
+              className="cursor-pointer"
+            ></FaTrashAlt>
           </div>
         </div>
         <div>{memo.value}</div>
@@ -139,7 +142,7 @@ const ItemInfoMemo = ({ property, setProperty }) => {
         </div>
         <div className="mb-2 text-sm">
           <div className="flex mb-2">
-            <div className="w-80">{memos}</div>
+            <div className="">{memos}</div>
           </div>
           {showMoreInfo && (
             <>
@@ -159,7 +162,7 @@ const ItemInfoMemo = ({ property, setProperty }) => {
                     addComment(commentInput);
                     setCommentInput(""); // 입력 필드 초기화
                   }}
-                  className="absolute bottom-2 right-2 bg-blue-500 text-white py-1 px-3 rounded"
+                  className="absolute bottom-4 right-4 bg-blue-500 text-white py-1 px-3 rounded"
                 >
                   전송
                 </button>

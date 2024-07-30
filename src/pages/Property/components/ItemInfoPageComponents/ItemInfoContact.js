@@ -14,8 +14,8 @@ const ItemInfoContact = ({ property, setProperty }) => {
     (contact, index) => {
       return (
         <div key={index} className="flex flex-col mb-2">
-          <div className="flex">
-            <div className="w-1/2">
+          <div className="flex mb-2">
+            <div className="w-1/2 pr-4">
               <input
                 type="text"
                 name="contact_type"
@@ -30,7 +30,7 @@ const ItemInfoContact = ({ property, setProperty }) => {
                 className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-full"
               />
             </div>
-            <div className="w-1/2">
+            <div className="w-1/2 pr-4">
               <input
                 type="text"
                 name="contact_name"
@@ -47,7 +47,7 @@ const ItemInfoContact = ({ property, setProperty }) => {
             </div>
           </div>
           <div className="flex">
-            <div className="w-1/2">
+            <div className="w-1/2 pr-4">
               <input
                 type="text"
                 name="contact_phone"
@@ -64,7 +64,7 @@ const ItemInfoContact = ({ property, setProperty }) => {
                 className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-full"
               />
             </div>
-            <div className="w-1/2">
+            <div className="w-1/2 pr-4">
               <input
                 type="text"
                 name="contact_note"
@@ -82,7 +82,7 @@ const ItemInfoContact = ({ property, setProperty }) => {
           </div>
           <div
             onClick={() => removeContact(index, setProperty)}
-            className="underline text-orange-500 cursor-pointer text-sm pb-2 border-b"
+            className="underline text-orange-500 cursor-pointer text-sm py-3 border-b"
           >
             삭제
           </div>
