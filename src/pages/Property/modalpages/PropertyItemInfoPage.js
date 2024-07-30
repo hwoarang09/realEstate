@@ -35,11 +35,11 @@ const PropertyItemInfoModal = ({ modalPath, closeModal }) => {
   }, [properties]);
 
   if (isLoading) {
-    return <div>Loading...</div>; // 로딩 중일 때 출력할 내용
+    return <div>Loading...</div>;
   }
 
   if (error) {
-    return <div>Error: {error.message}</div>; // 에러 발생 시 출력할 내용
+    return <div>Error: {error.message}</div>;
   }
   const handleUpdateChanges = (event) => {
     event.preventDefault();
@@ -52,12 +52,9 @@ const PropertyItemInfoModal = ({ modalPath, closeModal }) => {
     removeProperty({ id: propertyId });
     closeModal();
   };
-  console.log("propertId", propertyId);
-  console.log("properties", properties === null, properties);
-  console.log("formData", formData);
 
   return (
-    <div className=" w-[448px] h-[1200px] overflow-y-auto">
+    <div className="w-full h-[1200px] overflow-y-auto">
       <ItemInfoHeader onClick={closeModal} />
       <form className="mt-10 ">
         <div className="px-4 pt-4">
@@ -80,7 +77,7 @@ const PropertyItemInfoModal = ({ modalPath, closeModal }) => {
         </div>
         <div
           onClick={handleUpdateChanges}
-          className="fixed bottom-0 w-[448px] 
+          className="fixed bottom-0 w-full 
           flex justify-center items-center bg-blue-800 text-white text-lg py-3 cursor-pointer"
         >
           변경사항 저장

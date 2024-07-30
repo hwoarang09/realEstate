@@ -4,7 +4,8 @@ import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 import {
   renderCategoryButtons,
   handleChange,
-  getValue,
+  notNullValue,
+  parseFormInt,
 } from "../../../../utils/formUtils";
 
 const rentalTypeCategories = ["전층", "일부"];
@@ -62,12 +63,16 @@ const ItemInfoRent = ({ property, setProperty }) => {
           </div>
           <div className="w-80">
             <input
-              type="text"
+              type="number"
               name="deposit"
-              value={getValue(property.deposit)}
-              onChange={(e) =>
-                handleChange(["deposit"], e.target.value, setProperty)
-              }
+              value={notNullValue(property.deposit)}
+              onChange={(e) => {
+                handleChange(
+                  ["deposit"],
+                  parseFormInt(e.target.value),
+                  setProperty
+                );
+              }}
               className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-full"
             />
           </div>
@@ -78,11 +83,15 @@ const ItemInfoRent = ({ property, setProperty }) => {
           </div>
           <div className="w-80">
             <input
-              type="text"
+              type="number"
               name="monthly_rent"
-              value={getValue(property.monthly_rent)}
+              value={notNullValue(property.monthly_rent)}
               onChange={(e) =>
-                handleChange(["monthly_rent"], e.target.value, setProperty)
+                handleChange(
+                  ["monthly_rent"],
+                  parseFormInt(e.target.value),
+                  setProperty
+                )
               }
               className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-full"
             />
@@ -96,7 +105,7 @@ const ItemInfoRent = ({ property, setProperty }) => {
             <input
               type="text"
               name="maintenance_cost_str"
-              value={getValue(property.maintenance_cost_str)}
+              value={notNullValue(property.maintenance_cost_str)}
               onChange={(e) =>
                 handleChange(
                   ["maintenance_cost_str"],
@@ -118,7 +127,7 @@ const ItemInfoRent = ({ property, setProperty }) => {
             <input
               type="text"
               name="floor"
-              value={getValue(property.floor)}
+              value={notNullValue(property.floor)}
               onChange={(e) =>
                 handleChange(["floor"], e.target.value, setProperty)
               }
@@ -133,11 +142,15 @@ const ItemInfoRent = ({ property, setProperty }) => {
           <div className="w-80">
             <input
               required
-              type="text"
+              type="number"
               name="exclusive_area"
-              value={getValue(property.exclusive_area)}
+              value={notNullValue(property.exclusive_area)}
               onChange={(e) =>
-                handleChange(["exclusive_area"], e.target.value, setProperty)
+                handleChange(
+                  ["exclusive_area"],
+                  parseFormInt(e.target.value),
+                  setProperty
+                )
               }
               className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-full"
             />
@@ -149,11 +162,15 @@ const ItemInfoRent = ({ property, setProperty }) => {
           </div>
           <div className="w-80">
             <input
-              type="text"
+              type="number"
               name="contact_area"
-              value={getValue(property.contact_area)}
+              value={notNullValue(property.contact_area)}
               onChange={(e) =>
-                handleChange(["contact_area"], e.target.value, setProperty)
+                handleChange(
+                  ["contact_area"],
+                  parseFormInt(e.target.value),
+                  setProperty
+                )
               }
               className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-full"
             />
@@ -171,7 +188,7 @@ const ItemInfoRent = ({ property, setProperty }) => {
                 <input
                   type="text"
                   name="available_date"
-                  value={getValue(property.available_date)}
+                  value={notNullValue(property.available_date)}
                   onChange={(e) =>
                     handleChange(
                       ["available_date"],
@@ -213,11 +230,15 @@ const ItemInfoRent = ({ property, setProperty }) => {
               </div>
               <div className="flex items-center space-x-4">
                 <input
-                  type="text"
+                  type="number"
                   name="key_money"
                   value={property.key_money}
                   onChange={(e) =>
-                    handleChange(["key_money"], e.target.value, setProperty)
+                    handleChange(
+                      ["key_money"],
+                      parseFormInt(e.target.value),
+                      setProperty
+                    )
                   }
                   className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-40"
                 />

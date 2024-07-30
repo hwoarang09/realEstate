@@ -1,7 +1,7 @@
 import Button from "../../../../commonComponents/Button";
 import {
   handleChange,
-  getValue,
+  notNullValue,
   removeContact,
   addContact,
 } from "../../../../utils/formUtils";
@@ -19,7 +19,7 @@ const ItemInfoContact = ({ property, setProperty }) => {
               <input
                 type="text"
                 name="contact_type"
-                value={getValue(contact.type)}
+                value={notNullValue(contact.type)}
                 onChange={(e) =>
                   handleChange(
                     ["extra", "contact", "contactList", index, "type"],
@@ -34,7 +34,7 @@ const ItemInfoContact = ({ property, setProperty }) => {
               <input
                 type="text"
                 name="contact_name"
-                value={getValue(contact.name)}
+                value={notNullValue(contact.name)}
                 onChange={(e) =>
                   handleChange(
                     ["extra", "contact", "contactList", index, "name"],
@@ -51,7 +51,7 @@ const ItemInfoContact = ({ property, setProperty }) => {
               <input
                 type="text"
                 name="contact_phone"
-                value={getValue(
+                value={notNullValue(
                   property.extra.contact.contactList[index].phone
                 )}
                 onChange={(e) =>
@@ -68,7 +68,9 @@ const ItemInfoContact = ({ property, setProperty }) => {
               <input
                 type="text"
                 name="contact_note"
-                value={getValue(property.extra.contact.contactList[index].note)}
+                value={notNullValue(
+                  property.extra.contact.contactList[index].note
+                )}
                 onChange={(e) =>
                   handleChange(
                     ["extra", "contact", "contactList", index, "note"],
@@ -105,7 +107,7 @@ const ItemInfoContact = ({ property, setProperty }) => {
             <input
               type="text"
               name="staff_name"
-              value={getValue(property.extra.contact.staffName)}
+              value={notNullValue(property.extra.contact.staffName)}
               onChange={(e) =>
                 handleChange(
                   ["extra", "contact", "staffName"],

@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import Button from "../../../../commonComponents/Button";
 import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 import {
+  notNullValue,
   renderCategoryButtons,
   handleChange,
+  parseFormInt,
 } from "../../../../utils/formUtils";
 
 const categoriesBDHS = ["전체 가능", "부분 가능", "불가능"];
@@ -29,7 +31,6 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
     property,
     setProperty
   );
-
   const elevatorsCateBtns = renderCategoryButtons(
     categoriesExist,
     ["extra", "handicap_ele"],
@@ -59,9 +60,6 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
     setProperty
   );
 
-  const getValue = (value) =>
-    value !== null && value !== undefined ? value : "";
-
   return (
     <div className="my-6">
       <div className="mb-4">
@@ -74,7 +72,7 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
             <input
               type="text"
               name="address"
-              value={getValue(property.address)}
+              value={notNullValue(property.address)}
               onChange={(e) =>
                 handleChange(["address"], e.target.value, setProperty)
               }
@@ -92,7 +90,7 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
                 <input
                   type="text"
                   name="building_name"
-                  value={getValue(property.building_name)}
+                  value={notNullValue(property.building_name)}
                   onChange={(e) =>
                     handleChange(["building_name"], e.target.value, setProperty)
                   }
@@ -108,11 +106,15 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
                 <div>
                   지상
                   <input
-                    type="text"
+                    type="number"
                     name="max_floor"
-                    value={getValue(property.max_floor)}
+                    value={notNullValue(property.max_floor)}
                     onChange={(e) =>
-                      handleChange(["max_floor"], e.target.value, setProperty)
+                      handleChange(
+                        ["max_floor"],
+                        parseFormInt(e.target.value),
+                        setProperty
+                      )
                     }
                     className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-20 mx-2"
                   />
@@ -123,9 +125,13 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
                   <input
                     type="text"
                     name="min_floor"
-                    value={getValue(property.min_floor)}
+                    value={notNullValue(property.min_floor)}
                     onChange={(e) =>
-                      handleChange(["min_floor"], e.target.value, setProperty)
+                      handleChange(
+                        ["min_floor"],
+                        parseFormInt(e.target.value),
+                        setProperty
+                      )
                     }
                     className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-20 mx-2"
                   />
@@ -141,7 +147,7 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
                 <input
                   type="text"
                   name="completion_date"
-                  value={getValue(property.completion_date)}
+                  value={notNullValue(property.completion_date)}
                   onChange={(e) =>
                     handleChange(
                       ["completion_date"],
@@ -159,13 +165,13 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
               </div>
               <div className="w-40">
                 <input
-                  type="text"
+                  type="number"
                   name="elevator_customer"
-                  value={getValue(property.elevator_customer)}
+                  value={notNullValue(property.elevator_customer)}
                   onChange={(e) =>
                     handleChange(
                       ["elevator_customer"],
-                      e.target.value,
+                      parseFormInt(e.target.value),
                       setProperty
                     )
                   }
@@ -180,18 +186,21 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
               </div>
               <div className="">
                 <input
-                  type="text"
+                  type="number"
                   name="total_parking"
-                  value={getValue(property.total_parking)}
+                  value={notNullValue(property.total_parking)}
                   onChange={(e) =>
-                    handleChange(["total_parking"], e.target.value, setProperty)
+                    handleChange(
+                      ["total_parking"],
+                      parseFormInt(e.target.value),
+                      setProperty
+                    )
                   }
                   className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-20 mx-2"
                 />
                 대
               </div>
             </div>
-
             <div className="flex mb-2">
               <div className="text-sm flex items-center font-bold">
                 병의원 가능 여부
@@ -204,13 +213,13 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
               </div>
               <div className="">
                 <input
-                  type="text"
+                  type="number"
                   name="pt_hs_available_floor"
-                  value={getValue(property.extra.pt_hs_available_floor)}
+                  value={notNullValue(property.extra.pt_hs_available_floor)}
                   onChange={(e) =>
                     handleChange(
                       ["extra", "pt_hs_available_floor"],
-                      e.target.value,
+                      parseFormInt(e.target.value),
                       setProperty
                     )
                   }
@@ -230,7 +239,7 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
                   <input
                     type="text"
                     name="pt_hs_available_floor"
-                    value={getValue(property.extra.sm_md_open_available)}
+                    value={notNullValue(property.extra.sm_md_open_available)}
                     onChange={(e) =>
                       handleChange(
                         ["extra", "sm_md_open_available"],
@@ -285,7 +294,7 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
           rounded
           outline
           className="mb-4 flex justify-between py-0.5 px-1"
-          type="button" // 버튼의 기본 타입을 button으로 설정하여 submit 방지
+          type="button"
           onClick={() => setShowMoreInfo(!showMoreInfo)}
         >
           {showMoreInfo ? (

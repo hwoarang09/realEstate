@@ -4,7 +4,7 @@ import "../../../styles/index.css";
 import { Link } from "react-router-dom";
 import useModal from "../../../hooks/use-modal";
 import { useLocation } from "react-router-dom";
-import { useFetchListsQuery } from "../../../store";
+import { useFetchPropertiesQuery } from "../../../store";
 
 const PropertyMenu = ({ add }) => {
   const { showModal } = useModal({ caller: "PropertyMenu" });
@@ -14,7 +14,7 @@ const PropertyMenu = ({ add }) => {
     data: properties = [],
     error,
     isLoading,
-  } = useFetchListsQuery({
+  } = useFetchPropertiesQuery({
     is_verified: true,
     page: 1,
     limit: 1,
@@ -37,7 +37,6 @@ const PropertyMenu = ({ add }) => {
     const isSelected = location.pathname === link.path;
     const selectedClass = isSelected ? activeClassName : "";
 
-    console.log(selectedClass);
     return (
       <div
         key={link.label}

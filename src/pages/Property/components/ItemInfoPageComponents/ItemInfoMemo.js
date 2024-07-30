@@ -1,4 +1,3 @@
-// import { getValue } from "../../../../utils/formUtils";
 import React, { useState } from "react";
 import Button from "../../../../commonComponents/Button";
 import { FaChevronUp, FaChevronDown } from "react-icons/fa";
@@ -7,6 +6,11 @@ import { MdOutlineContentCopy } from "react-icons/md";
 import { MdEdit } from "react-icons/md";
 import { FaTrashAlt } from "react-icons/fa";
 import SubModal from "../../../../commonComponents/SubModal";
+import {
+  useRemoveCommentMutation,
+  useUpdateCommentMutation,
+  useAddCommentMutation,
+} from "../../../../store";
 
 const getTimeDifference = (timestamp) => {
   const date = new Date(timestamp);
@@ -33,10 +37,13 @@ const ItemInfoMemo = ({ property, setProperty }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentMemoIndex, setCurrentMemoIndex] = useState(null);
   const [currentMemoValue, setCurrentMemoValue] = useState("");
+  const [removeComment] = useRemoveCommentMutation();
+  const [addComment] = useAddCommentMutation();
+  const [updateComment] = useUpdateCommentMutation();
+
   if (!property) {
     return;
   }
-  console.log("property.comment.data", property.comment.data);
 
   const openModal = (index, value) => {
     console.log("in openModal", index, value);
@@ -49,13 +56,19 @@ const ItemInfoMemo = ({ property, setProperty }) => {
     setIsModalOpen(false);
   };
 
-  const saveMemo = (newValue) => {
+  const saveMemo = (index, value) => {
+    //화면만
     setProperty((prevProperty) => {
       const newProperty = _.cloneDeep(prevProperty);
-      newProperty.comment.data[currentMemoIndex].value = newValue;
-      newProperty.comment.data[currentMemoIndex].updated_at =
-        new Date().toISOString();
+      newProperty.comment.data[index].value = value;
+      newProperty.comment.data[index].updated_at = new Date().toISOString();
       return newProperty;
+    });
+    //실제 업데이트
+    updateComment({
+      resource_id: property.id,
+      comment_id: property.comment.data[index].id,
+      value: value,
     });
     closeModal();
   };
@@ -65,19 +78,26 @@ const ItemInfoMemo = ({ property, setProperty }) => {
   };
 
   const deleteMemo = (index) => {
+    //화면에만 반영...서버에는 반영 안됨
+
     setProperty((prevProperty) => {
       const newProperty = _.cloneDeep(prevProperty);
+
       newProperty.comment.data = newProperty.comment.data.filter(
         (_, i) => i !== index
       );
       newProperty.comment.count -= 1;
       return newProperty;
     });
+
+    // 서버에 반영
+    removeComment({
+      resource_id: property.id,
+      comment_id: property.comment.data[index].id,
+    });
   };
-  if (!property) {
-    return;
-  }
-  const addComment = () => {
+
+  const addCommentHandle = () => {
     const newComment = {
       id: Date.now(),
       value: commentInput,
@@ -86,6 +106,7 @@ const ItemInfoMemo = ({ property, setProperty }) => {
       is_editable: true,
     };
 
+    //화면에 실시간 반영만함... 서버에는 반영 안됨
     setProperty((prevProperty) => {
       const newProperty = _.cloneDeep(prevProperty);
       newProperty.comment.data.push(newComment);
@@ -93,10 +114,14 @@ const ItemInfoMemo = ({ property, setProperty }) => {
       return newProperty;
     });
 
+    addComment({
+      resource_id: property.id,
+      resource_type: "property",
+      value: commentInput,
+    });
+
     setCommentInput("");
   };
-
-  console.log("CommentList rendered");
 
   const memos = property.comment.data.map((memo, index) => {
     return (
@@ -159,7 +184,7 @@ const ItemInfoMemo = ({ property, setProperty }) => {
                 <button
                   type="button"
                   onClick={() => {
-                    addComment(commentInput);
+                    addCommentHandle(commentInput);
                     setCommentInput(""); // 입력 필드 초기화
                   }}
                   className="absolute bottom-4 right-4 bg-blue-500 text-white py-1 px-3 rounded"
@@ -201,6 +226,7 @@ const ItemInfoMemo = ({ property, setProperty }) => {
         isOpen={isModalOpen}
         onClose={closeModal}
         onSave={saveMemo}
+        index={currentMemoIndex}
         initialValue={currentMemoValue}
       />
     </div>

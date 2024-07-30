@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import Button from "./Button";
-function SubModal({ isOpen, onClose, onSave, initialValue }) {
+function SubModal({ isOpen, onClose, onSave, index, initialValue }) {
   const [value, setValue] = useState(initialValue);
   useEffect(() => {
     setValue(initialValue);
@@ -12,7 +12,7 @@ function SubModal({ isOpen, onClose, onSave, initialValue }) {
   console.log("in SubModal ini", initialValue);
   console.log("in SubModal val", value);
   return ReactDOM.createPortal(
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center w-[448px] z-50">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center w z-50">
       <div
         onClick={onClose}
         className="fixed inset-0 bg-green-300 opacity-0 "
@@ -29,7 +29,7 @@ function SubModal({ isOpen, onClose, onSave, initialValue }) {
             primary
             rounded
             className="mr-2 py-0.5"
-            onClick={() => onSave(value)}
+            onClick={() => onSave(index, value)}
           >
             저장
           </Button>

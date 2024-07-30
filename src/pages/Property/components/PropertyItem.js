@@ -12,7 +12,7 @@ function PropertyItem({ property, showModal }) {
   };
   const cateArray = ["치과", "미용", "감기", "통증", "한의원"];
   let content;
-  if (property.available_md_name_fixed === null) {
+  if (property.available_md_name === null) {
     content = cateArray.map((cate) => {
       return (
         <span
@@ -25,7 +25,7 @@ function PropertyItem({ property, showModal }) {
     });
   } else {
     content = cateArray.map((cate) => {
-      if (property.available_md_name_fixed.includes(cate)) {
+      if (property.available_md_name.includes(cate)) {
         return (
           <span
             key={`${cate}cate${property.id}`}

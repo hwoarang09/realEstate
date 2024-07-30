@@ -33,6 +33,8 @@ const handleSingleCategoryClick = (cate, cateList, setFunction) => {
 const handleChange = (keyList, value, setFunction) => {
   setFunction((prevProperty) => {
     const newProperty = { ...prevProperty };
+    console.log("in handleChange, value : ", value);
+    console.log("in handleChange, value : ", typeof value);
     let target = newProperty;
     for (let i = 0; i < keyList.length - 1; i++) {
       if (Array.isArray(target[keyList[i]])) {
@@ -71,9 +73,15 @@ const addContact = (setFunction) => {
     return newProperty;
   });
 };
-const getValue = (value) =>
+const notNullValue = (value) =>
   value !== null && value !== undefined ? value : "";
 
+const parseFormInt = (value) => {
+  console.log("in parseFormInt ", value, typeof value);
+  if (!value) return null;
+  else if (value === "-") return value;
+  else return parseInt(value);
+};
 const renderCategoryButtons = (
   categories,
   cateJsonKeyList,
@@ -89,12 +97,15 @@ const renderCategoryButtons = (
 
   return categories.map((cate) => {
     let isSelected;
+
     if (chkSingleMulti === "single") {
       isSelected =
         cateJsonKeyList.reduce((obj, key) => obj[key], property) === cate;
     } else if (chkSingleMulti === "multi") {
       isSelected = cateJsonKeyList
-        .reduce((obj, key) => obj[key], property)
+        .reduce((obj, key) => {
+          return obj[key];
+        }, property)
         .includes(cate);
     }
     return (
@@ -117,7 +128,8 @@ const renderCategoryButtons = (
 export {
   renderCategoryButtons,
   handleChange,
-  getValue,
+  notNullValue,
+  parseFormInt,
   handleSingleCategoryClick,
   handleMultiCategoryClick,
   removeContact,

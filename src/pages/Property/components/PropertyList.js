@@ -18,7 +18,6 @@ function PropertyList() {
     return <div>Error: {error.message}</div>; // 에러 발생 시 출력할 내용
   }
 
-  console.log("property list 2, properties ", properties);
   const renderedProperties = properties.map((property) => {
     return (
       <PropertyItem

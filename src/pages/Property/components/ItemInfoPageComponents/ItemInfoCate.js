@@ -11,16 +11,23 @@ const ItemInfoCate = ({ property, setProperty }) => {
     return;
   }
 
+  const opVar = property?.available_md_name
+    ? "available_md_name"
+    : "available_md_name_fixed";
+  const recVar = property?.recommended_md_name
+    ? "recommended_md_name"
+    : "recommended_md_name_fixed";
+
   const openableFilter = renderCategoryButtons(
     cateArray,
-    ["available_md_name_fixed"],
+    [opVar],
     "multi",
     property,
     setProperty
   );
   const recommendedFilter = renderCategoryButtons(
     cateArray,
-    ["recommended_md_name_fixed"],
+    [recVar],
     "multi",
     property,
     setProperty

@@ -7,7 +7,7 @@ import { FaChevronLeft } from "react-icons/fa";
 //필터기능은 정규계약 후에 추가해야함
 const ItemInfoHeader = ({ onClick }) => {
   return (
-    <div className="fixed top-0 left-0  w-[448px] border-gray-300 bg-white z-10">
+    <div className="fixed top-0 left-0  w border-gray-300 bg-white z-10">
       <div
         onClick={onClick}
         className="hover:bg-gray-200 w-16 p-4 rounded cursor-pointer flex justify-center items-center"

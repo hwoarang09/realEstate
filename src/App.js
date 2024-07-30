@@ -1,6 +1,5 @@
 import BookmarkPage from "./pages/Property/pages/BookmarkPage";
 import PropertyPage from "./pages/Property/pages/PropertyPage";
-
 import ModalWrapper from "./pages/Property/components/ModalWrapper";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./pages/Property/pages/Root";
@@ -15,22 +14,21 @@ const router = createBrowserRouter([
         element: <PropertyPage />,
       },
       {
-        path: "/property",
+        path: "property",
         element: <PropertyPage />,
-        children: [
-          {
-            path: ":id",
-            element: <ModalWrapper />,
-          },
-        ],
       },
       {
-        path: "/bookmark",
+        path: "property/:id",
+        element: <ModalWrapper />,
+      },
+      {
+        path: "bookmark",
         element: <BookmarkPage />,
       },
     ],
   },
 ]);
+
 function App() {
   return <RouterProvider router={router} />;
 }

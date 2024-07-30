@@ -1,4 +1,4 @@
-import { handleChange, getValue } from "../../../../utils/formUtils";
+import { handleChange, notNullValue } from "../../../../utils/formUtils";
 
 const ItemInfoContract = ({ property, setProperty }) => {
   if (!property) {
@@ -15,7 +15,7 @@ const ItemInfoContract = ({ property, setProperty }) => {
               <input
                 type="checkbox"
                 name="is_contract_completed"
-                checked={getValue(property.is_contract_completed)}
+                checked={notNullValue(property.is_contract_completed)}
                 onChange={(e) =>
                   handleChange(
                     ["is_contract_completed"],
@@ -38,7 +38,7 @@ const ItemInfoContract = ({ property, setProperty }) => {
               <input
                 type="checkbox"
                 name="is_contract_completed_by_own"
-                checked={getValue(property.is_contract_completed_by_own)}
+                checked={notNullValue(property.is_contract_completed_by_own)}
                 onChange={(e) =>
                   handleChange(
                     ["is_contract_completed_by_own"],

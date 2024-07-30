@@ -2,18 +2,18 @@ import { configureStore } from "@reduxjs/toolkit";
 import { modalReducer, openModal, closeModal } from "./slices/modalSlice";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { propertyApi } from "./apis/propertyApi";
-import { listApi } from "./apis/listApi";
+import { commentApi } from "./apis/commentApi";
 
 const store = configureStore({
   reducer: {
     modals: modalReducer,
     [propertyApi.reducerPath]: propertyApi.reducer,
-    [listApi.reducerPath]: listApi.reducer,
+    [commentApi.reducerPath]: commentApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
       .concat(propertyApi.middleware)
-      .concat(listApi.middleware),
+      .concat(commentApi.middleware),
 });
 setupListeners(store.dispatch);
 
@@ -27,8 +27,8 @@ export {
 } from "./apis/propertyApi";
 
 export {
-  useFetchListsQuery,
-  useAddListMutation,
-  useRemoveListMutation,
-  useUpdateListMutation,
-} from "./apis/listApi";
+  useFetchCommentsQuery,
+  useAddCommentMutation,
+  useRemoveCommentMutation,
+  useUpdateCommentMutation,
+} from "./apis/commentApi";
