@@ -4,8 +4,8 @@ import { faker } from "@faker-js/faker";
 const apiKey = process.env.REACT_APP_AUTH_TOKEN_ADMIN;
 const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
 
-const propertyApi = createApi({
-  reducerPath: "property",
+const api = createApi({
+  reducerPath: "api",
   baseQuery: fetchBaseQuery({
     baseUrl: apiBaseUrl,
     prepareHeaders: (headers) => {
@@ -13,12 +13,12 @@ const propertyApi = createApi({
       return headers;
     },
   }),
-  tagTypes: ["Property", "Test"],
+  tagTypes: ["Property", "Comment"],
   endpoints(builder) {
     return {
       updateProperty: builder.mutation({
         invalidatesTags: (result, error, arg) => {
-          return [{ type: "Property", id: parseInt(arg.id) }, "Test"];
+          return [{ type: "Property", id: parseInt(arg.id) }];
         },
         query: ({ id, ...patch }) => ({
           url: `/property/${id}`,
@@ -28,7 +28,7 @@ const propertyApi = createApi({
       }),
       removeProperty: builder.mutation({
         invalidatesTags: (result, error, arg) => {
-          return [{ type: "Property", id: arg.id }, "Test"];
+          return [{ type: "Property", id: arg.id }];
         },
         query: (property) => ({
           url: `/property/${property.id}`,
@@ -37,7 +37,7 @@ const propertyApi = createApi({
       }),
       addProperty: builder.mutation({
         invalidatesTags: (result, error, arg) => {
-          return [{ type: "Property", id: arg.id }, "Test"];
+          return [{ type: "Property", id: arg.id }];
         },
         query: (property) => ({
           url: "/property",
@@ -48,17 +48,13 @@ const propertyApi = createApi({
           },
         }),
       }),
-
       fetchProperties: builder.query({
         providesTags: (result, error, arg) => {
           const tags = result.contents.map((property) => ({
             type: "Property",
             id: property.id,
           }));
-
-          console.log("in fetchProperties, arg:", arg);
-          console.log("in fetchProperties, tags:", tags);
-          return [...tags, "Test"];
+          return [...tags];
         },
         query: ({ page, is_verified, limit }) => ({
           url: "/property",
@@ -68,15 +64,65 @@ const propertyApi = createApi({
       }),
       fetchPropertyById: builder.query({
         providesTags: (result, error, arg) => {
-          console.log("in fetchPropertyById, arg:", arg);
-          console.log("in fetchPropertyById, tags:", {
-            type: "Property",
-            id: parseInt(arg),
-          });
-          return [{ type: "Property", id: parseInt(arg) }, "Test"];
+          return [
+            { type: "Property", id: parseInt(arg) },
+            { type: "CommentAll", id: parseInt(arg) },
+          ];
         },
         query: (id) => ({
           url: `/property/${id}`,
+          method: "GET",
+        }),
+      }),
+
+      updateComment: builder.mutation({
+        invalidatesTags: (result, error, arg) => {
+          return [
+            { type: "Comment", id: parseInt(arg.comment_id) },
+            { type: "CommentAll", id: parseInt(arg.resource_id) },
+          ];
+        },
+        query: ({ resource_id, comment_id, value }) => ({
+          url: `/comment/${comment_id}`,
+          method: "PATCH",
+          body: { value },
+        }),
+      }),
+      removeComment: builder.mutation({
+        invalidatesTags: (result, error, arg) => {
+          return [
+            { type: "Comment", id: parseInt(arg.comment_id) },
+            { type: "CommentAll", id: parseInt(arg.resource_id) },
+          ];
+        },
+        query: ({ resource_id, comment_id }) => ({
+          url: `/comment/${comment_id}`,
+          method: "DELETE",
+        }),
+      }),
+      addComment: builder.mutation({
+        invalidatesTags: (result, error, arg) => {
+          return [{ type: "CommentAll", id: parseInt(arg.resource_id) }];
+        },
+        query: ({ resource_type, resource_id, value }) => ({
+          url: "/comment",
+          method: "POST",
+          params: { resource_type, resource_id },
+          body: { value },
+        }),
+      }),
+      fetchComments: builder.query({
+        providesTags: (result, error, arg) => {
+          const tags = result.contents.data.map((comment) => ({
+            type: "Comment",
+            id: comment.id,
+          }));
+          tags.push({ type: "Property", id: arg.resource_id });
+          return tags;
+        },
+        query: ({ resource_type, resource_id }) => ({
+          url: "/comment",
+          params: { resource_type, resource_id },
           method: "GET",
         }),
       }),
@@ -90,5 +136,9 @@ export const {
   useAddPropertyMutation,
   useRemovePropertyMutation,
   useUpdatePropertyMutation,
-} = propertyApi;
-export { propertyApi };
+  useFetchCommentsQuery,
+  useAddCommentMutation,
+  useRemoveCommentMutation,
+  useUpdateCommentMutation,
+} = api;
+export { api };

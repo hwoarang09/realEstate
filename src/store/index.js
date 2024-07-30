@@ -1,19 +1,18 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { modalReducer, openModal, closeModal } from "./slices/modalSlice";
 import { setupListeners } from "@reduxjs/toolkit/query";
-import { propertyApi } from "./apis/propertyApi";
-import { commentApi } from "./apis/commentApi";
+import { api} from "./apis/propertyApi";
+// import { commentApi } from "./apis/commentApi";
 
 const store = configureStore({
   reducer: {
     modals: modalReducer,
-    [propertyApi.reducerPath]: propertyApi.reducer,
-    [commentApi.reducerPath]: commentApi.reducer,
+    [api.reducerPath]: api.reducer,
+    // [commentApi.reducerPath]: commentApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware()
-      .concat(propertyApi.middleware)
-      .concat(commentApi.middleware),
+    getDefaultMiddleware().concat(api.middleware),
+  // .concat(commentApi.middleware),
 });
 setupListeners(store.dispatch);
 
@@ -24,11 +23,15 @@ export {
   useAddPropertyMutation,
   useRemovePropertyMutation,
   useUpdatePropertyMutation,
-} from "./apis/propertyApi";
-
-export {
   useFetchCommentsQuery,
   useAddCommentMutation,
   useRemoveCommentMutation,
   useUpdateCommentMutation,
-} from "./apis/commentApi";
+} from "./apis/propertyApi";
+
+// export {
+//   useFetchCommentsQuery,
+//   useAddCommentMutation,
+//   useRemoveCommentMutation,
+//   useUpdateCommentMutation,
+// } from "./apis/commentApi";
