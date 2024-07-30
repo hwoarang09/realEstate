@@ -13,11 +13,9 @@ import ItemInfoImages from "../components/ItemInfoPageComponents/ItemInfoImages"
 import ItemInfoMemo from "../components/ItemInfoPageComponents/ItemInfoMemo";
 
 import {
-  useFetchItemsQuery,
-  useRemoveItemMutation,
-  useRemoveListMutation,
-  useUpdateItemMutation,
-  useUpdateListMutation,
+  useFetchPropertyByIdQuery,
+  useRemovePropertyMutation,
+  useUpdatePropertyMutation,
 } from "../../../store";
 
 const PropertyItemInfoModal = ({ modalPath, closeModal }) => {
@@ -25,40 +23,17 @@ const PropertyItemInfoModal = ({ modalPath, closeModal }) => {
   const propertyId = modalPath.split("property/")[1];
 
   const {
-    data: properties = [],
+    data: properties,
     error,
     isLoading,
-  } = useFetchItemsQuery({ id: propertyId });
-  const [removeItem] = useRemoveItemMutation();
-  const [removeList] = useRemoveListMutation();
-  const [updateItem] = useUpdateItemMutation();
-  const [updateList] = useUpdateListMutation();
+  } = useFetchPropertyByIdQuery(propertyId);
+  const [removeProperty] = useRemovePropertyMutation();
 
+  const [updateProperty] = useUpdatePropertyMutation();
   useEffect(() => {
-    if (properties.length > 0) {
-      const property = properties.find(
-        (propert) => Number(propert.id) === Number(propertyId)
-      );
-      if (property) {
-        setFormData(property);
-      }
-    }
-  }, [properties, modalPath, propertyId]);
+    setFormData(properties?.contents);
+  }, [properties]);
 
-  const handleUpdateChanges = (event) => {
-    event.preventDefault();
-    updateItem(formData);
-    updateList(formData);
-    closeModal();
-  };
-
-  const handleDeleteProperty = (event) => {
-    event.preventDefault();
-    removeItem({ id: propertyId });
-    removeList({ id: propertyId });
-
-    closeModal();
-  };
   if (isLoading) {
     return <div>Loading...</div>; // 로딩 중일 때 출력할 내용
   }
@@ -66,8 +41,21 @@ const PropertyItemInfoModal = ({ modalPath, closeModal }) => {
   if (error) {
     return <div>Error: {error.message}</div>; // 에러 발생 시 출력할 내용
   }
+  const handleUpdateChanges = (event) => {
+    event.preventDefault();
+    updateProperty(formData);
+    closeModal();
+  };
 
+  const handleDeleteProperty = (event) => {
+    event.preventDefault();
+    removeProperty({ id: propertyId });
+    closeModal();
+  };
+  console.log("propertId", propertyId);
+  console.log("properties", properties === null, properties);
   console.log("formData", formData);
+
   return (
     <div className=" w-[448px] h-[1200px] overflow-y-auto">
       <ItemInfoHeader onClick={closeModal} />

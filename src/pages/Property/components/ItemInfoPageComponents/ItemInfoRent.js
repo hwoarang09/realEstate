@@ -4,6 +4,7 @@ import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 import {
   renderCategoryButtons,
   handleChange,
+  getValue,
 } from "../../../../utils/formUtils";
 
 const rentalTypeCategories = ["전층", "일부"];
@@ -63,7 +64,7 @@ const ItemInfoRent = ({ property, setProperty }) => {
             <input
               type="text"
               name="deposit"
-              value={property.deposit}
+              value={getValue(property.deposit)}
               onChange={(e) =>
                 handleChange(["deposit"], e.target.value, setProperty)
               }
@@ -79,7 +80,7 @@ const ItemInfoRent = ({ property, setProperty }) => {
             <input
               type="text"
               name="monthly_rent"
-              value={property.monthly_rent}
+              value={getValue(property.monthly_rent)}
               onChange={(e) =>
                 handleChange(["monthly_rent"], e.target.value, setProperty)
               }
@@ -95,7 +96,7 @@ const ItemInfoRent = ({ property, setProperty }) => {
             <input
               type="text"
               name="maintenance_cost_str"
-              value={property.maintenance_cost_str}
+              value={getValue(property.maintenance_cost_str)}
               onChange={(e) =>
                 handleChange(
                   ["maintenance_cost_str"],
@@ -117,7 +118,7 @@ const ItemInfoRent = ({ property, setProperty }) => {
             <input
               type="text"
               name="floor"
-              value={property.floor}
+              value={getValue(property.floor)}
               onChange={(e) =>
                 handleChange(["floor"], e.target.value, setProperty)
               }
@@ -134,7 +135,7 @@ const ItemInfoRent = ({ property, setProperty }) => {
               required
               type="text"
               name="exclusive_area"
-              value={property.exclusive_area}
+              value={getValue(property.exclusive_area)}
               onChange={(e) =>
                 handleChange(["exclusive_area"], e.target.value, setProperty)
               }
@@ -150,7 +151,7 @@ const ItemInfoRent = ({ property, setProperty }) => {
             <input
               type="text"
               name="contact_area"
-              value={property.contact_area}
+              value={getValue(property.contact_area)}
               onChange={(e) =>
                 handleChange(["contact_area"], e.target.value, setProperty)
               }
@@ -170,7 +171,7 @@ const ItemInfoRent = ({ property, setProperty }) => {
                 <input
                   type="text"
                   name="available_date"
-                  value={property.available_date}
+                  value={getValue(property.available_date)}
                   onChange={(e) =>
                     handleChange(
                       ["available_date"],

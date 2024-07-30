@@ -3,23 +3,17 @@ import { FaRegBookmark } from "react-icons/fa";
 import { IoMdDownload } from "react-icons/io";
 
 function PropertyItem({ property, showModal }) {
+  if (!property) return null;
+
   const modalPath = "/property/" + property.id;
   const selectedProperty = property;
   const handleClick = ({ modalPath, selectedProperty }) => {
     showModal({ modalPath, selectedProperty });
   };
   const cateArray = ["치과", "미용", "감기", "통증", "한의원"];
-  const content = cateArray.map((cate) => {
-    if (property.available_md_name_fixed.includes(cate)) {
-      return (
-        <span
-          key={`${cate}cate${property.id}`}
-          className="text-sm font-bold mr-3"
-        >
-          {cate}
-        </span>
-      );
-    } else
+  let content;
+  if (property.available_md_name_fixed === null) {
+    content = cateArray.map((cate) => {
       return (
         <span
           key={`${cate}cate${property.id}`}
@@ -28,7 +22,29 @@ function PropertyItem({ property, showModal }) {
           {cate}
         </span>
       );
-  });
+    });
+  } else {
+    content = cateArray.map((cate) => {
+      if (property.available_md_name_fixed.includes(cate)) {
+        return (
+          <span
+            key={`${cate}cate${property.id}`}
+            className="text-sm font-bold mr-3"
+          >
+            {cate}
+          </span>
+        );
+      } else
+        return (
+          <span
+            key={`${cate}cate${property.id}`}
+            className="text-sm font-bold mr-3 text-gray-300"
+          >
+            {cate}
+          </span>
+        );
+    });
+  }
   return (
     <div className="bg-white p-1 shadow-md rounded pb-2 border-b">
       <img

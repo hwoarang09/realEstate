@@ -1,14 +1,14 @@
 import PropertyItem from "../components/PropertyItem";
 import useModal from "../../../hooks/use-modal";
-import { useFetchListsQuery } from "../../../store";
+import { useFetchPropertiesQuery } from "../../../store";
 
 function PropertyList() {
   const { showModal } = useModal({ caller: "PropertyList" });
   const {
-    data: properties = [],
+    data: { contents: properties = [] } = {},
     error,
     isLoading,
-  } = useFetchListsQuery({ pageNum: 1 });
+  } = useFetchPropertiesQuery({ is_verified: true, page: 1, limit: 10 });
 
   if (isLoading) {
     return <div>Loading...</div>; // 로딩 중일 때 출력할 내용

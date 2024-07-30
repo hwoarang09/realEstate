@@ -1,29 +1,30 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { modalReducer, openModal, closeModal } from "./slices/modalSlice";
 import { setupListeners } from "@reduxjs/toolkit/query";
-import { itemApi } from "./apis/itemApi";
+import { propertyApi } from "./apis/propertyApi";
 import { listApi } from "./apis/listApi";
 
 const store = configureStore({
   reducer: {
     modals: modalReducer,
-    [itemApi.reducerPath]: itemApi.reducer,
+    [propertyApi.reducerPath]: propertyApi.reducer,
     [listApi.reducerPath]: listApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
-      .concat(itemApi.middleware)
+      .concat(propertyApi.middleware)
       .concat(listApi.middleware),
 });
 setupListeners(store.dispatch);
 
 export { store, modalReducer, openModal, closeModal };
 export {
-  useFetchItemsQuery,
-  useAddItemMutation,
-  useRemoveItemMutation,
-  useUpdateItemMutation,
-} from "./apis/itemApi";
+  useFetchPropertiesQuery,
+  useFetchPropertyByIdQuery,
+  useAddPropertyMutation,
+  useRemovePropertyMutation,
+  useUpdatePropertyMutation,
+} from "./apis/propertyApi";
 
 export {
   useFetchListsQuery,

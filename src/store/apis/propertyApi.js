@@ -1,23 +1,29 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { faker } from "@faker-js/faker";
+// import pause from "../../utils/pause";
 
 const apiKey = process.env.REACT_APP_AUTH_TOKEN_ADMIN;
 const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
 
-const listApi = createApi({
-  reducerPath: "list",
+const propertyApi = createApi({
+  reducerPath: "property",
   baseQuery: fetchBaseQuery({
-    baseUrl: apiBaseUrl,
+    baseUrl: process.env.REACT_APP_API_BASE_URL,
     prepareHeaders: (headers) => {
       headers.set("Authorization", apiKey);
+      console.log("Headers prepared:", headers);
       return headers;
     },
+    // fetchFn: async (...args) => {
+    //   await pause(1000);
+    //   return fetch(...args);
+    // },
   }),
   endpoints(builder) {
     return {
-      updateList: builder.mutation({
+      updateProperty: builder.mutation({
         invalidatesTags: (result, error, arg) => {
-          return [{ type: "list", id: arg.id }];
+          return [{ type: "property", id: arg.id }];
         },
         query: ({ id, ...patch }) => ({
           url: `/property/${id}`,
@@ -25,40 +31,45 @@ const listApi = createApi({
           body: patch,
         }),
       }),
-      removeList: builder.mutation({
+      removeProperty: builder.mutation({
         invalidatesTags: (result, error, arg) => {
-          console.log("arg:", arg);
-          return [{ type: "list", id: arg.id }];
+          console.log("in propertyApi, removeProperty, arg : ", arg);
+
+          return [{ type: "property", id: arg.id }];
         },
-        query: (list) => {
+        query: (property) => {
           return {
-            url: `/property/${list.id}`,
+            url: `/property/${property.id}`,
             method: "DELETE",
           };
         },
       }),
-      addList: builder.mutation({
+      addProperty: builder.mutation({
         invalidatesTags: (result, error, arg) => {
-          return [{ type: "list", id: arg.id }];
+          console.log("in propertyApi, addProperty, arg : ", arg);
+          return [{ type: "property", id: arg.id }];
         },
-        query: (user) => {
+        query: (property) => {
           return {
             url: "/property",
             method: "POST",
             body: {
-              userId: user.id,
+              propertyId: property.id,
               title: faker.commerce.productName(),
             },
           };
         },
       }),
-      fetchLists: builder.query({
+
+      fetchProperties: builder.query({
         providesTags: (result, error, arg) => {
-          console.log("result:", result);
-          const tags = result.contents.map((list) => {
-            return { type: "list", id: list.id };
+          const tags = result.contents.map((property) => {
+            return { type: "property", id: property.id };
           });
-          tags.push({ type: "listPage", id: arg.page });
+          tags.push({ type: "property", id: arg.id });
+          console.log("in propertyApi, fetchProperties, arg : ", arg);
+          console.log("in propertyApi, fetchProperties, tags : ", tags);
+
           return tags;
         },
         query: ({ page, is_verified, limit }) => {
@@ -78,14 +89,18 @@ const listApi = createApi({
           };
         },
       }),
+      fetchPropertyById: builder.query({
+        query: (id) => `/property/${id}`,
+      }),
     };
   },
 });
 
 export const {
-  useFetchListsQuery,
-  useAddListMutation,
-  useRemoveListMutation,
-  useUpdateListMutation,
-} = listApi;
-export { listApi };
+  useFetchPropertiesQuery,
+  useFetchPropertyByIdQuery,
+  useAddPropertyMutation,
+  useRemovePropertyMutation,
+  useUpdatePropertyMutation,
+} = propertyApi;
+export { propertyApi };

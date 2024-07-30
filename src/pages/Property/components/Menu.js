@@ -4,11 +4,24 @@ import "../../../styles/index.css";
 import { Link } from "react-router-dom";
 import useModal from "../../../hooks/use-modal";
 import { useLocation } from "react-router-dom";
+import { useFetchListsQuery } from "../../../store";
 
 const PropertyMenu = ({ add }) => {
   const { showModal } = useModal({ caller: "PropertyMenu" });
   const activeClassName = "font-bold text-blue-700";
   const location = useLocation();
+  const {
+    data: properties = [],
+    error,
+    isLoading,
+  } = useFetchListsQuery({
+    is_verified: true,
+    page: 1,
+    limit: 1,
+  });
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error occurred: {error.message}</div>;
 
   const handleClick = () => {
     const modalPath = "/property/add";
@@ -55,8 +68,11 @@ const PropertyMenu = ({ add }) => {
         </div>
       </div>
       <div className="px-4 pb-3.5 text-sm">
-        총 <span className="font-bold">4382건 중 </span>{" "}
-        <span className="text-blue-800 font-bold">3503</span>건 표시중
+        총 <span className="font-bold">{properties.count.total}건 중 </span>{" "}
+        <span className="text-blue-800 font-bold">
+          {properties.count.filtered}
+        </span>
+        건 표시중
       </div>
     </div>
   );
