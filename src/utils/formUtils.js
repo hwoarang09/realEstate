@@ -96,18 +96,27 @@ const renderCategoryButtons = (
       : handleMultiCategoryClick;
 
   return categories.map((cate) => {
-    let isSelected;
+    let isSelected = false;
 
     if (chkSingleMulti === "single") {
-      isSelected =
-        cateJsonKeyList.reduce((obj, key) => obj[key], property) === cate;
+      const result = cateJsonKeyList.reduce((obj, key) => {
+        if (obj === null || obj === false) {
+          return false;
+        }
+        return obj[key];
+      }, property);
+      isSelected = result === cate;
     } else if (chkSingleMulti === "multi") {
-      isSelected = cateJsonKeyList
-        .reduce((obj, key) => {
-          return obj[key];
-        }, property)
-        .includes(cate);
+      const result = cateJsonKeyList.reduce((obj, key) => {
+        if (obj === null || obj === false) {
+          return false;
+        }
+        return obj[key];
+      }, property);
+      isSelected = Array.isArray(result) && result.includes(cate);
     }
+    
+    
     return (
       <div key={cate}>
         <Button

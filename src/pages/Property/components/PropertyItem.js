@@ -85,19 +85,25 @@ function PropertyItem({ property, showModal }) {
             <span className="text-gray-400 font-bold">보 </span>
             {Number(property.deposit) > 10000
               ? `${Number(property.deposit) / 10000}억원`
-              : `${property.deposit} 만원`}
+              : `${property.deposit === null ? "" : property.deposit} 만원`}
           </div>
           <div className="flex-grow text-center ">
             <span className="text-gray-400 font-bold">임 </span>
             {Number(property.monthly_rent) > 10000
               ? `${Number(property.monthly_rent) / 10000}억원`
-              : `${property.monthly_rent} 만원`}
+              : `${
+                  property.monthly_rent === null ? "" : property.monthly_rent
+                } 만원`}
           </div>
           <div className="flex-grow text-right">
             <span className="text-gray-400 font-bold">관 </span>
             {Number(property.maintenance_cost) > 10000
               ? `${Number(property.maintenance_cost) / 10000}억원`
-              : `${property.maintenance_cost} 만원`}
+              : `${
+                  property.maintenance_cost === null
+                    ? ""
+                    : property.maintenance_cost
+                } 만원`}
           </div>
         </div>
         <div className="mt-1.5 mb-2">{content}</div>
