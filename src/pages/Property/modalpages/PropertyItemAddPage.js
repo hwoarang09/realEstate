@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "../../../commonComponents/Button";
 import "../../../styles/index.css";
+// import "../../../styles/globals.css";
 
 const PropertyAddModal = ({ closeModal }) => {
   return (

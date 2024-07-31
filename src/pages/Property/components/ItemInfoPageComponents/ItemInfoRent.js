@@ -122,7 +122,7 @@ const ItemInfoRent = ({ property, setProperty }) => {
             임대층<span className="text-red-500 font-bold text-xl">*</span>
           </div>
           <div className="flex items-center space-x-4">
-            <div className="flex">{rentalTypeBtns}</div>
+            <div className="flex w-32">{rentalTypeBtns}</div>
 
             <input
               type="text"
@@ -131,7 +131,7 @@ const ItemInfoRent = ({ property, setProperty }) => {
               onChange={(e) =>
                 handleChange(["floor"], e.target.value, setProperty)
               }
-              className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-40"
+              className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-28"
             />
           </div>
         </div>
@@ -183,7 +183,7 @@ const ItemInfoRent = ({ property, setProperty }) => {
                 입주시기
               </div>
               <div className="flex items-center space-x-4">
-                <div className="flex">{availDateBtns}</div>
+                <div className="flex w-32">{availDateBtns}</div>
 
                 <input
                   type="text"
@@ -196,7 +196,7 @@ const ItemInfoRent = ({ property, setProperty }) => {
                       setProperty
                     )
                   }
-                  className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-40"
+                  className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-28"
                 />
               </div>
             </div>

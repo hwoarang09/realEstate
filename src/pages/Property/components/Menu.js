@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "../../../commonComponents/Button";
 import "../../../styles/index.css";
+// import "../../../styles/globals.css";
 import { Link } from "react-router-dom";
 import useModal from "../../../hooks/use-modal";
 import { useLocation } from "react-router-dom";

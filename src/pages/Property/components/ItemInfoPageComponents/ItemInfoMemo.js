@@ -11,6 +11,7 @@ import {
   useUpdateCommentMutation,
   useAddCommentMutation,
 } from "../../../../store";
+import { Textarea } from "../../../../@/components/ui/textarea";
 
 const getTimeDifference = (timestamp) => {
   const date = new Date(timestamp);
@@ -125,7 +126,7 @@ const ItemInfoMemo = ({ property, setProperty }) => {
 
   const memos = property.comment.data.map((memo, index) => {
     return (
-      <div key={index} className="comment mb-4 p-2">
+      <div key={index} className="comment mb-4 p-2 border">
         <div className="flex justify-between items-center mb-4">
           <div className="mr-3 font-bold">{memo.username}</div>
           <div className="text-gray-500">
@@ -165,20 +166,24 @@ const ItemInfoMemo = ({ property, setProperty }) => {
         <div className="text-blue-600 text-base font-bold mb-2">
           매물 특징 (메모)
         </div>
+        <div className="border rounded p-2 mb-4 m-2 focus:border-blue-500 focus:border-2 focus:outline-none w-full h-32 overflow-y-auto">
+          {property.description}
+        </div>
         <div className="mb-2 text-sm">
-          <div className="flex mb-2">
-            <div className="">{memos}</div>
-          </div>
           {showMoreInfo && (
             <>
-              <div className="relative w-full">
-                <textarea
-                  type="text"
+              <div className="flex mb-2">
+                <div className="w-full max-h-72 overflow-y-auto px-8">
+                  {memos}
+                </div>
+              </div>
+              <div className="relative w-full px-8">
+                <Textarea
                   name="comment"
                   value={commentInput}
                   placeholder="메모를 입력하세요"
                   onChange={(e) => setCommentInput(e.target.value)}
-                  className="border rounded p-2 focus:border-blue-500 focus:border-2 focus:outline-none w-full min-h-28"
+                  // className="border rounded p-2 focus:border-blue-500 focus:border-2 focus:outline-none w-full min-h-28"
                   style={{ paddingRight: "3rem" }} // 버튼 위치를 위한 패딩
                 />
                 <button
@@ -187,7 +192,7 @@ const ItemInfoMemo = ({ property, setProperty }) => {
                     addCommentHandle(commentInput);
                     setCommentInput(""); // 입력 필드 초기화
                   }}
-                  className="absolute bottom-4 right-4 bg-blue-500 text-white py-1 px-3 rounded"
+                  className="absolute bottom-4 right-12 bg-blue-500 text-white py-1 px-3 rounded"
                 >
                   전송
                 </button>

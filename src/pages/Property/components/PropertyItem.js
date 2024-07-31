@@ -1,8 +1,8 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { FaRegBookmark } from "react-icons/fa";
 import { IoMdDownload } from "react-icons/io";
 
-function PropertyItem({ property, showModal }) {
+const PropertyItem = forwardRef(({ property, showModal }, ref) => {
   if (!property) return null;
 
   const modalPath = "/property/" + property.id;
@@ -46,9 +46,9 @@ function PropertyItem({ property, showModal }) {
     });
   }
   return (
-    <div className="bg-white p-1 shadow-md rounded pb-2 border-b">
+    <div ref={ref} className="bg-white p-1 shadow-md rounded pb-2 border-b">
       <img
-        src={property.file.image_outside[0].url}
+        src={property.file.image_outside[0]?.url}
         alt="Listing"
         className="w-full h-40 object-cover rounded"
       />
@@ -110,7 +110,7 @@ function PropertyItem({ property, showModal }) {
       </div>
     </div>
   );
-}
+});
 
 // export default PropertyItem;
 export default React.memo(PropertyItem);

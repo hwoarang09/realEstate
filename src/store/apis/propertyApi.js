@@ -16,6 +16,13 @@ const api = createApi({
   tagTypes: ["Property", "Comment"],
   endpoints(builder) {
     return {
+      getUploadUrl: builder.query({
+        query: ({ fileName, contentType }) => ({
+          url: `/utils/upload/url`,
+          params: { fileName, contentType },
+          method: "GET",
+        }),
+      }),
       updateProperty: builder.mutation({
         invalidatesTags: (result, error, arg) => {
           return [{ type: "Property", id: parseInt(arg.id) }];
@@ -131,6 +138,7 @@ const api = createApi({
 });
 
 export const {
+  useLazyGetUploadUrlQuery,
   useFetchPropertiesQuery,
   useFetchPropertyByIdQuery,
   useAddPropertyMutation,

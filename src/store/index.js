@@ -18,6 +18,7 @@ setupListeners(store.dispatch);
 
 export { store, modalReducer, openModal, closeModal };
 export {
+  useLazyGetUploadUrlQuery,
   useFetchPropertiesQuery,
   useFetchPropertyByIdQuery,
   useAddPropertyMutation,
