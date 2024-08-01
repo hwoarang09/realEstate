@@ -8,19 +8,33 @@ const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
     baseUrl: apiBaseUrl,
-    prepareHeaders: (headers) => {
-      headers.set("Authorization", apiKey);
+    prepareHeaders: (headers, { endpoint }) => {
+      // Only set the Authorization header for non-uploadFile requests
+      if (endpoint !== "uploadFile") {
+        headers.set("Authorization", apiKey);
+      }
       return headers;
     },
   }),
   tagTypes: ["Property", "Comment"],
   endpoints(builder) {
     return {
+      uploadFile: builder.mutation({
+        query: ({ uploadUrl, file }) => ({
+          url: uploadUrl,
+          method: "PUT",
+          headers: {
+            "Content-Type": file.type,
+          },
+          body: file,
+        }),
+      }),
       getUploadUrl: builder.query({
         query: ({ fileName, contentType }) => ({
           url: `/utils/upload/url`,
           params: { fileName, contentType },
           method: "GET",
+          mode: "cors",
         }),
       }),
       updateProperty: builder.mutation({
@@ -138,6 +152,7 @@ const api = createApi({
 });
 
 export const {
+  useUploadFileMutation,
   useLazyGetUploadUrlQuery,
   useFetchPropertiesQuery,
   useFetchPropertyByIdQuery,

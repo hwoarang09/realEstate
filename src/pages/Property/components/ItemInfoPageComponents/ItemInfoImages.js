@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
-import { useLazyGetUploadUrlQuery } from "../../../../store";
+import {
+  useLazyGetUploadUrlQuery,
+  useUploadFileMutation,
+} from "../../../../store";
+import _ from "lodash";
 
 const ItemInfoImages = ({ property, setProperty }) => {
-  const [selectedFiles, setSelectedFiles] = useState([]);
   const [previewUrls, setPreviewUrls] = useState([]);
   const [fileUploadInfo, setFileUploadInfo] = useState([]);
 
   const [getUploadUrl] = useLazyGetUploadUrlQuery();
+  const [uploadFile] = useUploadFileMutation();
 
   useEffect(() => {
     if (property && property.file && property.file.image_outside) {
@@ -15,13 +19,11 @@ const ItemInfoImages = ({ property, setProperty }) => {
         (image) => image.url
       );
       setPreviewUrls(existingUrls);
-      console.log("images property:", property.file);
     }
+    console.log("Updated property:", property?.file, property);
   }, [property]);
 
   const onDrop = (acceptedFiles) => {
-    setSelectedFiles((prevFiles) => [...prevFiles, ...acceptedFiles]);
-
     const newPreviewUrls = acceptedFiles.map((file) =>
       URL.createObjectURL(file)
     );
@@ -34,60 +36,59 @@ const ItemInfoImages = ({ property, setProperty }) => {
       const { data } = await getUploadUrl({ fileName, contentType });
 
       if (data.success) {
-        console.log("data :", data);
+        console.log("in Ondrop data :", data);
         if (data && data.contents.uploadUrl) {
           setFileUploadInfo((prevInfo) => [
             ...prevInfo,
-            { file, uploadUrl: data.uploadUrl },
+            {
+              file,
+              uploadUrl: data.contents.uploadUrl,
+              url: data.contents.url,
+            },
           ]);
-
-          //여기서 property이미지 반영해버리면, 리랜더 되버려서, 미리보기 이미지가 안보임
-
-          // setProperty((prevProperty) => {
-          //   return {
-          //     ...prevProperty,
-          //     file: {
-          //       ...prevProperty.file,
-          //       image_outside: [
-          //         ...prevProperty.file.image_outside,
-          //         {
-          //           key: fileName,
-          //           url: data.contents.url,
-          //           is_thumbnail: false,
-          //         },
-          //       ],
-          //     },
-          //   };
-          // });
         }
       }
     });
   };
 
   const handleUpload = async () => {
+    console.log("in handleUpload  fileUploadInfo:", fileUploadInfo);
     try {
-      await Promise.all(
-        fileUploadInfo.map(async ({ file, uploadUrl }) => {
+      const newImageInfo = await Promise.all(
+        fileUploadInfo.map(async ({ file, uploadUrl, url }) => {
           const response = await fetch(uploadUrl, {
             method: "PUT",
             headers: {
               "Content-Type": file.type,
             },
             body: file,
+            mode: "cors",
           });
 
           if (!response.ok) {
             throw new Error("Upload failed");
           }
-
-          console.log("Uploaded file:", file.name);
+          console.log("response :", response);
+          return {
+            id: null,
+            key: file.name,
+            url: url,
+            is_thumbnail: false,
+          };
         })
       );
+      console.log("newImageInfo:", newImageInfo);
+      setProperty((prevProperty) => ({
+        ...prevProperty,
+        file: {
+          ...prevProperty.file,
+          image_outside: [...prevProperty.file.image_outside, ...newImageInfo],
+        },
+      }));
     } catch (error) {
       console.error("Upload error:", error);
     }
   };
-
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   if (!property) {
@@ -119,10 +120,11 @@ const ItemInfoImages = ({ property, setProperty }) => {
             ))}
           </div>
           <button
+            type="button"
             onClick={handleUpload}
             className="mt-2 px-4 py-2 bg-blue-600 text-white rounded"
           >
-            업로드(개발용)
+            업로드
           </button>
         </div>
       )}
