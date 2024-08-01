@@ -7,6 +7,7 @@ import {
   handleChange,
   parseFormInt,
 } from "../../../../utils/formUtils";
+import StyleForm from "../../../../commonComponents/FormStyle";
 
 const categoriesBDHS = ["전체 가능", "부분 가능", "불가능"];
 const categoriesSame = ["가능", "불가능"];
@@ -61,13 +62,13 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
   );
 
   return (
-    <div className="my-6">
-      <div className="mb-4">
-        <div className="text-blue-600 text-base font-bold mb-2">건물정보</div>
+    <StyleForm mainWrapper>
+      <StyleForm tabWrapper>
+        <StyleForm menuTitle>건물정보</StyleForm>
         <div className="flex mb-2">
-          <div className="text-sm flex items-center font-bold w-24">
+          <StyleForm label>
             주소<span className="text-red-500 font-bold text-xl">*</span>
-          </div>
+          </StyleForm>
           <div className="w-80">
             <input
               type="text"
@@ -287,7 +288,7 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
             </div>
           </>
         )}
-      </div>
+      </StyleForm>
       <div className="flex justify-center mt-3">
         <Button
           primary
@@ -314,7 +315,7 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
           )}
         </Button>
       </div>
-    </div>
+    </StyleForm>
   );
 };
 

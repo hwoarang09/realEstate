@@ -56,8 +56,8 @@ const PropertyItemInfoModal = ({ modalPath, closeModal }) => {
   return (
     <div className="w-full h-[1200px] overflow-y-auto">
       <ItemInfoHeader onClick={closeModal} />
-      <form className="mt-10 ">
-        <div className="px-4 pt-4">
+      <form className="mt-10">
+        <div className="px-4 pt-4 ">
           <ItemInfoCate property={formData} setProperty={setFormData} />
           <ItemInfoTag property={formData} setProperty={setFormData} />
           <ItemInfoBuilding property={formData} setProperty={setFormData} />
@@ -77,7 +77,7 @@ const PropertyItemInfoModal = ({ modalPath, closeModal }) => {
         </div>
         <div
           onClick={handleUpdateChanges}
-          className="fixed bottom-0 w-full 
+          className="fixed bottom-0 w-full max-w-[500px]
           flex justify-center items-center bg-blue-800 text-white text-lg py-3 cursor-pointer"
         >
           변경사항 저장

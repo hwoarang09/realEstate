@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button from "../../../../commonComponents/Button";
 import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 import { renderCategoryButtons } from "../../../../utils/formUtils";
-
+import StyleForm from "../../../../commonComponents/FormStyle";
 const cateArray = ["치과", "미용", "감기", "통증", "한의원"];
 
 const ItemInfoCate = ({ property, setProperty }) => {
@@ -33,29 +33,25 @@ const ItemInfoCate = ({ property, setProperty }) => {
     setProperty
   );
   return (
-    <div className="categoryInfo my-6">
-      <div className="mb-4">
-        <div className="text-blue-600 text-base font-bold mb-2">
-          개원 가능 진료과
-        </div>
-        <div className="flex flex-wrap">{openableFilter}</div>
-      </div>
+    <StyleForm mainWrapper>
+      <StyleForm tabWrapper>
+        <StyleForm menuTitle>개원 가능 진료과</StyleForm>
+        <StyleForm flatButtons>{openableFilter}</StyleForm>
+      </StyleForm>
 
       {showRecommended && (
-        <div className="recommendedCate">
-          <div className="cateHeader text-blue-600 text-base font-bold mb-2">
-            추천 진료과
-          </div>
-          <div className="flex flex-wrap">{recommendedFilter}</div>
-        </div>
+        <StyleForm tabWrapper>
+          <StyleForm menuTitle>추천 진료과</StyleForm>
+          <StyleForm flatButtons>{recommendedFilter}</StyleForm>
+        </StyleForm>
       )}
-      <div className="flex justify-center mt-3">
+      <StyleForm toggleButtonWrapper>
         <Button
           primary
           rounded
           outline
-          className="mb-4 flex justify-between py-0.5 px-1"
-          type="button" // 버튼의 기본 타입을 button으로 설정하여 submit 방지
+          toggle
+          type="button"
           onClick={() => setShowRecommended(!showRecommended)}
         >
           {showRecommended ? (
@@ -74,8 +70,8 @@ const ItemInfoCate = ({ property, setProperty }) => {
             </>
           )}
         </Button>
-      </div>
-    </div>
+      </StyleForm>
+    </StyleForm>
   );
 };
 

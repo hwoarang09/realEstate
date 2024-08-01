@@ -123,11 +123,12 @@ const ItemInfoContact = ({ property, setProperty }) => {
         <Button
           primary
           rounded
+          outline
           onClick={() => addContact(setProperty)}
-          className="py-0.5 px-2"
+          className="py-0.5 pl-2 pr-4"
           type="button"
         >
-          + 연락처추가
+          + 연락처 추가
         </Button>
       </div>
     </div>

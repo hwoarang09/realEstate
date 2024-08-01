@@ -12,6 +12,7 @@ function Button({
   option_noselect,
   outline,
   rounded,
+  toggle,
   ...rest
 }) {
   const classes = twMerge(
@@ -32,6 +33,8 @@ function Button({
 
         "rounded-full": rounded,
         "bg-white": outline,
+
+        "mb-4 flex justify-between py-0.5 px-1": toggle,
         "text-blue-500": outline && (primary || primary_add),
         "text-gray-900": outline && secondary,
         "text-green-500": outline && success,
