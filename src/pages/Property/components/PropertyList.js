@@ -10,7 +10,7 @@ function PropertyList() {
   const { data, error, isLoading } = useFetchPropertiesQuery({
     is_verified: true,
     page,
-    limit: 10,
+    limit: 5,
   });
 
   const observer = useRef();
@@ -18,10 +18,18 @@ function PropertyList() {
   useEffect(() => {
     if (data?.contents) {
       console.log("Fetched data:", data.contents);
-      setAllProperties((prevProperties) => [
-        ...prevProperties,
-        ...data.contents,
-      ]);
+      setAllProperties((prevProperties) => {
+        // 새로운 데이터의 id 목록
+        const newPropertyIds = new Set(data.contents.map((p) => p.id));
+
+        // 중복 항목을 제거한 기존 데이터
+        const filteredPrevProperties = prevProperties.filter(
+          (existingProperty) => !newPropertyIds.has(existingProperty.id)
+        );
+
+        // 새로운 데이터를 기존 데이터에 추가
+        return [...filteredPrevProperties, ...data.contents];
+      });
     }
   }, [data]);
 

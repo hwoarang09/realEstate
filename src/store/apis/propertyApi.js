@@ -20,7 +20,7 @@ const api = createApi({
   endpoints(builder) {
     return {
       uploadFile: builder.mutation({
-        query: ({ uploadUrl, file }) => ({
+        query: ({ uploadUrl, url, file }) => ({
           url: uploadUrl,
           method: "PUT",
           headers: {
@@ -28,6 +28,14 @@ const api = createApi({
           },
           body: file,
         }),
+        transformResponse: (response, meta, arg) => {
+          return {
+            id: null,
+            key: arg.file.name,
+            url: arg.url,
+            is_thumbnail: false,
+          };
+        },
       }),
       getUploadUrl: builder.query({
         query: ({ fileName, contentType }) => ({
@@ -39,7 +47,9 @@ const api = createApi({
       }),
       updateProperty: builder.mutation({
         invalidatesTags: (result, error, arg) => {
-          return [{ type: "Property", id: parseInt(arg.id) }];
+          const tag = { type: "Property", id: parseInt(arg.id) };
+          console.log("updateProperty invalidatesTags:", [tag]);
+          return [tag];
         },
         query: ({ id, ...patch }) => ({
           url: `/property/${id}`,
@@ -71,17 +81,30 @@ const api = createApi({
       }),
       fetchProperties: builder.query({
         providesTags: (result, error, arg) => {
+          if (!result?.contents) return []; // 데이터가 없으면 빈 배열 반환
+
           const tags = result.contents.map((property) => ({
             type: "Property",
-            id: property.id,
+            id: parseInt(property.id),
           }));
-          return [...tags];
+          console.log("fetchProperties providesTags:", tags);
+          return tags;
         },
-        query: ({ page, is_verified, limit }) => ({
-          url: "/property",
-          params: { is_verified, page, limit },
-          method: "GET",
-        }),
+        query: ({ page, is_verified, limit }) => {
+          console.log(
+            "page:",
+            page,
+            "is_verified:",
+            is_verified,
+            "limit:",
+            limit
+          );
+          return {
+            url: "/property",
+            params: { is_verified, page, limit },
+            method: "GET",
+          };
+        },
       }),
       fetchPropertyById: builder.query({
         providesTags: (result, error, arg) => {

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import useModal from "../../../hooks/use-modal";
 import { useLocation } from "react-router-dom";
 import { useFetchPropertiesQuery } from "../../../store";
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 const PropertyMenu = ({ add }) => {
   const { showModal } = useModal({ caller: "PropertyMenu" });
   const activeClassName = "font-bold text-blue-700";
@@ -18,7 +18,7 @@ const PropertyMenu = ({ add }) => {
   } = useFetchPropertiesQuery({
     is_verified: true,
     page: 1,
-    limit: 10,
+    limit: 5,
   });
 
   if (isLoading) return <div>Loading...</div>;

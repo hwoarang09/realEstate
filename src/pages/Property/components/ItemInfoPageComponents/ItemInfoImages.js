@@ -4,7 +4,6 @@ import {
   useLazyGetUploadUrlQuery,
   useUploadFileMutation,
 } from "../../../../store";
-import _ from "lodash";
 
 const ItemInfoImages = ({ property, setProperty }) => {
   const [previewUrls, setPreviewUrls] = useState([]);
@@ -54,27 +53,33 @@ const ItemInfoImages = ({ property, setProperty }) => {
   const handleUpload = async () => {
     console.log("in handleUpload  fileUploadInfo:", fileUploadInfo);
     try {
+      // const newImageInfo = await Promise.all(
+      //   fileUploadInfo.map(async ({ file, uploadUrl, url }) => {
+      //     const response = await fetch(uploadUrl, {
+      //       method: "PUT",
+      //       headers: {
+      //         "Content-Type": file.type,
+      //       },
+      //       body: file,
+      //       mode: "cors",
+      //     });
+
+      //     if (!response.ok) {
+      //       throw new Error("Upload failed");
+      //     }
+      //     console.log("response :", response);
+      //     return {
+      //       id: null,
+      //       key: file.name,
+      //       url: url,
+      //       is_thumbnail: false,
+      //     };
+      //   })
+      // );
       const newImageInfo = await Promise.all(
         fileUploadInfo.map(async ({ file, uploadUrl, url }) => {
-          const response = await fetch(uploadUrl, {
-            method: "PUT",
-            headers: {
-              "Content-Type": file.type,
-            },
-            body: file,
-            mode: "cors",
-          });
-
-          if (!response.ok) {
-            throw new Error("Upload failed");
-          }
-          console.log("response :", response);
-          return {
-            id: null,
-            key: file.name,
-            url: url,
-            is_thumbnail: false,
-          };
+          const response = await uploadFile({ uploadUrl, url, file }).unwrap();
+          return response;
         })
       );
       console.log("newImageInfo:", newImageInfo);

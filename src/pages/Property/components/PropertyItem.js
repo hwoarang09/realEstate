@@ -70,6 +70,10 @@ const PropertyItem = forwardRef(({ property, showModal }, ref) => {
         <div className="mt-1">
           <p className="text-sm">{property.address}</p>
         </div>
+
+        <div className="flex flex-col justify-between">
+          {property.building_name}
+        </div>
         <div className="flex flex-col justify-between">
           <div className="flex justify-end space-x-4">
             <span className="text-sm">
