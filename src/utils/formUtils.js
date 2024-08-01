@@ -126,7 +126,7 @@ const renderCategoryButtons = (
           rounded
           type="button"
         >
-          {isSelected && <FaCheck />}
+          {isSelected && <FaCheck className="mr-1" />}
           <span>{mapppedValue ? mapppedValue[cate] : cate}</span>
         </Button>
       </div>

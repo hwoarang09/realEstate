@@ -17,7 +17,7 @@ function Button({
 }) {
   const classes = twMerge(
     className(
-      "px-3 py-1.5 border flex items-center",
+      " py-1.5 border flex items-center justify-center min-w-[50px]",
       {
         "border-blue-800 bg-blue-800 text-white": primary,
         "border-blue-800 bg-blue-800 text-black font-bold": primary_add,
@@ -26,9 +26,9 @@ function Button({
         "border-yellow-400 bg-yellow-400 text-white": warning,
         "border-red-500 bg-red-500 text-white": danger,
 
-        "border-purple-200 bg-purple-200 text-black font-bold  text-xs py-1 px-2 mx-0.5 justify-between":
+        "border-purple-200 bg-purple-200 text-black py-1 px-2 mx-0.5 justify-between":
           option_select,
-        "border-gray-200 bg-gray-200 text-black text-xs py-1 mx-1":
+        "border-gray-200 bg-gray-200 text-black px-2 items-center py-1 mx-1":
           option_noselect,
 
         "rounded-full": rounded,

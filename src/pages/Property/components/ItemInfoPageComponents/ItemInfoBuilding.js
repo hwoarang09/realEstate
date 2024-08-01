@@ -8,7 +8,7 @@ import {
   parseFormInt,
 } from "../../../../utils/formUtils";
 import StyleForm from "../../../../commonComponents/FormStyle";
-
+import { Input } from "../../../../@/components/ui/input";
 const categoriesBDHS = ["전체 가능", "부분 가능", "불가능"];
 const categoriesSame = ["가능", "불가능"];
 const categoriesExist = ["유", "무"];
@@ -65,48 +65,46 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
     <StyleForm mainWrapper>
       <StyleForm tabWrapper>
         <StyleForm menuTitle>건물정보</StyleForm>
-        <div className="flex mb-2">
-          <StyleForm label>
+        <StyleForm formRow>
+          <StyleForm label className="w-1/4">
             주소<span className="text-red-500 font-bold text-xl">*</span>
           </StyleForm>
-          <div className="w-80">
-            <input
+          <StyleForm>
+            <Input
               type="text"
               name="address"
               value={notNullValue(property.address)}
               onChange={(e) =>
                 handleChange(["address"], e.target.value, setProperty)
               }
-              className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-full"
             />
-          </div>
-        </div>
+          </StyleForm>
+        </StyleForm>
         {showMoreInfo && (
           <>
-            <div className="flex mb-2">
-              <div className="text-sm flex items-center font-bold w-24">
+            <StyleForm formRow>
+              <StyleForm label className="w-1/4">
                 건물명
-              </div>
-              <div className="w-80">
-                <input
+              </StyleForm>
+              <StyleForm>
+                <Input
                   type="text"
                   name="building_name"
                   value={notNullValue(property.building_name)}
                   onChange={(e) =>
                     handleChange(["building_name"], e.target.value, setProperty)
                   }
-                  className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-full"
                 />
-              </div>
-            </div>
-            <div className="flex mb-2">
-              <div className="text-sm flex items-start font-bold w-24 items-start flex">
+              </StyleForm>
+            </StyleForm>
+            <StyleForm formRow>
+              <StyleForm label className="w-1/4">
                 건물 규모
-              </div>
-              <div className="text-sm mt-1">
-                <div>
-                  지상
-                  <input
+              </StyleForm>
+              <StyleForm className="w-3/4">
+                <StyleForm formRow className="w-3/4 mb-0">
+                  <span className="mr-2">지상</span>
+                  <Input
                     type="number"
                     name="max_floor"
                     value={notNullValue(property.max_floor)}
@@ -117,13 +115,13 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
                         setProperty
                       )
                     }
-                    className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-20 mx-2"
+                    className="w-20 mr-2"
                   />
                   층
-                </div>
-                <div className="text-sm">
-                  지하
-                  <input
+                </StyleForm>
+                <StyleForm formRow className="w-3/4 mb-0">
+                  <span className="mr-2">지하</span>
+                  <Input
                     type="text"
                     name="min_floor"
                     value={notNullValue(property.min_floor)}
@@ -134,18 +132,18 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
                         setProperty
                       )
                     }
-                    className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-20 mx-2"
+                    className="w-20 mr-2"
                   />
                   층
-                </div>
-              </div>
-            </div>
-            <div className="flex mb-2">
-              <div className="text-sm flex items-center font-bold w-24">
+                </StyleForm>
+              </StyleForm>
+            </StyleForm>
+            <StyleForm formRow>
+              <StyleForm label className="w-1/4">
                 준공일자
-              </div>
-              <div className="w-80">
-                <input
+              </StyleForm>
+              <StyleForm className="w-3/4">
+                <Input
                   type="text"
                   name="completion_date"
                   value={notNullValue(property.completion_date)}
@@ -156,16 +154,16 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
                       setProperty
                     )
                   }
-                  className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-full"
+                  className="w-40"
                 />
-              </div>
-            </div>
-            <div className="flex mb-2">
-              <div className="text-sm flex items-center font-bold w-24">
+              </StyleForm>
+            </StyleForm>
+            <StyleForm formRow>
+              <StyleForm label className="w-1/4">
                 승강기
-              </div>
-              <div className="w-40">
-                <input
+              </StyleForm>
+              <StyleForm formRow className="w-3/4 mb-0">
+                <Input
                   type="number"
                   name="elevator_customer"
                   value={notNullValue(property.elevator_customer)}
@@ -176,17 +174,17 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
                       setProperty
                     )
                   }
-                  className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-20 mx-2"
+                  className="w-20 mr-2"
                 />
                 대
-              </div>
-            </div>
-            <div className="flex mb-2">
-              <div className="text-sm flex items-center font-bold w-24">
+              </StyleForm>
+            </StyleForm>
+            <StyleForm formRow>
+              <StyleForm label className="w-1/4">
                 주차수
-              </div>
-              <div className="">
-                <input
+              </StyleForm>
+              <StyleForm formRow className="w-3/4 mb-0">
+                <Input
                   type="number"
                   name="total_parking"
                   value={notNullValue(property.total_parking)}
@@ -197,23 +195,23 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
                       setProperty
                     )
                   }
-                  className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-20 mx-2"
+                  className="w-20 mr-2"
                 />
                 대
-              </div>
-            </div>
-            <div className="flex mb-2">
-              <div className="text-sm flex items-center font-bold">
+              </StyleForm>
+            </StyleForm>
+            <StyleForm formRow>
+              <StyleForm label className="w-1/4">
                 병의원 가능 여부
-              </div>
-              <div className="flex ml-4">{bdhsAvailBtns}</div>
-            </div>
-            <div className="flex mb-2">
-              <div className="text-sm flex items-center font-bold w-32">
+              </StyleForm>
+              <StyleForm flatButtons>{bdhsAvailBtns}</StyleForm>
+            </StyleForm>
+            <StyleForm formRow>
+              <StyleForm label className="w-1/4">
                 입점 가능한 층
-              </div>
-              <div className="">
-                <input
+              </StyleForm>
+              <StyleForm className="w-3/4">
+                <Input
                   type="number"
                   name="pt_hs_available_floor"
                   value={notNullValue(property.extra.pt_hs_available_floor)}
@@ -224,72 +222,59 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
                       setProperty
                     )
                   }
-                  className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-20 mx-2"
+                  className="w-20 mr-2"
                 />
-              </div>
-            </div>
-            <div className="mb-2">
-              <div className="flex w-full mb-2">
-                <div className="text-sm flex items-center font-bold w-full">
-                  동종진료과 가능 여부
-                </div>
-              </div>
-              <div className="flex">
-                <div className="flex">{sameCateBtns}</div>
-                <div className="ml-2">
-                  <input
-                    type="text"
-                    name="pt_hs_available_floor"
-                    value={notNullValue(property.extra.sm_md_open_available)}
-                    onChange={(e) =>
-                      handleChange(
-                        ["extra", "sm_md_open_available"],
-                        e.target.value,
-                        setProperty
-                      )
-                    }
-                    className="border rounded p-1 ml-2 focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-40"
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="mb-2">
-              <div className="flex w-full mb-2">
-                <div className="text-sm flex items-center font-bold w-full">
-                  장애인 시설
-                </div>
-              </div>
+              </StyleForm>
+            </StyleForm>
+            <StyleForm formRow>
+              <StyleForm label className="w-1/3">
+                동종진료과 가능 여부
+              </StyleForm>
+
+              <StyleForm flatButtons>{sameCateBtns}</StyleForm>
+
+              <Input
+                type="text"
+                name="pt_hs_available_floor"
+                value={notNullValue(property.extra.sm_md_open_available)}
+                onChange={(e) =>
+                  handleChange(
+                    ["extra", "sm_md_open_available"],
+                    e.target.value,
+                    setProperty
+                  )
+                }
+                className="w-20 ml-2"
+              />
+            </StyleForm>
+
+            <StyleForm formRow>
+              <StyleForm label className="w-1/3">
+                장애인 시설
+              </StyleForm>
               <div className="flex flex-wrap">
                 <div className="w-1/2 p-2">
-                  <div className="text-sm flex items-center font-bold">
-                    승강기
-                  </div>
-                  <div className="flex">{elevatorsCateBtns}</div>
+                  <StyleForm label>승강기</StyleForm>
+                  <div className="flex mt-2">{elevatorsCateBtns}</div>
                 </div>
                 <div className="w-1/2 p-2">
-                  <div className="text-sm flex items-center font-bold">
-                    경사로
-                  </div>
-                  <div className="flex">{rampCateBtns}</div>
+                  <StyleForm label>경사로</StyleForm>
+                  <div className="flex mt-2">{rampCateBtns}</div>
                 </div>
                 <div className="w-1/2 p-2">
-                  <div className="text-sm flex items-center font-bold">
-                    주차장
-                  </div>
-                  <div className="flex">{parkingSpotsCateBtns}</div>
+                  <StyleForm label>주차장</StyleForm>
+                  <div className="flex mt-2">{parkingSpotsCateBtns}</div>
                 </div>
                 <div className="w-1/2 p-2">
-                  <div className="text-sm flex items-center font-bold">
-                    화장실
-                  </div>
-                  <div className="flex">{restroomCateBtns}</div>
+                  <StyleForm label>화장실</StyleForm>
+                  <div className="flex mt-2">{restroomCateBtns}</div>
                 </div>
               </div>
-            </div>
+            </StyleForm>
           </>
         )}
       </StyleForm>
-      <div className="flex justify-center mt-3">
+      <StyleForm toggleButtonWrapper>
         <Button
           primary
           rounded
@@ -314,7 +299,7 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
             </>
           )}
         </Button>
-      </div>
+      </StyleForm>
     </StyleForm>
   );
 };

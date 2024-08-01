@@ -7,6 +7,8 @@ import {
   notNullValue,
   parseFormInt,
 } from "../../../../utils/formUtils";
+import StyleForm from "../../../../commonComponents/FormStyle";
+import { Input } from "../../../../@/components/ui/input";
 
 const rentalTypeCategories = ["전층", "일부"];
 const availDateCategories = ["즉시", "협의"];
@@ -54,15 +56,15 @@ const ItemInfoRent = ({ property, setProperty }) => {
     setProperty
   );
   return (
-    <div className="my-6">
-      <div className="mb-4">
-        <div className="text-blue-600 text-base font-bold mb-2">임대정보</div>
-        <div className="flex mb-2">
-          <div className="text-sm flex items-center font-bold w-24">
+    <StyleForm mainWrapper>
+      <StyleForm tabWrapper>
+        <StyleForm menuTitle>임대정보</StyleForm>
+        <StyleForm formRow>
+          <StyleForm label className="w-1/4">
             보증금<span className="text-red-500 font-bold text-xl">*</span>
-          </div>
-          <div className="w-80">
-            <input
+          </StyleForm>
+          <StyleForm>
+            <Input
               type="number"
               name="deposit"
               value={notNullValue(property.deposit)}
@@ -73,16 +75,15 @@ const ItemInfoRent = ({ property, setProperty }) => {
                   setProperty
                 );
               }}
-              className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-full"
             />
-          </div>
-        </div>
-        <div className="flex mb-2">
-          <div className="text-sm flex items-center font-bold w-24">
+          </StyleForm>
+        </StyleForm>
+        <StyleForm formRow>
+          <StyleForm label className="w-1/4">
             임대료<span className="text-red-500 font-bold text-xl">*</span>
-          </div>
-          <div className="w-80">
-            <input
+          </StyleForm>
+          <StyleForm>
+            <Input
               type="number"
               name="monthly_rent"
               value={notNullValue(property.monthly_rent)}
@@ -93,16 +94,15 @@ const ItemInfoRent = ({ property, setProperty }) => {
                   setProperty
                 )
               }
-              className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-full"
             />
-          </div>
-        </div>
-        <div className="flex mb-2">
-          <div className="text-sm flex items-center font-bold w-24">
+          </StyleForm>
+        </StyleForm>
+        <StyleForm formRow>
+          <StyleForm label className="w-1/4">
             관리비<span className="text-red-500 font-bold text-xl">*</span>
-          </div>
-          <div className="w-80">
-            <input
+          </StyleForm>
+          <StyleForm>
+            <Input
               type="text"
               name="maintenance_cost_str"
               value={notNullValue(property.maintenance_cost_str)}
@@ -113,34 +113,33 @@ const ItemInfoRent = ({ property, setProperty }) => {
                   setProperty
                 )
               }
-              className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-full"
             />
-          </div>
-        </div>
-        <div className="flex mb-2">
-          <div className="text-sm flex items-center font-bold w-24">
+          </StyleForm>
+        </StyleForm>
+        <StyleForm formRow>
+          <StyleForm label className="w-1/4">
             임대층<span className="text-red-500 font-bold text-xl">*</span>
-          </div>
-          <div className="flex items-center space-x-4">
-            <div className="flex w-32">{rentalTypeBtns}</div>
+          </StyleForm>
+          <StyleForm formRow className="mb-0">
+            <StyleForm flatButtons>{rentalTypeBtns}</StyleForm>
 
-            <input
+            <Input
               type="text"
               name="floor"
               value={notNullValue(property.floor)}
               onChange={(e) =>
                 handleChange(["floor"], e.target.value, setProperty)
               }
-              className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-28"
+              className="w-28 ml-2"
             />
-          </div>
-        </div>
-        <div className="flex mb-2">
-          <div className="text-sm flex items-center font-bold w-24">
+          </StyleForm>
+        </StyleForm>
+        <StyleForm formRow>
+          <StyleForm label className="w-1/4">
             전용면적<span className="text-red-500 font-bold text-xl">*</span>
-          </div>
-          <div className="w-80">
-            <input
+          </StyleForm>
+          <StyleForm>
+            <Input
               required
               type="number"
               name="exclusive_area"
@@ -152,16 +151,15 @@ const ItemInfoRent = ({ property, setProperty }) => {
                   setProperty
                 )
               }
-              className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-full"
             />
-          </div>
-        </div>
-        <div className="flex mb-2">
-          <div className="text-sm flex items-center font-bold w-24">
+          </StyleForm>
+        </StyleForm>
+        <StyleForm formRow>
+          <StyleForm label className="w-1/4">
             임대면적
-          </div>
-          <div className="w-80">
-            <input
+          </StyleForm>
+          <StyleForm>
+            <Input
               type="number"
               name="contact_area"
               value={notNullValue(property.contact_area)}
@@ -172,20 +170,19 @@ const ItemInfoRent = ({ property, setProperty }) => {
                   setProperty
                 )
               }
-              className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-full"
             />
-          </div>
-        </div>
+          </StyleForm>
+        </StyleForm>
         {showMoreInfo && (
           <>
-            <div className="flex mb-2">
-              <div className="text-sm flex items-center font-bold w-24">
+            <StyleForm formRow>
+              <StyleForm label className="w-1/4">
                 입주시기
-              </div>
-              <div className="flex items-center space-x-4">
-                <div className="flex w-32">{availDateBtns}</div>
+              </StyleForm>
+              <StyleForm formRow className="mb-0">
+                <StyleForm flatButtons>{availDateBtns}</StyleForm>
 
-                <input
+                <Input
                   type="text"
                   name="available_date"
                   value={notNullValue(property.available_date)}
@@ -196,40 +193,40 @@ const ItemInfoRent = ({ property, setProperty }) => {
                       setProperty
                     )
                   }
-                  className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-28"
+                  className="w-28 ml-2"
                 />
-              </div>
-            </div>
-            <div className="flex mb-2">
-              <div className="text-sm flex items-center font-bold w-24">
+              </StyleForm>
+            </StyleForm>
+            <StyleForm formRow>
+              <StyleForm label className="w-1/4">
                 무료주차
-              </div>
-              <div className="flex items-center space-x-4">
-                <div className="flex">{freeParkingBtns}</div>
-              </div>
-            </div>
-            <div className="flex mb-2">
-              <div className="text-sm flex items-center font-bold w-24">
+              </StyleForm>
+              <StyleForm formRow className="mb-0">
+                <StyleForm flatButtons>{freeParkingBtns}</StyleForm>
+              </StyleForm>
+            </StyleForm>
+            <StyleForm formRow>
+              <StyleForm label className="w-1/4">
                 방문주차
-              </div>
-              <div className="flex items-center space-x-4">
-                <div className="flex">{visitorParkingBtns}</div>
-              </div>
-            </div>
-            <div className="flex mb-2">
-              <div className="text-sm flex items-center font-bold w-24">
+              </StyleForm>
+              <StyleForm formRow className="mb-0">
+                <StyleForm flatButtons>{visitorParkingBtns}</StyleForm>
+              </StyleForm>
+            </StyleForm>
+            <StyleForm formRow>
+              <StyleForm label className="w-1/4">
                 양도양수
-              </div>
-              <div className="flex items-center space-x-4">
-                <div className="flex">{transferMoneyBtns}</div>
-              </div>
-            </div>
-            <div className="flex mb-2">
-              <div className="text-sm flex items-center font-bold w-24">
+              </StyleForm>
+              <StyleForm formRow className="mb-0">
+                <StyleForm flatButtons>{transferMoneyBtns}</StyleForm>
+              </StyleForm>
+            </StyleForm>
+            <StyleForm formRow>
+              <StyleForm label className="w-1/4">
                 권리금
-              </div>
-              <div className="flex items-center space-x-4">
-                <input
+              </StyleForm>
+              <StyleForm formRow className="mb-0">
+                <Input
                   type="number"
                   name="key_money"
                   value={property.key_money}
@@ -240,10 +237,9 @@ const ItemInfoRent = ({ property, setProperty }) => {
                       setProperty
                     )
                   }
-                  className="border rounded p-1 flex-grow focus:border-blue-500 focus:border-2 focus:outline-none cursor-pointer w-40"
                 />
-              </div>
-            </div>
+              </StyleForm>
+            </StyleForm>
           </>
         )}
         <div className="flex justify-center mt-3">
@@ -272,8 +268,8 @@ const ItemInfoRent = ({ property, setProperty }) => {
             )}
           </Button>
         </div>
-      </div>
-    </div>
+      </StyleForm>
+    </StyleForm>
   );
 };
 
