@@ -9,7 +9,7 @@ import {
 } from "../../../../utils/formUtils";
 import StyleForm from "../../../../commonComponents/FormStyle";
 import { Input } from "../../../../@/components/ui/input";
-
+import { simpleInputGenerator } from "../../../../utils/formGenerator";
 const rentalTypeCategories = ["전층", "일부"];
 const availDateCategories = ["즉시", "협의"];
 const transferMoneyCategories = ["양수도 매물임"];
@@ -55,11 +55,21 @@ const ItemInfoRent = ({ property, setProperty }) => {
     property,
     setProperty
   );
+
+  const depositComp = simpleInputGenerator({
+    label: "보증금",
+    labelRequired: true,
+    type: "number",
+    keyList: ["deposit"],
+    property,
+    setProperty,
+  });
   return (
     <StyleForm mainWrapper>
       <StyleForm tabWrapper>
         <StyleForm menuTitle>임대정보</StyleForm>
-        <StyleForm formRow>
+        {depositComp}
+        {/* <StyleForm formRow>
           <StyleForm label className="w-1/4">
             보증금<span className="text-red-500 font-bold text-xl">*</span>
           </StyleForm>
@@ -77,7 +87,7 @@ const ItemInfoRent = ({ property, setProperty }) => {
               }}
             />
           </StyleForm>
-        </StyleForm>
+        </StyleForm> */}
         <StyleForm formRow>
           <StyleForm label className="w-1/4">
             임대료<span className="text-red-500 font-bold text-xl">*</span>

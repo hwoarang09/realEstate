@@ -4,7 +4,7 @@ import useModal from "../../../hooks/use-modal";
 import { useFetchPropertiesQuery } from "../../../store";
 
 function PropertyList() {
-  const { showModal } = useModal({ caller: "PropertyList" });
+  const { showModal } = useModal();
   const [page, setPage] = useState(1);
   const [allProperties, setAllProperties] = useState([]);
   const { data, error, isLoading } = useFetchPropertiesQuery({
