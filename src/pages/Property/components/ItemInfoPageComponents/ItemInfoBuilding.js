@@ -69,7 +69,7 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
           <StyleForm label className="w-1/4">
             주소<span className="text-red-500 font-bold text-xl">*</span>
           </StyleForm>
-          <StyleForm>
+          <StyleForm className="w-3/4">
             <Input
               type="text"
               name="address"
@@ -86,7 +86,7 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
               <StyleForm label className="w-1/4">
                 건물명
               </StyleForm>
-              <StyleForm>
+              <StyleForm className="w-3/4">
                 <Input
                   type="text"
                   name="building_name"
@@ -201,7 +201,7 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
               </StyleForm>
             </StyleForm>
             <StyleForm formRow>
-              <StyleForm label className="w-1/4">
+              <StyleForm label className="w-1/3">
                 병의원 가능 여부
               </StyleForm>
               <StyleForm flatButtons>{bdhsAvailBtns}</StyleForm>

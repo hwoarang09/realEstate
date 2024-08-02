@@ -12,7 +12,7 @@ import {
   useAddCommentMutation,
 } from "../../../../store";
 import { Textarea } from "../../../../@/components/ui/textarea";
-
+import { notNullValue, handleChange } from "../../../../utils/formUtils";
 const getTimeDifference = (timestamp) => {
   const date = new Date(timestamp);
   const now = new Date();
@@ -166,36 +166,46 @@ const ItemInfoMemo = ({ property, setProperty }) => {
         <div className="text-blue-600 text-base font-bold mb-2">
           매물 특징 (메모)
         </div>
-        <div className="border rounded p-2 mb-4 m-2 focus:border-blue-500 focus:border-2 focus:outline-none w-full h-32 overflow-y-auto">
-          {property.description}
+        <div className="mb-4">
+          <Textarea
+            type="text"
+            name="building_name"
+            value={notNullValue(property.description)}
+            onChange={(e) =>
+              handleChange(["description"], e.target.value, setProperty)
+            }
+            className="overflow-y-hidden focus:overflow-y-auto"
+          />
         </div>
         <div className="mb-2 text-sm">
           {showMoreInfo && (
             <>
-              <div className="flex mb-2">
-                <div className="w-full max-h-72 overflow-y-auto px-8">
-                  {memos}
+              <div className="border border-gray-300 rounded-lg shadow-lg p-4">
+                <div className="flex mb-2">
+                  <div className="overflow-y-auto w-full max-h-72 overflow-y-auto px-8 mb-4">
+                    {memos}
+                  </div>
                 </div>
-              </div>
-              <div className="relative w-full px-8">
-                <Textarea
-                  name="comment"
-                  value={commentInput}
-                  placeholder="메모를 입력하세요"
-                  onChange={(e) => setCommentInput(e.target.value)}
-                  // className="border rounded p-2 focus:border-blue-500 focus:border-2 focus:outline-none w-full min-h-28"
-                  style={{ paddingRight: "3rem" }} // 버튼 위치를 위한 패딩
-                />
-                <button
-                  type="button"
-                  onClick={() => {
-                    addCommentHandle(commentInput);
-                    setCommentInput(""); // 입력 필드 초기화
-                  }}
-                  className="absolute bottom-4 right-12 bg-blue-500 text-white py-1 px-3 rounded"
-                >
-                  전송
-                </button>
+                <div className="relative w-full px-8">
+                  <Textarea
+                    name="comment"
+                    value={commentInput}
+                    placeholder="메모를 입력하세요"
+                    onChange={(e) => setCommentInput(e.target.value)}
+                    // className="border rounded p-2 focus:border-blue-500 focus:border-2 focus:outline-none w-full min-h-28"
+                    style={{ paddingRight: "3rem" }} // 버튼 위치를 위한 패딩
+                  />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      addCommentHandle(commentInput);
+                      setCommentInput(""); // 입력 필드 초기화
+                    }}
+                    className="absolute bottom-4 right-12 bg-blue-500 text-white py-1 px-3 rounded"
+                  >
+                    전송
+                  </button>
+                </div>
               </div>
             </>
           )}

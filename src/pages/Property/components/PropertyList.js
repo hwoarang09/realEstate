@@ -10,7 +10,7 @@ function PropertyList() {
   const { data, error, isLoading } = useFetchPropertiesQuery({
     is_verified: true,
     page,
-    limit: 5,
+    limit: 10,
   });
 
   const observer = useRef();
@@ -83,7 +83,7 @@ function PropertyList() {
 
   console.log("Rendered properties:", allProperties);
 
-  return <div className="property-list">{renderedProperties}</div>;
+  return <div className="max-w-[500px]">{renderedProperties}</div>;
 }
 
 export default PropertyList;
