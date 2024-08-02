@@ -50,7 +50,7 @@ const PropertyMenu = ({ add }) => {
 
   return (
     <div>
-      <div className="flex justify-between items-center px-4 mt-12 mb-3 h-9">
+      <div className="max-w-[500px] flex justify-between items-center px-4 mt-12 mb-3 h-9">
         <div className="flex items-center space-x-4 text-sm ">
           {renderedLinks}
         </div>
