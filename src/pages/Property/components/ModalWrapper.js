@@ -26,7 +26,7 @@ const ModalWrapper = () => {
     );
   }
 
-  return <div>주소맞나확인??</div>;
+  return <div>Modal Path Error?</div>;
 };
 
 export default ModalWrapper;

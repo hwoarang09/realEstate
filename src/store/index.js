@@ -1,7 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { modalReducer, openModal, closeModal } from "./slices/modalSlice";
+import {
+  modalReducer,
+  openModal,
+  closeModal,
+  setScrollPosition,
+} from "./slices/modalSlice";
 import { setupListeners } from "@reduxjs/toolkit/query";
-import { api} from "./apis/propertyApi";
+import { api } from "./apis/propertyApi";
 // import { commentApi } from "./apis/commentApi";
 
 const store = configureStore({
@@ -16,7 +21,7 @@ const store = configureStore({
 });
 setupListeners(store.dispatch);
 
-export { store, modalReducer, openModal, closeModal };
+export { store, modalReducer, openModal, closeModal, setScrollPosition };
 export {
   useUploadFileMutation,
   useLazyGetUploadUrlQuery,

@@ -4,6 +4,7 @@ const initialState = {
   isOpen: false,
   modalPath: null,
   selectedProperty: null,
+  scrollPosition: 0,
 };
 
 const modalSlice = createSlice({
@@ -23,11 +24,13 @@ const modalSlice = createSlice({
     setModalPath: (state, action) => {
       state.isOpen = true;
       state.modalPath = action.payload.modalPath;
-
+    },
+    setScrollPosition: (state, action) => {
+      state.scrollPosition = action.payload;
     },
   },
 });
 
-export const { openModal, closeModal, setModalPath } = modalSlice.actions;
+export const { openModal, closeModal, setModalPath,setScrollPosition } = modalSlice.actions;
 
 export const modalReducer = modalSlice.reducer;

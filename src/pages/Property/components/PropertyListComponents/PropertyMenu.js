@@ -1,11 +1,11 @@
 import React from "react";
-import Button from "../../../commonComponents/Button";
-import "../../../styles/index.css";
+import Button from "../../../../commonComponents/Button";
+import "../../../../styles/index.css";
 // import "../../../styles/globals.css";
 import { Link } from "react-router-dom";
-import useModal from "../../../hooks/use-modal";
+import useModal from "../../../../hooks/use-modal";
 import { useLocation } from "react-router-dom";
-import { useFetchPropertiesQuery } from "../../../store";
+import { useFetchPropertiesQuery } from "../../../../store";
 // import { useDispatch, useSelector } from "react-redux";
 const PropertyMenu = ({ add }) => {
   const { showModal } = useModal({ caller: "PropertyMenu" });
@@ -50,7 +50,7 @@ const PropertyMenu = ({ add }) => {
 
   return (
     <div>
-      <div className="max-w-[500px] flex justify-between items-center px-4 mt-12 mb-3 h-9">
+      <div className="max-w-[500px] flex justify-between items-center px-4 mt-16 mb-3 h-9">
         <div className="flex items-center space-x-4 text-sm ">
           {renderedLinks}
         </div>

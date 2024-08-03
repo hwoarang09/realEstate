@@ -169,7 +169,7 @@ const ItemInfoMemo = ({ property, setProperty }) => {
         <div className="mb-4">
           <Textarea
             type="text"
-            name="building_name"
+            name="description"
             value={notNullValue(property.description)}
             onChange={(e) =>
               handleChange(["description"], e.target.value, setProperty)
