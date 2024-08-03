@@ -7,7 +7,7 @@ import useModal from "../../../../hooks/use-modal";
 import { useLocation } from "react-router-dom";
 import { useFetchPropertiesQuery } from "../../../../store";
 // import { useDispatch, useSelector } from "react-redux";
-const PropertyMenu = ({ add }) => {
+const PropertyMenu = ({ add, searchQuery }) => {
   const { showModal } = useModal({ caller: "PropertyMenu" });
   const activeClassName = "font-bold text-blue-700";
   const location = useLocation();
@@ -19,6 +19,7 @@ const PropertyMenu = ({ add }) => {
     is_verified: true,
     page: 1,
     limit: 5,
+    keyword: searchQuery,
   });
 
   if (isLoading) return <div>Loading...</div>;

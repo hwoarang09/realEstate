@@ -57,7 +57,7 @@ function PropertyPage() {
   return (
     <div>
       <Header onSearch={handleSearch} />
-      <PropertyMenu add={"add"} />
+      <PropertyMenu add={"add"} searchQuery={searchQuery} />
       <PropertyList
         properties={allProperties}
         lastPropertyElementRef={lastPropertyElementRef}
