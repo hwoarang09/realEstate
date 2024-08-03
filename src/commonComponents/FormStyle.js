@@ -8,6 +8,7 @@ function StyleForm({
   flatButtons,
   toggleButtonWrapper,
   formRow,
+  InnerformRow,
   label,
   ...rest
 }) {
@@ -17,11 +18,12 @@ function StyleForm({
       {
         "mt-6": mainWrapper,
         "mb-4": tabWrapper,
-        "text-blue-600 text-base font-bold mb-2": menuTitle,
+        "text-blue-600 text-base text-lg font-bold mb-2": menuTitle,
         "flex flex-wrap items-center ": flatButtons,
         "flex justify-center mt-3": toggleButtonWrapper,
-        "text-sm flex items-center font-bold w-24": label,
-        "flex mb-4 min-h-[40px] items-center": formRow,
+        "text-base flex items-center font-bold w-1/3": label,
+        "flex mb-4 items-center": formRow,
+        "flex w-full items-center": InnerformRow,
         // "text-blue-600 text-base font-bold mb-2":menuTitle,
         // "text-blue-500": outline && (primary || primary_add),
         // "text-gray-900": outline && secondary,

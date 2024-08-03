@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Button from "../../../../commonComponents/Button";
-import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 import { renderCategoryButtons } from "../../../../utils/formUtils";
+import { formGenerator, ToggleButton } from "../../../../utils/formGenerator";
+import StyleForm from "../../../../commonComponents/FormStyle";
 
 const areaTypeArray = ["역세권", "주거권", "유통권"];
 const gradeArray = ["상", "중", "하"];
@@ -62,71 +62,137 @@ const ItemInfoOther = ({ property, setProperty }) => {
     setProperty,
     mapppedVerified
   );
+
   return (
-    <div className="my-6">
-      <div className="mb-2 ">
-        <div className="text-blue-600 text-base font-bold mb-2">기타 설정</div>
-        <div className="flex mb-2">
-          <div className="text-sm flex items-center font-bold w-28">상권</div>
-          <div className="flex">{areaTypeBtns}</div>
-        </div>
+    <StyleForm mainWrapper>
+      <StyleForm tabWrapper>
+        <StyleForm menuTitle>기타 설정</StyleForm>
+        <StyleForm formRow>
+          <StyleForm label>상권</StyleForm>
+          <StyleForm flatButtons>{areaTypeBtns}</StyleForm>
+        </StyleForm>
         {showMoreInfo && (
-          <>
-            <div className="flex mb-2">
-              <div className="text-sm flex items-center font-bold w-28">
-                등급
-              </div>
-              <div className="flex">{gradeBtns}</div>
-            </div>
-            <div className="flex mb-2">
-              <div className="text-sm flex items-center font-bold w-28">
-                진행 상태
-              </div>
-              <div className="flex">{statusBtns}</div>
-            </div>
-            <div className="flex mb-2">
-              <div className="text-sm flex items-center font-bold w-28">
-                앱/웹 노출 여부
-              </div>
-              <div className="flex">{isActiveBtns}</div>
-            </div>
-            <div className="flex mb-2">
-              <div className="text-sm flex items-center font-bold w-28">
-                매물 확보 여부
-              </div>
-              <div className="flex">{isVerifiedBtns}</div>
-            </div>
-          </>
+          <StyleForm tabWrapper>
+            <StyleForm formRow>
+              <StyleForm label>등급</StyleForm>
+              <StyleForm flatButtons>{gradeBtns}</StyleForm>
+            </StyleForm>
+            <StyleForm formRow>
+              <StyleForm label>진행 상태</StyleForm>
+              <StyleForm flatButtons>{statusBtns}</StyleForm>
+            </StyleForm>
+            <StyleForm formRow>
+              <StyleForm label>앱/웹 노출 여부</StyleForm>
+              <StyleForm flatButtons>{isActiveBtns}</StyleForm>
+            </StyleForm>
+            <StyleForm formRow>
+              <StyleForm label>매물 확보 여부</StyleForm>
+              <StyleForm flatButtons>{isVerifiedBtns}</StyleForm>
+            </StyleForm>
+          </StyleForm>
         )}
-      </div>
-      <div className="flex justify-center mt-3">
-        <Button
-          primary
-          rounded
-          outline
-          className="mb-4 flex justify-between py-0.5 px-1"
-          type="button" // 버튼의 기본 타입을 button으로 설정하여 submit 방지
-          onClick={() => setShowMoreInfo(!showMoreInfo)}
-        >
-          {showMoreInfo ? (
-            <>
-              <span className="text-xs mr-2">접기</span>
-              <span>
-                <FaChevronUp />
-              </span>
-            </>
-          ) : (
-            <>
-              <span className="text-xs mr-2">펼치기</span>
-              <span>
-                <FaChevronDown />
-              </span>
-            </>
-          )}
-        </Button>
-      </div>
-    </div>
+      </StyleForm>
+
+      <StyleForm toggleButtonWrapper>
+        <ToggleButton
+          showMoreInfo={showMoreInfo}
+          setShowMoreInfo={setShowMoreInfo}
+        />
+      </StyleForm>
+    </StyleForm>
   );
 };
 
 export default ItemInfoOther;
+
+// const defaultBluePrint = [
+//   {
+//     STATE: { property, setProperty },
+//     WIDTHLIST: [
+//       [
+//         {
+//           type: "label",
+//           labelText: "상권",
+//         },
+//         {
+//           type: "flatButtons",
+//           btns: areaTypeBtns,
+//         },
+//       ],
+//     ],
+//   },
+// ];
+
+// const hideBluePrint = [
+//   {
+//     STATE: { property, setProperty },
+//     WIDTHLIST: [
+//       [
+//         {
+//           type: "label",
+//           labelText: "등급",
+//         },
+//         {
+//           type: "flatButtons",
+//           btns: gradeBtns,
+//         },
+//       ],
+//     ],
+//   },
+//   {
+//     STATE: { property, setProperty },
+//     WIDTHLIST: [
+//       [
+//         {
+//           type: "label",
+//           labelText: "진행 상태",
+//         },
+//         {
+//           type: "flatButtons",
+//           btns: statusBtns,
+//         },
+//       ],
+//     ],
+//   },
+//   {
+//     STATE: { property, setProperty },
+//     WIDTHLIST: [
+//       [
+//         {
+//           type: "label",
+//           labelText: "앱/웹 노출 여부",
+//         },
+//         {
+//           type: "flatButtons",
+//           btns: isActiveBtns,
+//         },
+//       ],
+//     ],
+//   },
+//   {
+//     STATE: { property, setProperty },
+//     WIDTHLIST: [
+//       [
+//         {
+//           type: "label",
+//           labelText: "매물 확보 여부",
+//         },
+//         {
+//           type: "flatButtons",
+//           btns: isVerifiedBtns,
+//         },
+//       ],
+//     ],
+//   },
+// ];
+
+// {hideBluePrint.map((bluePrint, i) => (
+//   <React.Fragment key={`oth2_${i}`}>
+//     {formGenerator(bluePrint)}
+//   </React.Fragment>
+// ))}
+// {defaultBluePrint.map((bluePrint, i) => (
+//   <React.Fragment key={`oth1_${i}`}>
+//     {formGenerator(bluePrint)}
+//   </React.Fragment>
+// ))}
