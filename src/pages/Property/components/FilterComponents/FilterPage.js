@@ -8,11 +8,6 @@ import {
 } from "../../../../store/slices/headerSlice";
 
 import Button from "../../../../commonComponents/Button";
-import {
-  setKeyword,
-  setFromArea,
-  setToArea,
-} from "../../../../store/slices/searchFilterSlice";
 
 import {
   notNullValue,
@@ -24,6 +19,11 @@ import { Input } from "../../../../@/components/ui/input";
 import StyleForm from "../../../../commonComponents/FormStyle";
 import { formGenerator, ToggleButton } from "../../../../utils/formGenerator";
 import { addDays, subDays, startOfWeek, subMonths, format } from "date-fns";
+import {
+  setKeyword,
+  setFilters,
+} from "../../../../store/slices/searchFilterSlice";
+
 const sortOrderOption = ["updated_at", "created_at"];
 const mappedSortOrder = {
   updated_at: "수정한 날짜",
@@ -42,36 +42,39 @@ function FilterPage() {
     (state) => state.searchFilter
   );
 
-  const [localKeyword, setLocalKeyword] = useState(keyword);
-  const [localFromArea, setLocalFromArea] = useState(from_area);
-  const [localToArea, setLocalToArea] = useState(to_area);
-
   const [filterObj, setFilterObj] = useState({
     order: "desc",
   });
   const updateFilterDates = useCallback((tmpSortDate) => {
     const today = new Date();
+    const formattedToday = format(today, "yyyy-MM-dd");
+
     const yesterday = subDays(today, 1);
-    const lastWeekStart = startOfWeek(subDays(today, 7), { weekStartsOn: 1 }); // Assuming week starts on Monday
+    const formattedYesterday = format(yesterday, "yyyy-MM-dd");
+
+    const lastWeekStart = startOfWeek(subDays(today, 7), { weekStartsOn: 1 });
+    const formattedLastWeekStart = format(lastWeekStart, "yyyy-MM-dd");
+
     const lastMonthStart = subMonths(today, 1);
+    const formattedLastMonthStart = format(lastMonthStart, "yyyy-MM-dd");
 
     if (tmpSortDate === "어제") {
       setFilterObj((prevObj) => ({
         ...prevObj,
-        from_updated_date: yesterday,
-        to_updated_date: today,
+        from_updated_date: formattedYesterday,
+        to_updated_date: formattedToday,
       }));
     } else if (tmpSortDate === "지난주") {
       setFilterObj((prevObj) => ({
         ...prevObj,
-        from_updated_date: lastWeekStart,
-        to_updated_date: today,
+        from_updated_date: formattedLastWeekStart,
+        to_updated_date: formattedToday,
       }));
     } else if (tmpSortDate === "지난달") {
       setFilterObj((prevObj) => ({
         ...prevObj,
-        from_updated_date: lastMonthStart,
-        to_updated_date: today,
+        from_updated_date: formattedLastMonthStart,
+        to_updated_date: formattedToday,
       }));
     }
   }, []);
@@ -81,11 +84,13 @@ function FilterPage() {
       updateFilterDates(filterObj.tmpSortDate);
     }
   }, [filterObj.tmpSortDate, updateFilterDates]);
-  const handleUpdateChanges = () => {
-    dispatch(setKeyword(localKeyword));
-    dispatch(setFromArea(localFromArea));
-    dispatch(setToArea(localToArea));
 
+  const handleUpdateChanges = () => {
+    dispatch(
+      setFilters({
+        ...filterObj,
+      })
+    );
     dispatch(setLeft(false));
     dispatch(setSearch(false));
     dispatch(setIsList(true));
@@ -116,7 +121,6 @@ function FilterPage() {
   );
   const sortBluePrint = [
     {
-      STATE: { property: filterObj, setProperty: setFilterObj },
       WIDTHLIST: [
         [
           {
@@ -153,7 +157,6 @@ function FilterPage() {
   ];
   const filterBluePrint = [
     {
-      STATE: { filterObj, setFilterObj },
       WIDTHLIST: [
         [
           {
@@ -191,7 +194,11 @@ function FilterPage() {
             <StyleForm menuTitle>정렬 및 날짜</StyleForm>
             {sortBluePrint.map((bluePrint, i) => (
               <React.Fragment key={`ft1_${i}`}>
-                {formGenerator(bluePrint)}
+                {formGenerator({
+                  property: filterObj,
+                  setProperty: setFilterObj,
+                  ...bluePrint,
+                })}
               </React.Fragment>
             ))}
           </StyleForm>
@@ -199,7 +206,11 @@ function FilterPage() {
             <StyleForm menuTitle>필터</StyleForm>
             {filterBluePrint.map((bluePrint, i) => (
               <React.Fragment key={`ft2_${i}`}>
-                {formGenerator(bluePrint)}
+                {formGenerator({
+                  property: filterObj,
+                  setProperty: setFilterObj,
+                  ...bluePrint,
+                })}
               </React.Fragment>
             ))}
           </StyleForm>

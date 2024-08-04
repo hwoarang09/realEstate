@@ -41,8 +41,8 @@ export function DatePickerWithRange({
       setDate(selectedRange);
       setProperty((prevProperty) => ({
         ...prevProperty,
-        from_updated_date: selectedRange.from,
-        to_updated_date: selectedRange.to,
+        from_updated_date: format(selectedRange.from, "yyyy-MM-dd"),
+        to_updated_date: format(selectedRange.to, "yyyy-MM-dd"),
         tmpSortDate: null,
       }));
     }

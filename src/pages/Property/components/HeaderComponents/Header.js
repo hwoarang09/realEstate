@@ -65,7 +65,7 @@ const Header = () => {
   };
 
   return (
-    <div className="header max-w-[500px] flex fixed top-0 left-0 w-full h-12 px-4 pt-4 bg-white z-10">
+    <div className="header max-w-[500px] flex fixed top-0 left-0 w-full h-12 px-4 py-8 bg-white z-10">
       <div className="w-1/12 flex items-center pr-4">
         {left ? (
           <FaChevronLeft onClick={handleClickLeft} className="cursor-pointer" />

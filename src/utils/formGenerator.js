@@ -16,10 +16,7 @@ const getPropertyValue = (property, keyList) => {
   );
 };
 
-const formGenerator = ({
-  STATE: { property, setProperty },
-  WIDTHLIST: widthList,
-}) => {
+const formGenerator = ({ property, setProperty, WIDTHLIST: widthList }) => {
   const renderElement = ({ input, index, row, rowIndex }) => {
     const key = `${input.type}_${index}_${rowIndex}`;
 
