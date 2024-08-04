@@ -10,8 +10,9 @@ import { useSelector } from "react-redux";
 function PropertyPage() {
   const [page, setPage] = useState(1);
   const [allProperties, setAllProperties] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
+
   const isList = useSelector((state) => state.isList);
+  const searchQuery = useSelector((state) => state.searchFilter.keyword); // Redux 스토어에서 검색어 가져오기
 
   const { data, error, isLoading } = useFetchPropertiesQuery({
     is_verified: true,
@@ -20,6 +21,12 @@ function PropertyPage() {
     keyword: searchQuery,
   });
   const observer = useRef();
+
+  useEffect(() => {
+    // 검색어가 변경될 때 페이지와 데이터를 초기화합니다.
+    setPage(1);
+    setAllProperties([]);
+  }, [searchQuery]);
 
   useEffect(() => {
     if (data?.contents) {
@@ -51,10 +58,7 @@ function PropertyPage() {
     [isLoading]
   );
 
-  const handleSearch = (query) => {
-    setSearchQuery(query);
-    setPage(1);
-  };
+
 
   if (isLoading) return <div>Loading...</div>;
 

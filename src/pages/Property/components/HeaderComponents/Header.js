@@ -4,14 +4,16 @@ import { TfiMenu } from "react-icons/tfi";
 import { FaSearch, FaFilter, FaChevronLeft } from "react-icons/fa";
 import { Input } from "../../../../@/components/ui/input";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleIsList, setIsList } from "../../../../store/slices/isListSlice";
+import { setKeyword } from "../../../../store/slices/searchFilterSlice";
 
 const Header = ({ onSearch }) => {
   const [search, setSearch] = useState(false);
-  const [query, setQuery] = useState("");
+  const [searchText, setSearchText] = useState("");
   const [left, setLeft] = useState(false);
   const dispatch = useDispatch();
+  const searchQuery = useSelector((state) => state.searchFilter.keyword); // Redux 스토어에서 검색어 가져오기
 
   const searchInputRef = useRef(null);
 
@@ -34,12 +36,20 @@ const Header = ({ onSearch }) => {
     }
   }, [search]);
   const handleInputChange = (e) => {
-    setQuery(e.target.value);
+    setSearchText(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSearch(query);
+    dispatch(setKeyword(searchText));
+    console.log("in handleSubmit query:", searchQuery);
+  };
+  const handleX = () => {
+    setSearchText("");
+    dispatch(setKeyword(""));
+    console.log(
+      `in handleX query searchText ${searchText} searchQuery ${searchQuery}`
+    );
   };
 
   return (
@@ -55,13 +65,16 @@ const Header = ({ onSearch }) => {
         {search && (
           <form onSubmit={handleSubmit} className="flex w-full">
             <Input
-              value={query}
+              value={searchText}
               onChange={handleInputChange}
               className="flex-grow"
               ref={searchInputRef}
             />
             <button type="submit" className="hidden">
               Search
+            </button>
+            <button type="button" onClick={handleX}>
+              X
             </button>
           </form>
         )}
