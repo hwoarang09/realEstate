@@ -46,6 +46,7 @@ function FilterPage() {
     order: "desc",
   });
   const updateFilterDates = useCallback((tmpSortDate) => {
+    console.log("updateFilterDates", tmpSortDate);
     const today = new Date();
     const formattedToday = format(today, "yyyy-MM-dd");
 
@@ -76,13 +77,21 @@ function FilterPage() {
         from_updated_date: formattedLastMonthStart,
         to_updated_date: formattedToday,
       }));
+    } else if (tmpSortDate === "") {
+      console.log("tmpSortDate is empty?", tmpSortDate);
+      setFilterObj((prevObj) => ({
+        ...prevObj,
+        from_updated_date: null,
+        to_updated_date: null,
+      }));
     }
   }, []);
 
   useEffect(() => {
-    if (filterObj.tmpSortDate) {
-      updateFilterDates(filterObj.tmpSortDate);
-    }
+    // if (filterObj.tmpSortDate) {
+    //   updateFilterDates(filterObj.tmpSortDate);
+    // }
+    updateFilterDates(filterObj.tmpSortDate);
   }, [filterObj.tmpSortDate, updateFilterDates]);
 
   const handleUpdateChanges = () => {

@@ -39,10 +39,18 @@ export function DatePickerWithRange({
     console.log("handleSelect", selectedRange);
     if (selectedRange) {
       setDate(selectedRange);
+  
+      const formattedFrom = selectedRange.from
+        ? format(selectedRange.from, "yyyy-MM-dd")
+        : null;
+      const formattedTo = selectedRange.to
+        ? format(selectedRange.to, "yyyy-MM-dd")
+        : null;
+
       setProperty((prevProperty) => ({
         ...prevProperty,
-        from_updated_date: format(selectedRange.from, "yyyy-MM-dd"),
-        to_updated_date: format(selectedRange.to, "yyyy-MM-dd"),
+        from_updated_date: formattedFrom,
+        to_updated_date: formattedTo,
         tmpSortDate: null,
       }));
     }
