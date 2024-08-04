@@ -19,7 +19,6 @@ function PropertyPage() {
     limit: 10,
     keyword: searchQuery,
   });
-
   const observer = useRef();
 
   useEffect(() => {
@@ -57,12 +56,14 @@ function PropertyPage() {
     setPage(1);
   };
 
+  if (isLoading) return <div>Loading...</div>;
+
   return (
     <>
       {/* <Header onSearch={handleSearch} setIsList={setIsList} /> */}
       {isList && (
         <>
-          <PropertyMenu add={"add"} searchQuery={searchQuery} />
+          <PropertyMenu add={"add"} countData={data.count} />
           <PropertyList
             properties={allProperties}
             lastPropertyElementRef={lastPropertyElementRef}
