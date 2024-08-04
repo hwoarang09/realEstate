@@ -7,36 +7,9 @@ function FilterPage({ onClose, onSave, index, initialValue }) {
     console.log("변경사항 저장");
   };
   return (
-    <div className="border-2 border-gray-100 mt-16 w-full max-w-[500px] justify-center items-center rounded-xl">
-      <div className=" p-4">
+    <div className="mt-16 w-full max-w-[500px] justify-center items-center rounded-xl">
+      <div className="border-2 border-gray-100 p-4">
         <h2 className="text-xl mb-4">zz필터zz</h2>
-        <textarea
-          className="border rounded px-2 w-full h-24"
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-        />
-        <div className="mt-2 flex justify-end">
-          <Button
-            primary
-            rounded
-            className="mr-2 py-0.5"
-            onClick={() => onSave(index, value)}
-          >
-            저장
-          </Button>
-          <Button danger rounded onClick={onClose}>
-            취소
-          </Button>
-        </div>
-        <div>hi</div>
-        <div>hi</div>
-        <div>hi</div>
-        <div>hi</div>
-        <div>hi</div>
-        <div>hi</div>
-        <div>hi</div>
-        <div>hi</div>
-        <div>hi</div>
       </div>
       <div
         onClick={handleUpdateChanges}

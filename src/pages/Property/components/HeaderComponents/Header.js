@@ -5,11 +5,14 @@ import { FaSearch, FaFilter, FaChevronLeft } from "react-icons/fa";
 import { Input } from "../../../../@/components/ui/input";
 
 import { useDispatch, useSelector } from "react-redux";
-import { toggleIsList } from "../../../../store/slices/isListSlice";
-const Header = ({ onSearch, setIsList }) => {
+import { toggleIsList, setIsList } from "../../../../store/slices/isListSlice";
+
+const Header = ({ onSearch }) => {
   const [search, setSearch] = useState(false);
   const [query, setQuery] = useState("");
   const dispatch = useDispatch();
+  const isList = useSelector((state) => state.isList);
+
   const searchInputRef = useRef(null);
 
   const handleClickFilter = () => {
@@ -21,6 +24,7 @@ const Header = ({ onSearch, setIsList }) => {
   };
   const handleClickLeft = () => {
     setSearch(!search);
+    dispatch(setIsList(true));
   };
   useEffect(() => {
     if (search && searchInputRef.current) {
