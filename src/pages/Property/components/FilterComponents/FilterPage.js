@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   toggleIsList,
@@ -23,7 +23,7 @@ import {
 import { Input } from "../../../../@/components/ui/input";
 import StyleForm from "../../../../commonComponents/FormStyle";
 import { formGenerator, ToggleButton } from "../../../../utils/formGenerator";
-
+import { addDays, subDays, startOfWeek, subMonths, format } from "date-fns";
 const sortOrderOption = ["updated_at", "created_at"];
 const mappedSortOrder = {
   updated_at: "수정한 날짜",
@@ -49,9 +49,38 @@ function FilterPage() {
   const [filterObj, setFilterObj] = useState({
     order: "desc",
   });
+  const updateFilterDates = useCallback((tmpSortDate) => {
+    const today = new Date();
+    const yesterday = subDays(today, 1);
+    const lastWeekStart = startOfWeek(subDays(today, 7), { weekStartsOn: 1 }); // Assuming week starts on Monday
+    const lastMonthStart = subMonths(today, 1);
+
+    if (tmpSortDate === "어제") {
+      setFilterObj((prevObj) => ({
+        ...prevObj,
+        from_updated_date: yesterday,
+        to_updated_date: today,
+      }));
+    } else if (tmpSortDate === "지난주") {
+      setFilterObj((prevObj) => ({
+        ...prevObj,
+        from_updated_date: lastWeekStart,
+        to_updated_date: today,
+      }));
+    } else if (tmpSortDate === "지난달") {
+      setFilterObj((prevObj) => ({
+        ...prevObj,
+        from_updated_date: lastMonthStart,
+        to_updated_date: today,
+      }));
+    }
+  }, []);
+
   useEffect(() => {
-    console.log("확인용 filterObj", filterObj);
-  }, [filterObj]);
+    if (filterObj.tmpSortDate) {
+      updateFilterDates(filterObj.tmpSortDate);
+    }
+  }, [filterObj.tmpSortDate, updateFilterDates]);
   const handleUpdateChanges = () => {
     dispatch(setKeyword(localKeyword));
     dispatch(setFromArea(localFromArea));
