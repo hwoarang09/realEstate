@@ -5,6 +5,7 @@ import StyleForm from "../commonComponents/FormStyle";
 import Button from "../commonComponents/Button";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { DatePickerDemo } from "../@/components/ui/datepicker";
+import { DatePickerWithRange } from "../@/components/ui/datePickerRange";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 
@@ -67,30 +68,59 @@ const formGenerator = ({
           {input.simpleText}
         </span>
       );
-    } else if (input.type === "datepicker") {
-      console.log("datepicker!!", property.available_date);
+    } else if (input.type === "datePicker") {
+      console.log(
+        "datepicker!!",
+        property?.available_date,
+        input.keyList,
+        property
+      );
       // Add your date picker implementation here
       return (
         <div key={key}>
-          <DatePickerDemo property={property} setProperty={setProperty} />{" "}
+          <DatePickerDemo
+            property={property}
+            setProperty={setProperty}
+            keyList={input.keyList}
+          />{" "}
           {/* Replace this with your actual date picker component */}
         </div>
       );
-    } else if (input.type === "sliderTwo") {
-      console.log("sliderTwo!!");
+    } else if (input.type === "datePickerRange") {
+      console.log(
+        "datePickerRange!!",
+        property?.available_date,
+        input.keyList,
+        property
+      );
+      // Add your date picker implementation here
+      return (
+        <div key={key}>
+          <DatePickerWithRange
+            property={property}
+            setProperty={setProperty}
+            keyList={input.keyList}
+          />{" "}
+          {/* Replace this with your actual date picker component */}
+        </div>
+      );
+    } else if (input.type === "range") {
+      console.log("range!!");
 
       const style = { width: 400, margin: 50 };
       function log(value) {
-        console.log(value); //eslint-disable-line
+        console.log(value);
       }
       return (
-        <div style={style}>
-          <Slider
-            range
-            allowCross={false}
-            defaultValue={[0, 20]}
-            onChange={log}
-          />
+        <div className="flex justify-center items-center w-full">
+          <div className="w-[300px]">
+            <Slider
+              range
+              allowCross={false}
+              defaultValue={[0, 20]}
+              onChange={log}
+            />
+          </div>
         </div>
       );
     } else {

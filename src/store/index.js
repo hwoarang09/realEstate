@@ -5,7 +5,7 @@ import {
   closeModal,
   setScrollPosition,
 } from "./slices/modalSlice";
-import isListReducer from "./slices/isListSlice";
+import isListReducer from "./slices/headerSlice";
 import searchFilterReducer from "./slices/searchFilterSlice";
 import { setupListeners } from "@reduxjs/toolkit/query";
 

@@ -173,8 +173,8 @@ const ItemInfoRent = ({ property, setProperty }) => {
             labelText: "입주시기",
           },
           {
-            type: "datepicker",
-            keyList: ["available_date"],
+            type: "datePicker",
+            keyList: "available_date",
           },
         ],
         [
@@ -189,7 +189,7 @@ const ItemInfoRent = ({ property, setProperty }) => {
         ],
         [
           {
-            type: "sliderTwo",
+            type: "range",
             slider: null,
           },
         ],

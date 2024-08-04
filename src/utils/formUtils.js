@@ -8,12 +8,15 @@ const handleMultiCategoryClick = (cate, cateList, setFunction) => {
     const lastKey = cateList.pop();
     const target = cateList.reduce((obj, key) => obj[key], newProperty);
 
-    const newCategories = target[lastKey].includes(cate)
-      ? target[lastKey].filter((category) => category !== cate)
-      : [...target[lastKey], cate];
+    if (target[lastKey] === undefined) {
+      target[lastKey] = [];
+    } else {
+      const newCategories = target[lastKey].includes(cate)
+        ? target[lastKey].filter((category) => category !== cate)
+        : [...target[lastKey], cate];
 
-    target[lastKey] = newCategories;
-
+      target[lastKey] = newCategories;
+    }
     return newProperty;
   });
 };
@@ -25,8 +28,12 @@ const handleSingleCategoryClick = (cate, cateList, setFunction) => {
     const lastKey = newCateList.pop();
     const target = newCateList.reduce((obj, key) => obj[key], newProperty);
 
-    target[lastKey] = target[lastKey] === cate ? "" : cate; // 선택 해제 추가
-
+    if (target[lastKey] === undefined) {
+      console.log("target[lastKey] is undefined??");
+      target[lastKey] = cate;
+    } else {
+      target[lastKey] = target[lastKey] === cate ? "" : cate; // 선택 해제 추가
+    }
     return newProperty;
   });
 };
@@ -115,8 +122,7 @@ const renderCategoryButtons = (
       }, property);
       isSelected = Array.isArray(result) && result.includes(cate);
     }
-    
-    
+
     return (
       <div key={cate}>
         <Button

@@ -5,30 +5,42 @@ import { FaSearch, FaFilter, FaChevronLeft } from "react-icons/fa";
 import { Input } from "../../../../@/components/ui/input";
 
 import { useDispatch, useSelector } from "react-redux";
-import { toggleIsList, setIsList } from "../../../../store/slices/isListSlice";
+import {
+  toggleIsList,
+  setIsList,
+  setLeft,
+  setSearch,
+} from "../../../../store/slices/headerSlice";
 import { setKeyword } from "../../../../store/slices/searchFilterSlice";
+import { IoMdClose } from "react-icons/io";
 
-const Header = ({ onSearch }) => {
-  const [search, setSearch] = useState(false);
+const Header = () => {
   const [searchText, setSearchText] = useState("");
-  const [left, setLeft] = useState(false);
+  const isList = useSelector((state) => state.isList.isList);
+  const left = useSelector((state) => state.isList.left);
+  const search = useSelector((state) => state.isList.search);
   const dispatch = useDispatch();
-  const searchQuery = useSelector((state) => state.searchFilter.keyword); // Redux 스토어에서 검색어 가져오기
-
+  const searchQuery = useSelector((state) => state.searchFilter.keyword);
   const searchInputRef = useRef(null);
 
   const handleClickFilter = () => {
-    if (!search) setLeft(!left);
+    console.log("in handleClickFilter", search, left, isList);
+    if (!search) dispatch(setLeft(!left));
     dispatch(toggleIsList());
   };
   const handleClickSearch = () => {
-    setLeft(!left);
-    setSearch(!search);
+    dispatch(setLeft(!left));
+    dispatch(setSearch(!search));
+    console.log("in handleClickSearch", search, left);
   };
   const handleClickLeft = () => {
-    setLeft(!left);
-    setSearch(!search);
+    dispatch(setLeft(false));
+    dispatch(setSearch(false));
     dispatch(setIsList(true));
+    if (searchText) {
+      setSearchText("");
+      dispatch(setKeyword(""));
+    }
   };
   useEffect(() => {
     if (search && searchInputRef.current) {
@@ -63,7 +75,7 @@ const Header = ({ onSearch }) => {
       </div>
       <div className="w-3/4 flex items-center">
         {search && (
-          <form onSubmit={handleSubmit} className="flex w-full">
+          <form onSubmit={handleSubmit} className="flex w-full relative ">
             <Input
               value={searchText}
               onChange={handleInputChange}
@@ -73,9 +85,12 @@ const Header = ({ onSearch }) => {
             <button type="submit" className="hidden">
               Search
             </button>
-            <button type="button" onClick={handleX}>
-              X
-            </button>
+            <div
+              className="absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer
+            border-white border-2 hover:rounded-xl hover:border-2 hover:border-gray-300 hover:bg-gray-300 hover:text-white"
+            >
+              <IoMdClose onClick={handleX} className="w-6 h-6" />
+            </div>
           </form>
         )}
       </div>

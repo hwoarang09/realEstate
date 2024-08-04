@@ -4,15 +4,21 @@ const searchFilterSlice = createSlice({
   name: "searchFilter",
   initialState: {
     keyword: "",
-    // 다른 필터 값들 추가 가능
+    from_area: "",
+    to_area: "",
   },
   reducers: {
     setKeyword: (state, action) => {
       state.keyword = action.payload;
     },
-    // 다른 필터 값들을 설정하는 리듀서도 추가 가능
+    setFromArea: (state, action) => {
+      state.from_area = action.payload;
+    },
+    setToArea: (state, action) => {
+      state.to_area = action.payload;
+    },
   },
 });
 
-export const { setKeyword } = searchFilterSlice.actions;
+export const { setKeyword, setFromArea, setToArea } = searchFilterSlice.actions;
 export default searchFilterSlice.reducer;
