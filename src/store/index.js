@@ -5,6 +5,7 @@ import {
   closeModal,
   setScrollPosition,
 } from "./slices/modalSlice";
+import isListReducer from "./slices/isListSlice";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { api } from "./apis/propertyApi";
 // import { commentApi } from "./apis/commentApi";
@@ -12,6 +13,7 @@ import { api } from "./apis/propertyApi";
 const store = configureStore({
   reducer: {
     modals: modalReducer,
+    isList: isListReducer,
     [api.reducerPath]: api.reducer,
     // [commentApi.reducerPath]: commentApi.reducer,
   },

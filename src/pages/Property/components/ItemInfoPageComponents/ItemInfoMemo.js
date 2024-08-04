@@ -48,7 +48,6 @@ const ItemInfoMemo = ({ property, setProperty }) => {
   }
 
   const openModal = (index, value) => {
-    console.log("in openModal", index, value);
     setCurrentMemoIndex(index);
     setCurrentMemoValue(value);
     setIsModalOpen(true);

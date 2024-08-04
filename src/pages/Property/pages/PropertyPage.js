@@ -4,11 +4,14 @@ import Header from "../components/HeaderComponents/Header"; // 수정된 경로
 import { Outlet } from "react-router-dom";
 import { useFetchPropertiesQuery } from "../../../store";
 import PropertyMenu from "../components/PropertyListComponents/PropertyMenu";
+import FilterPage from "../components/FilterComponents/FilterPage"; // 수정된 경로
+import { useSelector } from "react-redux";
 
 function PropertyPage() {
   const [page, setPage] = useState(1);
   const [allProperties, setAllProperties] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const isList = useSelector((state) => state.isList);
 
   const { data, error, isLoading } = useFetchPropertiesQuery({
     is_verified: true,
@@ -55,18 +58,23 @@ function PropertyPage() {
   };
 
   return (
-    <div>
-      <Header onSearch={handleSearch} />
-      <PropertyMenu add={"add"} searchQuery={searchQuery} />
-      <PropertyList
-        properties={allProperties}
-        lastPropertyElementRef={lastPropertyElementRef}
-        isLoading={isLoading}
-        error={error}
-      />
+    <>
+      {/* <Header onSearch={handleSearch} setIsList={setIsList} /> */}
+      {isList && (
+        <>
+          <PropertyMenu add={"add"} searchQuery={searchQuery} />
+          <PropertyList
+            properties={allProperties}
+            lastPropertyElementRef={lastPropertyElementRef}
+            isLoading={isLoading}
+            error={error}
+          />
+        </>
+      )}
+      {!isList && <FilterPage />}
       <Outlet />
       {/* <MapViewTab /> */}
-    </div>
+    </>
   );
 }
 
