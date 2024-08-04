@@ -5,6 +5,9 @@ import StyleForm from "../commonComponents/FormStyle";
 import Button from "../commonComponents/Button";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { DatePickerDemo } from "../@/components/ui/datepicker";
+import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
+
 const getPropertyValue = (property, keyList) => {
   return keyList.reduce(
     (obj, key) => (obj && obj[key] !== null ? obj[key] : ""),
@@ -68,9 +71,26 @@ const formGenerator = ({
       console.log("datepicker!!", property.available_date);
       // Add your date picker implementation here
       return (
-        <div key={key} >
-          <DatePickerDemo property={property} setProperty={setProperty}/>{" "}
+        <div key={key}>
+          <DatePickerDemo property={property} setProperty={setProperty} />{" "}
           {/* Replace this with your actual date picker component */}
+        </div>
+      );
+    } else if (input.type === "sliderTwo") {
+      console.log("sliderTwo!!");
+
+      const style = { width: 400, margin: 50 };
+      function log(value) {
+        console.log(value); //eslint-disable-line
+      }
+      return (
+        <div style={style}>
+          <Slider
+            range
+            allowCross={false}
+            defaultValue={[0, 20]}
+            onChange={log}
+          />
         </div>
       );
     } else {

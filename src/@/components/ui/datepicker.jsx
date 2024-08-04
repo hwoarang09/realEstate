@@ -9,6 +9,8 @@ import { Calendar } from "./calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "./popover";
 import { ko } from "date-fns/locale";
 import { parse, format } from "date-fns";
+
+
 export function DatePickerDemo({ property, setProperty }) {
   const [date, setDate] = useState(property?.available_date);
   useEffect(() => {

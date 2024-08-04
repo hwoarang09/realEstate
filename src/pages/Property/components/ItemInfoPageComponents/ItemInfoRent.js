@@ -3,6 +3,11 @@ import { renderCategoryButtons } from "../../../../utils/formUtils";
 import StyleForm from "../../../../commonComponents/FormStyle";
 import { formGenerator, ToggleButton } from "../../../../utils/formGenerator";
 
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
+
 const rentalTypeCategories = ["전층", "일부"];
 const availDateCategories = ["즉시", "협의"];
 const transferMoneyCategories = ["양수도 매물임"];
@@ -180,6 +185,12 @@ const ItemInfoRent = ({ property, setProperty }) => {
           {
             type: "flatButtons",
             btns: availDateBtns,
+          },
+        ],
+        [
+          {
+            type: "sliderTwo",
+            slider: null,
           },
         ],
       ],

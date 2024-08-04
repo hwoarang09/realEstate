@@ -6,6 +6,7 @@ import { MdOutlineContentCopy } from "react-icons/md";
 import { MdEdit } from "react-icons/md";
 import { FaTrashAlt } from "react-icons/fa";
 import SubModal from "../../../../commonComponents/SubModal";
+import MemoEditModal from "./ItemInfoMemoEditModal";
 import {
   useRemoveCommentMutation,
   useUpdateCommentMutation,
@@ -159,6 +160,9 @@ const ItemInfoMemo = ({ property, setProperty }) => {
       </div>
     );
   });
+  const descHeight = property.description.length > 100 ? "h-48" : "h-16";
+
+  // const memoEditChildren =
 
   return (
     <div className="my-6">
@@ -174,7 +178,7 @@ const ItemInfoMemo = ({ property, setProperty }) => {
             onChange={(e) =>
               handleChange(["description"], e.target.value, setProperty)
             }
-            className="overflow-y-hidden focus:overflow-y-auto"
+            className={`overflow-y-hidden focus:overflow-y-auto ${descHeight}`}
           />
         </div>
         <div className="mb-2 text-sm">
@@ -243,7 +247,9 @@ const ItemInfoMemo = ({ property, setProperty }) => {
         onSave={saveMemo}
         index={currentMemoIndex}
         initialValue={currentMemoValue}
-      />
+      >
+        <MemoEditModal />
+      </SubModal>
     </div>
   );
 };
