@@ -168,13 +168,18 @@ const ItemInfoRent = ({ property, setProperty }) => {
             labelText: "입주시기",
           },
           {
-            type: "flatButtons",
-            btns: availDateBtns,
+            type: "datepicker",
+            keyList: ["available_date"],
+          },
+        ],
+        [
+          {
+            type: "label",
+            labelText: " ",
           },
           {
-            type: "text",
-            keyList: ["available_date"],
-            style: "w-20 ml-2",
+            type: "flatButtons",
+            btns: availDateBtns,
           },
         ],
       ],

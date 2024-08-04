@@ -4,7 +4,7 @@ import { handleChange, parseFormInt } from "./formUtils";
 import StyleForm from "../commonComponents/FormStyle";
 import Button from "../commonComponents/Button";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
-
+import { DatePickerDemo } from "../@/components/ui/datepicker";
 const getPropertyValue = (property, keyList) => {
   return keyList.reduce(
     (obj, key) => (obj && obj[key] !== null ? obj[key] : ""),
@@ -63,6 +63,15 @@ const formGenerator = ({
         <span key={key} className={input.style}>
           {input.simpleText}
         </span>
+      );
+    } else if (input.type === "datepicker") {
+      console.log("datepicker!!", property.available_date);
+      // Add your date picker implementation here
+      return (
+        <div key={key} >
+          <DatePickerDemo property={property} setProperty={setProperty}/>{" "}
+          {/* Replace this with your actual date picker component */}
+        </div>
       );
     } else {
       return null;

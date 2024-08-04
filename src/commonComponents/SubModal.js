@@ -12,12 +12,12 @@ function SubModal({ isOpen, onClose, onSave, index, initialValue }) {
   console.log("in SubModal ini", initialValue);
   console.log("in SubModal val", value);
   return ReactDOM.createPortal(
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center w z-50">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center w z-40">
       <div
         onClick={onClose}
         className="fixed inset-0 bg-green-300 opacity-0 "
       ></div>
-      <div className="bg-white p-4 rounded shadow-lg w-3/4  z-50">
+      <div className="bg-white p-4 rounded shadow-lg w-3/4  z-40">
         <h2 className="text-xl mb-4">메모 수정</h2>
         <textarea
           className="border rounded px-2 w-full h-24"
