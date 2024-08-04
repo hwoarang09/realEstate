@@ -4,25 +4,27 @@ import { TfiMenu } from "react-icons/tfi";
 import { FaSearch, FaFilter, FaChevronLeft } from "react-icons/fa";
 import { Input } from "../../../../@/components/ui/input";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { toggleIsList, setIsList } from "../../../../store/slices/isListSlice";
 
 const Header = ({ onSearch }) => {
   const [search, setSearch] = useState(false);
   const [query, setQuery] = useState("");
+  const [left, setLeft] = useState(false);
   const dispatch = useDispatch();
-  const isList = useSelector((state) => state.isList);
 
   const searchInputRef = useRef(null);
 
   const handleClickFilter = () => {
-    console.log("filter clicked");
+    if (!search) setLeft(!left);
     dispatch(toggleIsList());
   };
   const handleClickSearch = () => {
+    setLeft(!left);
     setSearch(!search);
   };
   const handleClickLeft = () => {
+    setLeft(!left);
     setSearch(!search);
     dispatch(setIsList(true));
   };
@@ -43,7 +45,7 @@ const Header = ({ onSearch }) => {
   return (
     <div className="header max-w-[500px] flex fixed top-0 left-0 w-full h-12 px-4 pt-4 bg-white z-10">
       <div className="w-1/12 flex items-center pr-4">
-        {search ? (
+        {left ? (
           <FaChevronLeft onClick={handleClickLeft} className="cursor-pointer" />
         ) : (
           <TfiMenu className="w-5 h-5 cursor-pointer" />
