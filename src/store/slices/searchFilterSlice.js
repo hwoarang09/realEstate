@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const searchFilterSlice = createSlice({
   name: "searchFilter",
   initialState: {
-    area: [],
+    area_type: [],
     from_updated_date: "",
     order: "desc",
     sort: "",

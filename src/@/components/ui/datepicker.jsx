@@ -1,14 +1,11 @@
-"use client";
-
 import React, { useState, useEffect } from "react";
-
 import { Calendar as CalendarIcon } from "lucide-react";
 import { cn } from "../../lib/utils";
 import { Button } from "./button";
 import { Calendar } from "./calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "./popover";
 import { ko } from "date-fns/locale";
-import { parse, format, subDays, subMonths } from "date-fns";
+import { parse, format } from "date-fns";
 
 export function DatePickerDemo({ property, setProperty, keyList }) {
   const [date, setDate] = useState(
@@ -19,30 +16,44 @@ export function DatePickerDemo({ property, setProperty, keyList }) {
   }, [property, keyList]);
 
   if (!property) {
-    console.log("property ", property);
+    console.log("!property in datepicker", property);
     return;
   }
 
-  console.log("keyList", keyList);
-  console.log("property in DatePickerDemo", property);
+  if (
+    property[keyList].length !== 8 &&
+    property[keyList] !== "" &&
+    property[keyList] !== "즉시" &&
+    property[keyList] !== "협의"
+  ) {
+    console.log(
+      "datepicker에 이상한 데이터 들어옴.",
+      property[keyList],
+      keyList
+    );
+    return;
+  }
   const handleDateChange = (date) => {
-    console.log("in handleDateChange");
-    console.log("in handleDateChange", date, formatDateString(date));
     setProperty({ ...property, [keyList]: formatDateString(date) });
     setDate(date);
   };
-  const formatDate = (date) => {
-    console.log("in formatDate", date, typeof date);
-    if (date === "즉시" || date === "협의") return date;
-    else if (typeof date === "string") {
-      const parsedDate = parse(date, "yyyyMMdd", new Date());
-      return format(parsedDate, "yyyy년 MM월 dd일 이후", { locale: ko });
-    }
 
-    const returnDate = format(date, "yyyy년 MM월 dd일 이후", { locale: ko });
-    console.log("returnDate", returnDate);
-    return date ? returnDate : "날짜를 선택하세요";
+  const formatDate = (date) => {
+    if (date === "즉시" || date === "협의") return date;
+    else if (typeof date === "string" && date.length !== 8) {
+      console.log("에러처리중", date);
+      return;
+    } else if (typeof date === "string" && date.length === 8) {
+      const parsedDate = parse(date, "yyyyMMdd", new Date());
+      const returnDate = format(parsedDate, "yyyy년 MM월 dd일 이후", {
+        locale: ko,
+      });
+      return returnDate;
+    }
+    console.log("데이트피커에서 알수 없는 에러", date);
+    return;
   };
+
   const formatDateString = (date) => {
     if (typeof date === "string") return date;
     return date ? format(date, "yyyyMMdd") : "";

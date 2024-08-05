@@ -114,7 +114,7 @@ function FilterPage() {
   );
   const areaBtns = renderCategoryButtons(
     areaOption,
-    ["area"],
+    ["area_type"],
     "multi",
     filterObj,
     setFilterObj
@@ -246,7 +246,7 @@ function FilterPage() {
   const handleFilter = () => {
     const newProperty = {
       ...filterObj,
-      area: [],
+      area_type: [],
       from_deposit: 0,
       to_deposit: 99999,
       from_monthly_rent: 0,

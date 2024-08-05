@@ -1,6 +1,6 @@
 export const isExactMatch = (obj) => {
   const target = {
-    area: [],
+    area_type: [],
     from_updated_date: "",
     order: "desc",
     sort: "",

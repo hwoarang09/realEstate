@@ -3,7 +3,6 @@ import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 
 const MyRangeSlider = ({ property, setProperty, keyList }) => {
-  console.log("MyRangeSlider", property, keyList);
   const initialRange = [
     property?.[keyList[0]] ?? 0,
     property?.[keyList[1]] && property[keyList[1]] <= 100
@@ -12,10 +11,6 @@ const MyRangeSlider = ({ property, setProperty, keyList }) => {
   ];
 
   const [range, setRange] = useState(initialRange);
-  console.log("range", range, property[keyList[0]], property[keyList[1]]);
-  function log(value) {
-    console.log(value);
-  }
 
   useEffect(() => {
     const newRange = [
@@ -26,6 +21,11 @@ const MyRangeSlider = ({ property, setProperty, keyList }) => {
     ];
     setRange(newRange);
   }, [property, keyList]);
+
+  function log(value) {
+    console.log(value);
+  }
+
   const handleChange = (value) => {
     log(value);
 
@@ -54,7 +54,7 @@ const MyRangeSlider = ({ property, setProperty, keyList }) => {
       <div className="flex justify-between w-[300px]">
         <div>{Number(range[0]) + `억원`}</div>
         <div>
-          {range[1]} {Number(range[1]) === 100 ? `억원 이상` : `억원`}
+          {Number(range[1])} {Number(range[1]) === 100 ? `억원 이상` : `억원`}
         </div>
       </div>
     </div>
