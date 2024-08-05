@@ -6,7 +6,7 @@ import {
   setLeft,
   setSearch,
 } from "../../../../store/slices/headerSlice";
-
+import { omit } from "lodash";
 import Button from "../../../../commonComponents/Button";
 
 import {
@@ -23,6 +23,8 @@ import {
   setKeyword,
   setFilters,
 } from "../../../../store/slices/searchFilterSlice";
+import _ from "lodash";
+import { fromJSON } from "postcss";
 
 const sortOrderOption = ["updated_at", "created_at"];
 const mappedSortOrder = {
@@ -38,11 +40,19 @@ const ownOption = ["확보 O", "확보 X"];
 
 function FilterPage() {
   const dispatch = useDispatch();
+  const filterParams = useSelector((state) => state.searchFilter);
 
   const [filterObj, setFilterObj] = useState({
+    ...filterParams,
     order: "desc",
   });
+
+  console.log("filterParams", filterParams, filterObj);
+  useEffect(() => {
+    console.log("filterObj가 변경되었습니다:", filterObj);
+  }, [filterObj]);
   const updateFilterDates = useCallback((tmpSortDate) => {
+    console.log("updateFilterDates", tmpSortDate);
     const today = new Date();
     const formattedToday = format(today, "yyyy-MM-dd");
 
@@ -77,8 +87,8 @@ function FilterPage() {
       //버튼을 다시 눌러서 선택해제할 경우
       setFilterObj((prevObj) => ({
         ...prevObj,
-        from_updated_date: null,
-        to_updated_date: null,
+        from_updated_date: "",
+        to_updated_date: "",
       }));
     }
   }, []);
@@ -86,18 +96,6 @@ function FilterPage() {
   useEffect(() => {
     updateFilterDates(filterObj.tmpSortDate);
   }, [filterObj.tmpSortDate, updateFilterDates]);
-
-  const handleUpdateChanges = () => {
-    dispatch(
-      setFilters({
-        ...filterObj,
-        page: 1,
-      })
-    );
-    dispatch(setLeft(false));
-    dispatch(setSearch(false));
-    dispatch(setIsList(true));
-  };
 
   const sortOrderBtns = renderCategoryButtons(
     sortOrderOption,
@@ -187,13 +185,64 @@ function FilterPage() {
       ],
     },
   ];
+
+  const handleUpdateChanges = () => {
+    console.log("handleUpdateChanges", {
+      ...filterObj,
+
+      page: 1,
+    });
+    dispatch(
+      setFilters({
+        ...filterObj,
+        //슬라이어에서 100찍으면 100억 이상으로 처리
+        to_deposit: filterObj.to_deposit === 100 ? 99999 : filterObj.to_deposit,
+        page: 1,
+      })
+    );
+    dispatch(setLeft(false));
+    dispatch(setSearch(false));
+    dispatch(setIsList(true));
+  };
+  const handleDateSort = () => {
+    const newProperty = {
+      ...filterObj,
+      sort: "",
+      tmpSortDate: "",
+      from_updated_date: "",
+      to_updated_date: "",
+    };
+    // newProperty.sort = "";
+    // newProperty.tmpSortDate = "";
+    // newProperty.from_updated_date = "";
+    // newProperty.to_updated_date = "";
+    setFilterObj(newProperty);
+  };
+  const handleTest = () => {
+    const newProperty = _.cloneDeep(filterObj);
+    newProperty.test = !newProperty.test;
+    setFilterObj(newProperty);
+    console.log("handleTest", newProperty);
+  };
   return (
     <div className="mt-16 w-full max-w-[500px] justify-center items-center rounded-xl">
       <div className="border-2 border-gray-100 p-4">
         <h2 className="text-xl mb-4">필터</h2>
+        <div onClick={handleTest}>
+          {" "}
+          체크테스트 {filterObj.test ? "True" : "False"}
+        </div>
         <StyleForm mainWrapper>
           <StyleForm tabWrapper>
-            <StyleForm menuTitle>정렬 및 날짜</StyleForm>
+            <StyleForm menuTitle>
+              정렬 및 날짜
+              <span
+                onClick={handleDateSort}
+                className="text-sm text-gray-500 underline cursor-pointer ml-4"
+              >
+                초기화
+              </span>
+            </StyleForm>
             {sortBluePrint.map((bluePrint, i) => (
               <React.Fragment key={`ft1_${i}`}>
                 {formGenerator({

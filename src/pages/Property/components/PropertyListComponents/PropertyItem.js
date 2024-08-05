@@ -77,10 +77,11 @@ const PropertyItem = forwardRef(({ property, showModal }, ref) => {
         <div className="flex flex-col justify-between">
           <div className="flex justify-end space-x-4">
             <span className="text-sm">
-              <span className="font-bold">전용</span> {property.major_use}평
+              <span className="font-bold">전용</span> {property.exclusive_area}
+              평
             </span>
             <span className="text-sm">
-              <span className="font-bold">임대</span> {property.rent_scale}평
+              <span className="font-bold">임대</span> {property.contact_area}평
             </span>
           </div>
         </div>

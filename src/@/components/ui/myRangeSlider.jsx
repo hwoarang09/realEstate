@@ -3,34 +3,37 @@ import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 
 const MyRangeSlider = ({ property, setProperty, keyList }) => {
-  const [range, setRange] = useState([0, 20]);
+  const initialRange = [
+    property?.from_deposit ?? 0,
+    property?.to_deposit && property.to_deposit <= 100
+      ? property.to_deposit
+      : 100,
+  ];
 
+  const [range, setRange] = useState(initialRange);
+  console.log("range", range, property.from_deposit, property.to_deposit);
   function log(value) {
     console.log(value);
   }
 
   useEffect(() => {
-    if (property.range) {
-      setRange(property.range);
-    }
-  }, [property.range]);
-
+    const newRange = [
+      property?.from_deposit ?? 0,
+      property?.to_deposit && property.to_deposit <= 100
+        ? property.to_deposit
+        : 100,
+    ];
+    setRange(newRange);
+  }, [property.from_deposit, property.to_deposit, property]);
   const handleChange = (value) => {
     log(value);
 
     setRange(value);
     if (keyList[0] === "from_deposit" && keyList[1] === "to_deposit") {
-      let maxValue;
-      if (Number(value[1]) === 100) {
-        maxValue = 999999;
-      } else {
-        maxValue = Number(value[1]);
-      }
-      console.log("from_deposit, to_deposit", Number(value[0]), maxValue);
       setProperty((prevProperty) => ({
         ...prevProperty,
         [keyList[0]]: Number(value[0]) || 0,
-        [keyList[1]]: maxValue || null,
+        [keyList[1]]: Number(value[1]) || 100,
       }));
     }
   };
@@ -42,7 +45,8 @@ const MyRangeSlider = ({ property, setProperty, keyList }) => {
           range
           allowCross={false}
           value={range}
-          min
+          min={0}
+          max={100}
           defaultValue={[0, 40]}
           onChange={handleChange}
         />

@@ -26,7 +26,7 @@ const ItemInfoRent = ({ property, setProperty }) => {
   );
   const rentalTypeBtns = renderCategoryButtons(
     rentalTypeCategories,
-    ["floor"],
+    ["rent_scale"],
     "single",
     property,
     setProperty

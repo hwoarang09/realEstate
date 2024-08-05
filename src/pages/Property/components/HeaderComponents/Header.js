@@ -16,7 +16,7 @@ import {
   setPage,
 } from "../../../../store/slices/searchFilterSlice";
 import { IoMdClose } from "react-icons/io";
-
+import { isExactMatch } from "../../../../utils/objectChker";
 const Header = () => {
   const [searchText, setSearchText] = useState("");
   const isList = useSelector((state) => state.isList.isList);
@@ -24,6 +24,7 @@ const Header = () => {
   const search = useSelector((state) => state.isList.search);
   const dispatch = useDispatch();
   const searchQuery = useSelector((state) => state.searchFilter.keyword);
+  const searchParams = useSelector((state) => state.searchFilter);
   const searchInputRef = useRef(null);
 
   const handleClickFilter = () => {
@@ -67,7 +68,8 @@ const Header = () => {
       `in handleX query searchText ${searchText} searchQuery ${searchQuery}`
     );
   };
-
+  const filterChk = isExactMatch(searchParams);
+  console.log("isExactMatch", filterChk);
   return (
     <div className="header max-w-[500px] flex fixed top-0 left-0 w-full h-12 px-4 py-8 bg-white z-10">
       <div className="w-1/12 flex items-center pr-4">
@@ -106,9 +108,12 @@ const Header = () => {
       </div>
       <div
         onClick={handleClickFilter}
-        className="w-1/12 flex items-center justify-center cursor-pointer"
+        className="relative w-1/12 flex items-center justify-center cursor-pointer"
       >
-        <FaFilter />
+        <FaFilter />{" "}
+        {!filterChk && (
+          <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+        )}
       </div>
     </div>
   );

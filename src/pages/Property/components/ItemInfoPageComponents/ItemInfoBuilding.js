@@ -130,7 +130,8 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
         ))}
         {showMoreInfo && (
           <>
-            {hideBluePrint.slice(0, 1).map((bluePrint, i) => (
+            {
+              /* {hideBluePrint.slice(0, 1).map((bluePrint, i) => (
               <React.Fragment key={`bd2_${i}`}>
                 {formGenerator({ property, setProperty, ...bluePrint })}
               </React.Fragment>
@@ -140,7 +141,15 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
               <React.Fragment key={`bd3_${i}`}>
                 {formGenerator({ property, setProperty, ...bluePrint })}
               </React.Fragment>
-            ))}
+            ))} */
+              hideBluePrint
+                .slice(0, 1)
+                .map((bluePrint, i) => [
+                  <React.Fragment key={`bd2_${i}`}>
+                    {formGenerator({ property, setProperty, ...bluePrint })}
+                  </React.Fragment>,
+                ])
+            }
           </>
         )}
       </StyleForm>

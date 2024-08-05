@@ -3,7 +3,17 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const searchFilterSlice = createSlice({
   name: "searchFilter",
-  initialState: {},
+  initialState: {
+    area: [],
+    from_deposit: 0,
+    from_updated_date: "",
+    order: "desc",
+    sort: "",
+    tmpSortDate: "",
+    to_deposit: 99999,
+    to_updated_date: "",
+    page: 1,
+  },
   reducers: {
     setKeyword: (state, action) => {
       state.keyword = action.payload;
@@ -12,9 +22,12 @@ const searchFilterSlice = createSlice({
       state.Page = action.payload;
     },
     setFilters: (state, action) => {
-      Object.entries(action.payload).forEach(([key, value]) => {
-        state[key] = value;
-      });
+      console.log("setFilters", state, action.payload);
+
+      return {
+        ...state,
+        ...action.payload,
+      };
     },
   },
 });

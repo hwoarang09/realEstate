@@ -92,7 +92,7 @@ const formGenerator = ({ property, setProperty, WIDTHLIST: widthList }) => {
         </div>
       );
     } else if (input.type === "range") {
-      console.log("range!!");
+      console.log("range!!", property.from_deposit, property.to_deposit);
 
       const style = { width: 400, margin: 50 };
 
