@@ -18,14 +18,17 @@ export const getDefaultBlueprint = () => [
   },
 ];
 
-export const getHideBlueprint = (
-  bdhsAvailBtns,
-  sameCateBtns,
-  elevatorsCateBtns,
-  rampCateBtns,
-  parkingSpotsCateBtns,
-  restroomCateBtns
-) => [
+export const getHideBlueprint = ({
+  btns: [
+    bdhsAvailBtns,
+    sameCateBtns,
+    elevatorsCateBtns,
+    rampCateBtns,
+    parkingSpotsCateBtns,
+    restroomCateBtns,
+  ],
+  customJSX: [buildingSizeComp],
+}) => [
   {
     WIDTHLIST: [
       [
@@ -36,6 +39,12 @@ export const getHideBlueprint = (
         {
           type: "text",
           keyList: ["building_name"],
+        },
+      ],
+      [
+        {
+          type: "customJSX",
+          jsx: buildingSizeComp,
         },
       ],
     ],

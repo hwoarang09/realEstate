@@ -92,7 +92,6 @@ const formGenerator = ({ property, setProperty, WIDTHLIST: widthList }) => {
         </div>
       );
     } else if (input.type === "range") {
-
       console.log("range!!", property);
 
       const style = { width: 400, margin: 50 };
@@ -108,6 +107,8 @@ const formGenerator = ({ property, setProperty, WIDTHLIST: widthList }) => {
           </div>
         </div>
       );
+    } else if (input.type === "customJSX") {
+      return <div className="w-full">{input.jsx}</div>;
     } else {
       return null;
     }

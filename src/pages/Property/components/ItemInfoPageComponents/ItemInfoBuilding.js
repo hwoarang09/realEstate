@@ -65,22 +65,12 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
     setProperty
   );
 
-  const defaultBluePrint = getDefaultBlueprint();
-  const hideBluePrint = getHideBlueprint(
-    bdhsAvailBtns,
-    sameCateBtns,
-    elevatorsCateBtns,
-    rampCateBtns,
-    parkingSpotsCateBtns,
-    restroomCateBtns
-  );
-
   const buildingSizeComp = (
     <StyleForm formRow>
-      <StyleForm label className="w-2/5">
+      <StyleForm label className="w-1/3">
         건물 규모
       </StyleForm>
-      <StyleForm className="w-full">
+      <StyleForm className="">
         <StyleForm formRow className=" mb-0">
           <span className="mr-2">지상</span>
           <Input
@@ -98,7 +88,7 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
           />
           층
         </StyleForm>
-        <StyleForm formRow className="w-3/4 mb-0">
+        <StyleForm formRow className=" mb-0">
           <span className="mr-2">지하</span>
           <Input
             type="number"
@@ -118,6 +108,18 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
       </StyleForm>
     </StyleForm>
   );
+  const defaultBluePrint = getDefaultBlueprint();
+  const hideBluePrint = getHideBlueprint({
+    customJSX: [buildingSizeComp],
+    btns: [
+      bdhsAvailBtns,
+      sameCateBtns,
+      elevatorsCateBtns,
+      rampCateBtns,
+      parkingSpotsCateBtns,
+      restroomCateBtns,
+    ],
+  });
 
   return (
     <StyleForm mainWrapper>
@@ -130,26 +132,11 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
         ))}
         {showMoreInfo && (
           <>
-            {
-              /* {hideBluePrint.slice(0, 1).map((bluePrint, i) => (
+            {hideBluePrint.map((bluePrint, i) => (
               <React.Fragment key={`bd2_${i}`}>
                 {formGenerator({ property, setProperty, ...bluePrint })}
               </React.Fragment>
             ))}
-            {buildingSizeComp}
-            {hideBluePrint.slice(1).map((bluePrint, i) => (
-              <React.Fragment key={`bd3_${i}`}>
-                {formGenerator({ property, setProperty, ...bluePrint })}
-              </React.Fragment>
-            ))} */
-              hideBluePrint
-                .slice(0, 1)
-                .map((bluePrint, i) => [
-                  <React.Fragment key={`bd2_${i}`}>
-                    {formGenerator({ property, setProperty, ...bluePrint })}
-                  </React.Fragment>,
-                ])
-            }
           </>
         )}
       </StyleForm>
