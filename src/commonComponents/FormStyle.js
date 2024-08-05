@@ -18,7 +18,7 @@ function StyleForm({
       {
         "mt-6": mainWrapper,
         "mb-4": tabWrapper,
-        "text-blue-600 text-base text-lg font-bold mb-2": menuTitle,
+        "text-blue-600 text-base text-lg font-bold my-4": menuTitle,
         "flex flex-wrap items-center ": flatButtons,
         "flex justify-center mt-3": toggleButtonWrapper,
         "text-base flex items-center font-bold w-1/3": label,

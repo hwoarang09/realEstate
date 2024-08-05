@@ -36,7 +36,7 @@ const areaOption = ["역세권", "유통권", "주거권"];
 const gradeOption = ["상", "중", "하"];
 const cateOption = ["치과", "미용", "감기", "통증", "한의원"];
 const activeOption = ["노출 O", "노출 X"];
-const ownOption = ["확보 O", "확보 X"];
+const contactCompletedOption = ["확보 O", "확보 X"];
 
 function FilterPage() {
   const dispatch = useDispatch();
@@ -119,6 +119,45 @@ function FilterPage() {
     filterObj,
     setFilterObj
   );
+
+  const gradeBtns = renderCategoryButtons(
+    gradeOption,
+    ["area_type"],
+    "single",
+    filterObj,
+    setFilterObj
+  );
+
+  const availableMdBtns = renderCategoryButtons(
+    cateOption,
+    ["available_md_name"],
+    "multi",
+    filterObj,
+    setFilterObj
+  );
+  const recommendedMdBtns = renderCategoryButtons(
+    cateOption,
+    ["recommended_md_name"],
+    "multi",
+    filterObj,
+    setFilterObj
+  );
+  const isActiveBtns = renderCategoryButtons(
+    activeOption,
+    ["is_active"],
+    "single",
+    filterObj,
+    setFilterObj
+  );
+
+  const isContactCompletedBtns = renderCategoryButtons(
+    contactCompletedOption,
+    ["is_contact_completed"],
+    "single",
+    filterObj,
+    setFilterObj
+  );
+
   const sortBluePrint = [
     {
       WIDTHLIST: [
@@ -161,7 +200,7 @@ function FilterPage() {
         [
           {
             type: "label",
-            labelText: "상권(버튼만)",
+            labelText: "상권",
           },
         ],
         [
@@ -206,6 +245,73 @@ function FilterPage() {
             keyList: ["from_monthly_rent_by", "to_monthly_rent_by"],
           },
         ],
+        [
+          {
+            type: "label",
+            labelText: "등급",
+          },
+        ],
+        [
+          {
+            type: "flatButtons",
+            btns: gradeBtns,
+          },
+        ],
+        [
+          {
+            type: "label",
+            labelText: "개원 가능 진료과",
+          },
+        ],
+        [
+          {
+            type: "flatButtons",
+            btns: availableMdBtns,
+          },
+        ],
+        [
+          {
+            type: "label",
+            labelText: "추천 진료과",
+          },
+        ],
+        [
+          {
+            type: "flatButtons",
+            btns: recommendedMdBtns,
+          },
+        ],
+        [
+          {
+            type: "label",
+            labelText: "노출 여부",
+          },
+        ],
+        [
+          {
+            type: "flatButtons",
+            btns: isActiveBtns,
+          },
+        ],
+        [
+          {
+            type: "label",
+            labelText: "확보 여부",
+          },
+        ],
+        [
+          {
+            type: "flatButtons",
+            btns: isContactCompletedBtns,
+          },
+        ],
+        [
+          {
+            type: "label",
+            labelText: " ",
+            style: "mb-40",
+          },
+        ],
       ],
     },
   ];
@@ -246,31 +352,26 @@ function FilterPage() {
   const handleFilter = () => {
     const newProperty = {
       ...filterObj,
-      area_type: [],
+      area_type: undefined,
       from_deposit: 0,
-      to_deposit: 99999,
+      to_deposit: 9000000,
       from_monthly_rent: 0,
-      to_monthly_rent: 99999,
+      to_monthly_rent: 9000000,
       from_monthly_rent_by: 0,
-      to_monthly_rent_by: 99999,
+      to_monthly_rent_by: 9000000,
+      grade: undefined,
+      available_md_name: undefined,
+      recommended_md_name: undefined,
+      is_active: undefined,
+      is_contact_completed: undefined,
+      page: 1,
     };
     setFilterObj(newProperty);
   };
 
-  const handleTest = () => {
-    const newProperty = _.cloneDeep(filterObj);
-    newProperty.test = !newProperty.test;
-    setFilterObj(newProperty);
-    console.log("handleTest", newProperty);
-  };
   return (
     <div className="mt-16 w-full max-w-[500px] justify-center items-center rounded-xl">
       <div className="border-2 border-gray-100 p-4">
-        <h2 className="text-xl mb-4">필터</h2>
-        <div onClick={handleTest}>
-          {" "}
-          체크테스트 {filterObj.test ? "True" : "False"}
-        </div>
         <StyleForm mainWrapper>
           <StyleForm tabWrapper>
             <StyleForm menuTitle>
