@@ -1,13 +1,17 @@
 export const isExactMatch = (obj) => {
   const target = {
     area: [],
-    from_deposit: 0,
     from_updated_date: "",
     order: "desc",
     sort: "",
     tmpSortDate: "",
-    to_deposit: 99999,
     to_updated_date: "",
+    from_deposit: 0,
+    to_deposit: 99999,
+    from_monthly_rent: 0,
+    to_monthly_rent: 99999,
+    from_monthly_rent_by: 0,
+    to_monthly_rent_by: 99999,
     keyword: "",
     page: 1,
   };

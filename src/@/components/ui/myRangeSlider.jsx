@@ -3,39 +3,39 @@ import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 
 const MyRangeSlider = ({ property, setProperty, keyList }) => {
+  console.log("MyRangeSlider", property, keyList);
   const initialRange = [
-    property?.from_deposit ?? 0,
-    property?.to_deposit && property.to_deposit <= 100
-      ? property.to_deposit
+    property?.[keyList[0]] ?? 0,
+    property?.[keyList[1]] && property[keyList[1]] <= 100
+      ? property[keyList[1]]
       : 100,
   ];
 
   const [range, setRange] = useState(initialRange);
-  console.log("range", range, property.from_deposit, property.to_deposit);
+  console.log("range", range, property[keyList[0]], property[keyList[1]]);
   function log(value) {
     console.log(value);
   }
 
   useEffect(() => {
     const newRange = [
-      property?.from_deposit ?? 0,
-      property?.to_deposit && property.to_deposit <= 100
-        ? property.to_deposit
+      property?.[keyList[0]] ?? 0,
+      property?.[keyList[1]] && property[keyList[1]] <= 100
+        ? property[keyList[1]]
         : 100,
     ];
     setRange(newRange);
-  }, [property.from_deposit, property.to_deposit, property]);
+  }, [property, keyList]);
   const handleChange = (value) => {
     log(value);
 
     setRange(value);
-    if (keyList[0] === "from_deposit" && keyList[1] === "to_deposit") {
-      setProperty((prevProperty) => ({
-        ...prevProperty,
-        [keyList[0]]: Number(value[0]) || 0,
-        [keyList[1]]: Number(value[1]) || 100,
-      }));
-    }
+
+    setProperty((prevProperty) => ({
+      ...prevProperty,
+      [keyList[0]]: Number(value[0]) || 0,
+      [keyList[1]]: Number(value[1]) || 100,
+    }));
   };
 
   return (

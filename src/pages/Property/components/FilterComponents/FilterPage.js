@@ -182,6 +182,30 @@ function FilterPage() {
             keyList: ["from_deposit", "to_deposit"],
           },
         ],
+        [
+          {
+            type: "label",
+            labelText: "임대료(만원)",
+          },
+        ],
+        [
+          {
+            type: "range",
+            keyList: ["from_monthly_rent", "to_monthly_rent"],
+          },
+        ],
+        [
+          {
+            type: "label",
+            labelText: "평당 임대료(만원)",
+          },
+        ],
+        [
+          {
+            type: "range",
+            keyList: ["from_monthly_rent_by", "to_monthly_rent_by"],
+          },
+        ],
       ],
     },
   ];
@@ -197,11 +221,15 @@ function FilterPage() {
         ...filterObj,
         //슬라이어에서 100찍으면 100억 이상으로 처리
         to_deposit: filterObj.to_deposit === 100 ? 99999 : filterObj.to_deposit,
+        to_monthly_rent:
+          filterObj.to_monthly_rent === 100 ? 99999 : filterObj.to_monthly_rent,
+        to_monthly_rent_by:
+          filterObj.to_monthly_rent_by === 100
+            ? 99999
+            : filterObj.to_monthly_rent_by,
         page: 1,
       })
     );
-    // dispatch(setLeft(false));
-    // dispatch(setSearch(false));
     dispatch(setIsList(true));
   };
   const handleDateSort = () => {
@@ -212,12 +240,23 @@ function FilterPage() {
       from_updated_date: "",
       to_updated_date: "",
     };
-    // newProperty.sort = "";
-    // newProperty.tmpSortDate = "";
-    // newProperty.from_updated_date = "";
-    // newProperty.to_updated_date = "";
     setFilterObj(newProperty);
   };
+
+  const handleFilter = () => {
+    const newProperty = {
+      ...filterObj,
+      area: [],
+      from_deposit: 0,
+      to_deposit: 99999,
+      from_monthly_rent: 0,
+      to_monthly_rent: 99999,
+      from_monthly_rent_by: 0,
+      to_monthly_rent_by: 99999,
+    };
+    setFilterObj(newProperty);
+  };
+
   const handleTest = () => {
     const newProperty = _.cloneDeep(filterObj);
     newProperty.test = !newProperty.test;
@@ -254,7 +293,15 @@ function FilterPage() {
             ))}
           </StyleForm>
           <StyleForm tabWrapper>
-            <StyleForm menuTitle>필터</StyleForm>
+            <StyleForm menuTitle>
+              필터{" "}
+              <span
+                onClick={handleFilter}
+                className="text-sm text-gray-500 underline cursor-pointer ml-4"
+              >
+                초기화
+              </span>
+            </StyleForm>
             {filterBluePrint.map((bluePrint, i) => (
               <React.Fragment key={`ft2_${i}`}>
                 {formGenerator({
