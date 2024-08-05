@@ -200,8 +200,8 @@ function FilterPage() {
         page: 1,
       })
     );
-    dispatch(setLeft(false));
-    dispatch(setSearch(false));
+    // dispatch(setLeft(false));
+    // dispatch(setSearch(false));
     dispatch(setIsList(true));
   };
   const handleDateSort = () => {

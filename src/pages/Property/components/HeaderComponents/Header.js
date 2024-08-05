@@ -62,10 +62,16 @@ const Header = () => {
   };
   const handleX = () => {
     setSearchText("");
+    dispatch(setLeft(false));
+    dispatch(setSearch(false));
     dispatch(setKeyword(""));
     dispatch(setPage(1));
     console.log(
-      `in handleX query searchText ${searchText} searchQuery ${searchQuery}`
+      `in handleX query searchText ${searchText} searchQuery ${searchQuery}, ${JSON.stringify(
+        searchParams,
+        null,
+        2
+      )}`
     );
   };
   const filterChk = isExactMatch(searchParams);

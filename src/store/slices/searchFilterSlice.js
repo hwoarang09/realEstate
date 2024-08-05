@@ -13,13 +13,14 @@ const searchFilterSlice = createSlice({
     to_deposit: 99999,
     to_updated_date: "",
     page: 1,
+    keyword: "",
   },
   reducers: {
     setKeyword: (state, action) => {
       state.keyword = action.payload;
     },
     setPage: (state, action) => {
-      state.Page = action.payload;
+      state.page = action.payload;
     },
     setFilters: (state, action) => {
       console.log("setFilters", state, action.payload);
