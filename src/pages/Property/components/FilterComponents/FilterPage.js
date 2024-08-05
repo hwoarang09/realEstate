@@ -38,15 +38,11 @@ const ownOption = ["확보 O", "확보 X"];
 
 function FilterPage() {
   const dispatch = useDispatch();
-  const { keyword, from_area, to_area } = useSelector(
-    (state) => state.searchFilter
-  );
 
   const [filterObj, setFilterObj] = useState({
     order: "desc",
   });
   const updateFilterDates = useCallback((tmpSortDate) => {
-    console.log("updateFilterDates", tmpSortDate);
     const today = new Date();
     const formattedToday = format(today, "yyyy-MM-dd");
 
@@ -78,7 +74,7 @@ function FilterPage() {
         to_updated_date: formattedToday,
       }));
     } else if (tmpSortDate === "") {
-      console.log("tmpSortDate is empty?", tmpSortDate);
+      //버튼을 다시 눌러서 선택해제할 경우
       setFilterObj((prevObj) => ({
         ...prevObj,
         from_updated_date: null,
@@ -88,9 +84,6 @@ function FilterPage() {
   }, []);
 
   useEffect(() => {
-    // if (filterObj.tmpSortDate) {
-    //   updateFilterDates(filterObj.tmpSortDate);
-    // }
     updateFilterDates(filterObj.tmpSortDate);
   }, [filterObj.tmpSortDate, updateFilterDates]);
 
@@ -98,12 +91,12 @@ function FilterPage() {
     dispatch(
       setFilters({
         ...filterObj,
+        page: 1,
       })
     );
     dispatch(setLeft(false));
     dispatch(setSearch(false));
     dispatch(setIsList(true));
-    console.log("변경사항 저장", filterObj);
   };
 
   const sortOrderBtns = renderCategoryButtons(
@@ -170,7 +163,7 @@ function FilterPage() {
         [
           {
             type: "label",
-            labelText: "상권",
+            labelText: "상권(버튼만)",
           },
         ],
         [
@@ -182,13 +175,13 @@ function FilterPage() {
         [
           {
             type: "label",
-            labelText: "전용면적(평)",
+            labelText: "보증금(억원)",
           },
         ],
         [
           {
             type: "range",
-            slider: null,
+            keyList: ["from_deposit", "to_deposit"],
           },
         ],
       ],

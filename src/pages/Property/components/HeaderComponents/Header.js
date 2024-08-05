@@ -11,7 +11,10 @@ import {
   setLeft,
   setSearch,
 } from "../../../../store/slices/headerSlice";
-import { setKeyword } from "../../../../store/slices/searchFilterSlice";
+import {
+  setKeyword,
+  setPage,
+} from "../../../../store/slices/searchFilterSlice";
 import { IoMdClose } from "react-icons/io";
 
 const Header = () => {
@@ -59,6 +62,7 @@ const Header = () => {
   const handleX = () => {
     setSearchText("");
     dispatch(setKeyword(""));
+    dispatch(setPage(1));
     console.log(
       `in handleX query searchText ${searchText} searchQuery ${searchQuery}`
     );

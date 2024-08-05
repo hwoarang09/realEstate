@@ -90,7 +90,7 @@ const api = createApi({
           console.log("fetchProperties providesTags:", tags);
           return tags;
         },
-        query: ({ page, is_verified, limit, keyword }) => {
+        query: ({ page, is_verified, limit, ...params }) => {
           console.log(
             "page:",
             page,
@@ -98,12 +98,12 @@ const api = createApi({
             is_verified,
             "limit:",
             limit,
-            "keyword:",
-            keyword
+            "params:",
+            params
           );
           return {
             url: "/property",
-            params: { is_verified, page, limit, keyword },
+            params: { is_verified, page, limit, ...params },
             method: "GET",
           };
         },
