@@ -58,7 +58,7 @@ function PropertyPage() {
   );
 
   if (isLoading) return <div>Loading...</div>;
-
+  console.log("allProperties", allProperties.length);
   return (
     <>
       {/* <Header onSearch={handleSearch} setIsList={setIsList} /> */}

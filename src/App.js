@@ -58,7 +58,7 @@ function App() {
     };
   }, [scrollPosition]);
 
-  scrollLoger();
+  // scrollLoger();
   return <RouterProvider router={router} />;
 }
 
