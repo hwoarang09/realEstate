@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
-
+import "../../../styles/rcslider.css";
 const MyRangeSlider = ({ property, setProperty, keyList }) => {
   const initialRange = [
     property?.[keyList[0]] ?? 0,
@@ -40,7 +40,7 @@ const MyRangeSlider = ({ property, setProperty, keyList }) => {
 
   return (
     <div className="flex flex-col justify-center items-center w-full">
-      <div className="w-[300px]">
+      <div className="w-full">
         <Slider
           range
           allowCross={false}
@@ -48,10 +48,19 @@ const MyRangeSlider = ({ property, setProperty, keyList }) => {
           min={0}
           max={100}
           defaultValue={[0, 40]}
+          trackStyle={[
+            { backgroundColor: "#3b82f6" },
+            { backgroundColor: "green" },
+          ]}
+          handleStyle={[
+            { backgroundColor: "white" },
+            { backgroundColor: "white" },
+          ]}
+          railStyle={{ backgroundColor: "#bfdbfe" }}
           onChange={handleChange}
         />
       </div>
-      <div className="flex justify-between w-[300px]">
+      <div className="flex justify-between w-full">
         <div>{Number(range[0]) + `억원`}</div>
         <div>
           {Number(range[1])} {Number(range[1]) === 100 ? `억원 이상` : `억원`}

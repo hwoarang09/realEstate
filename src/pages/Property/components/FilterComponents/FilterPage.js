@@ -199,6 +199,13 @@ function FilterPage() {
             keyList: "tmpSortDate",
           },
         ],
+        [
+          {
+            type: "label",
+            labelText: " ",
+            style: "mb-10",
+          },
+        ],
       ],
     },
   ];
