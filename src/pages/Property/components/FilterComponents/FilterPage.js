@@ -326,6 +326,7 @@ function FilterPage() {
       setFilters({
         ...filterObj,
         //슬라이어에서 100찍으면 100억 이상으로 처리
+        tmpSortDate: undefined,
         to_deposit: filterObj.to_deposit === 100 ? 99999 : filterObj.to_deposit,
         to_monthly_rent:
           filterObj.to_monthly_rent === 100 ? 99999 : filterObj.to_monthly_rent,
@@ -341,10 +342,10 @@ function FilterPage() {
   const handleDateSort = () => {
     const newProperty = {
       ...filterObj,
-      sort: "",
-      tmpSortDate: "",
-      from_updated_date: "",
-      to_updated_date: "",
+      sort: undefined,
+      tmpSortDate: undefined,
+      from_updated_date: undefined,
+      to_updated_date: undefined,
     };
     setFilterObj(newProperty);
   };

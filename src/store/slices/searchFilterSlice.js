@@ -5,11 +5,11 @@ const searchFilterSlice = createSlice({
   name: "searchFilter",
   initialState: {
     area_type: undefined,
-    from_updated_date: "",
+    from_updated_date: undefined,
     order: "desc",
-    sort: "",
-    tmpSortDate: "",
-    to_updated_date: "",
+    sort: undefined,
+    tmpSortDate: undefined,
+    to_updated_date: undefined,
     from_deposit: 0,
     to_deposit: 9000000,
     from_monthly_rent: 0,
@@ -22,7 +22,7 @@ const searchFilterSlice = createSlice({
     is_active: undefined,
     is_contact_completed: undefined,
     page: 1,
-    keyword: "",
+    keyword: undefined,
   },
   reducers: {
     setKeyword: (state, action) => {

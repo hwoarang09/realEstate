@@ -1,11 +1,11 @@
 export const isExactMatch = (obj) => {
   const target = {
     area_type: undefined,
-    from_updated_date: "",
+    from_updated_date: undefined,
     order: "desc",
-    sort: "",
-    tmpSortDate: "",
-    to_updated_date: "",
+    sort: undefined,
+    tmpSortDate: undefined,
+    to_updated_date: undefined,
     from_deposit: 0,
     to_deposit: 9000000,
     from_monthly_rent: 0,
@@ -18,7 +18,7 @@ export const isExactMatch = (obj) => {
     is_active: undefined,
     is_contact_completed: undefined,
     page: 1,
-    keyword: "",
+    keyword: undefined,
   };
 
   if (!obj || Object.keys(obj).length !== Object.keys(target).length) {
