@@ -17,7 +17,10 @@ export const BasicInfoSearchHeader = ({
         </div>
         <StyleForm className="flex items-center justify-center">
           <div className="w-[300px] mr-4 my-4">
-            <div className="flex items-center space-x-2">
+            <form
+              onSubmit={handleSearch}
+              className="flex items-center space-x-2"
+            >
               <Input
                 type="text"
                 value={inputValue}
@@ -26,11 +29,11 @@ export const BasicInfoSearchHeader = ({
               />
 
               <div className=" mr-4 my-4">
-                <Button primary type="button" onClick={handleSearch}>
+                <Button primary type="submit">
                   검색
                 </Button>
               </div>
-            </div>
+            </form>
           </div>
         </StyleForm>
       </StyleForm>

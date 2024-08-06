@@ -56,57 +56,62 @@ const PropertyAddModal = ({ closeModal }) => {
         <ItemInfoHeader onCloseModal={closeModal} />
 
         {isSearchPage && (
-          <div className="px-4 pt-10 ">
-            <BasicInfoSearchHeader
-              inputValue={inputValue}
-              handleChange={handleChange}
-              handleSearch={handleSearch}
-            />
-            {!basicInfo && (
-              <div className="flex justify-center items-center h-[500px] pb-40 text-center">
-                <div className="text-left">
-                  주소로 검색하시면
-                  <br />
-                  <br />
-                  <span className="text-blue-500 font-bold">*</span> 해당 지역의
-                  개원 가능
-                  <br />
-                  <span className="text-blue-500 font-bold">*</span> 추천 진료과
-                  <br />
-                  <span className="text-blue-500 font-bold">*</span> 상권
-                  <br />
-                  <br />
-                  정보를 받을 수 있습니다.
+          <div>
+            <div className="px-4 pt-10 ">
+              <BasicInfoSearchHeader
+                inputValue={inputValue}
+                handleChange={handleChange}
+                handleSearch={handleSearch}
+              />
+              {!basicInfo && (
+                <div className="flex justify-center items-center h-[500px] pb-40 text-center">
+                  <div className="text-left">
+                    주소로 검색하시면
+                    <br />
+                    <br />
+                    <span className="text-blue-500 font-bold">*</span> 해당
+                    지역의 개원 가능
+                    <br />
+                    <span className="text-blue-500 font-bold">*</span> 추천
+                    진료과
+                    <br />
+                    <span className="text-blue-500 font-bold">*</span> 상권
+                    <br />
+                    <br />
+                    정보를 받을 수 있습니다.
+                  </div>
                 </div>
-              </div>
-            )}
-            {isLoading && (
-              <div className="flex justify-center items-center h-[500px]">
-                Loading...
-              </div>
-            )}
-            {error && (
-              <div className="flex justify-center items-center h-[500px]">
-                검색결과가 없습니다.
-              </div>
-            )}
-            <BasicInfoMainResult
-              property={basicInfo}
-              setProperty={setBasicInfo}
-              error={error}
-              isLoading={isLoading}
-            />
+              )}
+              {isLoading && (
+                <div className="flex justify-center items-center h-[500px]">
+                  Loading...
+                </div>
+              )}
+              {error && (
+                <div className="flex justify-center items-center h-[500px]">
+                  검색결과가 없습니다.
+                </div>
+              )}
+              <BasicInfoMainResult
+                property={basicInfo}
+                setProperty={setBasicInfo}
+                error={error}
+                isLoading={isLoading}
+              />
+            </div>
+            <AbsPosButton onClick={handleNext}>다음</AbsPosButton>
           </div>
         )}
         {!isSearchPage && (
-          <BasicInfoAddPage
-            basicInfo={basicInfo}
-            property={property}
-            setProperty={setProperty}
-          />
+          <>
+            <BasicInfoAddPage
+              basicInfo={basicInfo}
+              property={property}
+              setProperty={setProperty}
+            />
+          </>
         )}
       </div>
-      <AbsPosButton onClick={handleNext}>다음</AbsPosButton>
     </>
   );
 };

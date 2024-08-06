@@ -12,35 +12,45 @@ import ItemInfoContract from "../../components/ItemInfoPageComponents/ItemInfoCo
 import ItemInfoContact from "../../components/ItemInfoPageComponents/ItemInfoContact";
 import ItemInfoImages from "../../components/ItemInfoPageComponents/ItemInfoImages";
 import ItemInfoMemo from "../../components/ItemInfoPageComponents/ItemInfoMemo";
-
+import { basicData } from "./formDataBasic";
 export const BasicInfoAddPage = ({ basicInfo, property, setProperty }) => {
-  const [formData, setFormData] = useState(null);
+  const [formData, setFormData] = useState(basicData);
 
+  console.log("basicInfo", basicInfo);
   const handleDeleteProperty = (event) => {};
-  const handleUpdateChanges = (event) => {};
+  const handleUpdateChanges = () => {
+    console.log("formData handleChanges", formData);
+  };
+
+  useEffect(() => {
+    setFormData((prev) => ({
+      ...prev,
+      available_md_name: basicInfo?.available_md_name || [],
+      recommended_md_name: basicInfo?.recommended_md_name || [],
+    }));
+  }, [basicInfo]);
+
   return (
-    <div className="w-full h-[1200px] overflow-y-auto">
-      <form className="mt-10">
-        <div className="px-4 pt-4 ">
-          <ItemInfoCate property={formData} setProperty={setFormData} />
-          <ItemInfoTag property={formData} setProperty={setFormData} />
-          <ItemInfoBuilding property={formData} setProperty={setFormData} />
-          <ItemInfoRent property={formData} setProperty={setFormData} />
-          <ItemInfoImages property={formData} setProperty={setFormData} />
-          <ItemInfoMemo property={formData} setProperty={setFormData} />
-          <ItemInfoContact property={formData} setProperty={setFormData} />
-          <ItemInfoOther property={formData} setProperty={setFormData} />
-          <ItemInfoContract property={formData} setProperty={setFormData} />
-          <ItemInfoRegist property={formData} setProperty={setFormData} />
-        </div>
-        <div
-          onClick={handleDeleteProperty}
-          className="mb-40 pl-3 flex justify-center items-center text-gray-300 font-bold underline w-full cursor-pointer"
-        >
-          매물 삭제
-        </div>
-        <AbsPosButton onClick={handleUpdateChanges}>변경사항 저장</AbsPosButton>
-      </form>
-    </div>
+    <form className="mt-10">
+      <div className="px-4 pt-4 ">
+        <ItemInfoCate property={formData} setProperty={setFormData} />
+        <ItemInfoTag property={formData} setProperty={setFormData} />
+        <ItemInfoBuilding property={formData} setProperty={setFormData} />
+        <ItemInfoRent property={formData} setProperty={setFormData} />
+        <ItemInfoImages property={formData} setProperty={setFormData} />
+        <ItemInfoMemo property={formData} setProperty={setFormData} />
+        <ItemInfoContact property={formData} setProperty={setFormData} />
+        <ItemInfoOther property={formData} setProperty={setFormData} />
+        <ItemInfoContract property={formData} setProperty={setFormData} />
+        <ItemInfoRegist property={formData} setProperty={setFormData} />
+      </div>
+      <div
+        onClick={handleDeleteProperty}
+        className="mb-40 pl-3 flex justify-center items-center text-gray-300 font-bold underline w-full cursor-pointer"
+      >
+        매물 삭제
+      </div>
+      <AbsPosButton onClick={handleUpdateChanges}>변경사항 저장</AbsPosButton>
+    </form>
   );
 };

@@ -53,7 +53,7 @@ export function DatePickerDemo({ property, setProperty, keyList }) {
       });
       return returnDate;
     }
-    console.log("데이트피커에서 알수 없는 에러", date);
+    console.log("데이트피커에서 달력클릭으로 날짜설정", date);
     return;
   };
 
