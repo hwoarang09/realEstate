@@ -6,7 +6,7 @@ import {
   setLeft,
   setSearch,
 } from "../../../../store/slices/headerSlice";
-import { omit } from "lodash";
+import { omit, property } from "lodash";
 import Button from "../../../../commonComponents/Button";
 
 import {
@@ -158,7 +158,14 @@ function FilterPage() {
     setFilterObj
   );
 
-  const myGridSlider = <GridComponent />;
+  const myGridSlider = (
+    <GridComponent
+      property={filterObj}
+      setProperty={setFilterObj}
+      keyList={["from_area", "to_area"]}
+      sizeList={[4, 2, 100]}
+    />
+  );
   const sortBluePrint = [
     {
       WIDTHLIST: [
@@ -378,6 +385,8 @@ function FilterPage() {
       recommended_md_name: undefined,
       is_active: undefined,
       is_contact_completed: undefined,
+      from_area: undefined,
+      to_area: undefined,
       page: 1,
     };
     setFilterObj(newProperty);

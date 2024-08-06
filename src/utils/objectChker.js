@@ -17,6 +17,8 @@ export const isExactMatch = (obj) => {
     recommended_md_name: undefined,
     is_active: undefined,
     is_contact_completed: undefined,
+    from_area: undefined,
+    to_area: undefined,
     page: 1,
     keyword: undefined,
   };
