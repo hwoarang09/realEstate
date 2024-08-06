@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { renderCategoryButtons } from "../../../../utils/formUtils";
 import StyleForm from "../../../../commonComponents/FormStyle";
-import { formGenerator, ToggleButton } from "../../../../utils/formGenerator";
+import { formGenerator } from "../../../../utils/formGenerator";
+import { ToggleButton } from "../../../../commonComponents/ToggleButton";
 import {
   getDefaultBlueprint,
   getHideBlueprint,

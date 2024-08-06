@@ -17,6 +17,7 @@ const modalSlice = createSlice({
       state.selectedProperty = action.payload.selectedProperty;
     },
     closeModal: (state) => {
+      console.log("closeModal", state);
       state.isOpen = false;
       state.modalPath = null;
       state.selectedProperty = null;

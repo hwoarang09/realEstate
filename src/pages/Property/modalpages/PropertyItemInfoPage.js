@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { AbsPosButton } from "../../../commonComponents/AbsPosButton";
 // import Button from "../../../commonComponents/Button";
 import ItemInfoRegist from "../components/ItemInfoPageComponents/ItemInfoRegist";
 import ItemInfoCate from "../components/ItemInfoPageComponents/ItemInfoCate";
@@ -55,7 +56,7 @@ const PropertyItemInfoModal = ({ modalPath, closeModal }) => {
 
   return (
     <div className="w-full h-[1200px] overflow-y-auto">
-      <ItemInfoHeader onClick={closeModal} />
+      <ItemInfoHeader onCloseModal={closeModal} />
       <form className="mt-10">
         <div className="px-4 pt-4 ">
           <ItemInfoCate property={formData} setProperty={setFormData} />
@@ -75,13 +76,7 @@ const PropertyItemInfoModal = ({ modalPath, closeModal }) => {
         >
           매물 삭제
         </div>
-        <div
-          onClick={handleUpdateChanges}
-          className="fixed bottom-0 w-full max-w-[500px]
-          flex justify-center items-center bg-blue-800 text-white text-lg py-3 cursor-pointer"
-        >
-          변경사항 저장
-        </div>
+        <AbsPosButton onClick={handleUpdateChanges}>변경사항 저장</AbsPosButton>
       </form>
     </div>
   );

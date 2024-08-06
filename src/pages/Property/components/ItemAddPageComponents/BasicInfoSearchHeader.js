@@ -17,18 +17,20 @@ export const BasicInfoSearchHeader = ({
         </div>
         <StyleForm className="flex items-center justify-center">
           <div className="w-[300px] mr-4 my-4">
-            <Input
-              type="text"
-              value={inputValue}
-              onChange={handleChange}
-              className="border"
-            />
-          </div>
+            <div className="flex items-center space-x-2">
+              <Input
+                type="text"
+                value={inputValue}
+                onChange={(e) => handleChange(e)}
+                className="border"
+              />
 
-          <div className=" mr-4 my-4">
-            <Button primary onClick={handleSearch}>
-              검색
-            </Button>
+              <div className=" mr-4 my-4">
+                <Button primary type="button" onClick={handleSearch}>
+                  검색
+                </Button>
+              </div>
+            </div>
           </div>
         </StyleForm>
       </StyleForm>

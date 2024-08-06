@@ -2,8 +2,7 @@ import React from "react";
 import { Input } from "../@/components/ui/input";
 import { handleChange, parseFormInt } from "./formUtils";
 import StyleForm from "../commonComponents/FormStyle";
-import Button from "../commonComponents/Button";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+
 import { DatePickerDemo } from "../@/components/ui/datepicker";
 import { DatePickerWithRange } from "../@/components/ui/datePickerRange";
 import { MyRangeSlider } from "../@/components/ui/myRangeSlider";
@@ -19,9 +18,13 @@ const formGenerator = ({ property, setProperty, WIDTHLIST: widthList }) => {
   const renderElement = ({ input, index, row, rowIndex }) => {
     const key = `${input.type}_${index}_${rowIndex}`;
 
-    if (input.type === "label") {
+    if (input.type === "label" || input.type === "menuTitle") {
       return (
-        <StyleForm label key={key} className={input.style}>
+        <StyleForm
+          key={key}
+          className={input.style}
+          {...{ [input.type]: true }}
+        >
           {input.labelText}{" "}
           {input.req && (
             <span className="text-red-500 font-bold text-xl">*</span>
@@ -106,7 +109,8 @@ const formGenerator = ({ property, setProperty, WIDTHLIST: widthList }) => {
         </div>
       );
     } else if (input.type === "customJSX") {
-      return <div className="w-full">{input.jsx}</div>;
+      console.log("hi");
+      return <div className={`w-full ${input.style}`}>{input.jsx}</div>;
     } else {
       return null;
     }
@@ -128,33 +132,5 @@ const formGenerator = ({ property, setProperty, WIDTHLIST: widthList }) => {
     </>
   );
 };
-const ToggleButton = ({ showMoreInfo, setShowMoreInfo }) => {
-  return (
-    <Button
-      primary
-      rounded
-      outline
-      className="mb-4 flex justify-between py-0.5 px-1"
-      type="button"
-      onClick={() => setShowMoreInfo(!showMoreInfo)}
-    >
-      {showMoreInfo ? (
-        <>
-          <span className="text-xs mr-2">접기</span>
-          <span>
-            <FaChevronUp />
-          </span>
-        </>
-      ) : (
-        <>
-          <span className="text-xs mr-2">펼치기</span>
-          <span>
-            <FaChevronDown />
-          </span>
-        </>
-      )}
-    </Button>
-  );
-};
 
-export { formGenerator, ToggleButton };
+export { formGenerator };

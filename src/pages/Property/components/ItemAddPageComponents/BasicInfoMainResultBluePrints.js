@@ -5,7 +5,7 @@ export const getDefaultBlueprint = ({
     WIDTHLIST: [
       [
         {
-          type: "label",
+          type: "menuTitle",
           labelText: "개별 가능 진료과",
         },
       ],
@@ -17,7 +17,7 @@ export const getDefaultBlueprint = ({
       ],
       [
         {
-          type: "label",
+          type: "menuTitle",
           labelText: "추천 진료과",
         },
       ],
@@ -29,7 +29,7 @@ export const getDefaultBlueprint = ({
       ],
       [
         {
-          type: "label",
+          type: "menuTitle",
           labelText: "상권",
         },
       ],
@@ -44,19 +44,45 @@ export const getDefaultBlueprint = ({
 ];
 
 export const getHideBlueprint = ({
-  btns: [openableBtns, recommendedBtns, areaBtns],
-  customJSX: [],
+  comps: [scoreComps, hospitalComps, areaComps],
 }) => [
   {
     WIDTHLIST: [
       [
         {
-          type: "label",
-          labelText: "건물명",
+          type: "menuTitle",
+          labelText: "입주현황",
         },
+      ],
+      [
         {
-          type: "text",
-          keyList: ["building_name"],
+          type: "customJSX",
+          jsx: scoreComps,
+        },
+      ],
+      [
+        {
+          type: "menuTitle",
+          labelText: "진료과별 점수",
+        },
+      ],
+      [
+        {
+          type: "customJSX",
+          jsx: hospitalComps,
+        },
+      ],
+      [
+        {
+          type: "menuTitle",
+          labelText: "상권 특성",
+        },
+      ],
+      [
+        {
+          type: "customJSX",
+          jsx: areaComps,
+          style: "mb-10",
         },
       ],
     ],

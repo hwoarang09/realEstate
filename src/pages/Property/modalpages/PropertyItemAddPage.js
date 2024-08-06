@@ -7,30 +7,20 @@ import { skipToken } from "@reduxjs/toolkit/query/react";
 import Button from "../../../commonComponents/Button";
 // import { formGenerator, ToggleButton } from "../../../../utils/formGenerator";
 import StyleForm from "../../../commonComponents/FormStyle";
+import { AbsPosButton } from "../../../commonComponents/AbsPosButton";
 
-import {
-  getDefaultBlueprint,
-  getHideBlueprint,
-} from "./ItemAddBasicInfoBluePrints";
-
+import ItemInfoHeader from "../components/ItemInfoPageComponents/ItemInfoHeader";
 import { BasicInfoSearchHeader } from "../components/ItemAddPageComponents/BasicInfoSearchHeader";
 import { BasicInfoMainResult } from "../components/ItemAddPageComponents/BasicInfoMainResult";
-// const defaultBluePrint = getDefaultBlueprint();
-// const hideBluePrint = getHideBlueprint({
-//   customJSX: [],
-//   btns: [
-//     bdhsAvailBtns,
-//     sameCateBtns,
-//     elevatorsCateBtns,
-//     rampCateBtns,
-//     parkingSpotsCateBtns,
-//     restroomCateBtns,
-//   ],
-// });
+import { BasicInfoAddPage } from "../components/ItemAddPageComponents/BasicInfoAddPage";
+
 const PropertyAddModal = ({ closeModal }) => {
   const [inputValue, setInputValue] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
-  const [formData, setFormData] = useState(null);
+  const [basicInfo, setBasicInfo] = useState(null);
+  const [isSearchPage, setIsSearchPage] = useState(true);
+  const [property, setProperty] = useState(null);
+  const [isTest, setIsTest] = useState(true);
   const {
     data: properties,
     error,
@@ -39,13 +29,14 @@ const PropertyAddModal = ({ closeModal }) => {
     searchQuery ? { address: searchQuery } : skipToken
   );
   useEffect(() => {
-    setFormData(properties);
+    setBasicInfo(properties);
   }, [properties]);
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error!</div>;
-
-  const handleSearch = () => {
+  // if (isLoading) return <div>Loading...</div>;
+  // if (error) return <div>Error!</div>;
+  console.log("PropertyAddModal closeModal", closeModal);
+  const handleSearch = (e) => {
+    e.preventDefault();
     setSearchQuery(inputValue);
     console.log("handleSearch Click");
   };
@@ -54,31 +45,69 @@ const PropertyAddModal = ({ closeModal }) => {
     setInputValue(e.target.value);
     console.log("handleChange", e.target.value, inputValue);
   };
-
+  const handleNext = () => {
+    setIsSearchPage(false);
+    setIsTest(false);
+    console.log("handleNext Click");
+  };
   return (
-    <div>
-      <BasicInfoSearchHeader
-        inputValue={inputValue}
-        handleChange={handleChange}
-        handleSearch={handleSearch}
-      />
-      <BasicInfoMainResult
-        property={formData}
-        setProperty={setFormData}
-        error={error}
-        isLoading={isLoading}
-      />
-      <h1 className="text-xl font-bold">매물 등록</h1>
-      <p className="text-gray-500">매물을 등록하시겠습니까?</p>
-      <div className="flex justify-end mt-5">
-        <Button primary onClick={closeModal}>
-          등록
-        </Button>
-        <Button secondary onClick={closeModal}>
-          취소
-        </Button>
+    <>
+      <div className="w-full h-[1200px] overflow-y-auto">
+        <ItemInfoHeader onCloseModal={closeModal} />
+
+        {isSearchPage && (
+          <div className="px-4 pt-10 ">
+            <BasicInfoSearchHeader
+              inputValue={inputValue}
+              handleChange={handleChange}
+              handleSearch={handleSearch}
+            />
+            {!basicInfo && (
+              <div className="flex justify-center items-center h-[500px] pb-40 text-center">
+                <div className="text-left">
+                  주소로 검색하시면
+                  <br />
+                  <br />
+                  <span className="text-blue-500 font-bold">*</span> 해당 지역의
+                  개원 가능
+                  <br />
+                  <span className="text-blue-500 font-bold">*</span> 추천 진료과
+                  <br />
+                  <span className="text-blue-500 font-bold">*</span> 상권
+                  <br />
+                  <br />
+                  정보를 받을 수 있습니다.
+                </div>
+              </div>
+            )}
+            {isLoading && (
+              <div className="flex justify-center items-center h-[500px]">
+                Loading...
+              </div>
+            )}
+            {error && (
+              <div className="flex justify-center items-center h-[500px]">
+                검색결과가 없습니다.
+              </div>
+            )}
+            <BasicInfoMainResult
+              property={basicInfo}
+              setProperty={setBasicInfo}
+              error={error}
+              isLoading={isLoading}
+            />
+          </div>
+        )}
+        {!isSearchPage && (
+          <BasicInfoAddPage
+            basicInfo={basicInfo}
+            property={property}
+            setProperty={setProperty}
+          />
+        )}
       </div>
-    </div>
+      <AbsPosButton onClick={handleNext}>다음</AbsPosButton>
+    </>
   );
 };
 

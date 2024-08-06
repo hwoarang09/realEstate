@@ -7,7 +7,8 @@ import {
 } from "../../../../utils/formUtils";
 import { Input } from "../../../../@/components/ui/input";
 import StyleForm from "../../../../commonComponents/FormStyle";
-import { formGenerator, ToggleButton } from "../../../../utils/formGenerator";
+import { formGenerator } from "../../../../utils/formGenerator";
+import { ToggleButton } from "../../../../commonComponents/ToggleButton";
 import {
   getDefaultBlueprint,
   getHideBlueprint,

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { renderCategoryButtons } from "../../../../utils/formUtils";
-import { ToggleButton } from "../../../../utils/formGenerator";
+import { ToggleButton } from "../../../../commonComponents/ToggleButton";
 import StyleForm from "../../../../commonComponents/FormStyle";
 
 const areaTypeArray = ["역세권", "주거권", "유통권"];
