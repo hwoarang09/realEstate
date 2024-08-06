@@ -25,7 +25,7 @@ import {
 } from "../../../../store/slices/searchFilterSlice";
 import _ from "lodash";
 import { fromJSON } from "postcss";
-
+import GridComponent from "../../../../@/components/ui/myPyRangeSlider";
 const sortOrderOption = ["updated_at", "created_at"];
 const mappedSortOrder = {
   updated_at: "수정한 날짜",
@@ -158,6 +158,7 @@ function FilterPage() {
     setFilterObj
   );
 
+  const myGridSlider = <GridComponent />;
   const sortBluePrint = [
     {
       WIDTHLIST: [
@@ -207,6 +208,18 @@ function FilterPage() {
           {
             type: "flatButtons",
             btns: areaBtns,
+          },
+        ],
+        [
+          {
+            type: "label",
+            labelText: "평수",
+          },
+        ],
+        [
+          {
+            type: "customJSX",
+            jsx: myGridSlider,
           },
         ],
         [
