@@ -64,6 +64,7 @@ const Header = () => {
     setSearchText("");
     dispatch(setLeft(false));
     dispatch(setSearch(false));
+
     dispatch(setKeyword(""));
     dispatch(setPage(1));
     console.log(
