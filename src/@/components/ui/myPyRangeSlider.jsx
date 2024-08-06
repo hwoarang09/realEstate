@@ -49,18 +49,22 @@ const GridComponent = () => {
     }
 
     const newColors = Array(8).fill("");
+    const width = 4;
+    const height = 2;
     if (newClickList.length === 1) {
       newColors[newClickList[0]] = " border border-black";
     } else if (newClickList.length === 2) {
       const [min, max] = newClickList.sort((a, b) => a - b);
       for (let i = min; i <= max; i++) {
-        if (i === 3 || i === 7) {
-          newColors[i] += "border-l border-t border-r border-black";
-        } else {
-          newColors[i] += "border-l border-t border-b border-black";
-        }
-        if (i >= 4) {
+        newColors[i] += " border-l border-t border-black";
+        // if (i - width < min || i - width > max) {
+        //   newColors[i] += " border-t border-black";
+        // }
+        if (i + width < min || i + width > max) {
           newColors[i] += " border-b border-black";
+        }
+        if (i + 1 < min || i + 1 > max || i % width === 3) {
+          newColors[i] += " border-r border-black";
         }
       }
     }
