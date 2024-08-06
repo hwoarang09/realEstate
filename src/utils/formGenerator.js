@@ -97,8 +97,8 @@ const formGenerator = ({ property, setProperty, WIDTHLIST: widthList }) => {
       const style = { width: 400, margin: 50 };
 
       return (
-        <div className="flex justify-center items-center w-full">
-          <div className="w-[400px]">
+        <div className="flex justify-center items-center w-full ">
+          <div className="w-[400px] pl-4">
             <MyRangeSlider
               property={property}
               setProperty={setProperty}
