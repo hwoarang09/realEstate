@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
-
 const maxArea = 9999999999;
+
 const newColorsFunction = ({ totalCount, width, height, clickList }) => {
   const newColors = Array.from({ length: totalCount }, (_, index) => {
     let borderChk = "";
@@ -18,17 +18,35 @@ const newColorsFunction = ({ totalCount, width, height, clickList }) => {
   });
 
   if (clickList.length === 1) {
-    newColors[clickList[0]] = "border border-black";
+    newColors[clickList[0]] = "border-l border-t border-black";
+    if (clickList[0] + width < totalCount) {
+      newColors[clickList[0] + width] += " border-t-black";
+    }
+    if (clickList[0] + 1 < totalCount && clickList[0] % width !== 3) {
+      newColors[clickList[0] + 1] += " border-l-black";
+    }
+    if (clickList[0] % width === 3) {
+      newColors[clickList[0]] += " border-r border-black";
+    }
+    if (clickList[0] + width > totalCount - 1) {
+      newColors[clickList[0]] += " border-b border-black";
+    }
   } else if (clickList.length === 2) {
     const [min, max] = clickList.sort((a, b) => a - b);
     console.log("tow point ", min, max);
     for (let i = min; i <= max; i++) {
       newColors[i] = "p-2 flex items-center justify-center cursor-pointer ";
       if (i + width < min || i + width > max) {
-        newColors[i] += " border-b";
+        newColors[i + width] += " border-t-black";
       }
-      if (i + 1 < min || i + 1 > max || i % width === 3) {
+      if (i + 1 < min || i % width === 3) {
         newColors[i] += " border-r";
+      }
+      if (i + 1 > max && i % width !== 3) {
+        newColors[i + 1] += " border-l-black";
+      }
+      if (i + width + 1 > totalCount) {
+        newColors[i] += " border-b border-black";
       }
       newColors[i] += " border-l border-t border-black";
     }
@@ -39,6 +57,8 @@ const newColorsFunction = ({ totalCount, width, height, clickList }) => {
 
   return newColors;
 };
+
+
 const GridComponent = ({ property, setProperty, keyList, sizeList }) => {
   //초기 텍스트 및 숫자 배열 생성
   const [width, height, interval] = sizeList,
