@@ -1,30 +1,14 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  toggleIsList,
-  setIsList,
-  setLeft,
-  setSearch,
-} from "../../../../store/slices/headerSlice";
-import { omit, property } from "lodash";
-import Button from "../../../../commonComponents/Button";
+import { setIsList } from "../../../../store/slices/headerSlice";
 
-import {
-  notNullValue,
-  renderCategoryButtons,
-  handleChange,
-  parseFormInt,
-} from "../../../../utils/formUtils";
-import { Input } from "../../../../@/components/ui/input";
+import { renderCategoryButtons } from "../../../../utils/formUtils";
+
 import StyleForm from "../../../../commonComponents/FormStyle";
-import { formGenerator, ToggleButton } from "../../../../utils/formGenerator";
-import { addDays, subDays, startOfWeek, subMonths, format } from "date-fns";
-import {
-  setKeyword,
-  setFilters,
-} from "../../../../store/slices/searchFilterSlice";
-import _ from "lodash";
-import { fromJSON } from "postcss";
+import { formGenerator } from "../../../../utils/formGenerator";
+import { subDays, startOfWeek, subMonths, format } from "date-fns";
+import { setFilters } from "../../../../store/slices/searchFilterSlice";
+
 import GridComponent from "../../../../@/components/ui/myPyRangeSlider";
 const sortOrderOption = ["updated_at", "created_at"];
 const mappedSortOrder = {
@@ -401,7 +385,7 @@ function FilterPage() {
 
   return (
     <div className="mt-16 w-full max-w-[500px] justify-center items-center rounded-xl">
-      <div className="border-2 border-gray-100 p-4">
+      <div className="border-2 border-gray-100 px-4">
         <StyleForm mainWrapper>
           <StyleForm tabWrapper>
             <StyleForm menuTitle>

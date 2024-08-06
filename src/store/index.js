@@ -10,6 +10,7 @@ import searchFilterReducer from "./slices/searchFilterSlice";
 import { setupListeners } from "@reduxjs/toolkit/query";
 
 import { api } from "./apis/propertyApi";
+import { regionApi } from "./apis/regionApi";
 // import { commentApi } from "./apis/commentApi";
 
 const store = configureStore({
@@ -18,10 +19,11 @@ const store = configureStore({
     isList: isListReducer,
     searchFilter: searchFilterReducer,
     [api.reducerPath]: api.reducer,
+    [regionApi.reducerPath]: regionApi.reducer,
     // [commentApi.reducerPath]: commentApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(api.middleware),
+    getDefaultMiddleware().concat(api.middleware).concat(regionApi.middleware),
   // .concat(commentApi.middleware),
 });
 setupListeners(store.dispatch);
@@ -41,9 +43,4 @@ export {
   useUpdateCommentMutation,
 } from "./apis/propertyApi";
 
-// export {
-//   useFetchCommentsQuery,
-//   useAddCommentMutation,
-//   useRemoveCommentMutation,
-//   useUpdateCommentMutation,
-// } from "./apis/commentApi";
+export { useFetchBasicInfoQuery } from "./apis/regionApi";

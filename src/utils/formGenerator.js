@@ -94,8 +94,6 @@ const formGenerator = ({ property, setProperty, WIDTHLIST: widthList }) => {
     } else if (input.type === "range") {
       console.log("range!!", property);
 
-      const style = { width: 400, margin: 50 };
-
       return (
         <div className="flex justify-center items-center w-full ">
           <div className="w-[400px] pl-4">
