@@ -3,22 +3,39 @@ import React, { useEffect, useState } from "react";
 
 const maxArea = 9999999999;
 const newColorsFunction = ({ totalCount, width, height, clickList }) => {
-  const newColors = Array(totalCount).fill("");
+  const newColors = Array.from({ length: totalCount }, (_, index) => {
+    let borderChk = "";
+    if (index % width === width - 1) {
+      borderChk += "border-l border-t border-r border-gray-300";
+    } else {
+      borderChk += "border-l border-t border-gray-300";
+    }
+    if (index >= width * (height - 1)) {
+      borderChk += " border-b border-gray-300";
+    }
+    // console.log("일단 첫 색깔 선택은 시작함", borderChk);
+    return borderChk;
+  });
 
   if (clickList.length === 1) {
     newColors[clickList[0]] = "border border-black";
   } else if (clickList.length === 2) {
     const [min, max] = clickList.sort((a, b) => a - b);
+    console.log("tow point ", min, max);
     for (let i = min; i <= max; i++) {
-      newColors[i] += " border-l border-t border-black";
+      newColors[i] = "p-2 flex items-center justify-center cursor-pointer ";
       if (i + width < min || i + width > max) {
-        newColors[i] += " border-b border-black";
+        newColors[i] += " border-b";
       }
       if (i + 1 < min || i + 1 > max || i % width === 3) {
-        newColors[i] += " border-r border-black";
+        newColors[i] += " border-r";
       }
+      newColors[i] += " border-l border-t border-black";
     }
   }
+
+  console.log("enwColors", newColors);
+  console.log("clicLIskt", clickList);
 
   return newColors;
 };
@@ -43,20 +60,7 @@ const GridComponent = ({ property, setProperty, keyList, sizeList }) => {
   const [clickList, setClickList] = useState([]);
 
   //아무것도 선택되지 않은, 회색 border만 있는 배열 생성
-  const [colors, setColors] = useState(
-    Array.from({ length: totalCount }, (_, index) => {
-      let borderChk = "";
-      if (index % width === width - 1) {
-        borderChk += "border-l border-t border-r border-gray-300";
-      } else {
-        borderChk += "border-l border-t border-gray-300";
-      }
-      if (index >= width * (height - 1)) {
-        borderChk += " border-b border-gray-300";
-      }
-      return borderChk;
-    })
-  );
+  const [colors, setColors] = useState([]);
 
   //property로부터 초기선택값 가져오기
   useEffect(() => {
@@ -68,6 +72,7 @@ const GridComponent = ({ property, setProperty, keyList, sizeList }) => {
       property[keyList[0]],
       property[keyList[1]],
     ];
+
     //0,maxArea 이면 전체선택이므로, 0을 넣어줌
     if (leftClick === 0 && rightClick === maxArea) {
       initialClickList = [0];
@@ -101,7 +106,6 @@ const GridComponent = ({ property, setProperty, keyList, sizeList }) => {
         Math.floor(rightClick / 100) - 1,
       ];
     }
-
     const newColors = newColorsFunction({
       totalCount,
       width,
@@ -110,6 +114,8 @@ const GridComponent = ({ property, setProperty, keyList, sizeList }) => {
     });
 
     setColors(newColors);
+    console.log("in useEffect newColor", newColors);
+    console.log("in useEffect initialClickList", initialClickList);
     setClickList(initialClickList);
   }, [property, keyList, sizeList]);
 
@@ -138,6 +144,7 @@ const GridComponent = ({ property, setProperty, keyList, sizeList }) => {
       clickList: newClickList,
     });
 
+    console.log("In handleClick newClickList", newClickList);
     setClickList(newClickList);
     setColors(newColors);
 
