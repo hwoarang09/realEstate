@@ -80,16 +80,16 @@ const api = createApi({
         }),
       }),
       fetchProperties: builder.query({
-        providesTags: (result, error, arg) => {
-          if (!result?.contents) return []; // 데이터가 없으면 빈 배열 반환
+        // providesTags: (result, error, arg) => {
+        //   if (!result?.contents) return []; // 데이터가 없으면 빈 배열 반환
 
-          const tags = result.contents.map((property) => ({
-            type: "Property",
-            id: parseInt(property.id),
-          }));
-          console.log("fetchProperties providesTags:", tags);
-          return tags;
-        },
+        //   const tags = result.contents.map((property) => ({
+        //     type: "Property",
+        //     id: parseInt(property.id),
+        //   }));
+        //   console.log("fetchProperties providesTags:", tags);
+        //   return tags;
+        // },
         query: ({ page, is_verified, limit, ...params }) => {
           console.log(
             "page:",
@@ -109,12 +109,12 @@ const api = createApi({
         },
       }),
       fetchPropertyById: builder.query({
-        providesTags: (result, error, arg) => {
-          return [
-            { type: "Property", id: parseInt(arg) },
-            { type: "CommentAll", id: parseInt(arg) },
-          ];
-        },
+        // providesTags: (result, error, arg) => {
+        //   return [
+        //     { type: "Property", id: parseInt(arg) },
+        //     { type: "CommentAll", id: parseInt(arg) },
+        //   ];
+        // },
         query: (id) => ({
           url: `/property/${id}`,
           method: "GET",
@@ -158,14 +158,14 @@ const api = createApi({
         }),
       }),
       fetchComments: builder.query({
-        providesTags: (result, error, arg) => {
-          const tags = result.contents.data.map((comment) => ({
-            type: "Comment",
-            id: comment.id,
-          }));
-          tags.push({ type: "Property", id: arg.resource_id });
-          return tags;
-        },
+        // providesTags: (result, error, arg) => {
+        //   const tags = result.contents.data.map((comment) => ({
+        //     type: "Comment",
+        //     id: comment.id,
+        //   }));
+        //   tags.push({ type: "Property", id: arg.resource_id });
+        //   return tags;
+        // },
         query: ({ resource_type, resource_id }) => ({
           url: "/comment",
           params: { resource_type, resource_id },

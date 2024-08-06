@@ -20,7 +20,7 @@ export const isExactMatch = (obj) => {
     from_area: undefined,
     to_area: undefined,
     page: 1,
-    keyword: undefined,
+    keyword: "",
   };
 
   if (!obj || Object.keys(obj).length !== Object.keys(target).length) {

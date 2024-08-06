@@ -41,7 +41,10 @@ export function DatePickerDemo({ property, setProperty, keyList }) {
   const formatDate = (date) => {
     if (date === "즉시" || date === "협의") return date;
     else if (typeof date === "string" && date.length !== 8) {
-      console.log("에러처리중", date);
+      console.log(
+        "string인데 즉시, 협의가 아니면서 20130311같은 올바른 날짜가 아닌 경우 에러처리.",
+        date
+      );
       return;
     } else if (typeof date === "string" && date.length === 8) {
       const parsedDate = parse(date, "yyyyMMdd", new Date());

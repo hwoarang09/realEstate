@@ -23,9 +23,17 @@ function PropertyPage() {
   const observer = useRef();
 
   useEffect(() => {
+    console.log("searchQuery Changed", searchQuery);
     setPage(1);
     setAllProperties([]);
   }, [searchQuery]);
+
+  useEffect(() => {
+    // params가 변경될 때 properties 초기화 및 페이지 번호 초기화
+    console.log("params Changed", params);
+    setAllProperties([]);
+    setPage(1);
+  }, [params]);
 
   useEffect(() => {
     if (data?.contents) {
