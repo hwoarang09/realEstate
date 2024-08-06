@@ -184,12 +184,16 @@ const ItemInfoMemo = ({ property, setProperty }) => {
           {showMoreInfo && (
             <>
               <div className="border border-gray-300 rounded-lg shadow-lg p-4">
-                <div className="flex mb-2">
-                  <div className="overflow-y-auto w-full max-h-72 overflow-y-auto px-8 mb-4">
+                <div className="flex">
+                  <div className="overflow-y-auto w-full max-h-72 overflow-y-auto px-8 pt-4 border-b">
                     {memos}
                   </div>
                 </div>
-                <div className="relative w-full px-8">
+                <div
+                  className={`relative w-full px-8 ${
+                    property.comment.data.length > 0 ? `pt-4` : ``
+                  }`}
+                >
                   <Textarea
                     name="comment"
                     value={commentInput}

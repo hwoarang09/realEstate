@@ -8,6 +8,7 @@ export const BasicInfoSearchHeader = ({
   inputValue,
   handleChange,
   handleSearch,
+  inputRef,
 }) => {
   return (
     <StyleForm mainWrapper>
@@ -23,6 +24,7 @@ export const BasicInfoSearchHeader = ({
             >
               <Input
                 type="text"
+                ref={inputRef}
                 value={inputValue}
                 onChange={(e) => handleChange(e)}
                 className="border"

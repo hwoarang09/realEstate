@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import "../../../styles/index.css";
 
@@ -20,7 +20,7 @@ const PropertyAddModal = ({ closeModal }) => {
   const [basicInfo, setBasicInfo] = useState(null);
   const [isSearchPage, setIsSearchPage] = useState(true);
   const [property, setProperty] = useState(null);
-  const [isTest, setIsTest] = useState(true);
+  const inputRef = useRef(null);
   const {
     data: properties,
     error,
@@ -38,6 +38,9 @@ const PropertyAddModal = ({ closeModal }) => {
   const handleSearch = (e) => {
     e.preventDefault();
     setSearchQuery(inputValue);
+    if (inputRef.current) {
+      inputRef.current.blur();
+    }
     console.log("handleSearch Click");
   };
 
@@ -47,7 +50,7 @@ const PropertyAddModal = ({ closeModal }) => {
   };
   const handleNext = () => {
     setIsSearchPage(false);
-    setIsTest(false);
+
     console.log("handleNext Click");
   };
   return (
@@ -62,8 +65,9 @@ const PropertyAddModal = ({ closeModal }) => {
                 inputValue={inputValue}
                 handleChange={handleChange}
                 handleSearch={handleSearch}
+                inputRef={inputRef}
               />
-              {!basicInfo && (
+              {!basicInfo && !isLoading && !error && (
                 <div className="flex justify-center items-center h-[500px] pb-40 text-center">
                   <div className="text-left">
                     주소로 검색하시면

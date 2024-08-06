@@ -12,6 +12,8 @@ export const getDefaultBlueprint = () => [
         {
           type: "text",
           keyList: ["address"],
+          style: "w-2/3",
+          style_input: "w-full",
         },
       ],
     ],

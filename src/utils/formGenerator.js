@@ -42,7 +42,7 @@ const formGenerator = ({ property, setProperty, WIDTHLIST: widthList }) => {
       const value = getPropertyValue(property, input.keyList);
 
       return (
-        <div className="" key={key}>
+        <div className={input.style} key={key}>
           <Input
             type={input.type}
             name={name}
@@ -57,7 +57,7 @@ const formGenerator = ({ property, setProperty, WIDTHLIST: widthList }) => {
                 setProperty
               )
             }
-            className={input.style}
+            className={input.style_input}
           />
         </div>
       );

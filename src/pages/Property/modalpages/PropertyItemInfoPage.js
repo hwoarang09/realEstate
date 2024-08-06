@@ -27,6 +27,7 @@ const PropertyItemInfoModal = ({ modalPath, closeModal }) => {
     data: properties,
     error,
     isLoading,
+    refetch,
   } = useFetchPropertyByIdQuery(propertyId);
   const [removeProperty] = useRemovePropertyMutation();
 
@@ -34,7 +35,9 @@ const PropertyItemInfoModal = ({ modalPath, closeModal }) => {
   useEffect(() => {
     setFormData(properties?.contents);
   }, [properties]);
-
+  useEffect(() => {
+    refetch();
+  }, [refetch]);
   if (isLoading) {
     return <div>Loading...</div>;
   }
