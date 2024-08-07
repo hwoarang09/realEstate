@@ -5,7 +5,7 @@ import {
   useUploadFileMutation,
 } from "../../../../store";
 
-const ItemInfoImages = ({ property, setProperty }) => {
+const FormImages = ({ property, setProperty }) => {
   const [previewUrls, setPreviewUrls] = useState([]);
   const [fileUploadInfo, setFileUploadInfo] = useState([]);
 
@@ -114,4 +114,4 @@ const ItemInfoImages = ({ property, setProperty }) => {
   );
 };
 
-export default ItemInfoImages;
+export default FormImages;

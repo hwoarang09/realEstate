@@ -9,62 +9,18 @@ import { Input } from "../../../../@/components/ui/input";
 import StyleForm from "../../../../commonComponents/FormStyle";
 import { formGenerator } from "../../../../utils/formGenerator";
 import { ToggleButton } from "../../../../commonComponents/ToggleButton";
-import {
+
+const FormBuilding = ({
+  property,
+  setProperty,
   getDefaultBlueprint,
   getHideBlueprint,
-} from "./ItemInfoBuildingBluePrints";
-
-const categoriesBDHS = ["전체 가능", "부분 가능", "불가능"];
-const categoriesSame = ["가능", "불가능"];
-const categoriesExist = ["유", "무"];
-
-const ItemInfoBuilding = ({ property, setProperty }) => {
+  btnsGenerator,
+  mode,
+}) => {
   const [showMoreInfo, setShowMoreInfo] = useState(false);
 
   if (!property) return;
-
-  const bdhsAvailBtns = renderCategoryButtons(
-    categoriesBDHS,
-    ["extra", "bd_hs_available"],
-    "single",
-    property,
-    setProperty
-  );
-  const sameCateBtns = renderCategoryButtons(
-    categoriesSame,
-    ["extra", "sm_md_open_available"],
-    "single",
-    property,
-    setProperty
-  );
-  const elevatorsCateBtns = renderCategoryButtons(
-    categoriesExist,
-    ["extra", "handicap_ele"],
-    "single",
-    property,
-    setProperty
-  );
-  const parkingSpotsCateBtns = renderCategoryButtons(
-    categoriesExist,
-    ["extra", "handicap_parking"],
-    "single",
-    property,
-    setProperty
-  );
-  const rampCateBtns = renderCategoryButtons(
-    categoriesExist,
-    ["extra", "handicap_ramp"],
-    "single",
-    property,
-    setProperty
-  );
-  const restroomCateBtns = renderCategoryButtons(
-    categoriesExist,
-    ["extra", "handicap_wc"],
-    "single",
-    property,
-    setProperty
-  );
 
   const buildingSizeComp = (
     <StyleForm formRow>
@@ -109,17 +65,31 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
       </StyleForm>
     </StyleForm>
   );
-  const defaultBluePrint = getDefaultBlueprint();
+
+  const {
+    bdhsAvailBtns,
+    sameCateBtns,
+    elevatorsCateBtns,
+    rampCateBtns,
+    parkingSpotsCateBtns,
+    restroomCateBtns,
+  } = btnsGenerator({ property, setProperty, renderCategoryButtons });
+
+  console.log("bdhsAvailBtns", bdhsAvailBtns);
+  const defaultBluePrint = getDefaultBlueprint({
+    mode,
+  });
   const hideBluePrint = getHideBlueprint({
-    customJSX: [buildingSizeComp],
-    btns: [
+    mode,
+    customJSX: { buildingSizeComp },
+    btns: {
       bdhsAvailBtns,
       sameCateBtns,
       elevatorsCateBtns,
       rampCateBtns,
       parkingSpotsCateBtns,
       restroomCateBtns,
-    ],
+    },
   });
 
   return (
@@ -151,4 +121,4 @@ const ItemInfoBuilding = ({ property, setProperty }) => {
   );
 };
 
-export default ItemInfoBuilding;
+export default FormBuilding;

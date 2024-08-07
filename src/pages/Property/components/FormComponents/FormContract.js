@@ -1,6 +1,6 @@
 import { handleChange, notNullValue } from "../../../../utils/formUtils";
 
-const ItemInfoContract = ({ property, setProperty }) => {
+const FormContract = ({ property, setProperty }) => {
   if (!property) {
     return;
   }
@@ -59,4 +59,4 @@ const ItemInfoContract = ({ property, setProperty }) => {
   );
 };
 
-export default ItemInfoContract;
+export default FormContract;

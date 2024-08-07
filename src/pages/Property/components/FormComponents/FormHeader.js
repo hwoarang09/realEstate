@@ -6,7 +6,7 @@ import { FaChevronLeft } from "react-icons/fa";
 
 //지금은 구조만 잡아놓은 상태
 //필터기능은 정규계약 후에 추가해야함
-const ItemInfoHeader = ({ onCloseModal }) => {
+const FormHeader = ({ onCloseModal }) => {
   const handleClick = () => {
     console.log("ItemInfoHeader Click", onCloseModal);
     onCloseModal();
@@ -23,4 +23,4 @@ const ItemInfoHeader = ({ onCloseModal }) => {
   );
 };
 
-export default ItemInfoHeader;
+export default FormHeader;

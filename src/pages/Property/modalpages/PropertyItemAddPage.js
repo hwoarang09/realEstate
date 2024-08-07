@@ -9,7 +9,7 @@ import Button from "../../../commonComponents/Button";
 import StyleForm from "../../../commonComponents/FormStyle";
 import { AbsPosButton } from "../../../commonComponents/AbsPosButton";
 
-import ItemInfoHeader from "../components/ItemInfoPageComponents/ItemInfoHeader";
+import ItemInfoHeader from "../components/FormComponents/FormHeader";
 import { BasicInfoSearchHeader } from "../components/ItemAddPageComponents/BasicInfoSearchHeader";
 import { BasicInfoMainResult } from "../components/ItemAddPageComponents/BasicInfoMainResult";
 import { BasicInfoAddPage } from "../components/ItemAddPageComponents/BasicInfoAddPage";
@@ -111,6 +111,7 @@ const PropertyAddModal = ({ closeModal }) => {
               basicInfo={basicInfo}
               property={property}
               setProperty={setProperty}
+              onCloseModal={closeModal}
             />
           </>
         )}

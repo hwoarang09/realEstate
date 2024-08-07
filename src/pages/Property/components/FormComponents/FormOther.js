@@ -9,7 +9,7 @@ const statusArray = ["기본", "임장중", "계약중"];
 const isActiveArray = [true, false];
 const isVerifiedArray = [true, false];
 
-const ItemInfoOther = ({ property, setProperty }) => {
+const FormOther = ({ property, setProperty }) => {
   const [showMoreInfo, setShowMoreInfo] = useState(false);
 
   if (!property) {
@@ -103,96 +103,4 @@ const ItemInfoOther = ({ property, setProperty }) => {
   );
 };
 
-export default ItemInfoOther;
-
-// const defaultBluePrint = [
-//   {
-//     STATE: { property, setProperty },
-//     WIDTHLIST: [
-//       [
-//         {
-//           type: "label",
-//           labelText: "상권",
-//         },
-//         {
-//           type: "flatButtons",
-//           btns: areaTypeBtns,
-//         },
-//       ],
-//     ],
-//   },
-// ];
-
-// const hideBluePrint = [
-//   {
-//     STATE: { property, setProperty },
-//     WIDTHLIST: [
-//       [
-//         {
-//           type: "label",
-//           labelText: "등급",
-//         },
-//         {
-//           type: "flatButtons",
-//           btns: gradeBtns,
-//         },
-//       ],
-//     ],
-//   },
-//   {
-//     STATE: { property, setProperty },
-//     WIDTHLIST: [
-//       [
-//         {
-//           type: "label",
-//           labelText: "진행 상태",
-//         },
-//         {
-//           type: "flatButtons",
-//           btns: statusBtns,
-//         },
-//       ],
-//     ],
-//   },
-//   {
-//     STATE: { property, setProperty },
-//     WIDTHLIST: [
-//       [
-//         {
-//           type: "label",
-//           labelText: "앱/웹 노출 여부",
-//         },
-//         {
-//           type: "flatButtons",
-//           btns: isActiveBtns,
-//         },
-//       ],
-//     ],
-//   },
-//   {
-//     STATE: { property, setProperty },
-//     WIDTHLIST: [
-//       [
-//         {
-//           type: "label",
-//           labelText: "매물 확보 여부",
-//         },
-//         {
-//           type: "flatButtons",
-//           btns: isVerifiedBtns,
-//         },
-//       ],
-//     ],
-//   },
-// ];
-
-// {hideBluePrint.map((bluePrint, i) => (
-//   <React.Fragment key={`oth2_${i}`}>
-//     {formGenerator(bluePrint)}
-//   </React.Fragment>
-// ))}
-// {defaultBluePrint.map((bluePrint, i) => (
-//   <React.Fragment key={`oth1_${i}`}>
-//     {formGenerator(bluePrint)}
-//   </React.Fragment>
-// ))}
+export default FormOther;

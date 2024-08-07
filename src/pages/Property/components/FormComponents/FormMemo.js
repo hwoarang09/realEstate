@@ -6,7 +6,7 @@ import { MdOutlineContentCopy } from "react-icons/md";
 import { MdEdit } from "react-icons/md";
 import { FaTrashAlt } from "react-icons/fa";
 import SubModal from "../../../../commonComponents/SubModal";
-import MemoEditModal from "./ItemInfoMemoEditModal";
+import MemoEditModal from "../ItemInfoPageComponents/ItemInfoMemoEditModal";
 import {
   useRemoveCommentMutation,
   useUpdateCommentMutation,
@@ -33,7 +33,7 @@ const getTimeDifference = (timestamp) => {
   }
 };
 
-const ItemInfoMemo = ({ property, setProperty }) => {
+const FormMemo = ({ property, setProperty }) => {
   const [commentInput, setCommentInput] = useState("");
   const [showMoreInfo, setShowMoreInfo] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -261,4 +261,4 @@ const ItemInfoMemo = ({ property, setProperty }) => {
   );
 };
 
-export default ItemInfoMemo;
+export default FormMemo;

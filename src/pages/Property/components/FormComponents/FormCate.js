@@ -5,7 +5,7 @@ import { renderCategoryButtons } from "../../../../utils/formUtils";
 import StyleForm from "../../../../commonComponents/FormStyle";
 const cateArray = ["치과", "미용", "감기", "통증", "한의원"];
 
-const ItemInfoCate = ({ property, setProperty }) => {
+const FormCate = ({ property, setProperty, mode }) => {
   const [showRecommended, setShowRecommended] = useState(false);
   if (!property) {
     return;
@@ -75,4 +75,4 @@ const ItemInfoCate = ({ property, setProperty }) => {
   );
 };
 
-export default ItemInfoCate;
+export default FormCate;

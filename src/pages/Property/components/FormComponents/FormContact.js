@@ -5,7 +5,8 @@ import {
   removeContact,
   addContact,
 } from "../../../../utils/formUtils";
-const ItemInfoContact = ({ property, setProperty }) => {
+
+const FormContact = ({ property, setProperty, mode }) => {
   if (!property) {
     return null;
   }
@@ -135,4 +136,4 @@ const ItemInfoContact = ({ property, setProperty }) => {
   );
 };
 
-export default ItemInfoContact;
+export default FormContact;

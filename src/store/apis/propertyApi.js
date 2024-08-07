@@ -73,10 +73,7 @@ const api = createApi({
         query: (property) => ({
           url: "/property",
           method: "POST",
-          body: {
-            propertyId: property.id,
-            title: faker.commerce.productName(),
-          },
+          body: property,
         }),
       }),
       fetchProperties: builder.query({

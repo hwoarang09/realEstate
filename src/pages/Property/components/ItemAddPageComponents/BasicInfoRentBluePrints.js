@@ -12,19 +12,19 @@ export const btnsGenerator = ({
 }) => {
   const categoriesConfig = [
     {
-      name: "rentalTypeBtns",
-      categories: rentalTypeCategories,
-      path: ["rent_scale"],
-    },
-    {
       name: "availDateBtns",
       categories: availDateCategories,
       path: ["available_date"],
     },
     {
-      name: "freeParkingBtns",
-      categories: parkingCategories,
-      path: ["free_parking_str"],
+      name: "rentalTypeBtns",
+      categories: rentalTypeCategories,
+      path: ["rent_scale"],
+    },
+    {
+      name: "transferMoneyBtns",
+      categories: transferMoneyCategories,
+      path: ["transferMoney"],
     },
     {
       name: "visitorParkingBtns",
@@ -32,9 +32,9 @@ export const btnsGenerator = ({
       path: ["visit_parking"],
     },
     {
-      name: "transferMoneyBtns",
-      categories: transferMoneyCategories,
-      path: ["transferMoney"],
+      name: "freeParkingBtns",
+      categories: parkingCategories,
+      path: ["free_parking_str"],
     },
   ];
 

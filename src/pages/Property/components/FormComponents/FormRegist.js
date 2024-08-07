@@ -1,8 +1,7 @@
 import { formatDate } from "../../../../utils/dateHelper";
 
-const ItemInfoRegist = ({ property }) => {
+const FormRegist = ({ property }) => {
   if (!property) {
-
     return;
   }
   return (
@@ -14,4 +13,4 @@ const ItemInfoRegist = ({ property }) => {
   );
 };
 
-export default ItemInfoRegist;
+export default FormRegist;

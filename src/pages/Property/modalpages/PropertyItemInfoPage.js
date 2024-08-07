@@ -1,23 +1,35 @@
 import React, { useState, useEffect } from "react";
 import { AbsPosButton } from "../../../commonComponents/AbsPosButton";
 // import Button from "../../../commonComponents/Button";
-import ItemInfoRegist from "../components/ItemInfoPageComponents/ItemInfoRegist";
-import ItemInfoCate from "../components/ItemInfoPageComponents/ItemInfoCate";
-import ItemInfoHeader from "../components/ItemInfoPageComponents/ItemInfoHeader";
-import ItemInfoRent from "../components/ItemInfoPageComponents/ItemInfoRent";
-import ItemInfoTag from "../components/ItemInfoPageComponents/ItemInfoTag";
-import ItemInfoBuilding from "../components/ItemInfoPageComponents/ItemInfoBuilding";
-import ItemInfoOther from "../components/ItemInfoPageComponents/ItemInfoOther";
-import ItemInfoContract from "../components/ItemInfoPageComponents/ItemInfoContract";
-import ItemInfoContact from "../components/ItemInfoPageComponents/ItemInfoContact";
-import ItemInfoImages from "../components/ItemInfoPageComponents/ItemInfoImages";
-import ItemInfoMemo from "../components/ItemInfoPageComponents/ItemInfoMemo";
+import ItemInfoRegist from "../components/FormComponents/FormRegist";
+import ItemInfoCate from "../components/FormComponents/FormCate";
+import ItemInfoHeader from "../components/FormComponents/FormHeader";
+import ItemInfoRent from "../components/FormComponents/FormRent";
+import {
+  getDefaultBlueprint as getDefaultBlueprintRent,
+  getHideBlueprint as getHideBlueprintRent,
+  btnsGenerator as btnsGeneratorRent,
+} from "../components/ItemInfoPageComponents/ItemInfoRentBluePrints";
+import ItemInfoTag from "../components/FormComponents/FormTag";
+import ItemInfoBuilding from "../components/FormComponents/FormBuilding";
+import {
+  getDefaultBlueprint as getDefaultBlueprintBuilding,
+  getHideBlueprint as getHideBlueprintBuilding,
+  btnsGenerator as btnsGeneratorBuilding,
+} from "../components/ItemInfoPageComponents/ItemInfoBuildingBluePrints";
+import ItemInfoOther from "../components/FormComponents/FormOther";
+import ItemInfoContract from "../components/FormComponents/FormContract";
+import ItemInfoContact from "../components/FormComponents/FormContact";
+import ItemInfoImages from "../components/FormComponents/FormImages";
+import ItemInfoMemo from "../components/FormComponents/FormMemo";
 
 import {
   useFetchPropertyByIdQuery,
   useRemovePropertyMutation,
   useUpdatePropertyMutation,
 } from "../../../store";
+
+import { MODE } from "../../../utils/Mode";
 
 const PropertyItemInfoModal = ({ modalPath, closeModal }) => {
   const [formData, setFormData] = useState(null);
@@ -62,16 +74,62 @@ const PropertyItemInfoModal = ({ modalPath, closeModal }) => {
       <ItemInfoHeader onCloseModal={closeModal} />
       <form className="mt-10">
         <div className="px-4 pt-4 ">
-          <ItemInfoCate property={formData} setProperty={setFormData} />
-          <ItemInfoTag property={formData} setProperty={setFormData} />
-          <ItemInfoBuilding property={formData} setProperty={setFormData} />
-          <ItemInfoRent property={formData} setProperty={setFormData} />
-          <ItemInfoImages property={formData} setProperty={setFormData} />
-          <ItemInfoMemo property={formData} setProperty={setFormData} />
-          <ItemInfoContact property={formData} setProperty={setFormData} />
-          <ItemInfoOther property={formData} setProperty={setFormData} />
-          <ItemInfoContract property={formData} setProperty={setFormData} />
-          <ItemInfoRegist property={formData} setProperty={setFormData} />
+          <ItemInfoCate
+            property={formData}
+            setProperty={setFormData}
+            mode={MODE.EDIT}
+          />
+          <ItemInfoTag
+            property={formData}
+            setProperty={setFormData}
+            mode={MODE.EDIT}
+          />
+          <ItemInfoBuilding
+            property={formData}
+            setProperty={setFormData}
+            getDefaultBlueprint={getDefaultBlueprintBuilding}
+            getHideBlueprint={getHideBlueprintBuilding}
+            btnsGenerator={btnsGeneratorBuilding}
+            mode={MODE.EDIT}
+          />
+          <ItemInfoRent
+            property={formData}
+            setProperty={setFormData}
+            getDefaultBlueprint={getDefaultBlueprintRent}
+            getHideBlueprint={getHideBlueprintRent}
+            btnsGenerator={btnsGeneratorRent}
+            mode={MODE.EDIT}
+          />
+          <ItemInfoImages
+            property={formData}
+            setProperty={setFormData}
+            mode={MODE.EDIT}
+          />
+          <ItemInfoMemo
+            property={formData}
+            setProperty={setFormData}
+            mode={MODE.EDIT}
+          />
+          <ItemInfoContact
+            property={formData}
+            setProperty={setFormData}
+            mode={MODE.EDIT}
+          />
+          <ItemInfoOther
+            property={formData}
+            setProperty={setFormData}
+            mode={MODE.EDIT}
+          />
+          <ItemInfoContract
+            property={formData}
+            setProperty={setFormData}
+            mode={MODE.EDIT}
+          />
+          <ItemInfoRegist
+            property={formData}
+            setProperty={setFormData}
+            mode={MODE.EDIT}
+          />
         </div>
         <div
           onClick={handleDeleteProperty}

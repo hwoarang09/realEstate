@@ -1,6 +1,6 @@
 import StyleForm from "../../../../commonComponents/FormStyle";
 
-const ItemInfoTag = ({ property, setProperty }) => {
+const FormTag = ({ property, setProperty }) => {
   if (!property) {
     return;
   }
@@ -11,4 +11,4 @@ const ItemInfoTag = ({ property, setProperty }) => {
   );
 };
 
-export default ItemInfoTag;
+export default FormTag;
