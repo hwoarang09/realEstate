@@ -181,7 +181,7 @@ const ItemInfoMemo = ({ property, setProperty }) => {
           />
         </div>
         <div className="mb-2 text-sm">
-          {showMoreInfo && (
+          {showMoreInfo && property.id && (
             <>
               <div className="border border-gray-300 rounded-lg shadow-lg p-4">
                 <div className="flex">
