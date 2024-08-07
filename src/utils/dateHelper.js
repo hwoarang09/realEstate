@@ -22,5 +22,8 @@ function formatDate(dateString) {
 
   return formattedDate;
 }
-
-export { formatDate };
+const getCurrentTimestamp = () => {
+  const now = new Date();
+  return now.toISOString();
+};
+export { formatDate, getCurrentTimestamp };

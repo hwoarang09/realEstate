@@ -108,10 +108,12 @@ export const getHideBlueprint = ({
         {
           type: "label",
           labelText: "준공일자",
+          req: true,
         },
         {
           type: "text",
           keyList: ["completion_date"],
+          maxLength: 8,
         },
       ],
     ],

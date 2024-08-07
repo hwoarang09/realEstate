@@ -48,6 +48,7 @@ const formGenerator = ({ property, setProperty, WIDTHLIST: widthList }) => {
             name={name}
             value={value}
             disabled={input.disabled}
+            maxLength={input.maxLength ? Number(input.maxLength) : 9999}
             onChange={(e) =>
               handleChange(
                 input.keyList,

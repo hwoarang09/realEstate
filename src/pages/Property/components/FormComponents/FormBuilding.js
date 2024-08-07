@@ -75,7 +75,7 @@ const FormBuilding = ({
     restroomCateBtns,
   } = btnsGenerator({ property, setProperty, renderCategoryButtons });
 
-  console.log("bdhsAvailBtns", bdhsAvailBtns);
+
   const defaultBluePrint = getDefaultBlueprint({
     mode,
   });
