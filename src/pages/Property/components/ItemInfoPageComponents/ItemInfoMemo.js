@@ -186,8 +186,8 @@ const ItemInfoMemo = ({ property, setProperty }) => {
               <div className="border border-gray-300 rounded-lg shadow-lg p-4">
                 <div className="flex">
                   <div
-                    className={`overflow-y-auto w-full max-h-72 overflow-y-auto px-8 pt-4 ${
-                      property.comment.data.length > 0 ? `border-b ` : ``
+                    className={`overflow-y-auto w-full max-h-72 overflow-y-auto px-8 ${
+                      property.comment.data.length > 0 ? `border-b pt-4 ` : ``
                     }`}
                   >
                     {memos}
