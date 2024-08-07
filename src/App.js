@@ -1,6 +1,6 @@
 import BookmarkPage from "./pages/Property/pages/BookmarkPage";
 import PropertyPage from "./pages/Property/pages/PropertyPage";
-import ModalWrapper from "./pages/Property/components/ModalWrapper";
+import ModalWrapper from "./commonComponents/ModalWrapper";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./pages/Property/pages/Root";
 

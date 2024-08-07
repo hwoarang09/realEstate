@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
-import Modal from "../../../commonComponents/Modal";
-import PropertyItemInfoPage from "../modalpages/PropertyItemInfoPage";
-import PropertyAddModal from "../modalpages/PropertyItemAddPage";
-import useModal from "../../../hooks/use-modal";
+import Modal from "./Modal";
+import PropertyItemInfoPage from "../pages/Property/modalpages/PropertyItemInfoPage";
+import PropertyAddModal from "../pages/Property/modalpages/PropertyItemAddPage";
+import useModal from "../hooks/use-modal";
 import React from "react";
 
 const ModalWrapper = () => {
@@ -13,14 +13,14 @@ const ModalWrapper = () => {
 
   if (modalPath === "/property/add") {
     return (
-      <Modal onClose={hideModal}>
+      <Modal onClose={hideModal} isRouting={true}>
         <PropertyAddModal closeModal={hideModal} />
       </Modal>
     );
   } else if (modalPath === "/property/") return;
   else if (modalPath.includes("/property/")) {
     return (
-      <Modal onClose={hideModal}>
+      <Modal onClose={hideModal} isRouting={true}>
         <PropertyItemInfoPage closeModal={hideModal} modalPath={modalPath} />
       </Modal>
     );

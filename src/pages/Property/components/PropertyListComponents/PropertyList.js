@@ -19,6 +19,7 @@ const PropertyList = ({
     return <div>Error: {error.message}</div>;
   }
 
+  console.log("in PropertyLIst, properties : ", properties);
   const renderedProperties = properties.map((property, index) => {
     if (properties.length === index + 1) {
       return (

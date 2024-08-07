@@ -352,13 +352,7 @@ function FilterPage() {
     dispatch(setIsList(true));
   };
   const handleDateSortReset = () => {
-    //방법1. 안되던거 같음..
-    // const { sort, tmpSortDate, from_updated_date, to_updated_date, ...rest } =
-    //   filterObj;
-    // const newProperty = {
-    //   ...rest,
-    //   sort: "updated_at",
-    // };
+
     const keysToExclude = [
       "sort",
       "tmpSortDate",
@@ -405,7 +399,7 @@ function FilterPage() {
   };
 
   return (
-    <div className="mt-16 w-full max-w-[500px] justify-center items-center rounded-xl">
+    <div className="w-full max-w-[500px] justify-center items-center rounded-xl z-60 h-[1200px] overflow-y-auto">
       <div className="border-2 border-gray-100 px-4">
         <StyleForm mainWrapper>
           <StyleForm tabWrapper>

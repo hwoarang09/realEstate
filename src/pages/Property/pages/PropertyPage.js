@@ -7,30 +7,32 @@ import PropertyMenu from "../components/PropertyListComponents/PropertyMenu";
 import FilterPage from "../components/FilterComponents/FilterPage";
 import { useSelector } from "react-redux";
 
+import Modal from "../../../commonComponents/Modal";
+
+const PAGE_LIMIT = process.env.REACT_APP_PAGE_LIMIT;
 function PropertyPage() {
   const [page, setPage] = useState(1);
   const [allProperties, setAllProperties] = useState([]);
 
   const isList = useSelector((state) => state.isList.isList);
   const params = useSelector((state) => state.searchFilter);
-  const searchQuery = params.keyword;
+
   const { data, error, isLoading } = useFetchPropertiesQuery({
     is_verified: true,
 
-    limit: 10,
     ...params,
     page,
   });
   const observer = useRef();
 
-  useEffect(() => {
-    setPage(1);
-    setAllProperties([]);
-  }, [searchQuery]);
+  // useEffect(() => {
+  //   setPage(1);
+  //   setAllProperties([]);
+  // }, [searchQuery]);
 
   useEffect(() => {
     // params가 변경될 때 properties 초기화 및 페이지 번호 초기화
-    setAllProperties([]);
+    // setAllProperties([]);
     setPage(1);
   }, [params]);
 
@@ -55,7 +57,7 @@ function PropertyPage() {
       if (isLoading) return;
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
+        if (entries[0].isIntersecting && data?.count?.filtered > PAGE_LIMIT) {
           setPage((prevPage) => prevPage + 1);
         }
       });
@@ -66,21 +68,21 @@ function PropertyPage() {
 
   if (isLoading) return <div>Loading...</div>;
   console.log("allProperties", allProperties.length);
+  console.log("isList", isList);
   return (
     <>
-      {/* <Header onSearch={handleSearch} setIsList={setIsList} /> */}
-      {isList && (
-        <>
-          <PropertyMenu add={"add"} countData={data.count} />
-          <PropertyList
-            properties={allProperties}
-            lastPropertyElementRef={lastPropertyElementRef}
-            isLoading={isLoading}
-            error={error}
-          />
-        </>
+      <PropertyMenu add={"add"} countData={data.count} />
+      <PropertyList
+        properties={allProperties}
+        lastPropertyElementRef={lastPropertyElementRef}
+        isLoading={isLoading}
+        error={error}
+      />
+      {!isList && (
+        <Modal isRouting={false}>
+          <FilterPage />
+        </Modal>
       )}
-      {!isList && <FilterPage />}
       <Outlet />
       {/* <MapViewTab /> */}
     </>
