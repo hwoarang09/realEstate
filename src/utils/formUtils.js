@@ -102,6 +102,7 @@ const renderCategoryButtons = (
       ? handleSingleCategoryClick
       : handleMultiCategoryClick;
 
+  // console.log("rendergedButtons", cateJsonKeyList, chkSingleMulti);
   return categories.map((cate) => {
     let isSelected = false;
 

@@ -30,11 +30,11 @@ export const isExactMatch = (obj) => {
   for (let key in target) {
     if (Array.isArray(target[key])) {
       if (!Array.isArray(obj[key]) || obj[key].length !== target[key].length) {
-        console.log("length different", key, obj[key], target[key]);
+        console.log(`length different, <${key}>, <${obj[key]}>, <${target[key]}>`);
         return false;
       }
     } else if (obj[key] !== target[key]) {
-      console.log("value different", key, obj[key], target[key]);
+      console.log(`value different, <${key}>, <${obj[key]}>, <${target[key]}>`);
       return false;
     }
   }

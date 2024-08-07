@@ -35,6 +35,7 @@ function FilterPage() {
   useEffect(() => {
     console.log("filterObj가 변경되었습니다:", filterObj);
   }, [filterObj]);
+  
   const updateFilterDates = useCallback((tmpSortDate) => {
     console.log("updateFilterDates", tmpSortDate);
     const today = new Date();
@@ -337,31 +338,51 @@ function FilterPage() {
       setFilters({
         ...filterObj,
         //슬라이어에서 100찍으면 100억 이상으로 처리
-        tmpSortDate: undefined,
-        to_deposit: filterObj.to_deposit === 100 ? 99999 : filterObj.to_deposit,
-        to_monthly_rent:
-          filterObj.to_monthly_rent === 100 ? 99999 : filterObj.to_monthly_rent,
-        to_monthly_rent_by:
-          filterObj.to_monthly_rent_by === 100
-            ? 99999
-            : filterObj.to_monthly_rent_by,
-        page: 1,
+
+        // to_deposit: filterObj.to_deposit === 100 ? 99999 : filterObj.to_deposit,
+        // to_monthly_rent:
+        //   filterObj.to_monthly_rent === 100 ? 99999 : filterObj.to_monthly_rent,
+        // to_monthly_rent_by:
+        //   filterObj.to_monthly_rent_by === 100
+        //     ? 99999
+        //     : filterObj.to_monthly_rent_by,
+        // page: 1,
       })
     );
     dispatch(setIsList(true));
   };
-  const handleDateSort = () => {
-    const newProperty = {
-      ...filterObj,
-      sort: undefined,
-      tmpSortDate: undefined,
-      from_updated_date: undefined,
-      to_updated_date: undefined,
-    };
+  const handleDateSortReset = () => {
+    //방법1. 안되던거 같음..
+    // const { sort, tmpSortDate, from_updated_date, to_updated_date, ...rest } =
+    //   filterObj;
+    // const newProperty = {
+    //   ...rest,
+    //   sort: "updated_at",
+    // };
+    const keysToExclude = [
+      "sort",
+      "tmpSortDate",
+      "from_updated_date",
+      "to_updated_date",
+    ];
+
+    const newProperty = Object.keys(filterObj).reduce((acc, key) => {
+      if (!keysToExclude.includes(key)) {
+        acc[key] = filterObj[key];
+      }
+      return acc;
+    }, {});
+
+    newProperty.sort = "updated_at";
+
+    setFilterObj(newProperty);
+
+    newProperty.sort = "updated_at";
+    console.log("newProperty DateSortReset", newProperty);
     setFilterObj(newProperty);
   };
 
-  const handleFilter = () => {
+  const handleFilterReset = () => {
     const newProperty = {
       ...filterObj,
       area_type: undefined,
@@ -391,7 +412,7 @@ function FilterPage() {
             <StyleForm menuTitle>
               정렬 및 날짜
               <span
-                onClick={handleDateSort}
+                onClick={handleDateSortReset}
                 className="text-sm text-gray-500 underline cursor-pointer ml-4"
               >
                 초기화
@@ -411,7 +432,7 @@ function FilterPage() {
             <StyleForm menuTitle>
               필터{" "}
               <span
-                onClick={handleFilter}
+                onClick={handleFilterReset}
                 className="text-sm text-gray-500 underline cursor-pointer ml-4"
               >
                 초기화

@@ -33,7 +33,7 @@ const newColorsFunction = ({ totalCount, width, height, clickList }) => {
     }
   } else if (clickList.length === 2) {
     const [min, max] = clickList.sort((a, b) => a - b);
-    console.log("tow point ", min, max);
+    // console.log("tow point ", min, max);
     for (let i = min; i <= max; i++) {
       newColors[i] = "p-2 flex items-center justify-center cursor-pointer ";
       if (i + width < min || i + width > max) {
@@ -52,12 +52,11 @@ const newColorsFunction = ({ totalCount, width, height, clickList }) => {
     }
   }
 
-  console.log("enwColors", newColors);
-  console.log("clicLIskt", clickList);
+  // console.log("enwColors", newColors);
+  // console.log("clicLIskt", clickList);
 
   return newColors;
 };
-
 
 const GridComponent = ({ property, setProperty, keyList, sizeList }) => {
   //초기 텍스트 및 숫자 배열 생성
@@ -134,8 +133,8 @@ const GridComponent = ({ property, setProperty, keyList, sizeList }) => {
     });
 
     setColors(newColors);
-    console.log("in useEffect newColor", newColors);
-    console.log("in useEffect initialClickList", initialClickList);
+    // console.log("in useEffect newColor", newColors);
+    // console.log("in useEffect initialClickList", initialClickList);
     setClickList(initialClickList);
   }, [property, keyList, sizeList]);
 
