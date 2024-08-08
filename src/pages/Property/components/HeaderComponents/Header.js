@@ -98,7 +98,7 @@ const Header = () => {
           <TfiMenu onClick={handleLogout} className="w-5 h-5 cursor-pointer" />
         )}
       </div>
-      <div className="w-3/4 flex items-center">
+      <div className={`flex items-center ${search ? "w-11/12" : "w-3/4 "}`}>
         {search && (
           <form onSubmit={handleSubmit} className="flex w-full relative ">
             <Input
@@ -119,12 +119,11 @@ const Header = () => {
           </form>
         )}
       </div>
-      <div
-        className="w-1/12 flex items-center justify-center cursor-pointer"
-        onClick={handleClickSearch}
-      >
-        <FaSearch />
-      </div>
+      {!search && (
+        <div className="w-1/12 flex items-center justify-center cursor-pointer">
+          <FaSearch onClick={handleClickSearch} />
+        </div>
+      )}
       <div
         onClick={handleClickFilter}
         className="relative w-1/12 flex items-center justify-center cursor-pointer"

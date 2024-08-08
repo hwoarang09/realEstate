@@ -1,5 +1,4 @@
 import * as React from "react";
-
 import { Button } from "../../../@/components/ui/button";
 import {
   Card,
@@ -11,13 +10,7 @@ import {
 } from "../../../@/components/ui/card";
 import { Input } from "../../../@/components/ui/input";
 import { Label } from "../../../@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../../../@/components/ui/select";
+
 import { useState } from "react";
 
 export function CardWithForm({ email, password, onSubmit }) {
@@ -51,7 +44,7 @@ export function CardWithForm({ email, password, onSubmit }) {
               />
             </div>
             <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="password">PassWord</Label>
+              <Label htmlFor="password">Password</Label>
               <Input
                 id="password"
                 type="password"
@@ -61,8 +54,8 @@ export function CardWithForm({ email, password, onSubmit }) {
               />
             </div>
           </div>
-          <CardFooter className="flex justify-end items-end mt-4 pb-0">
-            <Button type="submit" className="border">
+          <CardFooter className="flex justify-end items-end mt-4 pb-0 px-0">
+            <Button type="submit" className="border" variant="default">
               Login
             </Button>
           </CardFooter>
