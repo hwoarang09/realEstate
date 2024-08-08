@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../hooks/use-auth";
@@ -7,12 +7,19 @@ const LoginPage = () => {
   const [email, setEmail] = useState("admin@admin.com");
   const [password, setPassword] = useState("opndoctor2023!");
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login, isAuthenticated } = useAuth();
 
   console.log(
     "LoginPage.js, process.env.REACT_APP_API_URL:",
     process.env.REACT_APP_API_BASE_URL
   );
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/property");
+    }
+  }, [isAuthenticated, navigate]);
+
   const baseURL = process.env.REACT_APP_API_BASE_URL;
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -30,7 +37,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="">
+    <div className="mt-32">
       <form onSubmit={handleLogin}>
         <input
           type="text"

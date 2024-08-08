@@ -11,6 +11,8 @@ import { AuthProvider } from "./hooks/use-auth";
 import PrivateRoute from "./pages/Property/pages/PrivateRoute";
 import PublicRoot from "./pages/Property/pages/PublicRoot";
 import AuthRoot from "./pages/Property/pages/AuthRoot";
+import ErrorPage from "./pages/Property/pages/ErrorPage";
+
 import scrollLoger from "./hooks/use-scrollLogger";
 import { useAuth } from "./hooks/use-auth";
 
@@ -32,6 +34,10 @@ const router = createBrowserRouter([
         element: <LoginPage />,
       },
       {
+        path: "/",
+        element: <PrivateRoute element={<PropertyPage />} />,
+      },
+      {
         path: "property",
         element: <PrivateRoute element={<PropertyPage />} />,
       },
@@ -42,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: "bookmark",
         element: <PrivateRoute element={<BookmarkPage />} />,
+      },
+      {
+        path: "*",
+        element: <ErrorPage />,
       },
     ],
   },
