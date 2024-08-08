@@ -329,7 +329,7 @@ function FilterPage() {
   ];
 
   const handleUpdateChanges = () => {
-    console.log("handleUpdateChanges", {
+    console.log("****************** handleUpdateChanges", {
       ...filterObj,
 
       page: 1,
@@ -339,39 +339,25 @@ function FilterPage() {
         ...filterObj,
         //슬라이어에서 100찍으면 100억 이상으로 처리
 
-        // to_deposit: filterObj.to_deposit === 100 ? 99999 : filterObj.to_deposit,
-        // to_monthly_rent:
-        //   filterObj.to_monthly_rent === 100 ? 99999 : filterObj.to_monthly_rent,
-        // to_monthly_rent_by:
-        //   filterObj.to_monthly_rent_by === 100
-        //     ? 99999
-        //     : filterObj.to_monthly_rent_by,
-        // page: 1,
+        to_deposit: filterObj.to_deposit === 100 ? 99999 : filterObj.to_deposit,
+        to_monthly_rent:
+          filterObj.to_monthly_rent === 100 ? 99999 : filterObj.to_monthly_rent,
+        to_monthly_rent_by:
+          filterObj.to_monthly_rent_by === 100
+            ? 99999
+            : filterObj.to_monthly_rent_by,
+        page: 1,
       })
     );
     dispatch(setIsList(true));
   };
   const handleDateSortReset = () => {
-
-    const keysToExclude = [
-      "sort",
-      "tmpSortDate",
-      "from_updated_date",
-      "to_updated_date",
-    ];
-
-    const newProperty = Object.keys(filterObj).reduce((acc, key) => {
-      if (!keysToExclude.includes(key)) {
-        acc[key] = filterObj[key];
-      }
-      return acc;
-    }, {});
-
+    const newProperty = { ...filterObj };
+    delete newProperty.from_updated_date;
+    delete newProperty.to_updated_date;
+    delete newProperty.tmpSortDate;
     newProperty.sort = "updated_at";
 
-    setFilterObj(newProperty);
-
-    newProperty.sort = "updated_at";
     console.log("newProperty DateSortReset", newProperty);
     setFilterObj(newProperty);
   };

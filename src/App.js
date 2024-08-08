@@ -2,33 +2,46 @@ import BookmarkPage from "./pages/Property/pages/BookmarkPage";
 import PropertyPage from "./pages/Property/pages/PropertyPage";
 import ModalWrapper from "./commonComponents/ModalWrapper";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Root from "./pages/Property/pages/Root";
 
 import { useSelector } from "react-redux";
 import React, { useEffect } from "react";
 
+import LoginPage from "./pages/Property/pages/LoginPage";
+import { AuthProvider } from "./hooks/use-auth";
+import PrivateRoute from "./pages/Property/pages/PrivateRoute";
+import PublicRoot from "./pages/Property/pages/PublicRoot";
+import AuthRoot from "./pages/Property/pages/AuthRoot";
 import scrollLoger from "./hooks/use-scrollLogger";
+import { useAuth } from "./hooks/use-auth";
 
+const RootSelector = () => {
+  const { isAuthenticated } = useAuth();
+  return isAuthenticated ? <AuthRoot /> : <PublicRoot />;
+};
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
+    element: <RootSelector />,
     children: [
       {
         index: true,
-        element: <PropertyPage />,
+        element: <LoginPage />,
+      },
+      {
+        path: "login",
+        element: <LoginPage />,
       },
       {
         path: "property",
-        element: <PropertyPage />,
+        element: <PrivateRoute element={<PropertyPage />} />,
       },
       {
         path: "property/:id",
-        element: <ModalWrapper />,
+        element: <PrivateRoute element={<ModalWrapper />} />,
       },
       {
         path: "bookmark",
-        element: <BookmarkPage />,
+        element: <PrivateRoute element={<BookmarkPage />} />,
       },
     ],
   },
@@ -59,7 +72,11 @@ function App() {
   }, [scrollPosition]);
 
   // scrollLoger();
-  return <RouterProvider router={router} />;
+  return (
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+  );
 }
 
 export default App;

@@ -8,13 +8,25 @@ const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
     baseUrl: apiBaseUrl,
+
     prepareHeaders: (headers, { endpoint }) => {
+      const token = localStorage.getItem("accessToken");
       // Only set the Authorization header for non-uploadFile requests
       if (endpoint !== "uploadFile") {
-        headers.set("Authorization", apiKey);
+        headers.set("Authorization", token);
       }
       return headers;
     },
+
+    // //로그인 후 받은 토큰으로 접근
+    // prepareHeaders: (headers, { getState, endpoint }) => {
+    //   const token = localStorage.getItem("accessToken");
+
+    //   if (token && endpoint !== "uploadFile") {
+    //     headers.set("Authorization", `Bearer ${token}`);
+    //   }
+    //   return headers;
+    // },
   }),
   tagTypes: ["Property", "Comment"],
   endpoints(builder) {

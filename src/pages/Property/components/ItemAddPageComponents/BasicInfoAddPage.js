@@ -40,11 +40,15 @@ export const BasicInfoAddPage = ({
   const [formData, setFormData] = useState(basicData);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [errMsg, setErrmsg] = useState("");
+
+  
   const closeModal = () => {
     setIsModalOpen(false);
   };
+
   console.log("basicInfo", basicInfo);
   const handleDeleteProperty = (event) => {};
+
   const handleUpdateChanges = async () => {
     console.log("formData handleChanges", formData);
 

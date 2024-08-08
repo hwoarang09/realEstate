@@ -27,16 +27,17 @@ const Header = () => {
   const searchParams = useSelector((state) => state.searchFilter);
   const searchInputRef = useRef(null);
 
+  const filterChk = isExactMatch(searchParams);
+
   const handleClickFilter = () => {
-    console.log("in handleClickFilter", search, left, isList);
     if (!search) dispatch(setLeft(!left));
     dispatch(toggleIsList());
   };
   const handleClickSearch = () => {
     dispatch(setLeft(!left));
     dispatch(setSearch(!search));
-    console.log("in handleClickSearch", search, left);
   };
+
   const handleClickLeft = () => {
     dispatch(setLeft(false));
     dispatch(setSearch(false));
@@ -75,8 +76,7 @@ const Header = () => {
       )}`
     );
   };
-  const filterChk = isExactMatch(searchParams);
-  console.log("isExactMatch", filterChk);
+
   return (
     <div className="header max-w-[500px] flex fixed top-0 left-0 w-full h-12 px-4 py-8 bg-white z-10">
       <div className="w-1/12 flex items-center pr-4">
