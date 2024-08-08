@@ -5,31 +5,35 @@ import ItemInfoRegist from "../FormComponents/FormRegist";
 import ItemInfoCate from "../FormComponents/FormCate";
 import ItemInfoHeader from "../FormComponents/FormHeader";
 import ItemInfoRent from "../FormComponents/FormRent";
-import {
-  getDefaultBlueprint as getDefaultBlueprintRent,
-  getHideBlueprint as getHideBlueprintRent,
-  btnsGenerator as btnsGeneratorRent,
-} from "../FormComponents/FormRentBluePrints";
-
 import ItemInfoTag from "../FormComponents/FormTag";
 import ItemInfoBuilding from "../FormComponents/FormBuilding";
-import {
-  getDefaultBlueprint as getDefaultBlueprintBuilding,
-  getHideBlueprint as getHideBlueprintBuilding,
-  btnsGenerator as btnsGeneratorBuilding,
-} from "../FormComponents/FormBuildingBluePrints";
-
 import ItemInfoOther from "../FormComponents/FormOther";
 import ItemInfoContract from "../FormComponents/FormContract";
 import ItemInfoContact from "../FormComponents/FormContact";
 import ItemInfoImages from "../FormComponents/FormImages";
 import ItemInfoMemo from "../FormComponents/FormMemo";
+
+import {
+  getDefaultBlueprint as getDefaultBlueprintBuilding,
+  getHideBlueprint as getHideBlueprintBuilding,
+  btnsGenerator as btnsGeneratorBuilding,
+} from "./BuildingBluePrints";
+import {
+  getDefaultBlueprint as getDefaultBlueprintRent,
+  getHideBlueprint as getHideBlueprintRent,
+  btnsGenerator as btnsGeneratorRent,
+} from "./RentBluePrints";
+
 import { basicData } from "./formDataBasic";
 
 import { MODE } from "../../../../utils/Mode";
-import { getCurrentTimestamp } from "../../../../utils/dateHelper";
+import { getCurrentTimestamp, isValidDate } from "../../../../utils/dateHelper";
 import { useAddPropertyMutation } from "../../../../store";
 import SubModal from "../../../../commonComponents/SubModal";
+import { is } from "date-fns/locale";
+import { useLazyFetchPropertiesQuery } from "../../../../store";
+import { useSelector } from "react-redux";
+
 export const BasicInfoAddPage = ({
   basicInfo,
   property,
@@ -40,17 +44,49 @@ export const BasicInfoAddPage = ({
   const [formData, setFormData] = useState(basicData);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [errMsg, setErrmsg] = useState("");
+  const [fetchProperties, { data, error, isLoading }] =
+    useLazyFetchPropertiesQuery();
 
-  
+  const params = useSelector((state) => state.searchFilter);
+
   const closeModal = () => {
     setIsModalOpen(false);
   };
 
-  console.log("basicInfo", basicInfo);
-  const handleDeleteProperty = (event) => {};
+  console.log(`formData.address <${formData.address}> <${basicData.address}>`);
+  const completion_date_chk = isValidDate(formData.completion_date);
+  const updateChecker = (formData) => {
+    if (!formData.address) {
+      console.log("formData.address!!!!!!!!!!!", formData.address);
+      return { status: false, msg: "주소를 입력하세요" };
+    } else if (!formData.completion_date)
+      return { status: false, msg: "준공일자를 입력하세요" };
+    else if (!completion_date_chk)
+      return { status: false, msg: "준공일자에 올바른 날짜 형식을 입력하세요" };
+    else if (!formData.deposit)
+      return { status: false, msg: "보증금 입력하세요" };
+    else if (!formData.monthly_rent)
+      return { status: false, msg: "임대로를 입력하세요" };
+    else if (!formData.maintenance_cost_str)
+      return { status: false, msg: "관리비를 입력하세요" };
+    else if (!formData.floor)
+      return { status: false, msg: "임대층을 입력하세요" };
+    else if (!formData.exclusive_area)
+      return { status: false, msg: "전용면적을 입력하세요" };
+    else if (!formData.completion_date)
+      return { status: false, msg: "준공일자를 입력하세요" };
+    else return { status: true, msg: "잘 입력" };
+  };
+  const handleUpdateChanges = async (e) => {
+    e.preventDefault();
+    const chk = updateChecker(formData);
+    console.log("formData handleChanges", chk, formData.address, formData);
 
-  const handleUpdateChanges = async () => {
-    console.log("formData handleChanges", formData);
+    if (chk.status === false) {
+      setErrmsg(chk.msg);
+      setIsModalOpen(true);
+      return;
+    }
 
     try {
       const result = await addProperty(formData).unwrap();
@@ -58,9 +94,15 @@ export const BasicInfoAddPage = ({
 
       setFormData(basicData);
       onCloseModal();
+
+      fetchProperties({
+        is_verified: true,
+        ...params,
+        page: 1,
+      });
     } catch (error) {
       console.error("Failed to add property:", error);
-      setErrmsg("Failed to add property " + JSON.stringify(error, null, 2));
+      setErrmsg(error.message);
       setIsModalOpen(true);
     }
   };
@@ -70,7 +112,7 @@ export const BasicInfoAddPage = ({
       ...prev,
       available_md_name: basicInfo?.available_md_name || [],
       recommended_md_name: basicInfo?.recommended_md_name || [],
-      address: basicInfo?.address || [],
+      address: basicInfo?.address || "",
       created_at: getCurrentTimestamp(),
       updated_at: getCurrentTimestamp(),
     }));
@@ -137,12 +179,7 @@ export const BasicInfoAddPage = ({
             mode={MODE.CREATE}
           />
         </div>
-        <div
-          onClick={handleDeleteProperty}
-          className="mb-40 pl-3 flex justify-center items-center text-gray-300 font-bold underline w-full cursor-pointer"
-        >
-          매물 삭제
-        </div>
+
         <AbsPosButton onClick={handleUpdateChanges}>변경사항 저장</AbsPosButton>
       </form>
       <SubModal isOpen={isModalOpen} onClose={closeModal}>

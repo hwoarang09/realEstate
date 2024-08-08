@@ -58,10 +58,13 @@ const api = createApi({
         }),
       }),
       updateProperty: builder.mutation({
+        // invalidatesTags: (result, error, arg) => {
+        //   const tag = { type: "Property", id: parseInt(arg.id) };
+        //   console.log("updateProperty invalidatesTags:", [tag]);
+        //   return [tag];
+        // },
         invalidatesTags: (result, error, arg) => {
-          const tag = { type: "Property", id: parseInt(arg.id) };
-          console.log("updateProperty invalidatesTags:", [tag]);
-          return [tag];
+          return [{ type: "Properties" }];
         },
         query: ({ id, ...patch }) => ({
           url: `/property/${id}`,
@@ -71,7 +74,7 @@ const api = createApi({
       }),
       removeProperty: builder.mutation({
         invalidatesTags: (result, error, arg) => {
-          return [{ type: "Property", id: arg.id }];
+          return [{ type: "Properties" }];
         },
         query: (property) => ({
           url: `/property/${property.id}`,
@@ -80,7 +83,7 @@ const api = createApi({
       }),
       addProperty: builder.mutation({
         invalidatesTags: (result, error, arg) => {
-          return [{ type: "Property", id: arg.id }];
+          return [{ type: "Properties" }];
         },
         query: (property) => ({
           url: "/property",
@@ -99,17 +102,10 @@ const api = createApi({
         //   console.log("fetchProperties providesTags:", tags);
         //   return tags;
         // },
+        providesTags: (result, error, arg) => {
+          return [{ type: "Properties" }];
+        },
         query: ({ page, is_verified, limit, ...params }) => {
-          console.log(
-            "page:",
-            page,
-            "is_verified:",
-            is_verified,
-            "limit:",
-            limit,
-            "params:",
-            params
-          );
           return {
             url: "/property",
             params: { is_verified, page, limit, ...params },
@@ -189,6 +185,7 @@ export const {
   useUploadFileMutation,
   useLazyGetUploadUrlQuery,
   useFetchPropertiesQuery,
+  useLazyFetchPropertiesQuery,
   useFetchPropertyByIdQuery,
   useAddPropertyMutation,
   useRemovePropertyMutation,

@@ -17,6 +17,10 @@ import {
 } from "../../../../store/slices/searchFilterSlice";
 import { IoMdClose } from "react-icons/io";
 import { isExactMatch } from "../../../../utils/objectChker";
+
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../../../hooks/use-auth";
+
 const Header = () => {
   const [searchText, setSearchText] = useState("");
   const isList = useSelector((state) => state.isList.isList);
@@ -26,8 +30,16 @@ const Header = () => {
   const searchQuery = useSelector((state) => state.searchFilter.keyword);
   const searchParams = useSelector((state) => state.searchFilter);
   const searchInputRef = useRef(null);
+  const navigate = useNavigate();
+  const { logout } = useAuth();
 
   const filterChk = isExactMatch(searchParams);
+
+  const handleLogout = () => {
+    console.log("logout!!");
+    logout();
+    navigate("/login");
+  };
 
   const handleClickFilter = () => {
     if (!search) dispatch(setLeft(!left));
@@ -83,7 +95,7 @@ const Header = () => {
         {left ? (
           <FaChevronLeft onClick={handleClickLeft} className="cursor-pointer" />
         ) : (
-          <TfiMenu className="w-5 h-5 cursor-pointer" />
+          <TfiMenu onClick={handleLogout} className="w-5 h-5 cursor-pointer" />
         )}
       </div>
       <div className="w-3/4 flex items-center">

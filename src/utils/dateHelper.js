@@ -26,4 +26,20 @@ const getCurrentTimestamp = () => {
   const now = new Date();
   return now.toISOString();
 };
-export { formatDate, getCurrentTimestamp };
+
+const isValidDate = (date) => {
+  if (/^[0-9]{8}$/.test(date)) {
+    const year = parseInt(date.substring(0, 4), 10);
+    const month = parseInt(date.substring(4, 6), 10) - 1; // JavaScript의 month는 0부터 시작합니다.
+    const day = parseInt(date.substring(6, 8), 10);
+
+    const dateObj = new Date(year, month, day);
+    return (
+      dateObj.getFullYear() === year &&
+      dateObj.getMonth() === month &&
+      dateObj.getDate() === day
+    );
+  }
+  return false;
+};
+export { formatDate, getCurrentTimestamp, isValidDate };

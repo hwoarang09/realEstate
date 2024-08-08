@@ -8,7 +8,7 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(
     !!localStorage.getItem("accessToken")
   );
-
+  
   const login = (accessToken, refreshToken) => {
     console.log("login, accessToken:", accessToken);
     console.log("login, refreshToken:", refreshToken);

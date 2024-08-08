@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../hooks/use-auth";
-
+import { CardWithForm } from "./CardWithForm";
 const LoginPage = () => {
   const [email, setEmail] = useState("admin@admin.com");
   const [password, setPassword] = useState("opndoctor2023!");
@@ -22,6 +22,7 @@ const LoginPage = () => {
 
   const baseURL = process.env.REACT_APP_API_BASE_URL;
   const handleLogin = async (e) => {
+    alert("handleLogin");
     e.preventDefault();
     try {
       const response = await axios.post(baseURL + "auth/signin", {
@@ -37,22 +38,8 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="mt-32">
-      <form onSubmit={handleLogin}>
-        <input
-          type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
-        />
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-        />
-        <button type="submit">Login</button>
-      </form>
+    <div className="flex items-center justify-center min-h-screen">
+      <CardWithForm email={email} password={password} onSubmit={handleLogin} />
     </div>
   );
 };

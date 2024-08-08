@@ -33,6 +33,7 @@ export {
   useUploadFileMutation,
   useLazyGetUploadUrlQuery,
   useFetchPropertiesQuery,
+  useLazyFetchPropertiesQuery,
   useFetchPropertyByIdQuery,
   useAddPropertyMutation,
   useRemovePropertyMutation,
