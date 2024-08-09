@@ -3,7 +3,9 @@ import "../../../../styles/index.css";
 import { TfiMenu } from "react-icons/tfi";
 import { FaSearch, FaFilter, FaChevronLeft } from "react-icons/fa";
 import { Input } from "../../../../@/components/ui/input";
-
+import { DrawerDemo } from "./drawer";
+import { DrawerTrigger } from "../../../../@/components/ui/drawer";
+import { Button } from "../../../../@/components/ui/button";
 import { useDispatch, useSelector } from "react-redux";
 import {
   toggleIsList,
@@ -32,7 +34,7 @@ const Header = () => {
   const searchInputRef = useRef(null);
   const navigate = useNavigate();
   const { logout } = useAuth();
-
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const filterChk = isExactMatch(searchParams);
 
   const handleLogout = () => {
@@ -95,7 +97,7 @@ const Header = () => {
         {left ? (
           <FaChevronLeft onClick={handleClickLeft} className="cursor-pointer" />
         ) : (
-          <TfiMenu onClick={handleLogout} className="w-5 h-5 cursor-pointer" />
+          <DrawerDemo handleLogout={handleLogout} />
         )}
       </div>
       <div className={`flex items-center ${search ? "w-11/12" : "w-3/4 "}`}>

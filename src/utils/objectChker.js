@@ -16,7 +16,7 @@ export const isExactMatch = (obj) => {
       "!!!!!!!",
       tmpObj,
       Object.keys(tmpObj).length,
-      Object.keys(tmpObj).length
+      Object.keys(target).length
     );
     return false;
   }

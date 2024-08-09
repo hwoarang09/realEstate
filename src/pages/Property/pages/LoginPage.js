@@ -29,7 +29,7 @@ const LoginPage = () => {
         password,
       });
       login(response.data.access_token, response.data.refresh_token);
-      alert("로그인 성공");
+
       console.log("LoginPage.js, response.data:", response.data);
       navigate("/property");
     } catch (error) {

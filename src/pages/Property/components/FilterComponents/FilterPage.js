@@ -339,13 +339,13 @@ function FilterPage() {
         ...filterObj,
         //슬라이어에서 100찍으면 100억 이상으로 처리
 
-        to_deposit: filterObj.to_deposit === 100 ? 99999 : filterObj.to_deposit,
-        to_monthly_rent:
-          filterObj.to_monthly_rent === 100 ? 99999 : filterObj.to_monthly_rent,
-        to_monthly_rent_by:
-          filterObj.to_monthly_rent_by === 100
-            ? 99999
-            : filterObj.to_monthly_rent_by,
+        // to_deposit: filterObj.to_deposit === 100 ? 99999 : filterObj.to_deposit,
+        // to_monthly_rent:
+        //   filterObj.to_monthly_rent === 100 ? 99999 : filterObj.to_monthly_rent,
+        // to_monthly_rent_by:
+        //   filterObj.to_monthly_rent_by === 100
+        //     ? 99999
+        //     : filterObj.to_monthly_rent_by,
         page: 1,
       })
     );
@@ -365,22 +365,22 @@ function FilterPage() {
   const handleFilterReset = () => {
     const newProperty = {
       ...filterObj,
-      area_type: undefined,
-      from_deposit: 0,
-      to_deposit: 9000000,
-      from_monthly_rent: 0,
-      to_monthly_rent: 9000000,
-      from_monthly_rent_by: 0,
-      to_monthly_rent_by: 9000000,
-      grade: undefined,
-      available_md_name: undefined,
-      recommended_md_name: undefined,
-      is_active: undefined,
-      is_contact_completed: undefined,
-      from_area: undefined,
-      to_area: undefined,
-      page: 1,
     };
+    delete newProperty.area_type;
+    delete newProperty.from_deposit;
+    delete newProperty.to_deposit;
+    delete newProperty.from_monthly_rent;
+    delete newProperty.to_monthly_rent;
+    delete newProperty.from_monthly_rent_by;
+    delete newProperty.to_monthly_rent_by;
+    delete newProperty.grade;
+    delete newProperty.available_md_name;
+    delete newProperty.recommended_md_name;
+    delete newProperty.is_active;
+    delete newProperty.is_contact_completed;
+    delete newProperty.from_area;
+    delete newProperty.to_area;
+
     setFilterObj(newProperty);
   };
 

@@ -111,10 +111,10 @@ const GridComponent = ({ property, setProperty, keyList, sizeList }) => {
     ) {
       initialClickList = [totalCount - 1];
 
-      // 위의 모든 경우를 제외하면 케이스가 2가지임
+      // 위의 모든 경우를 제외하면 케이스가 3가지임
       // 300, maxArea처럼 중간 + 맨오른쪽인 경우
       // 300,600처럼 중간 + 중간인 경우
-
+      // 100,600처럼 0부터 중간인경우
       //300, maxArea같은 경우 leftClick이 0인 경우랑, 최대값인 경우를 위에서 제거했으므로 rigth maxArea로만 체크하면 됨
     } else if (rightClick === maxArea) {
       initialClickList = [Math.floor(leftClick / 100), totalCount - 1];

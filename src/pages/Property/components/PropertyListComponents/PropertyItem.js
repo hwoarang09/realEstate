@@ -3,6 +3,7 @@ import { FaRegBookmark } from "react-icons/fa";
 import { IoMdDownload } from "react-icons/io";
 import { Button } from "../../../../@/components/ui/button";
 import { SlArrowUp, SlArrowDown } from "react-icons/sl";
+import defaultImage from "../../../../Images/defaultImage.png";
 
 const cateArray = ["치과", "미용", "감기", "통증", "한의원"];
 
@@ -110,10 +111,13 @@ const PropertyItem = forwardRef(
       });
     }
 
+    // src\Images\defaultImage.png
+    const imageUrl = property.file.image_outside[0]?.url || defaultImage;
+
     return (
       <div ref={ref} className="bg-white p-1 shadow-md rounded pb-2 border-b">
         <img
-          src={property.file.image_outside[0]?.url}
+          src={imageUrl}
           alt="Listing"
           className="w-full h-40 object-cover rounded"
         />
