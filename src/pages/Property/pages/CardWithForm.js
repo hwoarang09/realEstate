@@ -19,10 +19,12 @@ export function CardWithForm({ email, password, onSubmit }) {
 
   const handleEmailChange = (e) => {
     setTmpEmail(e.target.value);
+    console.log("email change:", e.target.value);
   };
 
   const handlePasswordChange = (e) => {
     setTmpPassword(e.target.value);
+    console.log("password change:", e.target.value);
   };
   return (
     <Card className="w-[350px]">
@@ -31,7 +33,7 @@ export function CardWithForm({ email, password, onSubmit }) {
         <CardDescription>오픈닥터 솔루션 로그인</CardDescription>
       </CardHeader>
       <CardContent>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={(e) => onSubmit(e, tmpEmail, tmpPassword)}>
           <div className="grid w-full items-center gap-4">
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="name">Email</Label>

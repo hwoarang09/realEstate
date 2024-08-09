@@ -21,8 +21,7 @@ const LoginPage = () => {
   }, [isAuthenticated, navigate]);
 
   const baseURL = process.env.REACT_APP_API_BASE_URL;
-  const handleLogin = async (e) => {
-    alert("handleLogin");
+  const handleLogin = async (e, email, password) => {
     e.preventDefault();
     try {
       const response = await axios.post(baseURL + "auth/signin", {
@@ -30,10 +29,12 @@ const LoginPage = () => {
         password,
       });
       login(response.data.access_token, response.data.refresh_token);
+      alert("로그인 성공");
       console.log("LoginPage.js, response.data:", response.data);
       navigate("/property");
     } catch (error) {
       console.error("Login failed:", error);
+      alert("Login failed");
     }
   };
 
