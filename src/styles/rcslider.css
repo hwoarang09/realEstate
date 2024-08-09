@@ -8,8 +8,9 @@
 }
 
 .rc-slider-handle {
-  @apply border-2 border-blue-500 bg-white w-6 h-6 -ml-3 -mt-3;
+  @apply border-2 border-blue-500 bg-white w-8 h-8 -mt-3.5 opacity-100;
 }
+
 
 .rc-slider-handle:active,
 .rc-slider-handle:focus,

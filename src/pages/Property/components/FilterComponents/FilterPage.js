@@ -249,6 +249,7 @@ function FilterPage() {
           {
             type: "label",
             labelText: "평당 임대료(만원)",
+            style: "w-1/2",
           },
         ],
         [

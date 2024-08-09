@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import "../../../styles/rcslider.css";
+import { Input } from "./input";
+import debounce from "lodash.debounce";
+
 const MyRangeSlider = ({ property, setProperty, keyList }) => {
   const initialRange = [
     property?.[keyList[0]] ?? 0,
@@ -26,44 +29,64 @@ const MyRangeSlider = ({ property, setProperty, keyList }) => {
     console.log(value);
   }
 
+  const debouncedUpdateProperty = useCallback(
+    debounce((newRange) => {
+      setProperty((prevProperty) => ({
+        ...prevProperty,
+        [keyList[0]]: Number(newRange[0]) || 0,
+        [keyList[1]]: Number(newRange[1]) || 100,
+      }));
+    }, 300), // 300ms 딜레이
+    [setProperty, keyList]
+  );
+
   const handleChange = (value) => {
-    log(value);
-
     setRange(value);
-
-    setProperty((prevProperty) => ({
-      ...prevProperty,
-      [keyList[0]]: Number(value[0]) || 0,
-      [keyList[1]]: Number(value[1]) || 100,
-    }));
+    debouncedUpdateProperty(value);
   };
 
+  const handleInputChange = (index, event) => {
+    const value = Number(event.target.value);
+    if (isNaN(value)) return;
+
+    const newRange = [...range];
+    newRange[index] = value;
+    setRange(newRange);
+
+    debouncedUpdateProperty(newRange);
+  };
   return (
     <div className="flex flex-col justify-center items-center w-full">
-      <div className="w-full">
+      <div className="w-full pl-4 pr-8">
         <Slider
           range
           allowCross={false}
           value={range}
           min={0}
           max={100}
-          defaultValue={[0, 40]}
-          trackStyle={[
-            { backgroundColor: "#3b82f6" },
-            { backgroundColor: "green" },
-          ]}
-          handleStyle={[
-            { backgroundColor: "white" },
-            { backgroundColor: "white" },
-          ]}
-          railStyle={{ backgroundColor: "#bfdbfe" }}
           onChange={handleChange}
         />
       </div>
       <div className="flex justify-between w-full">
-        <div>{Number(range[0]) + `억원`}</div>
-        <div>
-          {Number(range[1])} {Number(range[1]) === 100 ? `억원 이상` : `억원`}
+        <div className="mt-4">
+          <Input
+            // type="number"
+            value={range[0]}
+            min={0}
+            max={range[1]}
+            onChange={(event) => handleInputChange(0, event)}
+            className="border w-20 mt-2 text-center"
+          />
+        </div>
+        <div className="mt-4 ">
+          <Input
+            // type="number"
+            value={range[1]}
+            min={range[0]}
+            max={100}
+            onChange={(event) => handleInputChange(1, event)}
+            className="border w-20 mt-2 text-center "
+          />
         </div>
       </div>
     </div>
