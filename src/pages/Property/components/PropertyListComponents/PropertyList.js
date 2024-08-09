@@ -27,13 +27,14 @@ const PropertyList = ({
   // });
   const renderedProperties = properties.map((property, index) => {
     if (properties.length === index + 1) {
+      console.log('red chck', properties.length, index + 1, property.id);
       return (
         <PropertyItem
           ref={lastPropertyElementRef}
           showModal={showModal}
           property={property}
           setProperties={setProperties}
-          key={property.id}
+          key={property?.group_id ? property.group_id : property.id }
         />
       );
     } else {
@@ -42,7 +43,7 @@ const PropertyList = ({
           property={property}
           showModal={showModal}
           setProperties={setProperties}
-          key={property.id}
+          key={property?.group_id ? property.group_id : property.id }
         />
       );
     }

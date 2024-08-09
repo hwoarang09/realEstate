@@ -120,10 +120,13 @@ const api = createApi({
         //     { type: "CommentAll", id: parseInt(arg) },
         //   ];
         // },
-        query: (id) => ({
-          url: `/property/${id}`,
-          method: "GET",
-        }),
+        query: ({ modalPath, roomId }) => {
+          if (roomId) {
+            return `${modalPath}/room/${roomId}`;
+          } else {
+            return `${modalPath}`;
+          }
+        },
       }),
 
       updateComment: builder.mutation({

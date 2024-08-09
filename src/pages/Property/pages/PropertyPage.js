@@ -23,6 +23,8 @@ function PropertyPage() {
     ...params,
     page,
   });
+
+  console.log("==================================PropertyPage", page);
   const observer = useRef();
 
   // useEffect(() => {

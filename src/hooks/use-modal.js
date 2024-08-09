@@ -33,7 +33,7 @@ function useModal() {
 
   const showModal = ({ modalPath, selectedProperty }) => {
     dispatch(setScrollPosition(window.scrollY));
-    console.log("in showModal", window.scrollY, scrollPosition);
+    console.log("in showModal", window.scrollY, scrollPosition, modalPath);
     dispatch(openModal({ modalPath, selectedProperty }));
     dispatch(setModalPath({ modalPath }));
     navigate(modalPath);

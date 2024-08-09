@@ -31,16 +31,15 @@ import {
 
 import { MODE } from "../../../utils/Mode";
 
-const PropertyItemInfoModal = ({ modalPath, closeModal }) => {
+const PropertyItemInfoModal = ({ modalPath, closeModal, roomId }) => {
   const [formData, setFormData] = useState(null);
-  const propertyId = modalPath.split("property/")[1];
 
   const {
     data: properties,
     error,
     isLoading,
     refetch,
-  } = useFetchPropertyByIdQuery(propertyId);
+  } = useFetchPropertyByIdQuery({ modalPath, roomId });
   const [removeProperty] = useRemovePropertyMutation();
 
   const [updateProperty] = useUpdatePropertyMutation();
@@ -57,6 +56,8 @@ const PropertyItemInfoModal = ({ modalPath, closeModal }) => {
   if (error) {
     return <div>Error: {error.message}</div>;
   }
+
+  const propertyId = properties?.contents?.id;
   const handleUpdateChanges = (event) => {
     event.preventDefault();
     updateProperty(formData);

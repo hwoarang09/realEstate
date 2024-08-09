@@ -15,8 +15,20 @@ const PropertyItem = forwardRef(
     const modalPath = "/property/" + property.id;
     const selectedProperty = property;
     const handleClick = ({ modalPath, selectedProperty }) => {
-      showModal({ modalPath, selectedProperty });
+      if (!selectedProperty?.group_id)
+        showModal({ modalPath, selectedProperty });
+      else {
+        const room = selectedProperty.id;
+        modalPath =
+          "/property/" +
+          String(selectedProperty.property_id) +
+          "?r=" +
+          String(room);
+        console.log("그룹 클릭 modalPath:", modalPath);
+        showModal({ modalPath, selectedProperty });
+      }
     };
+
     const handleClickGroup = () => {
       console.log("click group");
 
@@ -26,8 +38,10 @@ const PropertyItem = forwardRef(
           return {
             available_md_name: property.available_md_name,
             file: property.file,
+            address: property.address,
+            building_name: property.building_name,
             ...room,
-            id: `${property.id}_${index + 1}`,
+            group_id: `${property.id}_${index + 1}`,
           };
         });
         console.log("그룹 닫혀있어서 열기, newRooms:", newRooms);
@@ -50,31 +64,23 @@ const PropertyItem = forwardRef(
           const newProperties = [];
 
           prev.forEach((p) => {
-            console.log(
-              "in p.id:",
-              p.id,
-              typeof p.id,
-              "property.id:",
-              property.id
-            );
-            if (
-              p.id === property.id ||
-              !String(p.id).startsWith(`${property.id}_`)
-            ) {
+            if (!(p.group_id && p.group_id.startsWith(`${property.id}_`))) {
               newProperties.push(p);
             }
           });
 
+          console.log("열린거 닫기 길이", newProperties.length);
           return newProperties;
         });
       }
     };
     let content;
+    const key_id = property?.group_id ? property.group_id : property.id;
     if (property.available_md_name === null) {
       content = cateArray.map((cate) => {
         return (
           <span
-            key={`${cate}cate${property.id}`}
+            key={`${cate}cate${key_id}`}
             className="text-sm font-bold mr-3 text-gray-300"
           >
             {cate}
@@ -86,7 +92,7 @@ const PropertyItem = forwardRef(
         if (property.available_md_name.includes(cate)) {
           return (
             <span
-              key={`${cate}cate${property.id}`}
+              key={`${cate}cate${key_id}`}
               className="text-sm font-bold mr-3"
             >
               {cate}
@@ -95,7 +101,7 @@ const PropertyItem = forwardRef(
         } else
           return (
             <span
-              key={`${cate}cate${property.id}`}
+              key={`${cate}cate${key_id}`}
               className="text-sm font-bold mr-3 text-gray-300"
             >
               {cate}
@@ -117,7 +123,7 @@ const PropertyItem = forwardRef(
               onClick={() => handleClick({ modalPath, selectedProperty })}
               className="text-blue-600 cursor-pointer"
             >
-              {property.id}
+              {property?.group_id ? property.group_id : property.id}
             </div>
 
             <FaRegBookmark />
@@ -130,6 +136,12 @@ const PropertyItem = forwardRef(
                   <SlArrowDown className="w-2 h-2" />
                 )}
               </Button>
+            )}
+            {property.group_id &&
+            property.group_id.startsWith(`${property.property_id}_`) ? (
+              <Button className="w-10 h-5">묶음</Button>
+            ) : (
+              ""
             )}
             <div className="flex-grow"></div>
             <div className="text-base text-sm">
