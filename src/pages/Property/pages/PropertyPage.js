@@ -74,6 +74,7 @@ function PropertyPage() {
       <PropertyMenu add={"add"} countData={data.count} />
       <PropertyList
         properties={allProperties}
+        setProperties={setAllProperties}
         lastPropertyElementRef={lastPropertyElementRef}
         isLoading={isLoading}
         error={error}

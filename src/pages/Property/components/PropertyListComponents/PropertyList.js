@@ -4,6 +4,7 @@ import useModal from "../../../../hooks/use-modal";
 
 const PropertyList = ({
   properties,
+  setProperties,
   lastPropertyElementRef,
   isLoading,
   error,
@@ -20,6 +21,10 @@ const PropertyList = ({
   }
 
   console.log("in PropertyLIst, properties : ", properties);
+
+  // const newProperties = properties.map((property) => {
+  //   return;
+  // });
   const renderedProperties = properties.map((property, index) => {
     if (properties.length === index + 1) {
       return (
@@ -27,6 +32,7 @@ const PropertyList = ({
           ref={lastPropertyElementRef}
           showModal={showModal}
           property={property}
+          setProperties={setProperties}
           key={property.id}
         />
       );
@@ -35,6 +41,7 @@ const PropertyList = ({
         <PropertyItem
           property={property}
           showModal={showModal}
+          setProperties={setProperties}
           key={property.id}
         />
       );
