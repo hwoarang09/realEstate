@@ -23,13 +23,24 @@ export function DrawerDemo({ handleLogout }) {
           <TfiMenu className="w-5 h-5 cursor-pointer" />
         </Button>
       </DrawerTrigger>
-      <DrawerContent className="fixed inset-y-0 left-0 z-50 w-64 mt-0">
+      <DrawerContent className="bg-background flex flex-col rounded-r-[10px] h-3/4 w-[300px] right-0 top-0">
         <DrawerHeader>
           <DrawerTitle>오픈닥터</DrawerTitle>
           <DrawerDescription>오픈닥터 솔루션</DrawerDescription>
         </DrawerHeader>
         <div className="p-4 pb-0">
-          <div className="flex items-center justify-center space-x-2"></div>
+          <div className="flex items-center justify-starts space-x-2">
+            매물찾기
+          </div>
+          <div className="flex items-center justify-starts space-x-2">
+            고객관리
+          </div>
+          <div className="flex items-center justify-starts space-x-2">
+            입지분석
+          </div>
+          <div className="flex items-center justify-starts space-x-2">
+            매물추천
+          </div>
         </div>
         <DrawerFooter>
           <DrawerClose asChild>

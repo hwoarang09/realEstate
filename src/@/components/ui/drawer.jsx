@@ -8,6 +8,7 @@ import { cn } from "../../lib/utils";
 const Drawer = ({ shouldScaleBackground = true, ...props }) => (
   <DrawerPrimitive.Root
     shouldScaleBackground={shouldScaleBackground}
+    direction="left"
     {...props}
   />
 );
@@ -35,13 +36,17 @@ const DrawerContent = React.forwardRef(
       <DrawerPrimitive.Content
         ref={ref}
         className={cn(
-          "fixed inset-x-0 bottom-0 z-50 mt-24 flex h-auto flex-col rounded-t-[10px] border bg-background",
+          "fixed inset-x-0 bottom-0 z-50 flex h-auto flex-col border bg-background",
           className
         )}
         {...props}
       >
-        <div className="mx-auto mt-4 h-2 w-[100px] rounded-full bg-muted" />
-        {children}
+        <div className="flex h-full">
+          <div className="flex-1 flex flex-col">{children}</div>
+          <div className="flex justify-center items-center h-full">
+            <div className=" w-2 h-[100px] rounded-full bg-gray-300" />
+          </div>
+        </div>
       </DrawerPrimitive.Content>
     </DrawerPortal>
   )
