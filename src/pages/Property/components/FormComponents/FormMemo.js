@@ -116,11 +116,9 @@ const FormMemo = ({ property, setProperty }) => {
   const descHeight = property.description.length > 100 ? "h-48" : "h-16";
 
   return (
-    <div className="my-6">
-      <div className="mb-2 ">
-        <div className="text-blue-600 text-base font-bold mb-2">
-          매물 특징 (메모)
-        </div>
+    <StyleForm mainWrapper>
+      <StyleForm tabWrapper>
+        <StyleForm menuTitle>매물 특징 (메모)</StyleForm>
         <div className="mb-4">
           <Textarea
             type="text"
@@ -132,7 +130,8 @@ const FormMemo = ({ property, setProperty }) => {
             className={`overflow-y-hidden focus:overflow-y-auto ${descHeight}`}
           />
         </div>
-        <div className="mb-2 text-sm">
+        {/* <div className="mb-2 text-sm"> */}
+        <StyleForm tabWrapper>
           {showMoreInfo && property.id && (
             <>
               <div className="border border-gray-300 rounded-lg shadow-lg p-4">
@@ -172,8 +171,10 @@ const FormMemo = ({ property, setProperty }) => {
               </div>
             </>
           )}
-        </div>
-      </div>
+          {/* </div> */}
+        </StyleForm>
+      </StyleForm>
+
       <StyleForm toggleButtonWrapper>
         <ToggleButton
           showMoreInfo={showMoreInfo}
@@ -191,7 +192,7 @@ const FormMemo = ({ property, setProperty }) => {
       >
         <MemoEditModal />
       </SubModal>
-    </div>
+    </StyleForm>
   );
 };
 
