@@ -45,3 +45,4 @@ export {
 } from "./apis/propertyApi";
 
 export { useFetchBasicInfoQuery } from "./apis/regionApi";
+// export { useFetchCommentListQuery } from "./apis/commentApi";

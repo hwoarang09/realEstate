@@ -400,7 +400,7 @@ function FilterPage() {
               </span>
             </StyleForm>
             {sortBluePrint.map((bluePrint, i) => (
-              <React.Fragment key={`ft1_${i}`}>
+              <React.Fragment key={`${i}`}>
                 {formGenerator({
                   property: filterObj,
                   setProperty: setFilterObj,
@@ -420,7 +420,7 @@ function FilterPage() {
               </span>
             </StyleForm>
             {filterBluePrint.map((bluePrint, i) => (
-              <React.Fragment key={`ft2_${i}`}>
+              <React.Fragment key={i}>
                 {formGenerator({
                   property: filterObj,
                   setProperty: setFilterObj,

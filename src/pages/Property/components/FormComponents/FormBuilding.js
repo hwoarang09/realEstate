@@ -97,14 +97,14 @@ const FormBuilding = ({
       <StyleForm tabWrapper>
         <StyleForm menuTitle>건물정보</StyleForm>
         {defaultBluePrint.map((bluePrint, i) => (
-          <React.Fragment key={`bd1_${i}`}>
+          <React.Fragment key={i}>
             {formGenerator({ property, setProperty, ...bluePrint })}
           </React.Fragment>
         ))}
         {showMoreInfo && (
           <>
             {hideBluePrint.map((bluePrint, i) => (
-              <React.Fragment key={`bd2_${i}`}>
+              <React.Fragment key={i}>
                 {formGenerator({ property, setProperty, ...bluePrint })}
               </React.Fragment>
             ))}

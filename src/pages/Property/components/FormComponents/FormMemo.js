@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import _ from "lodash";
 import Button from "../../../../commonComponents/Button";
 import { FaChevronUp, FaChevronDown } from "react-icons/fa";
-import _ from "lodash";
 import { MdOutlineContentCopy } from "react-icons/md";
 import { MdEdit } from "react-icons/md";
 import { FaTrashAlt } from "react-icons/fa";
@@ -11,9 +11,13 @@ import {
   useRemoveCommentMutation,
   useUpdateCommentMutation,
   useAddCommentMutation,
+  useFetchCommentsQuery,
 } from "../../../../store";
 import { Textarea } from "../../../../@/components/ui/textarea";
 import { notNullValue, handleChange } from "../../../../utils/formUtils";
+
+import { skipToken } from "@reduxjs/toolkit/query/react";
+
 const getTimeDifference = (timestamp) => {
   const date = new Date(timestamp);
   const now = new Date();
@@ -42,10 +46,17 @@ const FormMemo = ({ property, setProperty }) => {
   const [removeComment] = useRemoveCommentMutation();
   const [addComment] = useAddCommentMutation();
   const [updateComment] = useUpdateCommentMutation();
+  const { data, error, isLoading, refetch } = useFetchCommentsQuery(
+    property
+      ? { resource_id: property.id, resource_type: "property" }
+      : skipToken
+  );
 
   if (!property) {
     return;
   }
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error!</div>;
 
   const openModal = (index, value) => {
     setCurrentMemoIndex(index);
@@ -57,74 +68,45 @@ const FormMemo = ({ property, setProperty }) => {
     setIsModalOpen(false);
   };
 
-  const saveMemo = (index, value) => {
-    //화면만
-    setProperty((prevProperty) => {
-      const newProperty = _.cloneDeep(prevProperty);
-      newProperty.comment.data[index].value = value;
-      newProperty.comment.data[index].updated_at = new Date().toISOString();
-      return newProperty;
-    });
-    //실제 업데이트
-    updateComment({
-      resource_id: property.id,
-      comment_id: property.comment.data[index].id,
-      value: value,
-    });
-    closeModal();
-  };
   const copyValue = (value) => {
     navigator.clipboard.writeText(value);
     alert("복사되었습니다.");
   };
 
-  const deleteMemo = (index) => {
-    //화면에만 반영...서버에는 반영 안됨
-
-    setProperty((prevProperty) => {
-      const newProperty = _.cloneDeep(prevProperty);
-
-      newProperty.comment.data = newProperty.comment.data.filter(
-        (_, i) => i !== index
-      );
-      newProperty.comment.count -= 1;
-      return newProperty;
+  const saveMemo = (index, value) => {
+    updateComment({
+      resource_id: property.id,
+      comment_id: data.contents.data[index].id,
+      value: value,
+    }).then(() => {
+      refetch();
     });
+    closeModal();
+  };
 
-    // 서버에 반영
+  const deleteMemo = (index) => {
     removeComment({
       resource_id: property.id,
-      comment_id: property.comment.data[index].id,
+      comment_id: data.contents.data[index].id,
+    }).then(() => {
+      refetch();
     });
   };
 
   const addCommentHandle = () => {
-    const newComment = {
-      id: Date.now(),
-      value: commentInput,
-      updated_at: new Date().toISOString(),
-      username: "admin 윤성원!",
-      is_editable: true,
-    };
-
-    //화면에 실시간 반영만함... 서버에는 반영 안됨
-    setProperty((prevProperty) => {
-      const newProperty = _.cloneDeep(prevProperty);
-      newProperty.comment.data.push(newComment);
-      newProperty.comment.count += 1;
-      return newProperty;
-    });
-
     addComment({
       resource_id: property.id,
       resource_type: "property",
       value: commentInput,
+    }).then(() => {
+      refetch();
     });
 
     setCommentInput("");
   };
 
-  const memos = property.comment.data.map((memo, index) => {
+  console.log("property in memeo", property);
+  const memos = data.contents.data.map((memo, index) => {
     return (
       <div key={index} className="comment mb-4 p-2 border">
         <div className="flex justify-between items-center mb-4">
@@ -161,8 +143,6 @@ const FormMemo = ({ property, setProperty }) => {
   });
   const descHeight = property.description.length > 100 ? "h-48" : "h-16";
 
-  // const memoEditChildren =
-
   return (
     <div className="my-6">
       <div className="mb-2 ">
@@ -187,7 +167,7 @@ const FormMemo = ({ property, setProperty }) => {
                 <div className="flex">
                   <div
                     className={`overflow-y-auto w-full max-h-72 overflow-y-auto px-8 ${
-                      property.comment.data.length > 0 ? `border-b pt-4 ` : ``
+                      data.contents.data.length > 0 ? `border-b pt-4 ` : ``
                     }`}
                   >
                     {memos}
@@ -195,7 +175,7 @@ const FormMemo = ({ property, setProperty }) => {
                 </div>
                 <div
                   className={`relative w-full px-8 ${
-                    property.comment.data.length > 0 ? `pt-4 ` : ``
+                    data.contents.data.length > 0 ? `pt-4 ` : ``
                   }`}
                 >
                   <Textarea
