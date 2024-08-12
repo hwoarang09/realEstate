@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-import _ from "lodash";
-import Button from "../../../../commonComponents/Button";
-import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 
 import SubModal from "../../../../commonComponents/SubModal";
 import MemoEditModal from "../ItemInfoPageComponents/ItemInfoMemoEditModal";
