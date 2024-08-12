@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../../hooks/use-auth";
+import { useAuth } from "../../../../hooks/use-auth";
 import { CardWithForm } from "./CardWithForm";
 const LoginPage = () => {
   const navigate = useNavigate();

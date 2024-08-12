@@ -1,13 +1,11 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import PropertyList from "../components/PropertyListComponents/PropertyList";
-
+import PropertyList from "../../components/PropertyListComponents/PropertyList";
 import { Outlet } from "react-router-dom";
-import { useFetchPropertiesQuery } from "../../../store";
-import PropertyMenu from "../components/PropertyListComponents/PropertyMenu";
-import FilterPage from "../components/FilterComponents/FilterPage";
+import { useFetchPropertiesQuery } from "../../../../store";
+import PropertyMenu from "../../components/PropertyListComponents/PropertyMenu";
+import FilterPage from "../../components/FilterComponents/FilterPage";
 import { useSelector } from "react-redux";
-
-import Modal from "../../../commonComponents/Modal";
+import Modal from "../../../../commonComponents/Modal";
 
 const PAGE_LIMIT = process.env.REACT_APP_PAGE_LIMIT;
 
@@ -25,17 +23,9 @@ function PropertyPage() {
     page,
   });
 
-  console.log("==================================PropertyPage", page);
   const observer = useRef();
 
-  // useEffect(() => {
-  //   setPage(1);
-  //   setAllProperties([]);
-  // }, [searchQuery]);
-
   useEffect(() => {
-    // params가 변경될 때 properties 초기화 및 페이지 번호 초기화
-    // setAllProperties([]);
     setPage(1);
   }, [params]);
 
@@ -70,8 +60,7 @@ function PropertyPage() {
   );
 
   if (isLoading) return <div>Loading...</div>;
-  console.log("allProperties", allProperties.length);
-  console.log("isList", isList);
+
   return (
     <>
       <PropertyMenu add={"add"} countData={data.count} />

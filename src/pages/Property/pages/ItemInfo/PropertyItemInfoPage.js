@@ -1,35 +1,35 @@
 import React, { useState, useEffect } from "react";
-import { AbsPosButton } from "../../../commonComponents/AbsPosButton";
+import { AbsPosButton } from "../../../../commonComponents/AbsPosButton";
 // import Button from "../../../commonComponents/Button";
-import ItemInfoRegist from "../components/FormComponents/FormRegist";
-import ItemInfoCate from "../components/FormComponents/FormCate";
-import ItemInfoHeader from "../components/FormComponents/FormHeader";
-import ItemInfoRent from "../components/FormComponents/FormRent";
+import ItemInfoRegist from "../../components/FormComponents/FormRegist";
+import ItemInfoCate from "../../components/FormComponents/FormCate";
+import ItemInfoHeader from "../../components/FormComponents/FormHeader";
+import ItemInfoRent from "../../components/FormComponents/FormRent";
 import {
   getDefaultBlueprint as getDefaultBlueprintRent,
   getHideBlueprint as getHideBlueprintRent,
   btnsGenerator as btnsGeneratorRent,
-} from "../components/ItemInfoPageComponents/ItemInfoRentBluePrints";
-import ItemInfoTag from "../components/FormComponents/FormTag";
-import ItemInfoBuilding from "../components/FormComponents/FormBuilding";
+} from "../../components/ItemInfoPageComponents/ItemInfoRentBluePrints";
+import ItemInfoTag from "../../components/FormComponents/FormTag";
+import ItemInfoBuilding from "../../components/FormComponents/FormBuilding";
 import {
   getDefaultBlueprint as getDefaultBlueprintBuilding,
   getHideBlueprint as getHideBlueprintBuilding,
   btnsGenerator as btnsGeneratorBuilding,
-} from "../components/ItemInfoPageComponents/ItemInfoBuildingBluePrints";
-import ItemInfoOther from "../components/FormComponents/FormOther";
-import ItemInfoContract from "../components/FormComponents/FormContract";
-import ItemInfoContact from "../components/FormComponents/FormContact";
-import ItemInfoImages from "../components/FormComponents/FormImages";
-import ItemInfoMemo from "../components/FormComponents/FormMemo";
+} from "../../components/ItemInfoPageComponents/ItemInfoBuildingBluePrints";
+import ItemInfoOther from "../../components/FormComponents/FormOther";
+import ItemInfoContract from "../../components/FormComponents/FormContract";
+import ItemInfoContact from "../../components/FormComponents/FormContact";
+import ItemInfoImages from "../../components/FormComponents/FormImages";
+import ItemInfoMemo from "../../components/FormComponents/FormMemo";
 
 import {
   useFetchPropertyByIdQuery,
   useRemovePropertyMutation,
   useUpdatePropertyMutation,
-} from "../../../store";
+} from "../../../../store";
 
-import { MODE } from "../../../utils/Mode";
+import { MODE } from "../../../../utils/Mode";
 
 const PropertyItemInfoModal = ({ modalPath, closeModal, roomId }) => {
   const [formData, setFormData] = useState(null);

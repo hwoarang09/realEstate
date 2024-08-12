@@ -1,18 +1,17 @@
-import BookmarkPage from "./pages/Property/pages/BookmarkPage";
-import PropertyPage from "./pages/Property/pages/PropertyPage";
 import ModalWrapper from "./commonComponents/ModalWrapper";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 import React, { useEffect } from "react";
 
-import LoginPage from "./pages/Property/pages/LoginPage";
 import { AuthProvider } from "./hooks/use-auth";
-import PrivateRoute from "./pages/Property/pages/PrivateRoute";
-import PublicRoot from "./pages/Property/pages/PublicRoot";
-import AuthRoot from "./pages/Property/pages/AuthRoot";
-import ErrorPage from "./pages/Property/pages/ErrorPage";
-
+import PrivateRoute from "./routes/PrivateRoute";
+import PublicRoot from "./routes/PublicRoot";
+import AuthRoot from "./routes/AuthRoot";
+import ErrorPage from "./pages/Property/pages/Error/ErrorPage";
+import LoginPage from "./pages/Property/pages/Login/LoginPage";
+import BookmarkPage from "./pages/Property/pages/Bookmark/BookmarkPage";
+import PropertyPage from "./pages/Property/pages/Property/PropertyPage";
 // import scrollLoger from "./hooks/use-scrollLogger";
 import { useAuth } from "./hooks/use-auth";
 
@@ -81,7 +80,6 @@ function App() {
     };
   }, [scrollPosition]);
 
-  // scrollLoger();
   return (
     <AuthProvider>
       <RouterProvider router={router} />

@@ -1,16 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 
-import "../../../styles/index.css";
+import "../../../../styles/index.css";
 
-import { useFetchBasicInfoQuery } from "../../../store";
+import { useFetchBasicInfoQuery } from "../../../../store";
 import { skipToken } from "@reduxjs/toolkit/query/react";
 
-import { AbsPosButton } from "../../../commonComponents/AbsPosButton";
+import { AbsPosButton } from "../../../../commonComponents/AbsPosButton";
 
-import ItemInfoHeader from "../components/FormComponents/FormHeader";
-import { BasicInfoSearchHeader } from "../components/ItemAddPageComponents/BasicInfoSearchHeader";
-import { BasicInfoMainResult } from "../components/ItemAddPageComponents/BasicInfoMainResult";
-import { BasicInfoAddPage } from "../components/ItemAddPageComponents/BasicInfoAddPage";
+import ItemInfoHeader from "../../components/FormComponents/FormHeader";
+import { BasicInfoSearchHeader } from "../../components/ItemAddPageComponents/BasicInfoSearchHeader";
+import { BasicInfoMainResult } from "../../components/ItemAddPageComponents/BasicInfoMainResult";
+import { BasicInfoAddPage } from "../../components/ItemAddPageComponents/BasicInfoAddPage";
 
 const PropertyAddModal = ({ closeModal }) => {
   const [inputValue, setInputValue] = useState("");
