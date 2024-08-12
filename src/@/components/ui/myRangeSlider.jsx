@@ -25,9 +25,9 @@ const MyRangeSlider = ({ property, setProperty, keyList }) => {
     setRange(newRange);
   }, [property, keyList]);
 
-  function log(value) {
-    console.log(value);
-  }
+  // function log(value) {
+  //   console.log(value);
+  // }
 
   const debouncedUpdateProperty = useCallback(
     debounce((newRange) => {

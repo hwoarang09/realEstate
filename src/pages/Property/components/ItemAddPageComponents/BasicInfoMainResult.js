@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import "../../../../styles/index.css";
 import StyleForm from "../../../../commonComponents/FormStyle";
-import Button from "../../../../commonComponents/Button";
-import { Input } from "../../../../@/components/ui/input";
 import { formGenerator } from "../../../../utils/formGenerator";
 import { ToggleButton } from "../../../../commonComponents/ToggleButton";
 import { renderCategoryButtons } from "../../../../utils/formUtils";

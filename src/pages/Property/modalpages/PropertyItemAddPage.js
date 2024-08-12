@@ -4,9 +4,7 @@ import "../../../styles/index.css";
 
 import { useFetchBasicInfoQuery } from "../../../store";
 import { skipToken } from "@reduxjs/toolkit/query/react";
-import Button from "../../../commonComponents/Button";
-// import { formGenerator, ToggleButton } from "../../../../utils/formGenerator";
-import StyleForm from "../../../commonComponents/FormStyle";
+
 import { AbsPosButton } from "../../../commonComponents/AbsPosButton";
 
 import ItemInfoHeader from "../components/FormComponents/FormHeader";
@@ -25,6 +23,7 @@ const PropertyAddModal = ({ closeModal }) => {
     data: properties,
     error,
     isLoading,
+    refetch,
   } = useFetchBasicInfoQuery(
     searchQuery ? { address: searchQuery } : skipToken
   );
@@ -52,6 +51,13 @@ const PropertyAddModal = ({ closeModal }) => {
     setIsSearchPage(false);
 
     console.log("handleNext Click");
+  };
+
+  const handleCloseModal = (shouldRefetch) => {
+    closeModal();
+    if (shouldRefetch) {
+      refetch();
+    }
   };
   return (
     <>
@@ -111,7 +117,7 @@ const PropertyAddModal = ({ closeModal }) => {
               basicInfo={basicInfo}
               property={property}
               setProperty={setProperty}
-              onCloseModal={closeModal}
+              onCloseModal={handleCloseModal}
             />
           </>
         )}

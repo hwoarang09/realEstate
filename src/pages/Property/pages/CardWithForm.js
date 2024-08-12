@@ -13,9 +13,9 @@ import { Label } from "../../../@/components/ui/label";
 
 import { useState } from "react";
 
-export function CardWithForm({ email, password, onSubmit }) {
-  const [tmpEmail, setTmpEmail] = useState(email);
-  const [tmpPassword, setTmpPassword] = useState(password);
+export function CardWithForm({ onSubmit }) {
+  const [tmpEmail, setTmpEmail] = useState("admin@admin.com");
+  const [tmpPassword, setTmpPassword] = useState("opndoctor2023!");
 
   const handleEmailChange = (e) => {
     setTmpEmail(e.target.value);

@@ -3,7 +3,7 @@ import { AbsPosButton } from "../../../../commonComponents/AbsPosButton";
 
 import ItemInfoRegist from "../FormComponents/FormRegist";
 import ItemInfoCate from "../FormComponents/FormCate";
-import ItemInfoHeader from "../FormComponents/FormHeader";
+
 import ItemInfoRent from "../FormComponents/FormRent";
 import ItemInfoTag from "../FormComponents/FormTag";
 import ItemInfoBuilding from "../FormComponents/FormBuilding";
@@ -30,22 +30,20 @@ import { MODE } from "../../../../utils/Mode";
 import { getCurrentTimestamp, isValidDate } from "../../../../utils/dateHelper";
 import { useAddPropertyMutation } from "../../../../store";
 import SubModal from "../../../../commonComponents/SubModal";
-import { is } from "date-fns/locale";
+
 import { useLazyFetchPropertiesQuery } from "../../../../store";
 import { useSelector } from "react-redux";
 
 export const BasicInfoAddPage = ({
   basicInfo,
-  property,
-  setProperty,
+
   onCloseModal,
 }) => {
   const [addProperty] = useAddPropertyMutation();
   const [formData, setFormData] = useState(basicData);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [errMsg, setErrmsg] = useState("");
-  const [fetchProperties, { data, error, isLoading }] =
-    useLazyFetchPropertiesQuery();
+  const [fetchProperties] = useLazyFetchPropertiesQuery();
 
   const params = useSelector((state) => state.searchFilter);
 
@@ -93,13 +91,13 @@ export const BasicInfoAddPage = ({
       console.log("Property added successfully:", result);
 
       setFormData(basicData);
-      onCloseModal();
 
       fetchProperties({
         is_verified: true,
         ...params,
         page: 1,
       });
+      onCloseModal(true);
     } catch (error) {
       console.error("Failed to add property:", error);
       setErrmsg(error.message);

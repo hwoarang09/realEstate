@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
-import Button from "./Button";
 
 function SubModal({ isOpen, onClose, onSave, index, initialValue, children }) {
   const childrenWithProps = React.Children.map(children, (child) =>

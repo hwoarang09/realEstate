@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Calendar as CalendarIcon } from "lucide-react";
 import { cn } from "../../lib/utils";
 import { Button } from "./button";
-import { Calendar } from "./calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "./popover";
-import { addDays, format, isSameDay, isWithinInterval } from "date-fns";
-import { DateRange, DayPicker } from "react-day-picker";
+import { addDays, format } from "date-fns";
+import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 
 export function DatePickerWithRange({

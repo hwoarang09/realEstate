@@ -13,7 +13,7 @@ import PublicRoot from "./pages/Property/pages/PublicRoot";
 import AuthRoot from "./pages/Property/pages/AuthRoot";
 import ErrorPage from "./pages/Property/pages/ErrorPage";
 
-import scrollLoger from "./hooks/use-scrollLogger";
+// import scrollLoger from "./hooks/use-scrollLogger";
 import { useAuth } from "./hooks/use-auth";
 
 const RootSelector = () => {

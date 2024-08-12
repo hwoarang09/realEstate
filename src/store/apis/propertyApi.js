@@ -1,7 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { faker } from "@faker-js/faker";
 
-const apiKey = process.env.REACT_APP_AUTH_TOKEN_ADMIN;
 const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
 
 const api = createApi({

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import PropertyList from "../components/PropertyListComponents/PropertyList";
-import Header from "../components/HeaderComponents/Header";
+
 import { Outlet } from "react-router-dom";
 import { useFetchPropertiesQuery } from "../../../store";
 import PropertyMenu from "../components/PropertyListComponents/PropertyMenu";
@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import Modal from "../../../commonComponents/Modal";
 
 const PAGE_LIMIT = process.env.REACT_APP_PAGE_LIMIT;
+
 function PropertyPage() {
   const [page, setPage] = useState(1);
   const [allProperties, setAllProperties] = useState([]);
@@ -65,7 +66,7 @@ function PropertyPage() {
       });
       if (node) observer.current.observe(node);
     },
-    [isLoading]
+    [isLoading, data]
   );
 
   if (isLoading) return <div>Loading...</div>;

@@ -1,11 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import "../../../../styles/index.css";
-import { TfiMenu } from "react-icons/tfi";
 import { FaSearch, FaFilter, FaChevronLeft } from "react-icons/fa";
 import { Input } from "../../../../@/components/ui/input";
 import { DrawerDemo } from "./drawer";
-import { DrawerTrigger } from "../../../../@/components/ui/drawer";
-import { Button } from "../../../../@/components/ui/button";
 import { useDispatch, useSelector } from "react-redux";
 import {
   toggleIsList,
@@ -25,7 +22,6 @@ import { useAuth } from "../../../../hooks/use-auth";
 
 const Header = () => {
   const [searchText, setSearchText] = useState("");
-  const isList = useSelector((state) => state.isList.isList);
   const left = useSelector((state) => state.isList.left);
   const search = useSelector((state) => state.isList.search);
   const dispatch = useDispatch();
@@ -34,7 +30,7 @@ const Header = () => {
   const searchInputRef = useRef(null);
   const navigate = useNavigate();
   const { logout } = useAuth();
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
   const filterChk = isExactMatch(searchParams);
 
   const handleLogout = () => {
