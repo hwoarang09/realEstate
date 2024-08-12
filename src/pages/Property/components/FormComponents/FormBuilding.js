@@ -6,8 +6,8 @@ import {
   parseFormInt,
 } from "../../../../utils/formUtils";
 import { Input } from "../../../../@/components/ui/input";
-import StyleForm from "../../../../commonComponents/FormStyle";
 import { formGenerator } from "../../../../utils/formGenerator";
+import StyleForm from "../../../../commonComponents/FormStyle";
 import { ToggleButton } from "../../../../commonComponents/ToggleButton";
 
 const FormBuilding = ({

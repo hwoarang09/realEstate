@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import _ from "lodash";
 import Button from "../../../../commonComponents/Button";
 import { FaChevronUp, FaChevronDown } from "react-icons/fa";
-import { MdOutlineContentCopy } from "react-icons/md";
-import { MdEdit } from "react-icons/md";
-import { FaTrashAlt } from "react-icons/fa";
+
 import SubModal from "../../../../commonComponents/SubModal";
 import MemoEditModal from "../ItemInfoPageComponents/ItemInfoMemoEditModal";
 import {
@@ -15,29 +13,16 @@ import {
 } from "../../../../store";
 import { Textarea } from "../../../../@/components/ui/textarea";
 import { notNullValue, handleChange } from "../../../../utils/formUtils";
-
 import { skipToken } from "@reduxjs/toolkit/query/react";
 
-const getTimeDifference = (timestamp) => {
-  const date = new Date(timestamp);
-  const now = new Date();
-  const differenceInMilliseconds = now - date;
-  const differenceInMinutes = Math.floor(
-    differenceInMilliseconds / (1000 * 60)
-  );
-  const differenceInHours = Math.floor(differenceInMinutes / 60);
-  const differenceInDays = Math.floor(differenceInHours / 24);
+import { MemoItem } from "./FormMemoItem";
+import StyleForm from "../../../../commonComponents/FormStyle";
+import { ToggleButton } from "../../../../commonComponents/ToggleButton";
 
-  if (differenceInMinutes < 60) {
-    return `${differenceInMinutes}분 전`;
-  } else if (differenceInHours < 24) {
-    return `${differenceInHours}시간 전`;
-  } else {
-    return `${differenceInDays}일 전`;
-  }
-};
-
+//메모 컴포넌트
+//메모랑, 매물 설명이랑 같은 컴포넌트로 묶여잇음.
 const FormMemo = ({ property, setProperty }) => {
+  //State
   const [commentInput, setCommentInput] = useState("");
   const [showMoreInfo, setShowMoreInfo] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -52,27 +37,32 @@ const FormMemo = ({ property, setProperty }) => {
       : skipToken
   );
 
+  //에러처리
   if (!property) {
     return;
   }
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error!</div>;
 
+  //메모 수정 모달창 열기
   const openModal = (index, value) => {
     setCurrentMemoIndex(index);
     setCurrentMemoValue(value);
     setIsModalOpen(true);
   };
 
+  //메모 수정 모달창 닫기
   const closeModal = () => {
     setIsModalOpen(false);
   };
 
+  //메모 복사
   const copyValue = (value) => {
     navigator.clipboard.writeText(value);
     alert("복사되었습니다.");
   };
 
+  //메모 저장
   const saveMemo = (index, value) => {
     updateComment({
       resource_id: property.id,
@@ -84,6 +74,7 @@ const FormMemo = ({ property, setProperty }) => {
     closeModal();
   };
 
+  //메모 삭제
   const deleteMemo = (index) => {
     removeComment({
       resource_id: property.id,
@@ -93,6 +84,7 @@ const FormMemo = ({ property, setProperty }) => {
     });
   };
 
+  //메모 추가
   const addCommentHandle = () => {
     addComment({
       resource_id: property.id,
@@ -105,42 +97,22 @@ const FormMemo = ({ property, setProperty }) => {
     setCommentInput("");
   };
 
-  console.log("property in memeo", property);
+  //메모 리스트
   const memos = data.contents.data.map((memo, index) => {
     return (
-      <div key={index} className="comment mb-4 p-2 border">
-        <div className="flex justify-between items-center mb-4">
-          <div className="mr-3 font-bold">{memo.username}</div>
-          <div className="text-gray-500">
-            {getTimeDifference(memo.updated_at)}
-          </div>
-          <div className="flex-grow"></div>
-          <div className="flex justify-end space-x-2 text-xl ">
-            <MdOutlineContentCopy
-              type="button"
-              onClick={() => copyValue(memo.value)}
-              className="cursor-pointer"
-            ></MdOutlineContentCopy>
-
-            <MdEdit
-              type="button"
-              onClick={() => {
-                openModal(index, memo.value);
-                console.log(index, memo.value);
-              }}
-              className="cursor-pointer"
-            ></MdEdit>
-            <FaTrashAlt
-              type="button"
-              onClick={() => deleteMemo(index)}
-              className="cursor-pointer"
-            ></FaTrashAlt>
-          </div>
-        </div>
-        <div>{memo.value}</div>
-      </div>
+      <MemoItem
+        key={index}
+        memo={memo}
+        index={index}
+        onCopy={copyValue}
+        onEdit={openModal}
+        onDelete={deleteMemo}
+      />
     );
   });
+
+  //매물 설명 길이에 따른 높이 조절
+  //메모랑, 매물 설명이랑 같은 컴포넌트로 묶여잇음.
   const descHeight = property.description.length > 100 ? "h-48" : "h-16";
 
   return (
@@ -202,32 +174,14 @@ const FormMemo = ({ property, setProperty }) => {
           )}
         </div>
       </div>
-      <div className="flex justify-center mt-3">
-        <Button
-          primary
-          rounded
-          outline
-          className="mb-4 flex justify-between py-0.5 px-1"
-          type="button" // 버튼의 기본 타입을 button으로 설정하여 submit 방지
-          onClick={() => setShowMoreInfo(!showMoreInfo)}
-        >
-          {showMoreInfo ? (
-            <>
-              <span className="text-xs mr-2">접기</span>
-              <span>
-                <FaChevronUp />
-              </span>
-            </>
-          ) : (
-            <>
-              <span className="text-xs mr-2">펼치기</span>
-              <span>
-                <FaChevronDown />
-              </span>
-            </>
-          )}
-        </Button>
-      </div>
+      <StyleForm toggleButtonWrapper>
+        <ToggleButton
+          showMoreInfo={showMoreInfo}
+          setShowMoreInfo={setShowMoreInfo}
+        />
+      </StyleForm>
+
+      {/* isOpen, onClose는 무조건 포함. onSave, index, initialValue등은 여기서만 사용*/}
       <SubModal
         isOpen={isModalOpen}
         onClose={closeModal}
