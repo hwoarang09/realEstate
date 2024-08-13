@@ -1,55 +1,5 @@
-// utils/blueprints.js
-
-export const btnsGenerator = ({
-  property,
-  setProperty,
-  renderCategoryButtons,
-}) => {
-  const categoriesConfig = [
-    {
-      name: "bdhsAvailBtns",
-      categories: ["전체 가능", "부분 가능", "불가능"],
-      path: ["extra", "bd_hs_available"],
-    },
-    {
-      name: "sameCateBtns",
-      categories: ["가능", "불가능"],
-      path: ["extra", "sm_md_open_available"],
-    },
-    {
-      name: "elevatorsCateBtns",
-      categories: ["유", "무"],
-      path: ["extra", "handicap_ele"],
-    },
-    {
-      name: "parkingSpotsCateBtns",
-      categories: ["유", "무"],
-      path: ["extra", "handicap_parking"],
-    },
-    {
-      name: "rampCateBtns",
-      categories: ["유", "무"],
-      path: ["extra", "handicap_ramp"],
-    },
-    {
-      name: "restroomCateBtns",
-      categories: ["유", "무"],
-      path: ["extra", "handicap_wc"],
-    },
-  ];
-
-  return categoriesConfig.reduce((acc, config) => {
-    acc[config.name] = renderCategoryButtons(
-      config.categories,
-      config.path,
-      "single",
-      property,
-      setProperty
-    );
-    return acc;
-  }, {});
-};
-export const getDefaultBlueprint = ({ mode }) => [
+const mode = "create";
+export const getDefaultBlueprint = () => [
   {
     WIDTHLIST: [
       [
@@ -70,18 +20,7 @@ export const getDefaultBlueprint = ({ mode }) => [
   },
 ];
 
-export const getHideBlueprint = ({
-  btns: {
-    bdhsAvailBtns,
-    sameCateBtns,
-    elevatorsCateBtns,
-    rampCateBtns,
-    parkingSpotsCateBtns,
-    restroomCateBtns,
-  },
-  customJSX: { buildingSizeComp },
-  mode,
-}) => [
+export const getHideBlueprint = ({ customJSX: { buildingSizeComp } }) => [
   {
     WIDTHLIST: [
       [
@@ -162,8 +101,13 @@ export const getHideBlueprint = ({
       ],
       [
         {
-          type: "flatButtons",
-          btns: bdhsAvailBtns,
+          type: "flatButtons2",
+          btns: {
+            name: "bdhsAvailBtns",
+            categories: ["전체 가능", "부분 가능", "불가능"],
+            path: ["extra", "bd_hs_available"],
+            mode: "single",
+          },
         },
       ],
     ],
@@ -197,8 +141,13 @@ export const getHideBlueprint = ({
       ],
       [
         {
-          type: "flatButtons",
-          btns: sameCateBtns,
+          type: "flatButtons2",
+          btns: {
+            name: "sameCateBtns",
+            categories: ["가능", "불가능"],
+            path: ["extra", "sm_md_open_available"],
+            mode: "single",
+          },
         },
         {
           type: "text",
@@ -224,8 +173,13 @@ export const getHideBlueprint = ({
           style: "text-sm w-1/8",
         },
         {
-          type: "flatButtons",
-          btns: elevatorsCateBtns,
+          type: "flatButtons2",
+          btns: {
+            name: "elevatorsCateBtns",
+            categories: ["유", "무"],
+            path: ["extra", "handicap_ele"],
+            mode: "single",
+          },
           style: "mr-6",
         },
         {
@@ -234,8 +188,13 @@ export const getHideBlueprint = ({
           style: "text-sm w-1/8",
         },
         {
-          type: "flatButtons",
-          btns: rampCateBtns,
+          type: "flatButtons2",
+          btns: {
+            name: "rampCateBtns",
+            categories: ["유", "무"],
+            path: ["extra", "handicap_ramp"],
+            mode: "single",
+          },
           style: "mr-6",
         },
       ],
@@ -246,8 +205,13 @@ export const getHideBlueprint = ({
           style: "text-sm w-1/8",
         },
         {
-          type: "flatButtons",
-          btns: parkingSpotsCateBtns,
+          type: "flatButtons2",
+          btns: {
+            name: "parkingSpotsCateBtns",
+            categories: ["유", "무"],
+            path: ["extra", "handicap_parking"],
+            mode: "single",
+          },
           style: "mr-6",
         },
         {
@@ -256,8 +220,13 @@ export const getHideBlueprint = ({
           style: "text-sm w-1/8",
         },
         {
-          type: "flatButtons",
-          btns: restroomCateBtns,
+          type: "flatButtons2",
+          btns: {
+            name: "restroomCateBtns",
+            categories: ["유", "무"],
+            path: ["extra", "handicap_wc"],
+            mode: "single",
+          },
           style: "mr-6",
         },
       ],

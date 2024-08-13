@@ -15,8 +15,6 @@ const FormBuilding = ({
   setProperty,
   getDefaultBlueprint,
   getHideBlueprint,
-  btnsGenerator,
-  mode,
 }) => {
   const [showMoreInfo, setShowMoreInfo] = useState(false);
 
@@ -66,30 +64,9 @@ const FormBuilding = ({
     </StyleForm>
   );
 
-  const {
-    bdhsAvailBtns,
-    sameCateBtns,
-    elevatorsCateBtns,
-    rampCateBtns,
-    parkingSpotsCateBtns,
-    restroomCateBtns,
-  } = btnsGenerator({ property, setProperty, renderCategoryButtons });
-
-
-  const defaultBluePrint = getDefaultBlueprint({
-    mode,
-  });
+  const defaultBluePrint = getDefaultBlueprint();
   const hideBluePrint = getHideBlueprint({
-    mode,
     customJSX: { buildingSizeComp },
-    btns: {
-      bdhsAvailBtns,
-      sameCateBtns,
-      elevatorsCateBtns,
-      rampCateBtns,
-      parkingSpotsCateBtns,
-      restroomCateBtns,
-    },
   });
 
   return (

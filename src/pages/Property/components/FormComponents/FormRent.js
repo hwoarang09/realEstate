@@ -1,49 +1,20 @@
 import React, { useState } from "react";
-import { renderCategoryButtons } from "../../../../utils/formUtils";
 import StyleForm from "../../../../commonComponents/FormStyle";
 import { formGenerator } from "../../../../utils/formGenerator";
 import { ToggleButton } from "../../../../commonComponents/ToggleButton";
-
-
-// is_verified: true;
-// page: 1;
-// sort: updated_at;
-// order: desc;
-
 
 const FormRent = ({
   property,
   setProperty,
   getDefaultBlueprint,
   getHideBlueprint,
-  btnsGenerator,
-  mode,
 }) => {
   const [showMoreInfo, setShowMoreInfo] = useState(false);
 
   if (!property) return;
 
-  const {
-    rentalTypeBtns,
-    availDateBtns,
-    freeParkingBtns,
-    visitorParkingBtns,
-    transferMoneyBtns,
-  } = btnsGenerator({ property, setProperty, renderCategoryButtons });
-
-  const defaultBluePrint = getDefaultBlueprint({
-    mode,
-    btns: { rentalTypeBtns },
-  });
-  const hideBluePrint = getHideBlueprint({
-    btns: {
-      availDateBtns,
-      freeParkingBtns,
-      visitorParkingBtns,
-      transferMoneyBtns,
-    },
-    mode,
-  });
+  const defaultBluePrint = getDefaultBlueprint();
+  const hideBluePrint = getHideBlueprint();
 
   return (
     <StyleForm mainWrapper>

@@ -8,14 +8,18 @@ import ItemInfoRent from "../../components/FormComponents/FormRent";
 import {
   getDefaultBlueprint as getDefaultBlueprintRent,
   getHideBlueprint as getHideBlueprintRent,
-  btnsGenerator as btnsGeneratorRent,
 } from "../../components/ItemInfoPageComponents/ItemInfoRentBluePrints";
+
+import {
+  getDefaultBlueprint as getDefaultBlueprintOther,
+  getHideBlueprint as getHideBlueprintOther,
+} from "../../components/ItemInfoPageComponents/ItemInfoOtherBluePrints";
+
 import ItemInfoTag from "../../components/FormComponents/FormTag";
 import ItemInfoBuilding from "../../components/FormComponents/FormBuilding";
 import {
   getDefaultBlueprint as getDefaultBlueprintBuilding,
   getHideBlueprint as getHideBlueprintBuilding,
-  btnsGenerator as btnsGeneratorBuilding,
 } from "../../components/ItemInfoPageComponents/ItemInfoBuildingBluePrints";
 import ItemInfoOther from "../../components/FormComponents/FormOther";
 import ItemInfoContract from "../../components/FormComponents/FormContract";
@@ -29,8 +33,6 @@ import {
   useUpdatePropertyMutation,
 } from "../../../../store";
 
-import { MODE } from "../../../../utils/Mode";
-
 const PropertyItemInfoModal = ({ modalPath, closeModal, roomId }) => {
   const [formData, setFormData] = useState(null);
 
@@ -41,11 +43,12 @@ const PropertyItemInfoModal = ({ modalPath, closeModal, roomId }) => {
     refetch,
   } = useFetchPropertyByIdQuery({ modalPath, roomId });
   const [removeProperty] = useRemovePropertyMutation();
-
   const [updateProperty] = useUpdatePropertyMutation();
+
   useEffect(() => {
     setFormData(properties?.contents);
   }, [properties]);
+
   useEffect(() => {
     refetch();
   }, [refetch]);
@@ -58,6 +61,7 @@ const PropertyItemInfoModal = ({ modalPath, closeModal, roomId }) => {
   }
 
   const propertyId = properties?.contents?.id;
+
   const handleUpdateChanges = (event) => {
     event.preventDefault();
     updateProperty(formData);
@@ -75,62 +79,31 @@ const PropertyItemInfoModal = ({ modalPath, closeModal, roomId }) => {
       <ItemInfoHeader onCloseModal={closeModal} />
       <form className="mt-10">
         <div className="px-4 pt-4 ">
-          <ItemInfoCate
-            property={formData}
-            setProperty={setFormData}
-            mode={MODE.EDIT}
-          />
-          <ItemInfoTag
-            property={formData}
-            setProperty={setFormData}
-            mode={MODE.EDIT}
-          />
+          <ItemInfoCate property={formData} setProperty={setFormData} />
+          <ItemInfoTag property={formData} setProperty={setFormData} />
           <ItemInfoBuilding
             property={formData}
             setProperty={setFormData}
             getDefaultBlueprint={getDefaultBlueprintBuilding}
             getHideBlueprint={getHideBlueprintBuilding}
-            btnsGenerator={btnsGeneratorBuilding}
-            mode={MODE.EDIT}
           />
           <ItemInfoRent
             property={formData}
             setProperty={setFormData}
             getDefaultBlueprint={getDefaultBlueprintRent}
             getHideBlueprint={getHideBlueprintRent}
-            btnsGenerator={btnsGeneratorRent}
-            mode={MODE.EDIT}
           />
-          <ItemInfoImages
-            property={formData}
-            setProperty={setFormData}
-            mode={MODE.EDIT}
-          />
-          <ItemInfoMemo
-            property={formData}
-            setProperty={setFormData}
-            mode={MODE.EDIT}
-          />
-          <ItemInfoContact
-            property={formData}
-            setProperty={setFormData}
-            mode={MODE.EDIT}
-          />
+          <ItemInfoImages property={formData} setProperty={setFormData} />
+          <ItemInfoMemo property={formData} setProperty={setFormData} />
+          <ItemInfoContact property={formData} setProperty={setFormData} />
           <ItemInfoOther
             property={formData}
             setProperty={setFormData}
-            mode={MODE.EDIT}
+            getDefaultBlueprint={getDefaultBlueprintOther}
+            getHideBlueprint={getHideBlueprintOther}
           />
-          <ItemInfoContract
-            property={formData}
-            setProperty={setFormData}
-            mode={MODE.EDIT}
-          />
-          <ItemInfoRegist
-            property={formData}
-            setProperty={setFormData}
-            mode={MODE.EDIT}
-          />
+          <ItemInfoContract property={formData} setProperty={setFormData} />
+          <ItemInfoRegist property={formData} setProperty={setFormData} />
         </div>
         <div
           onClick={handleDeleteProperty}

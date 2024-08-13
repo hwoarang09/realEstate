@@ -16,17 +16,18 @@ import ItemInfoMemo from "../FormComponents/FormMemo";
 import {
   getDefaultBlueprint as getDefaultBlueprintBuilding,
   getHideBlueprint as getHideBlueprintBuilding,
-  btnsGenerator as btnsGeneratorBuilding,
 } from "./BuildingBluePrints";
 import {
   getDefaultBlueprint as getDefaultBlueprintRent,
   getHideBlueprint as getHideBlueprintRent,
-  btnsGenerator as btnsGeneratorRent,
 } from "./RentBluePrints";
+import {
+  getDefaultBlueprint as getDefaultBlueprintOther,
+  getHideBlueprint as getHideBlueprintOther,
+} from "./OtherBluePrints";
 
 import { basicData } from "./formDataBasic";
 
-import { MODE } from "../../../../utils/Mode";
 import { getCurrentTimestamp, isValidDate } from "../../../../utils/dateHelper";
 import { useAddPropertyMutation } from "../../../../store";
 import SubModal from "../../../../commonComponents/SubModal";
@@ -120,62 +121,31 @@ export const BasicInfoAddPage = ({
     <>
       <form className="mt-10">
         <div className="px-4 pt-4 ">
-          <ItemInfoCate
-            property={formData}
-            setProperty={setFormData}
-            mode={MODE.CREATE}
-          />
-          <ItemInfoTag
-            property={formData}
-            setProperty={setFormData}
-            mode={MODE.CREATE}
-          />
+          <ItemInfoCate property={formData} setProperty={setFormData} />
+          <ItemInfoTag property={formData} setProperty={setFormData} />
           <ItemInfoBuilding
             property={formData}
             setProperty={setFormData}
             getDefaultBlueprint={getDefaultBlueprintBuilding}
             getHideBlueprint={getHideBlueprintBuilding}
-            btnsGenerator={btnsGeneratorBuilding}
-            mode={MODE.CREATE}
           />
           <ItemInfoRent
             property={formData}
             setProperty={setFormData}
             getDefaultBlueprint={getDefaultBlueprintRent}
             getHideBlueprint={getHideBlueprintRent}
-            btnsGenerator={btnsGeneratorRent}
-            mode={MODE.CREATE}
           />
-          <ItemInfoImages
-            property={formData}
-            setProperty={setFormData}
-            mode={MODE.CREATE}
-          />
-          <ItemInfoMemo
-            property={formData}
-            setProperty={setFormData}
-            mode={MODE.CREATE}
-          />
-          <ItemInfoContact
-            property={formData}
-            setProperty={setFormData}
-            mode={MODE.CREATE}
-          />
+          <ItemInfoImages property={formData} setProperty={setFormData} />
+          <ItemInfoMemo property={formData} setProperty={setFormData} />
+          <ItemInfoContact property={formData} setProperty={setFormData} />
           <ItemInfoOther
             property={formData}
             setProperty={setFormData}
-            mode={MODE.CREATE}
+            getDefaultBlueprint={getDefaultBlueprintOther}
+            getHideBlueprint={getHideBlueprintOther}
           />
-          <ItemInfoContract
-            property={formData}
-            setProperty={setFormData}
-            mode={MODE.CREATE}
-          />
-          <ItemInfoRegist
-            property={formData}
-            setProperty={setFormData}
-            mode={MODE.CREATE}
-          />
+          <ItemInfoContract property={formData} setProperty={setFormData} />
+          <ItemInfoRegist property={formData} setProperty={setFormData} />
         </div>
 
         <AbsPosButton onClick={handleUpdateChanges}>변경사항 저장</AbsPosButton>

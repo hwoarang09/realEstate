@@ -1,56 +1,6 @@
-// utils/formBlueprints.js
+const mode = "create";
 
-export const rentalTypeCategories = ["전층", "일부"];
-export const availDateCategories = ["즉시", "협의"];
-export const transferMoneyCategories = ["양수도 매물임"];
-export const parkingCategories = ["가능", "불가능", "협의"];
-
-export const btnsGenerator = ({
-  property,
-  setProperty,
-  renderCategoryButtons,
-}) => {
-  const categoriesConfig = [
-    {
-      name: "availDateBtns",
-      categories: availDateCategories,
-      path: ["available_date"],
-    },
-    {
-      name: "rentalTypeBtns",
-      categories: rentalTypeCategories,
-      path: ["rent_scale"],
-    },
-    {
-      name: "transferMoneyBtns",
-      categories: transferMoneyCategories,
-      path: ["transferMoney"],
-    },
-    {
-      name: "visitorParkingBtns",
-      categories: parkingCategories,
-      path: ["visit_parking"],
-    },
-    {
-      name: "freeParkingBtns",
-      categories: parkingCategories,
-      path: ["free_parking_str"],
-    },
-  ];
-
-  return categoriesConfig.reduce((acc, config) => {
-    acc[config.name] = renderCategoryButtons(
-      config.categories,
-      config.path,
-      config.type === "multi" ? "multi" : "single",
-      property,
-      setProperty
-    );
-    return acc;
-  }, {});
-};
-
-export const getDefaultBlueprint = ({ mode, btns: { rentalTypeBtns } }) => [
+export const getDefaultBlueprint = () => [
   {
     WIDTHLIST: [
       [
@@ -113,8 +63,13 @@ export const getDefaultBlueprint = ({ mode, btns: { rentalTypeBtns } }) => [
           style: "w-20 mr-2",
         },
         {
-          type: "flatButtons",
-          btns: rentalTypeBtns,
+          type: "flatButtons2",
+          btns: {
+            name: "rentalTypeBtns",
+            categories: ["전층", "일부"],
+            path: ["rent_scale"],
+            mode: "single",
+          },
         },
       ],
     ],
@@ -153,15 +108,7 @@ export const getDefaultBlueprint = ({ mode, btns: { rentalTypeBtns } }) => [
   },
 ];
 
-export const getHideBlueprint = ({
-  btns: {
-    availDateBtns,
-    freeParkingBtns,
-    visitorParkingBtns,
-    transferMoneyBtns,
-  },
-  mode,
-}) => [
+export const getHideBlueprint = () => [
   {
     WIDTHLIST: [
       [
@@ -170,18 +117,13 @@ export const getHideBlueprint = ({
           labelText: "입주시기",
         },
         {
-          type: "datePicker",
-          keyList: "available_date",
-        },
-      ],
-      [
-        {
-          type: "label",
-          labelText: " ",
-        },
-        {
-          type: "flatButtons",
-          btns: availDateBtns,
+          type: "flatButtons2",
+          btns: {
+            name: "availDateBtns",
+            categories: ["즉시", "협의"],
+            path: ["available_date"],
+            mode: "single",
+          },
         },
       ],
     ],
@@ -195,8 +137,13 @@ export const getHideBlueprint = ({
           req: false,
         },
         {
-          type: "flatButtons",
-          btns: freeParkingBtns,
+          type: "flatButtons2",
+          btns: {
+            name: "freeParkingBtns",
+            categories: ["가능", "불가능", "협의"],
+            path: ["free_parking_str"],
+            mode: "single",
+          },
         },
       ],
     ],
@@ -210,8 +157,13 @@ export const getHideBlueprint = ({
           req: false,
         },
         {
-          type: "flatButtons",
-          btns: visitorParkingBtns,
+          type: "flatButtons2",
+          btns: {
+            name: "visitorParkingBtns",
+            categories: ["가능", "불가능", "협의"],
+            path: ["visit_parking"],
+            mode: "single",
+          },
         },
       ],
     ],
@@ -225,8 +177,13 @@ export const getHideBlueprint = ({
           req: false,
         },
         {
-          type: "flatButtons",
-          btns: transferMoneyBtns,
+          type: "flatButtons2",
+          btns: {
+            name: "transferMoneyBtns",
+            categories: ["양수도 매물임"],
+            path: ["transferMoney"],
+            mode: "single",
+          },
         },
       ],
     ],

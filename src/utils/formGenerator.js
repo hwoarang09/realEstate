@@ -6,7 +6,7 @@ import StyleForm from "../commonComponents/FormStyle";
 import { DatePickerDemo } from "../@/components/ui/datepicker";
 import { DatePickerWithRange } from "../@/components/ui/datePickerRange";
 import { MyRangeSlider } from "../@/components/ui/myRangeSlider";
-
+import { renderCategoryButtons } from "./formUtils";
 const getPropertyValue = (property, keyList) => {
   return keyList.reduce(
     (obj, key) => (obj && obj[key] !== null ? obj[key] : ""),
@@ -37,6 +37,22 @@ const formGenerator = ({ property, setProperty, WIDTHLIST: widthList }) => {
           {input.btns}
         </StyleForm>
       );
+    } else if (input.type === "flatButtons2") {
+
+      console.log('in flatButtons2',input, input.btns.categories, input.btns.path, input.btns.mode, input.btns.property, input.btns.setProperty, input.btns.mappedCategories);
+      const renderedBtns =  renderCategoryButtons(
+        input.btns.categories,
+        input.btns.path,
+        input.btns.mode,
+        property,
+        setProperty,
+        input.btns.mappedCategories
+      );
+      return (
+        <StyleForm flatButtons key={key} className={input.style}>
+          {renderedBtns}
+        </StyleForm>
+      );      
     } else if (input.type === "text" || input.type === "number") {
       const name = input.keyList?.join("");
       const value = getPropertyValue(property, input.keyList);
