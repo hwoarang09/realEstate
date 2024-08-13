@@ -97,9 +97,7 @@ const FormContact = ({ property, setProperty, mode }) => {
   return (
     <div className="my-6">
       <div className="mb-2">
-        <div className="text-blue-600 text-base font-bold mb-2">
-          연락처 정보
-        </div>
+        <div className="text-blue-600 text-lg font-bold mb-2">연락처 정보</div>
         <div className="flex mb-2">
           <div className="text-sm flex items-center font-bold w-28">
             매물 담당자

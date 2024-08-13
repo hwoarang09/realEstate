@@ -8,7 +8,7 @@ const FormContract = ({ property, setProperty }) => {
   return (
     <div className="my-6">
       <div className="mb-2 ">
-        <div className="text-blue-600 text-base font-bold mb-2">계약 완료</div>
+        <div className="text-blue-600 text-lg font-bold mb-2">계약 완료</div>
         <div className="mb-2 text-sm">
           <div className="flex mb-2">
             <div className="w-10">
