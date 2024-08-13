@@ -13,16 +13,25 @@ import {
   DrawerTrigger,
 } from "../../../../@/components/ui/drawer";
 
-export function DrawerDemo({ handleLogout }) {
+export function DrawerDemo({ handleLogout, direction }) {
+  let classNameDefault =
+    "bg-background flex flex-col h-3/4 w-[300px] right-0 top-0 ";
+
+  let roundDir = "";
+  if (direction === "left") roundDir = "rounded-r-[10px]";
+  else if (direction === "right") roundDir = "rounded-l-[10px]";
   return (
-    <Drawer>
+    <Drawer direction={direction}>
       <DrawerTrigger asChild>
         <Button variant="outline">
           {" "}
           <TfiMenu className="w-5 h-5 cursor-pointer" />
         </Button>
       </DrawerTrigger>
-      <DrawerContent className="bg-background flex flex-col rounded-r-[10px] h-3/4 w-[300px] right-0 top-0">
+      <DrawerContent
+        direction={direction}
+        className={classNameDefault + roundDir}
+      >
         <DrawerHeader>
           <DrawerTitle>오픈닥터</DrawerTitle>
           <DrawerDescription>오픈닥터 솔루션</DrawerDescription>

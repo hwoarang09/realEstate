@@ -5,10 +5,10 @@ import { Drawer as DrawerPrimitive } from "vaul";
 
 import { cn } from "../../lib/utils";
 
-const Drawer = ({ shouldScaleBackground = true, ...props }) => (
+const Drawer = ({ shouldScaleBackground = true, direction, ...props }) => (
   <DrawerPrimitive.Root
     shouldScaleBackground={shouldScaleBackground}
-    direction="left"
+    direction={direction}
     {...props}
   />
 );
@@ -30,26 +30,50 @@ const DrawerOverlay = React.forwardRef(({ className, ...props }, ref) => (
 DrawerOverlay.displayName = DrawerPrimitive.Overlay.displayName;
 
 const DrawerContent = React.forwardRef(
-  ({ className, children, ...props }, ref) => (
-    <DrawerPortal>
-      <DrawerOverlay />
-      <DrawerPrimitive.Content
-        ref={ref}
-        className={cn(
-          "fixed inset-x-0 bottom-0 z-50 flex h-auto flex-col border bg-background",
-          className
-        )}
-        {...props}
-      >
-        <div className="flex h-full">
-          <div className="flex-1 flex flex-col">{children}</div>
-          <div className="flex justify-center items-center h-full">
-            <div className=" w-2 h-[100px] rounded-full bg-gray-300" />
+  ({ className, children, direction, ...props }, ref) => {
+    console.log("DrawerContent className", className);
+    console.log("DrawerContent children", children);
+    console.log("DrawerContent props", props);
+    console.log("DrawerContent direction", direction);
+
+    let x_dir = "";
+    if (direction === "right") x_dir = "right-0";
+    else if (direction === "left") x_dir = "left-0";
+
+    const classNameDefault =
+      "fixed bottom-0 z-50 flex h-auto flex-col border bg-red-500 ";
+
+    return (
+      <DrawerPortal>
+        <DrawerOverlay />
+        <DrawerPrimitive.Content
+          ref={ref}
+          className={cn(classNameDefault + x_dir, className)}
+          {...props}
+        >
+          <div className="flex h-full">
+            {direction === "right" && (
+              <>
+                <div className="flex justify-center items-center h-full">
+                  <div className=" w-2 h-[100px] rounded-full bg-gray-300 ml-1" />
+                </div>
+                <div className="flex-1 flex flex-col">{children}</div>
+              </>
+            )}
+            {direction === "left" && (
+              <>
+                {" "}
+                <div className="flex-1 flex flex-col">{children}</div>
+                <div className="flex justify-center items-center h-full">
+                  <div className=" w-2 h-[100px] rounded-full bg-gray-300 mr-1" />
+                </div>
+              </>
+            )}
           </div>
-        </div>
-      </DrawerPrimitive.Content>
-    </DrawerPortal>
-  )
+        </DrawerPrimitive.Content>
+      </DrawerPortal>
+    );
+  }
 );
 DrawerContent.displayName = "DrawerContent";
 

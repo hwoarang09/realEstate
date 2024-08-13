@@ -91,11 +91,6 @@ function FilterPage() {
   );
 
   const handleUpdateChanges = () => {
-    console.log("****************** handleUpdateChanges", {
-      ...filterObj,
-
-      page: 1,
-    });
     dispatch(
       setFilters({
         ...filterObj,
@@ -115,12 +110,11 @@ function FilterPage() {
               ? 99999
               : filterObj.to_monthly_rent_by,
         }),
-        // page: 1,
-        // order: "desc",
       })
     );
     dispatch(setIsList(true));
   };
+
   const handleDateSortReset = () => {
     const newProperty = { ...filterObj };
     delete newProperty.from_updated_date;
@@ -157,24 +151,23 @@ function FilterPage() {
     setFilterObj(newProperty);
   };
 
-  const btnsSort = btnsGeneratorSort({
-    filterObj,
-    setFilterObj,
-    renderCategoryButtons,
-  });
-  const btnsFilter = btnsGeneratorFilter({
-    filterObj,
-    setFilterObj,
-    renderCategoryButtons,
-  });
-
   const sortBluePrint = getSortBlueprint({
-    btns: btnsSort,
+    btns: btnsGeneratorSort({
+      filterObj,
+      setFilterObj,
+      renderCategoryButtons,
+    }),
   });
   const filterBluePrint = getFilterBlueprint({
-    btns: btnsFilter,
+    btns: btnsGeneratorFilter({
+      filterObj,
+      setFilterObj,
+      renderCategoryButtons,
+    }),
     customJSX: { myGridSlider },
   });
+
+  
   return (
     <div className="w-full max-w-[500px] justify-center items-center rounded-xl z-60 h-[1200px] overflow-y-auto">
       <div className="border-2 border-gray-100 px-4">

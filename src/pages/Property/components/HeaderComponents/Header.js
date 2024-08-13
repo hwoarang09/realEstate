@@ -93,7 +93,7 @@ const Header = () => {
         {left ? (
           <FaChevronLeft onClick={handleClickLeft} className="cursor-pointer" />
         ) : (
-          <DrawerDemo handleLogout={handleLogout} />
+          <DrawerDemo handleLogout={handleLogout} direction="left" />
         )}
       </div>
       <div className={`flex items-center ${search ? "w-11/12" : "w-3/4 "}`}>
