@@ -1,5 +1,5 @@
-import Button from "../../../commonComponents/Button";
-import "../../../styles/index.css";
+import Button from "../../../../commonComponents/Button";
+import "../../../../styles/index.css";
 // import "../../../styles/globals.css";
 import { CiMap } from "react-icons/ci";
 function MapViewTab() {

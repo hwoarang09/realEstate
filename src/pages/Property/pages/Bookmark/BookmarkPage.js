@@ -1,4 +1,4 @@
-import MapViewTab from "../../components/MapViewTab";
+import MapViewTab from "../../components/MapViewTabComponents/MapViewTab";
 import PropertyMenu from "../../components/PropertyListComponents/PropertyMenu";
 import { Outlet } from "react-router-dom";
 function BookmarkPage() {

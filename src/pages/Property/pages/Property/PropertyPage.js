@@ -3,11 +3,11 @@ import PropertyList from "../../components/PropertyListComponents/PropertyList";
 import { Outlet } from "react-router-dom";
 import { useFetchPropertiesQuery } from "../../../../store";
 import PropertyMenu from "../../components/PropertyListComponents/PropertyMenu";
-import FilterPage from "../../components/FilterComponents/FilterPage";
+import FilterPage from "../FilterPageModal/FilterPage";
 import { useSelector } from "react-redux";
 import Modal from "../../../../commonComponents/Modal";
-
-const PAGE_LIMIT = process.env.REACT_APP_PAGE_LIMIT;
+import {REACT_APP_PAGE_LIMIT as PAGE_LIMIT} from "../../../../constants/constants";
+// const PAGE_LIMIT = process.env.REACT_APP_PAGE_LIMIT;
 
 function PropertyPage() {
   const [page, setPage] = useState(1);

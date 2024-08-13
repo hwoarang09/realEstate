@@ -4,6 +4,13 @@ import StyleForm from "../../../../commonComponents/FormStyle";
 import { formGenerator } from "../../../../utils/formGenerator";
 import { ToggleButton } from "../../../../commonComponents/ToggleButton";
 
+
+// is_verified: true;
+// page: 1;
+// sort: updated_at;
+// order: desc;
+
+
 const FormRent = ({
   property,
   setProperty,

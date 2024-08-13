@@ -11,13 +11,15 @@ export const isExactMatch = (obj) => {
   const tmpObj = { ...obj };
   delete tmpObj.keyword;
 
+  console.log(
+    "!!!!!!!",
+    tmpObj,
+    target,
+    Object.keys(tmpObj).length,
+    Object.keys(target).length
+  );
+
   if (Object.keys(tmpObj).length !== Object.keys(target).length) {
-    console.log(
-      "!!!!!!!",
-      tmpObj,
-      Object.keys(tmpObj).length,
-      Object.keys(target).length
-    );
     return false;
   }
 
