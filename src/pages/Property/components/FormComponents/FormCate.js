@@ -3,10 +3,12 @@ import Button from "../../../../commonComponents/Button";
 import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 import { renderCategoryButtons } from "../../../../utils/formUtils";
 import StyleForm from "../../../../commonComponents/FormStyle";
+import { ToggleButton } from "../../../../commonComponents/ToggleButton";
+
 const cateArray = ["치과", "미용", "감기", "통증", "한의원"];
 
 const FormCate = ({ property, setProperty, mode }) => {
-  const [showRecommended, setShowRecommended] = useState(false);
+  const [showMoreInfo, setShowMoreInfo] = useState(false);
   if (!property) {
     return;
   }
@@ -32,6 +34,7 @@ const FormCate = ({ property, setProperty, mode }) => {
     property,
     setProperty
   );
+  
   return (
     <StyleForm mainWrapper>
       <StyleForm tabWrapper>
@@ -39,37 +42,17 @@ const FormCate = ({ property, setProperty, mode }) => {
         <StyleForm flatButtons>{openableFilter}</StyleForm>
       </StyleForm>
 
-      {showRecommended && (
+      {showMoreInfo && (
         <StyleForm tabWrapper>
           <StyleForm menuTitle>추천 진료과</StyleForm>
           <StyleForm flatButtons>{recommendedFilter}</StyleForm>
         </StyleForm>
       )}
       <StyleForm toggleButtonWrapper>
-        <Button
-          primary
-          rounded
-          outline
-          toggle
-          type="button"
-          onClick={() => setShowRecommended(!showRecommended)}
-        >
-          {showRecommended ? (
-            <>
-              <span className="text-xs mr-2">접기</span>
-              <span>
-                <FaChevronUp />
-              </span>
-            </>
-          ) : (
-            <>
-              <span className="text-xs mr-2">펼치기</span>
-              <span>
-                <FaChevronDown />
-              </span>
-            </>
-          )}
-        </Button>
+        <ToggleButton
+          showMoreInfo={showMoreInfo}
+          setShowMoreInfo={setShowMoreInfo}
+        />
       </StyleForm>
     </StyleForm>
   );
