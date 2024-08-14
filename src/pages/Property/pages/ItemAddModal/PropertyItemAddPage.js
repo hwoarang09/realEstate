@@ -31,26 +31,22 @@ const PropertyAddModal = ({ closeModal }) => {
     setBasicInfo(properties);
   }, [properties]);
 
-  // if (isLoading) return <div>Loading...</div>;
-  // if (error) return <div>Error!</div>;
-  console.log("PropertyAddModal closeModal", closeModal);
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error!</div>;
+
   const handleSearch = (e) => {
     e.preventDefault();
     setSearchQuery(inputValue);
     if (inputRef.current) {
       inputRef.current.blur();
     }
-    console.log("handleSearch Click");
   };
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
-    console.log("handleChange", e.target.value, inputValue);
   };
   const handleNext = () => {
     setIsSearchPage(false);
-
-    console.log("handleNext Click");
   };
 
   const handleCloseModal = (shouldRefetch) => {

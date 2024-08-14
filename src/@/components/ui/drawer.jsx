@@ -31,11 +31,6 @@ DrawerOverlay.displayName = DrawerPrimitive.Overlay.displayName;
 
 const DrawerContent = React.forwardRef(
   ({ className, children, direction, ...props }, ref) => {
-    console.log("DrawerContent className", className);
-    console.log("DrawerContent children", children);
-    console.log("DrawerContent props", props);
-    console.log("DrawerContent direction", direction);
-
     let x_dir = "";
     if (direction === "right") x_dir = "right-0";
     else if (direction === "left") x_dir = "left-0";

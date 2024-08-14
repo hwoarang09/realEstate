@@ -16,8 +16,10 @@ const PropertyItem = forwardRef(
     const modalPath = "/property/" + property.id;
     const selectedProperty = property;
     const handleClick = ({ modalPath, selectedProperty }) => {
+      //그룹이 아닌 경우
       if (!selectedProperty?.group_id)
         showModal({ modalPath, selectedProperty });
+      //그룹인 경우
       else {
         const room = selectedProperty.id;
         modalPath =

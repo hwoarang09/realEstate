@@ -17,16 +17,14 @@ const LoginPage = () => {
   const handleLogin = async (e, email, password) => {
     e.preventDefault();
     try {
-      const response = await axios.post(baseURL + "auth/signin", {
-        email,
-        password,
-      });
-      login(response.data.access_token, response.data.refresh_token);
-
-      console.log("LoginPage.js, response.data:", response.data);
+      // 로그인 구현은 했는데, 관리자 계정 보호를 위해 주석처리
+      // const response = await axios.post(baseURL + "auth/signin", {
+      //   email,
+      //   password,
+      // });
+      // login(response.data.access_token, response.data.refresh_token);
       navigate("/property");
     } catch (error) {
-      console.error("Login failed:", error);
       alert("Login failed");
     }
   };

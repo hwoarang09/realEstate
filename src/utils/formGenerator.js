@@ -39,7 +39,6 @@ const formGenerator = ({ property, setProperty, WIDTHLIST: widthList }) => {
       );
     } else if (input.type === "flatButtons2") {
 
-      console.log('in flatButtons2',input, input.btns.categories, input.btns.path, input.btns.mode, input.btns.property, input.btns.setProperty, input.btns.mappedCategories);
       const renderedBtns =  renderCategoryButtons(
         input.btns.categories,
         input.btns.path,

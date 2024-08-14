@@ -1,4 +1,4 @@
-export const getSortBlueprint = ({ btns: { sortOrderBtns, sortDateBtns } }) => [
+export const getSortBlueprint = () => [
   {
     WIDTHLIST: [
       [
@@ -9,8 +9,17 @@ export const getSortBlueprint = ({ btns: { sortOrderBtns, sortDateBtns } }) => [
       ],
       [
         {
-          type: "flatButtons",
-          btns: sortOrderBtns,
+          type: "flatButtons2",
+          btns: {
+            name: "sortOrderBtns",
+            categories: ["updated_at", "created_at"],
+            path: ["sort"],
+            mode: "single",
+            mappedCategories: {
+              updated_at: "수정한 날짜",
+              created_at: "업로드 날짜",
+            },
+          },
         },
       ],
       [
@@ -21,8 +30,13 @@ export const getSortBlueprint = ({ btns: { sortOrderBtns, sortDateBtns } }) => [
       ],
       [
         {
-          type: "flatButtons",
-          btns: sortDateBtns,
+          type: "flatButtons2",
+          btns: {
+            name: "sortDateBtns",
+            categories: ["어제", "지난주", "지난달"],
+            path: ["tmpSortDate"],
+            mode: "single",
+          },
         },
       ],
       [
@@ -42,18 +56,7 @@ export const getSortBlueprint = ({ btns: { sortOrderBtns, sortDateBtns } }) => [
   },
 ];
 
-export const getFilterBlueprint = ({
-  btns: {
-    areaBtns,
-    gradeBtns,
-    availableMdBtns,
-    recommendedMdBtns,
-    isActiveBtns,
-    isContactCompletedBtns,
-  },
-  customJSX: { myGridSlider },
-}) => {
-  console.log("in bluprint, btns", areaBtns);
+export const getFilterBlueprint = ({ customJSX: { myGridSlider } }) => {
   return [
     {
       WIDTHLIST: [
@@ -65,8 +68,13 @@ export const getFilterBlueprint = ({
         ],
         [
           {
-            type: "flatButtons",
-            btns: areaBtns,
+            type: "flatButtons2",
+            btns: {
+              name: "areaBtns",
+              categories: ["역세권", "유통권", "주거권"],
+              path: ["area_type"],
+              mode: "multi",
+            },
           },
         ],
         [
@@ -126,8 +134,13 @@ export const getFilterBlueprint = ({
         ],
         [
           {
-            type: "flatButtons",
-            btns: gradeBtns,
+            type: "flatButtons2",
+            btns: {
+              name: "gradeBtns",
+              categories: ["상", "중", "하"],
+              path: ["area_type"],
+              mode: "single",
+            },
           },
         ],
         [
@@ -138,8 +151,13 @@ export const getFilterBlueprint = ({
         ],
         [
           {
-            type: "flatButtons",
-            btns: availableMdBtns,
+            type: "flatButtons2",
+            btns: {
+              name: "availableMdBtns",
+              categories: ["치과", "미용", "감기", "통증", "한의원"],
+              path: ["available_md_name"],
+              mode: "multi",
+            },
           },
         ],
         [
@@ -150,8 +168,13 @@ export const getFilterBlueprint = ({
         ],
         [
           {
-            type: "flatButtons",
-            btns: recommendedMdBtns,
+            type: "flatButtons2",
+            btns: {
+              name: "recommendedMdBtns",
+              categories: ["치과", "미용", "감기", "통증", "한의원"],
+              path: ["recommended_md_name"],
+              mode: "multi",
+            },
           },
         ],
         [
@@ -162,8 +185,13 @@ export const getFilterBlueprint = ({
         ],
         [
           {
-            type: "flatButtons",
-            btns: isActiveBtns,
+            type: "flatButtons2",
+            btns: {
+              name: "isActiveBtns",
+              categories: ["노출 O", "노출 X"],
+              path: ["is_active"],
+              mode: "single",
+            },
           },
         ],
         [
@@ -174,8 +202,13 @@ export const getFilterBlueprint = ({
         ],
         [
           {
-            type: "flatButtons",
-            btns: isContactCompletedBtns,
+            type: "flatButtons2",
+            btns: {
+              name: "isContactCompletedBtns",
+              categories: ["확보 O", "확보 X"],
+              path: ["is_contact_completed"],
+              mode: "single",
+            },
           },
         ],
         [

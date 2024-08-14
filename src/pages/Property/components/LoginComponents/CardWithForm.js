@@ -19,12 +19,10 @@ export function CardWithForm({ onSubmit }) {
 
   const handleEmailChange = (e) => {
     setTmpEmail(e.target.value);
-    console.log("email change:", e.target.value);
   };
 
   const handlePasswordChange = (e) => {
     setTmpPassword(e.target.value);
-    console.log("password change:", e.target.value);
   };
   return (
     <Card className="w-[350px]">

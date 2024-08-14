@@ -22,19 +22,18 @@ const PropertyList = ({
 
   console.log("in PropertyLIst, properties : ", properties);
 
-  // const newProperties = properties.map((property) => {
-  //   return;
-  // });
+  //useModal로 모달 띄우는 거는, 여기에서만.
+  //주소창이랑 연동 지을 때만 하는 거임.
   const renderedProperties = properties.map((property, index) => {
     if (properties.length === index + 1) {
-      console.log('red chck', properties.length, index + 1, property.id);
+      console.log("red chck", properties.length, index + 1, property.id);
       return (
         <PropertyItem
           ref={lastPropertyElementRef}
           showModal={showModal}
           property={property}
           setProperties={setProperties}
-          key={property?.group_id ? property.group_id : property.id }
+          key={property?.group_id ? property.group_id : property.id}
         />
       );
     } else {
@@ -43,7 +42,7 @@ const PropertyList = ({
           property={property}
           showModal={showModal}
           setProperties={setProperties}
-          key={property?.group_id ? property.group_id : property.id }
+          key={property?.group_id ? property.group_id : property.id}
         />
       );
     }

@@ -4,14 +4,11 @@ import { setIsList } from "../../../../store/slices/headerSlice";
 import { subDays, startOfWeek, subMonths, format } from "date-fns";
 import { setFilters } from "../../../../store/slices/searchFilterSlice";
 
-import { renderCategoryButtons } from "../../../../utils/formUtils";
+
 import StyleForm from "../../../../commonComponents/FormStyle";
 import { formGenerator } from "../../../../utils/formGenerator";
 import GridComponent from "../../../../@/components/ui/myPyRangeSlider";
-import {
-  btnsGeneratorFilter,
-  btnsGeneratorSort,
-} from "../../components/FilterComponents/FilterButtonGenerator";
+
 import {
   getSortBlueprint,
   getFilterBlueprint,
@@ -151,23 +148,11 @@ function FilterPage() {
     setFilterObj(newProperty);
   };
 
-  const sortBluePrint = getSortBlueprint({
-    btns: btnsGeneratorSort({
-      filterObj,
-      setFilterObj,
-      renderCategoryButtons,
-    }),
-  });
+  const sortBluePrint = getSortBlueprint();
   const filterBluePrint = getFilterBlueprint({
-    btns: btnsGeneratorFilter({
-      filterObj,
-      setFilterObj,
-      renderCategoryButtons,
-    }),
     customJSX: { myGridSlider },
   });
 
-  
   return (
     <div className="w-full max-w-[500px] justify-center items-center rounded-xl z-60 h-[1200px] overflow-y-auto">
       <div className="border-2 border-gray-100 px-4">

@@ -52,11 +52,10 @@ export const BasicInfoAddPage = ({
     setIsModalOpen(false);
   };
 
-  console.log(`formData.address <${formData.address}> <${basicData.address}>`);
+  
   const completion_date_chk = isValidDate(formData.completion_date);
   const updateChecker = (formData) => {
     if (!formData.address) {
-      console.log("formData.address!!!!!!!!!!!", formData.address);
       return { status: false, msg: "주소를 입력하세요" };
     } else if (!formData.completion_date)
       return { status: false, msg: "준공일자를 입력하세요" };
@@ -79,7 +78,6 @@ export const BasicInfoAddPage = ({
   const handleUpdateChanges = async (e) => {
     e.preventDefault();
     const chk = updateChecker(formData);
-    console.log("formData handleChanges", chk, formData.address, formData);
 
     if (chk.status === false) {
       setErrmsg(chk.msg);

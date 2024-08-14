@@ -18,7 +18,6 @@ function PropertyPage() {
 
   const { data, error, isLoading } = useFetchPropertiesQuery({
     is_verified: true,
-
     ...params,
     page,
   });

@@ -40,7 +40,6 @@ function useModal() {
   };
   const hideModal = () => {
     dispatch(closeModal());
-
     navigate(-1);
   };
 

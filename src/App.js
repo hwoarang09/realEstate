@@ -17,7 +17,9 @@ import { useAuth } from "./hooks/use-auth";
 
 const RootSelector = () => {
   const { isAuthenticated } = useAuth();
-  return isAuthenticated ? <AuthRoot /> : <PublicRoot />;
+
+  return <PublicRoot />;
+  // return isAuthenticated ? <AuthRoot /> : <PublicRoot />;
 };
 const router = createBrowserRouter([
   {
@@ -26,7 +28,8 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <LoginPage />,
+        // element: <LoginPage />,
+        element: <PropertyPage />,
       },
       {
         path: "login",
@@ -34,19 +37,23 @@ const router = createBrowserRouter([
       },
       {
         path: "/",
-        element: <PrivateRoute element={<PropertyPage />} />,
+        // element: <PrivateRoute element={<PropertyPage />} />,
+        element: <PropertyPage />,
       },
       {
         path: "property",
-        element: <PrivateRoute element={<PropertyPage />} />,
+        // element: <PrivateRoute element={<PropertyPage />} />,
+        element: <PropertyPage />,
       },
       {
         path: "property/:id",
-        element: <PrivateRoute element={<ModalWrapper />} />,
+        // element: <PrivateRoute element={<ModalWrapper />} />,
+        element: <ModalWrapper />,
       },
       {
         path: "bookmark",
-        element: <PrivateRoute element={<BookmarkPage />} />,
+        // element: <PrivateRoute element={<BookmarkPage />} />,
+        element: <BookmarkPage />,
       },
       {
         path: "*",

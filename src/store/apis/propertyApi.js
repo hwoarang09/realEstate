@@ -1,14 +1,14 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
-
+const token = process.env.REACT_APP_AUTH_TOKEN_ADMIN;
 const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
     baseUrl: apiBaseUrl,
 
     prepareHeaders: (headers, { endpoint }) => {
-      const token = localStorage.getItem("accessToken");
+      // const token = localStorage.getItem("accessToken");
       // Only set the Authorization header for non-uploadFile requests
       if (endpoint !== "uploadFile") {
         headers.set("Authorization", token);
