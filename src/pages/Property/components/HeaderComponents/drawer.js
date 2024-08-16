@@ -23,6 +23,7 @@ export function DrawerDemo({ handleLogout, direction }) {
   let roundDir = "";
   if (direction === "left") roundDir = "rounded-r-[10px]";
   else if (direction === "right") roundDir = "rounded-l-[10px]";
+
   return (
     <Drawer direction={direction}>
       <DrawerTrigger asChild>
@@ -46,11 +47,11 @@ export function DrawerDemo({ handleLogout, direction }) {
         <div className="pr-2">
           <VerticalToggleButtons />
         </div>
-        <DrawerFooter className="gap-0 pb-3.5 pl-2 pr-0">
+        <DrawerFooter className="gap-0 pb-3.5 pl-2 pr-0 z-100">
           <DrawerClose asChild>
             <Button
-              className="bg-white hover:bg-blue-700 text-black border-2 hover:text-white"
               onClick={handleLogout}
+              className="bg-white hover:bg-blue-700 text-black border-2 hover:text-white z-100"
             >
               LogOut
             </Button>

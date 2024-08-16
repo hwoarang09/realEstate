@@ -34,7 +34,7 @@ const Header = () => {
   const filterChk = isExactMatch(searchParams);
 
   const handleLogout = () => {
-    console.log("logout!!");
+    console.log("logout!!!!!!!!!!!");
     logout();
     navigate("/login");
   };
@@ -103,7 +103,7 @@ const Header = () => {
           <div className="w-[54px]">
             <DrawerDemo
               className="w-[54px]"
-              andleLogout={handleLogout}
+              handleLogout={handleLogout}
               direction="left"
             />
           </div>

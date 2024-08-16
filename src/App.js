@@ -21,7 +21,6 @@ import { useLocation, Navigate } from "react-router-dom";
 const RootSelector = () => {
   const { isAuthenticated } = useAuth();
   const location = useLocation();
-  console.log("RootSelector", isAuthenticated);
 
   if (location.pathname === "/login") {
     return <LoginPage />;

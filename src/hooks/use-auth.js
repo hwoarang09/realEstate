@@ -10,8 +10,6 @@ export const AuthProvider = ({ children }) => {
   );
   
   const login = (accessToken, refreshToken) => {
-    console.log("login, accessToken:", accessToken);
-    console.log("login, refreshToken:", refreshToken);
     localStorage.setItem("accessToken", accessToken);
     localStorage.setItem("refreshToken", refreshToken);
     setIsAuthenticated(true);
