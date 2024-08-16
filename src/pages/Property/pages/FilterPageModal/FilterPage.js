@@ -189,7 +189,7 @@ function FilterPage() {
       <div className="border-t border-gray-100 px-4">
         <StyleForm mainWrapper>
           <StyleForm tabWrapper>
-            <Accordion type="single" collapsible className="w-full">
+            <Accordion type="multiple" collapsible className="w-full">
               <AccordionItem value="item-sortDate">
                 <AccordionTrigger>
                   {" "}
