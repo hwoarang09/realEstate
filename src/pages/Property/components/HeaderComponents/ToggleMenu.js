@@ -39,21 +39,17 @@ export default function VerticalToggleButtons() {
       onChange={handleChange}
       className="w-full "
     >
-      {buttonTextList.map((text) => (
+      {buttonTextList.map((text, i) => (
         <ToggleButton
-          value="report"
-          aria-label="report"
+          value={text[0]}
+          aria-label={text[0]}
+          key={i}
           sx={{
             width: "100%",
             border: "none",
             backgroundColor: "white",
             color: "black",
             textAlign: "left",
-            "&:hover": {
-              backgroundColor: "#1D4ED8",
-              // backgroundColor: blue[900],
-              color: "white",
-            },
           }}
         >
           <div>{text[1]}</div>
