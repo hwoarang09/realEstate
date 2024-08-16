@@ -16,11 +16,17 @@ import ItemMapPage from "./pages/Property/pages/ItemMapModal/ItemMapPage";
 // import scrollLoger from "./hooks/use-scrollLogger";
 import { useAuth } from "./hooks/use-auth";
 import { NavermapsProvider } from "react-naver-maps";
+import { useLocation, Navigate } from "react-router-dom";
 
 const RootSelector = () => {
   const { isAuthenticated } = useAuth();
+  const location = useLocation();
+  console.log("RootSelector", isAuthenticated);
 
-  return isAuthenticated ? <AuthRoot /> : <PublicRoot />;
+  if (location.pathname === "/login") {
+    return <LoginPage />;
+  }
+  return isAuthenticated ? <AuthRoot /> : <Navigate to="/login" />;
 };
 const router = createBrowserRouter([
   {
@@ -29,7 +35,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <AuthRoot element={<LoginPage />} />,
+        element: <Navigate to="/login" />,
         // element: <PropertyPage />,
       },
       {
