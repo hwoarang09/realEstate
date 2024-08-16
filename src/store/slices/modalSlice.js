@@ -5,6 +5,7 @@ const initialState = {
   modalPath: null,
   selectedProperty: null,
   scrollPosition: 0,
+  mapCenter: null,
 };
 
 const modalSlice = createSlice({
@@ -29,9 +30,18 @@ const modalSlice = createSlice({
     setScrollPosition: (state, action) => {
       state.scrollPosition = action.payload;
     },
+    setMapCenter: (state, action) => {
+      state.mapCenter = action.payload;
+    },
   },
 });
 
-export const { openModal, closeModal, setModalPath,setScrollPosition } = modalSlice.actions;
+export const {
+  openModal,
+  closeModal,
+  setModalPath,
+  setScrollPosition,
+  setMapCenter,
+} = modalSlice.actions;
 
 export const modalReducer = modalSlice.reducer;

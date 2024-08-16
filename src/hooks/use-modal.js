@@ -6,6 +6,7 @@ import {
   closeModal,
   setModalPath,
   setScrollPosition,
+  setMapCenter,
 } from "../store/slices/modalSlice";
 
 function useModal() {
@@ -31,11 +32,14 @@ function useModal() {
     }
   }, [location.pathname, dispatch]);
 
-  const showModal = ({ modalPath, selectedProperty }) => {
+  const showModal = ({ modalPath, selectedProperty, latLonObj }) => {
     dispatch(setScrollPosition(window.scrollY));
     console.log("in showModal", window.scrollY, scrollPosition, modalPath);
     dispatch(openModal({ modalPath, selectedProperty }));
     dispatch(setModalPath({ modalPath }));
+    if (latLonObj) {
+      dispatch(setMapCenter(latLonObj));
+    }
     navigate(modalPath);
   };
   const hideModal = () => {

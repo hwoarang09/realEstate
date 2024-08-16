@@ -35,10 +35,9 @@ const PropertyItem = forwardRef(
 
     const handleMapClick = (event, { address }) => {
       event.stopPropagation();
-      // const modalPath =
-      //   "/map/?lat=" + property.latitude + "&lon=" + property.longitude;
+      const latLonObj = { lat: property.latitude, lon: property.longitude };
       const modalPath = "/map";
-      showModal({ modalPath, selectedProperty });
+      showModal({ modalPath, selectedProperty, latLonObj });
     };
     const handleClickGroup = () => {
       console.log("click group");

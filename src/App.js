@@ -15,6 +15,7 @@ import PropertyPage from "./pages/Property/pages/Property/PropertyPage";
 import ItemMapPage from "./pages/Property/pages/ItemMapModal/ItemMapPage";
 // import scrollLoger from "./hooks/use-scrollLogger";
 import { useAuth } from "./hooks/use-auth";
+import { NavermapsProvider } from "react-naver-maps";
 
 const RootSelector = () => {
   const { isAuthenticated } = useAuth();
@@ -93,9 +94,14 @@ function App() {
   }, [scrollPosition]);
 
   return (
-    <AuthProvider>
-      <RouterProvider router={router} />
-    </AuthProvider>
+    <NavermapsProvider
+      ncpClientId={process.env.REACT_APP_NAVER_API_ID}
+      // clientSecret={process.env.REACT_APP_NAVER_API_CLIENT_SECRET}
+    >
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </NavermapsProvider>
   );
 }
 

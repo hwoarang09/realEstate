@@ -10,7 +10,7 @@ import { useLocation } from "react-router-dom";
 //모달이랑 주소창 연동 지을 때만 사용함.
 //그외의 모달은 단순하게 띄움
 const ModalWrapper = () => {
-  const { isOpen, modalPath } = useSelector((state) => state.modals);
+  const { isOpen, modalPath, mapCenter } = useSelector((state) => state.modals);
   const { hideModal } = useModal();
   const location = useLocation();
 
@@ -39,13 +39,13 @@ const ModalWrapper = () => {
       </Modal>
     );
   } else if (modalPath.includes("/map")) {
-    console.log("map!!!!!!!!!!!!!!!!", lat, lon);
+    console.log("map!!!!!!!!!!!!!!!!", mapCenter.lat, mapCenter.lon);
     return (
       <Modal onClose={hideModal} isRouting={true}>
         <ItemMapPage
           closeModal={hideModal}
           modalPath={modalPath}
-          roomId={roomId}
+          mapCenter={mapCenter}
         />
       </Modal>
     );
