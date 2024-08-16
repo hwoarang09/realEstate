@@ -13,9 +13,12 @@ import {
   DrawerTrigger,
 } from "../../../../@/components/ui/drawer";
 
+
+import VerticalToggleButtons from "./ToggleMenu";
+
 export function DrawerDemo({ handleLogout, direction }) {
   let classNameDefault =
-    "bg-background flex flex-col h-3/4 w-[300px] right-0 top-0 ";
+    "bg-background flex flex-col h-full w-[200px] right-0 top-0 ";
 
   let roundDir = "";
   if (direction === "left") roundDir = "rounded-r-[10px]";
@@ -33,26 +36,24 @@ export function DrawerDemo({ handleLogout, direction }) {
         className={classNameDefault + roundDir}
       >
         <DrawerHeader>
-          <DrawerTitle>오픈상점</DrawerTitle>
-          <DrawerDescription>오픈상점 솔루션</DrawerDescription>
+          <DrawerTitle>오픈닥터</DrawerTitle>
+          <DrawerDescription>오픈닥터 솔루션</DrawerDescription>
         </DrawerHeader>
-        <div className="p-4 pb-0">
-          <div className="flex items-center justify-starts space-x-2">
-            매물찾기
-          </div>
-          <div className="flex items-center justify-starts space-x-2">
-            고객관리
-          </div>
-          <div className="flex items-center justify-starts space-x-2">
-            입지분석
-          </div>
-          <div className="flex items-center justify-starts space-x-2">
-            매물추천
-          </div>
+        <div className="p-4 flex justify-between">
+          <div>Admin님</div>
+          {/* <div>로그아웃</div> */}
         </div>
-        <DrawerFooter>
+        <div className="pr-2">
+          <VerticalToggleButtons />
+        </div>
+        <DrawerFooter className="gap-0 pb-3.5 pl-2 pr-0">
           <DrawerClose asChild>
-            <Button onClick={handleLogout}>LogOut</Button>
+            <Button
+              className="bg-white hover:bg-blue-700 text-black border-2 hover:text-white"
+              onClick={handleLogout}
+            >
+              LogOut
+            </Button>
           </DrawerClose>
         </DrawerFooter>
       </DrawerContent>
