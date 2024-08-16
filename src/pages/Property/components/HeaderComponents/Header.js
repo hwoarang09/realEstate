@@ -22,8 +22,8 @@ import { useAuth } from "../../../../hooks/use-auth";
 
 const Header = () => {
   const [searchText, setSearchText] = useState("");
-  const left = useSelector((state) => state.isList.left);
-  const search = useSelector((state) => state.isList.search);
+  const { left, search, isList } = useSelector((state) => state.isList);
+
   const dispatch = useDispatch();
   const searchQuery = useSelector((state) => state.searchFilter.keyword);
   const searchParams = useSelector((state) => state.searchFilter);
@@ -44,8 +44,13 @@ const Header = () => {
     dispatch(toggleIsList());
   };
   const handleClickSearch = () => {
-    dispatch(setLeft(!left));
-    dispatch(setSearch(!search));
+    if (isList) {
+      dispatch(setLeft(!left));
+      dispatch(setSearch(!search));
+    } else {
+      // dispatch(setLeft(!left));
+      dispatch(setSearch(!search));
+    }
   };
 
   const handleClickLeft = () => {
@@ -73,18 +78,15 @@ const Header = () => {
   };
   const handleX = () => {
     setSearchText("");
-    dispatch(setLeft(false));
-    dispatch(setSearch(false));
-
     dispatch(setKeyword(""));
     dispatch(setPage(1));
-    console.log(
-      `in handleX query searchText ${searchText} searchQuery ${searchQuery}, ${JSON.stringify(
-        searchParams,
-        null,
-        2
-      )}`
-    );
+
+    if (isList) {
+      dispatch(setLeft(false));
+      dispatch(setSearch(false));
+    } else {
+      dispatch(setSearch(false));
+    }
   };
 
   return (

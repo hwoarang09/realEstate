@@ -121,10 +121,20 @@ const PropertyItem = forwardRef(
             alt="Listing"
             className="w-full aspect-[3/2] object-cover rounded"
           />
-          <div className="absolute bottom-3 right-14 border-2 border-black bg-white rounded-full p-2">
+          <div
+            onClick={() => {
+              alert("북마크 미구현");
+            }}
+            className="absolute bottom-3 right-14 border-2 border-black bg-white rounded-full p-2 cursor-pointer"
+          >
             <FaRegBookmark className="text-black w-4 h-4" />
           </div>
-          <div className="absolute bottom-3 right-3 border-2 border-black bg-white rounded-full p-2">
+          <div
+            onClick={() => {
+              alert("Download 미구현");
+            }}
+            className="absolute bottom-3 right-3 border-2 border-black bg-white rounded-full p-2 cursor-pointer"
+          >
             <IoMdDownload className="text-black w-4 h-4" />
           </div>
           <div className="absolute top-4 left-4 bg-blue-700 rounded-full py-1 px-2">
@@ -171,7 +181,7 @@ const PropertyItem = forwardRef(
               <span className="text-sm">
                 <span>전용</span>
                 <span className="font-bold ml-2 text-lg">
-                  {property.exclusive_area}
+                  {property.exclusive_area ? property.exclusive_area : "?"}
                 </span>
                 <span>평</span>
               </span>
@@ -192,14 +202,14 @@ const PropertyItem = forwardRef(
                 <>
                   <span className="font-bold ml-1 ">
                     {Number(property.deposit) / 10000}
-                    {property.deposit === null ? "" : property.deposit}
+                    {property.deposit === null ? "?" : property.deposit}
                   </span>
                   <span>억</span>
                 </>
               ) : (
                 <>
                   <span className="font-bold ml-1 ">
-                    {property.deposit === null ? "" : property.deposit}
+                    {property.deposit === null ? "?" : property.deposit}
                   </span>
                   <span>만</span>
                 </>
@@ -211,14 +221,14 @@ const PropertyItem = forwardRef(
                 <>
                   <span className="font-bold ml-1 ">
                     {Number(property.monthly_rent) / 10000}
-                    {property.monthly_rent === null ? "" : "억원"}
+                    {property.monthly_rent === null ? "?" : "억원"}
                   </span>
                 </>
               ) : (
                 <>
                   <span className="font-bold ml-1 ">
                     {property.monthly_rent === null
-                      ? ""
+                      ? "?"
                       : property.monthly_rent}
                   </span>
                   <span>만</span>
@@ -231,13 +241,13 @@ const PropertyItem = forwardRef(
                 <>
                   <span className="font-bold ml-1">
                     {Number(property.deposit) / 10000}
-                    {property.deposit === null ? "" : "억"}
+                    {property.deposit === null ? "?" : "억"}
                   </span>
                 </>
               ) : (
                 <>
                   <span className="font-bold ml-1 ">
-                    {property.deposit === null ? "" : property.deposit}
+                    {property.deposit === null ? "?" : property.deposit}
                   </span>
                   <span>만</span>
                 </>
