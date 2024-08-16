@@ -29,12 +29,13 @@ const handleMultiCategoryClick = (cate, cateList, setFunction) => {
     return newProperty;
   });
 };
-
 const handleSingleCategoryClick = (cate, cateList, setFunction) => {
   setFunction((prevProperty) => {
     const newProperty = _.cloneDeep(prevProperty);
-    const newCateList = [...cateList];
-    const lastKey = newCateList.pop();
+
+    // cateList 배열을 변경하지 않도록 slice를 사용하여 사본을 만듦
+    const newCateList = cateList.slice(0, -1);
+    const lastKey = cateList[cateList.length - 1]; // 마지막 요소는 여전히 cateList에서 가져옴
     const target = newCateList.reduce((obj, key) => obj[key], newProperty);
 
     if (target[lastKey] === undefined) {
@@ -46,6 +47,7 @@ const handleSingleCategoryClick = (cate, cateList, setFunction) => {
     return newProperty;
   });
 };
+
 const handleChange = (keyList, value, setFunction) => {
   setFunction((prevProperty) => {
     const newProperty = { ...prevProperty };
