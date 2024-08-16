@@ -4,6 +4,7 @@ import { IoMdDownload } from "react-icons/io";
 import { Button } from "../../../../@/components/ui/button";
 import { SlArrowUp, SlArrowDown } from "react-icons/sl";
 import defaultImage from "../../../../Images/defaultImage.png";
+import { add } from "lodash";
 
 const cateArray = ["치과", "미용", "감기", "통증", "한의원"];
 
@@ -32,6 +33,10 @@ const PropertyItem = forwardRef(
       }
     };
 
+    const handleMapClick = (event, { address }) => {
+      event.stopPropagation();
+      alert(`지도보기 미구현 , ${address}`);
+    };
     const handleClickGroup = () => {
       console.log("click group");
 
@@ -116,7 +121,8 @@ const PropertyItem = forwardRef(
     return (
       <div
         ref={ref}
-        className="bg-white mx-4 mb-6 shadow-md rounded-2xl border "
+        className="bg-white mx-4 mb-6 shadow-md rounded-2xl border-2 active:border-2 active:border-black cursor-pointer"
+        onClick={() => handleClick({ modalPath, selectedProperty })}
       >
         <div className="relative w-full">
           <img
@@ -270,9 +276,11 @@ const PropertyItem = forwardRef(
               <Button
                 variant="outline_blue"
                 // className="absolute bottom-8 left-2 "
-                onClick={() => handleClick({ modalPath, selectedProperty })}
+                onClick={(e) =>
+                  handleMapClick(e, { address: property.address })
+                }
               >
-                상세 정보
+                지도 보기
               </Button>
             </div>
           </div>
