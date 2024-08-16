@@ -35,7 +35,10 @@ const PropertyItem = forwardRef(
 
     const handleMapClick = (event, { address }) => {
       event.stopPropagation();
-      alert(`지도보기 미구현 , ${address}`);
+      // const modalPath =
+      //   "/map/?lat=" + property.latitude + "&lon=" + property.longitude;
+      const modalPath = "/map";
+      showModal({ modalPath, selectedProperty });
     };
     const handleClickGroup = () => {
       console.log("click group");

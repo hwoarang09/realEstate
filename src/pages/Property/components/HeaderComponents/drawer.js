@@ -36,8 +36,8 @@ export function DrawerDemo({ handleLogout, direction }) {
         className={classNameDefault + roundDir}
       >
         <DrawerHeader>
-          <DrawerTitle>오픈닥터</DrawerTitle>
-          <DrawerDescription>오픈닥터 솔루션</DrawerDescription>
+          <DrawerTitle>오픈가게</DrawerTitle>
+          <DrawerDescription>오픈가게 솔루션</DrawerDescription>
         </DrawerHeader>
         <div className="p-4 flex justify-between">
           <div>Admin님</div>

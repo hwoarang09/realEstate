@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import Modal from "./Modal";
 import PropertyItemInfoPage from "../pages/Property/pages/ItemInfoModal/PropertyItemInfoPage";
+import ItemMapPage from "../pages/Property/pages/ItemMapModal/ItemMapPage";
 import PropertyAddModal from "../pages/Property/pages/ItemAddModal/PropertyItemAddPage";
 import useModal from "../hooks/use-modal";
 import React from "react";
@@ -17,7 +18,8 @@ const ModalWrapper = () => {
 
   const params = new URLSearchParams(location.search);
   const roomId = params.get("r");
-
+  const lat = params.get("lat");
+  const lon = params.get("lon");
   if (modalPath === "/property/add") {
     return (
       <Modal onClose={hideModal} isRouting={true}>
@@ -30,6 +32,17 @@ const ModalWrapper = () => {
     return (
       <Modal onClose={hideModal} isRouting={true}>
         <PropertyItemInfoPage
+          closeModal={hideModal}
+          modalPath={modalPath}
+          roomId={roomId}
+        />
+      </Modal>
+    );
+  } else if (modalPath.includes("/map")) {
+    console.log("map!!!!!!!!!!!!!!!!", lat, lon);
+    return (
+      <Modal onClose={hideModal} isRouting={true}>
+        <ItemMapPage
           closeModal={hideModal}
           modalPath={modalPath}
           roomId={roomId}

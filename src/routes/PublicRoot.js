@@ -6,7 +6,7 @@ export default function PublicRoot() {
   return (
     <div className="">
       {/* 헤더는 원래 없어야함..관리자 계정 보호를 위해 뚫어둠 */}
-      <Header />
+      {/* <Header /> */}
       <Outlet />
     </div>
   );

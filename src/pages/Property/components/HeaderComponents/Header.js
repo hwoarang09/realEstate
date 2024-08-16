@@ -90,21 +90,27 @@ const Header = () => {
   };
 
   return (
-    <div className="header max-w-[500px] flex fixed top-0 left-0 w-full h-12 px-4 py-8 bg-white z-10">
+    <div className="header max-w-[500px] flex items-center fixed top-0 left-0 w-full h-12 px-4 py-8 bg-white z-10">
       <div className="w-1/12 flex items-center pr-4">
         {left ? (
-          <FaChevronLeft onClick={handleClickLeft} className="cursor-pointer" />
+          <div className="cursor-pointer w-[50px] flex items-center hover:bg-gray-100 rounded-2xl h-[50px]">
+            <FaChevronLeft onClick={handleClickLeft} className="w-[50px]" />
+          </div>
         ) : (
-          <DrawerDemo handleLogout={handleLogout} direction="left" />
+          <div>
+            <DrawerDemo handleLogout={handleLogout} direction="left" />
+          </div>
         )}
       </div>
-      <div className={`flex items-center ${search ? "w-11/12" : "w-3/4 "}`}>
+      <div
+        className={`flex items-center pl-6 ${search ? "w-11/12" : "w-3/4 "}`}
+      >
         {search && (
           <form onSubmit={handleSubmit} className="flex w-full relative ">
             <Input
               value={searchText}
               onChange={handleInputChange}
-              className="flex-grow"
+              className="flex-grow pl-4"
               ref={searchInputRef}
             />
             <button type="submit" className="hidden">

@@ -27,8 +27,8 @@ export function CardWithForm({ onSubmit }) {
   return (
     <Card className="w-[350px]">
       <CardHeader>
-        <CardTitle>오픈상점</CardTitle>
-        <CardDescription>오픈상점 솔루션 로그인</CardDescription>
+        <CardTitle>오픈가게</CardTitle>
+        <CardDescription>오픈가게 솔루션 로그인</CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={(e) => onSubmit(e, tmpEmail, tmpPassword)}>

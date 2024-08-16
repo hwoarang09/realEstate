@@ -12,10 +12,10 @@ const FormHeader = ({ onCloseModal }) => {
     onCloseModal();
   };
   return (
-    <div className="fixed top-0 left-0 h-16 pt-2 bg-opacity-10 bg-white z-10">
+    <div className="fixed top-0 left-4 h-16 pt-2 bg-opacity-10 bg-white z-10">
       <div
         onClick={handleClick}
-        className="hover:bg-gray-100 hover:rounded-xl w-16 p-4 rounded cursor-pointer flex justify-center items-center "
+        className="hover:bg-gray-100 hover:rounded-xl w-16 py-4 rounded cursor-pointer flex justify-center items-center "
       >
         <FaChevronLeft className="w-6 h-6" />
       </div>

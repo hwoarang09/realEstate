@@ -23,6 +23,7 @@ const LoginPage = () => {
       //   password,
       // });
       // login(response.data.access_token, response.data.refresh_token);
+      login(1, 2);
       navigate("/property");
     } catch (error) {
       alert("Login failed");
