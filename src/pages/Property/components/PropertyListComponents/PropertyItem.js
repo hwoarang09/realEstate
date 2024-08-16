@@ -116,13 +116,13 @@ const PropertyItem = forwardRef(
     return (
       <div
         ref={ref}
-        className="bg-white mx-4 mb-6 shadow-md rounded-xl border "
+        className="bg-white mx-4 mb-6 shadow-md rounded-2xl border "
       >
         <div className="relative w-full">
           <img
             src={imageUrl}
             alt="Listing"
-            className="w-full aspect-[3/2] object-cover rounded-t-xl"
+            className="w-full aspect-[3/2] object-cover rounded-t-2xl"
           />
           <div
             onClick={() => {
@@ -149,7 +149,7 @@ const PropertyItem = forwardRef(
 
         <div className="mt-1.5 px-4">
           <div className="flex items-center space-x-5 text-base">
-            <div className="mt-1.5 mb-2 text-sm">{content}</div>
+            <div className="mt-1.5 text-sm">{content}</div>
             <div className="flex-grow"></div>
             {/* <div
               onClick={() => handleClick({ modalPath, selectedProperty })}
