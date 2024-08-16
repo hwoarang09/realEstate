@@ -31,8 +31,8 @@ const PropertyAddModal = ({ closeModal }) => {
     setBasicInfo(properties);
   }, [properties]);
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error!</div>;
+  // if (isLoading) return <div>Loading...</div>;
+  // if (error) return <div>Error!</div>;
 
   const handleSearch = (e) => {
     e.preventDefault();

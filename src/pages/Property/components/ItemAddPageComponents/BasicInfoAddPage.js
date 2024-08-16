@@ -34,7 +34,7 @@ import SubModal from "../../../../commonComponents/SubModal";
 
 import { useLazyFetchPropertiesQuery } from "../../../../store";
 import { useSelector } from "react-redux";
-
+import Button from "../../../../commonComponents/Button";
 export const BasicInfoAddPage = ({
   basicInfo,
 
@@ -52,7 +52,6 @@ export const BasicInfoAddPage = ({
     setIsModalOpen(false);
   };
 
-  
   const completion_date_chk = isValidDate(formData.completion_date);
   const updateChecker = (formData) => {
     if (!formData.address) {
@@ -149,8 +148,15 @@ export const BasicInfoAddPage = ({
         <AbsPosButton onClick={handleUpdateChanges}>변경사항 저장</AbsPosButton>
       </form>
       <SubModal isOpen={isModalOpen} onClose={closeModal}>
-        <div className="fixed bg-white max-w-[450px] justify-center items-center rounded-xl w-4/5 z-30">
-          {errMsg}
+        <div className="fixed bg-white max-w-[450px] min-h-[150px] flex justify-center items-center rounded-xl w-4/5 z-30">
+          <div className="h-full">
+            <div className="mb-4">{errMsg}</div>
+            <div className="flex justify-center items-center">
+              <Button primary onClick={closeModal}>
+                확인
+              </Button>
+            </div>
+          </div>
         </div>
       </SubModal>
     </>
