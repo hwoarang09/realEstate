@@ -114,12 +114,15 @@ const PropertyItem = forwardRef(
     const imageUrl = property.file.image_outside[0]?.url || defaultImage;
 
     return (
-      <div ref={ref} className="bg-white m-4 shadow-md rounded pb-2 border-b ">
+      <div
+        ref={ref}
+        className="bg-white mx-4 mb-6 shadow-md rounded-xl border "
+      >
         <div className="relative w-full">
           <img
             src={imageUrl}
             alt="Listing"
-            className="w-full aspect-[3/2] object-cover rounded"
+            className="w-full aspect-[3/2] object-cover rounded-t-xl"
           />
           <div
             onClick={() => {
@@ -176,86 +179,87 @@ const PropertyItem = forwardRef(
             {property.building_name}
           </div> */}
 
-          <div className="flex flex-col justify-start">
-            <div className="flex justify-start space-x-4">
-              <span className="text-sm">
-                <span>전용</span>
-                <span className="font-bold ml-2 text-lg">
-                  {property.exclusive_area ? property.exclusive_area : "?"}
+          <div className="my-2">
+            <div className="flex flex-col justify-start">
+              <div className="flex justify-start space-x-4">
+                <span className="text-sm">
+                  <span className="text-gray-400 font-bold">전용</span>
+                  <span className="font-bold ml-2 text-lg">
+                    {property.exclusive_area ? property.exclusive_area : "?"}
+                  </span>
+                  <span>평</span>
                 </span>
-                <span>평</span>
-              </span>
-              <span className="text-sm">
-                <span>임대</span>
-                <span className="font-bold ml-2 text-lg">
-                  {property.contact_area ? property.contact_area : "?"}
+                <span className="text-sm">
+                  <span className="text-gray-400 font-bold">임대</span>
+                  <span className="font-bold ml-2 text-lg">
+                    {property.contact_area ? property.contact_area : "?"}
+                  </span>
+                  <span>평</span>
                 </span>
-                <span>평</span>
-              </span>
+              </div>
+            </div>
+            <div className="flex text-sm justify-start">
+              <div className="mr-6">
+                <span className="text-gray-400 font-bold">보 </span>
+
+                {Number(property.deposit) > 10000 ? (
+                  <>
+                    <span className="font-bold text-lg  ml-1 ">
+                      {Number(property.deposit) / 10000}
+                      {property.deposit === null ? "?" : property.deposit}
+                    </span>
+                    <span>억</span>
+                  </>
+                ) : (
+                  <>
+                    <span className="font-bold ml-1 text-lg ">
+                      {property.deposit === null ? "?" : property.deposit}
+                    </span>
+                    <span>만</span>
+                  </>
+                )}
+              </div>
+              <div className="mr-6 ">
+                <span className="text-gray-400  font-bold">임 </span>
+                {Number(property.monthly_rent) > 10000 ? (
+                  <>
+                    <span className="font-bold ml-1 text-lg ">
+                      {Number(property.monthly_rent) / 10000}
+                      {property.monthly_rent === null ? "?" : "억원"}
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <span className="font-bold ml-1 text-lg ">
+                      {property.monthly_rent === null
+                        ? "?"
+                        : property.monthly_rent}
+                    </span>
+                    <span>만</span>
+                  </>
+                )}
+              </div>
+              <div className="mr-6">
+                <span className="text-gray-400 font-bold">관 </span>
+                {Number(property.deposit) > 10000 ? (
+                  <>
+                    <span className="font-bold ml-1 text-lg ">
+                      {Number(property.deposit) / 10000}
+                      {property.deposit === null ? "?" : "억"}
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <span className="font-bold ml-1 text-lg ">
+                      {property.deposit === null ? "?" : property.deposit}
+                    </span>
+                    <span>만</span>
+                  </>
+                )}
+              </div>
             </div>
           </div>
-          <div className="mt-2 flex text-sm justify-start">
-            <div className="mr-6">
-              <span className="text-gray-400 font-bold">보 </span>
-
-              {Number(property.deposit) > 10000 ? (
-                <>
-                  <span className="font-bold ml-1 ">
-                    {Number(property.deposit) / 10000}
-                    {property.deposit === null ? "?" : property.deposit}
-                  </span>
-                  <span>억</span>
-                </>
-              ) : (
-                <>
-                  <span className="font-bold ml-1 ">
-                    {property.deposit === null ? "?" : property.deposit}
-                  </span>
-                  <span>만</span>
-                </>
-              )}
-            </div>
-            <div className="mr-6">
-              <span className="text-gray-400 font-bold">임 </span>
-              {Number(property.monthly_rent) > 10000 ? (
-                <>
-                  <span className="font-bold ml-1 ">
-                    {Number(property.monthly_rent) / 10000}
-                    {property.monthly_rent === null ? "?" : "억원"}
-                  </span>
-                </>
-              ) : (
-                <>
-                  <span className="font-bold ml-1 ">
-                    {property.monthly_rent === null
-                      ? "?"
-                      : property.monthly_rent}
-                  </span>
-                  <span>만</span>
-                </>
-              )}
-            </div>
-            <div className="mr-6">
-              <span className="text-gray-400 font-bold">관 </span>
-              {Number(property.deposit) > 10000 ? (
-                <>
-                  <span className="font-bold ml-1">
-                    {Number(property.deposit) / 10000}
-                    {property.deposit === null ? "?" : "억"}
-                  </span>
-                </>
-              ) : (
-                <>
-                  <span className="font-bold ml-1 ">
-                    {property.deposit === null ? "?" : property.deposit}
-                  </span>
-                  <span>만</span>
-                </>
-              )}
-            </div>
-          </div>
-
-          <div className="relative flex mt-4 mb-2 justify-between items-center">
+          <div className="flex my-4 justify-between items-center">
             <div className="w-full text-left">
               <p className="text-sm  ">
                 {property.address}
