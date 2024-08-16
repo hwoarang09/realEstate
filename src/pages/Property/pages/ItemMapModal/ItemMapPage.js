@@ -5,15 +5,14 @@ import ItemInfoHeader from "../../components/FormComponents/FormHeader";
 import MapDemo from "../../components/ItemMapPageComponents/ItemMapPageBody";
 const ItemMapPage = ({ closeModal, modalPath, mapCenter }) => {
   const navigate = useNavigate();
-  console.log("ItemMapPage", mapCenter);
+
   return (
     <div className="w-full h-[1200px] overflow-y-auto">
       <ItemInfoHeader onCloseModal={closeModal} />
-      <form className="mt-10">
-        <div className="px-4 pt-4 ">
-          <h1>ItemMapPage</h1>
-          <div>{mapCenter.lat}</div>
-          <div>{mapCenter.lon}</div>
+      <form className="mt-16">
+        <div className="p-4 ">
+          <div>위도 : {mapCenter.lat}</div>
+          <div>경도 : {mapCenter.lon}</div>
           <button onClick={() => navigate("/property")}>Go to Property</button>
         </div>
       </form>

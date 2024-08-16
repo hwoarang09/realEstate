@@ -133,18 +133,20 @@ const PropertyItem = forwardRef(
             className="w-full aspect-[3/2] object-cover rounded-t-2xl"
           />
           <div
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               alert("북마크 미구현");
             }}
-            className="absolute bottom-3 right-14 border-2 border-black bg-white rounded-full p-2 cursor-pointer"
+            className="absolute bottom-2 right-14 border-2 border-black bg-white rounded-full p-2 m-1 cursor-pointer"
           >
             <FaRegBookmark className="text-black w-4 h-4" />
           </div>
           <div
-            onClick={() => {
+            onClick={(e) => {
               alert("Download 미구현");
+              e.stopPropagation();
             }}
-            className="absolute bottom-3 right-3 border-2 border-black bg-white rounded-full p-2 cursor-pointer"
+            className="absolute bottom-2 right-2 border-2 border-black bg-white rounded-full p-2 m-1 cursor-pointer"
           >
             <IoMdDownload className="text-black w-4 h-4" />
           </div>
