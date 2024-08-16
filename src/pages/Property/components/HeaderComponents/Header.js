@@ -91,26 +91,31 @@ const Header = () => {
 
   return (
     <div className="header max-w-[500px] flex items-center fixed top-0 left-0 w-full h-12 px-4 py-8 bg-white z-10">
-      <div className="w-1/12 flex items-center pr-4">
+      <div className="w-[54px] rounded-2xl flex items-center pr-4 hover:bg-gray-100">
         {left ? (
-          <div className="cursor-pointer w-[50px] flex items-center hover:bg-gray-100 rounded-2xl h-[50px]">
-            <FaChevronLeft onClick={handleClickLeft} className="w-[50px]" />
+          <div
+            className="cursor-pointer w-[54px] flex items-center h-[50px]"
+            onClick={handleClickLeft}
+          >
+            <FaChevronLeft className="w-[54px]" />
           </div>
         ) : (
-          <div>
-            <DrawerDemo handleLogout={handleLogout} direction="left" />
+          <div className="w-[54px]">
+            <DrawerDemo
+              className="w-[54px]"
+              andleLogout={handleLogout}
+              direction="left"
+            />
           </div>
         )}
       </div>
-      <div
-        className={`flex items-center pl-6 ${search ? "w-11/12" : "w-3/4 "}`}
-      >
+      <div className={`flex items-center mx-2 ${search ? "w-5/6" : "w-3/4 "}`}>
         {search && (
           <form onSubmit={handleSubmit} className="flex w-full relative ">
             <Input
               value={searchText}
               onChange={handleInputChange}
-              className="flex-grow pl-4"
+              className="flex-grow pl-2"
               ref={searchInputRef}
             />
             <button type="submit" className="hidden">
@@ -132,7 +137,7 @@ const Header = () => {
       )}
       <div
         onClick={handleClickFilter}
-        className="relative w-1/12 flex items-center justify-center cursor-pointer"
+        className="relative w-[32px] flex items-center justify-center cursor-pointer"
       >
         <FaFilter />{" "}
         {!filterChk && (
