@@ -4,10 +4,16 @@ import _ from "lodash";
 
 const handleMultiCategoryClick = (cate, cateList, setFunction) => {
   setFunction((prevProperty) => {
+    console.log("cateList : ", cateList);
     const newProperty = _.cloneDeep(prevProperty);
     const lastKey = cateList.pop();
     const target = cateList.reduce((obj, key) => obj[key], newProperty);
 
+    console.log(
+      `target : ${JSON.stringify(
+        target
+      )}, lastKey ${lastKey}, cate ${cate} cateList : ${cateList}`
+    );
     if (target[lastKey] === undefined) {
       target[lastKey] = [];
     } else {
@@ -102,7 +108,6 @@ const renderCategoryButtons = (
       ? handleSingleCategoryClick
       : handleMultiCategoryClick;
 
-  // console.log("rendergedButtons", cateJsonKeyList, chkSingleMulti);
   return categories.map((cate) => {
     let isSelected = false;
 

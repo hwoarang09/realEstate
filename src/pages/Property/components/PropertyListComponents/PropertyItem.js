@@ -5,7 +5,7 @@ import { Button } from "../../../../@/components/ui/button";
 import { SlArrowUp, SlArrowDown } from "react-icons/sl";
 import defaultImage from "../../../../Images/defaultImage.png";
 
-const cateArray = ["치과", "미용", "감기", "통증", "한의원"];
+const cateArray = ["헬스장", "고깃집", "오락실", "카페", "병원"];
 
 const PropertyItem = forwardRef(
   ({ property, showModal, setProperties }, ref) => {

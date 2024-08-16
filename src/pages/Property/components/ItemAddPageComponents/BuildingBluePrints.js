@@ -135,7 +135,7 @@ export const getHideBlueprint = ({ customJSX: { buildingSizeComp } }) => [
       [
         {
           type: "label",
-          labelText: "동종진료과 가능 여부",
+          labelText: "동종업종 가능 여부",
           style: "w-full",
         },
       ],

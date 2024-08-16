@@ -33,8 +33,8 @@ export function DrawerDemo({ handleLogout, direction }) {
         className={classNameDefault + roundDir}
       >
         <DrawerHeader>
-          <DrawerTitle>오픈닥터</DrawerTitle>
-          <DrawerDescription>오픈닥터 솔루션</DrawerDescription>
+          <DrawerTitle>오픈상점</DrawerTitle>
+          <DrawerDescription>오픈상점 솔루션</DrawerDescription>
         </DrawerHeader>
         <div className="p-4 pb-0">
           <div className="flex items-center justify-starts space-x-2">

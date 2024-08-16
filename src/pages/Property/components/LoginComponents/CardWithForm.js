@@ -14,8 +14,8 @@ import { Label } from "../../../../@/components/ui/label";
 import { useState } from "react";
 
 export function CardWithForm({ onSubmit }) {
-  const [tmpEmail, setTmpEmail] = useState("admin@admin.com");
-  const [tmpPassword, setTmpPassword] = useState("opndoctor2023!");
+  const [tmpEmail, setTmpEmail] = useState("로그인 누르면 다음화면넘어감");
+  const [tmpPassword, setTmpPassword] = useState("");
 
   const handleEmailChange = (e) => {
     setTmpEmail(e.target.value);
@@ -27,8 +27,8 @@ export function CardWithForm({ onSubmit }) {
   return (
     <Card className="w-[350px]">
       <CardHeader>
-        <CardTitle>오픈닥터</CardTitle>
-        <CardDescription>오픈닥터 솔루션 로그인</CardDescription>
+        <CardTitle>오픈상점</CardTitle>
+        <CardDescription>오픈상점 솔루션 로그인</CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={(e) => onSubmit(e, tmpEmail, tmpPassword)}>

@@ -50,7 +50,7 @@ const FormContract = ({ property, setProperty }) => {
               />
             </div>
             <div className="text-sm flex items-center">
-              오픈닥터가 중개한 계약임
+              오픈상점이 중개한 계약임
             </div>
           </div>
         </div>

@@ -5,7 +5,7 @@ import { renderCategoryButtons } from "../../../../utils/formUtils";
 import StyleForm from "../../../../commonComponents/FormStyle";
 import { ToggleButton } from "../../../../commonComponents/ToggleButton";
 
-const cateArray = ["치과", "미용", "감기", "통증", "한의원"];
+const cateArray = ["헬스장", "고깃집", "오락실", "카페", "병원"];
 
 const FormCate = ({ property, setProperty, mode }) => {
   const [showMoreInfo, setShowMoreInfo] = useState(false);
@@ -34,17 +34,17 @@ const FormCate = ({ property, setProperty, mode }) => {
     property,
     setProperty
   );
-  
+
   return (
     <StyleForm mainWrapper>
       <StyleForm tabWrapper>
-        <StyleForm menuTitle>개원 가능 진료과</StyleForm>
+        <StyleForm menuTitle>개업 가능 업종</StyleForm>
         <StyleForm flatButtons>{openableFilter}</StyleForm>
       </StyleForm>
 
       {showMoreInfo && (
         <StyleForm tabWrapper>
-          <StyleForm menuTitle>추천 진료과</StyleForm>
+          <StyleForm menuTitle>추천 업종</StyleForm>
           <StyleForm flatButtons>{recommendedFilter}</StyleForm>
         </StyleForm>
       )}

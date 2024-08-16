@@ -6,7 +6,7 @@ export const getDefaultBlueprint = ({
       [
         {
           type: "menuTitle",
-          labelText: "개별 가능 진료과",
+          labelText: "개별 가능 업종",
         },
       ],
       [
@@ -18,7 +18,7 @@ export const getDefaultBlueprint = ({
       [
         {
           type: "menuTitle",
-          labelText: "추천 진료과",
+          labelText: "추천 업종",
         },
       ],
       [
@@ -63,7 +63,7 @@ export const getHideBlueprint = ({
       [
         {
           type: "menuTitle",
-          labelText: "진료과별 점수",
+          labelText: "업종별 점수",
         },
       ],
       [

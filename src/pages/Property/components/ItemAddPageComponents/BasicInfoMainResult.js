@@ -8,7 +8,7 @@ import {
   getDefaultBlueprint,
   getHideBlueprint,
 } from "./BasicInfoMainResultBluePrints";
-const cateArray = ["치과", "미용", "감기", "통증", "한의원"];
+const cateArray = ["헬스장", "고깃집", "오락실", "카페", "병원"];
 const areaArray = ["역세권", "유통권", "주거권"];
 export const BasicInfoMainResult = ({
   property,
@@ -48,8 +48,15 @@ export const BasicInfoMainResult = ({
     btns: [openableBtns, areaBtns, recommendedBtns],
   });
 
-  const scoreCompList = ["치과", "미용", "감기", "통증", "한의원"];
-  const hospitalCompList = ["치과", "미용", "감기", "통증", "한의원", "기타"];
+  const scoreCompList = ["헬스장", "고깃집", "오락실", "카페", "병원"];
+  const hospitalCompList = [
+    "헬스장",
+    "고깃집",
+    "오락실",
+    "카페",
+    "병원",
+    "기타",
+  ];
   const areaCompList = ["지하철", "백화점", "대형마트", "시장"];
   const scoreComps = scoreCompList.map((score, i) => {
     return (

@@ -75,10 +75,10 @@ const PropertyAddModal = ({ closeModal }) => {
                     <div className="text-center">주소로 검색하시면</div>
                     <br />
                     <span className="text-blue-500 font-bold">* </span> 해당
-                    지역의 개원 가능
+                    지역의 개업 가능
                     <br />
                     <span className="text-blue-500 font-bold">* </span> 추천
-                    진료과
+                    업종
                     <br />
                     <span className="text-blue-500 font-bold">* </span> 상권
                     <br />

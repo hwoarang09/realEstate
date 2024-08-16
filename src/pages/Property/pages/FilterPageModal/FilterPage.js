@@ -4,14 +4,17 @@ import { setIsList } from "../../../../store/slices/headerSlice";
 import { subDays, startOfWeek, subMonths, format } from "date-fns";
 import { setFilters } from "../../../../store/slices/searchFilterSlice";
 
-
+import Button from "../../../../commonComponents/Button";
 import StyleForm from "../../../../commonComponents/FormStyle";
 import { formGenerator } from "../../../../utils/formGenerator";
 import GridComponent from "../../../../@/components/ui/myPyRangeSlider";
 
 import {
   getSortBlueprint,
-  getFilterBlueprint,
+  getAreaBlueprint,
+  getAccessibleBlueprint,
+  getPriceBlueprint,
+  getTypeBlueprint,
 } from "../../components/FilterComponents/FilterBluePrints";
 
 import {
@@ -20,6 +23,13 @@ import {
   REACT_APP_PAGE_SORT as PAGE_SORT,
 } from "../../../../constants/constants";
 
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "../../../../@/components/ui/accordion";
+
 function FilterPage() {
   const dispatch = useDispatch();
   const filterParams = useSelector((state) => state.searchFilter);
@@ -27,6 +37,7 @@ function FilterPage() {
     ...filterParams,
     order: "desc",
   });
+  const [activeItem, setActiveItem] = React.useState(null);
 
   useEffect(() => {
     console.log("filterObj가 변경되었습니다:", filterObj);
@@ -148,63 +159,133 @@ function FilterPage() {
     setFilterObj(newProperty);
   };
 
+  const handleReset = () => {
+    handleFilterReset();
+    handleDateSortReset();
+  };
+
   const sortBluePrint = getSortBlueprint();
-  const filterBluePrint = getFilterBlueprint({
+  const accesibleBluePrint = getAccessibleBlueprint();
+  const priceBluePrint = getPriceBlueprint({
     customJSX: { myGridSlider },
   });
+  const typeBluePrint = getTypeBlueprint();
+  const areaBluePrint = getAreaBlueprint();
 
   return (
     <div className="w-full max-w-[500px] justify-center items-center rounded-xl z-60 h-[1200px] overflow-y-auto">
-      <div className="border-2 border-gray-100 px-4">
+      <div className="border-t border-gray-100 px-4">
         <StyleForm mainWrapper>
           <StyleForm tabWrapper>
-            <StyleForm menuTitle>
-              정렬 및 날짜
-              <span
-                onClick={handleDateSortReset}
-                className="text-sm text-gray-500 underline cursor-pointer ml-4"
-              >
-                초기화
-              </span>
-            </StyleForm>
-            {sortBluePrint.map((bluePrint, i) => (
-              <React.Fragment key={`${i}`}>
-                {formGenerator({
-                  property: filterObj,
-                  setProperty: setFilterObj,
-                  ...bluePrint,
-                })}
-              </React.Fragment>
-            ))}
-          </StyleForm>
-          <StyleForm tabWrapper>
-            <StyleForm menuTitle>
-              필터{" "}
-              <span
-                onClick={handleFilterReset}
-                className="text-sm text-gray-500 underline cursor-pointer ml-4"
-              >
-                초기화
-              </span>
-            </StyleForm>
-            {filterBluePrint.map((bluePrint, i) => (
-              <React.Fragment key={i}>
-                {formGenerator({
-                  property: filterObj,
-                  setProperty: setFilterObj,
-                  ...bluePrint,
-                })}
-              </React.Fragment>
-            ))}
+            <Accordion type="single" collapsible className="w-full">
+              <AccordionItem value="item-sortDate">
+                <AccordionTrigger>
+                  {" "}
+                  <StyleForm accordionTitle>정렬 및 날짜</StyleForm>
+                </AccordionTrigger>
+                <AccordionContent>
+                  {sortBluePrint.map((bluePrint, i) => (
+                    <React.Fragment key={`${i}`}>
+                      {formGenerator({
+                        property: filterObj,
+                        setProperty: setFilterObj,
+                        ...bluePrint,
+                      })}
+                    </React.Fragment>
+                  ))}
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-area">
+                <AccordionTrigger>
+                  {" "}
+                  <StyleForm accordionTitle>상권 </StyleForm>
+                </AccordionTrigger>
+                <AccordionContent>
+                  {areaBluePrint.map((bluePrint, i) => (
+                    <React.Fragment key={i}>
+                      {formGenerator({
+                        property: filterObj,
+                        setProperty: setFilterObj,
+                        ...bluePrint,
+                      })}
+                    </React.Fragment>
+                  ))}
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-type">
+                <AccordionTrigger>
+                  {" "}
+                  <StyleForm accordionTitle> 업종 </StyleForm>
+                </AccordionTrigger>
+                <AccordionContent>
+                  {typeBluePrint.map((bluePrint, i) => (
+                    <React.Fragment key={i}>
+                      {formGenerator({
+                        property: filterObj,
+                        setProperty: setFilterObj,
+                        ...bluePrint,
+                      })}
+                    </React.Fragment>
+                  ))}
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-price">
+                <AccordionTrigger>
+                  {" "}
+                  <StyleForm accordionTitle> 가격 </StyleForm>
+                </AccordionTrigger>
+                <AccordionContent>
+                  {priceBluePrint.map((bluePrint, i) => (
+                    <React.Fragment key={i}>
+                      {formGenerator({
+                        property: filterObj,
+                        setProperty: setFilterObj,
+                        ...bluePrint,
+                      })}
+                    </React.Fragment>
+                  ))}
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-access">
+                <AccordionTrigger>
+                  {" "}
+                  <StyleForm accordionTitle>노출&확보 </StyleForm>
+                </AccordionTrigger>
+                <AccordionContent>
+                  {accesibleBluePrint.map((bluePrint, i) => (
+                    <React.Fragment key={i}>
+                      {formGenerator({
+                        property: filterObj,
+                        setProperty: setFilterObj,
+                        ...bluePrint,
+                      })}
+                    </React.Fragment>
+                  ))}
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </StyleForm>
         </StyleForm>
       </div>
       <div
-        onClick={handleUpdateChanges}
         className="fixed bottom-0 w-full max-w-[500px]
-          flex justify-center items-center bg-blue-800 text-white text-lg py-3 cursor-pointer z-10"
+          flex justify-center items-center py-2 opacity-100 bg-white border-t z-10"
       >
-        변경사항 저장
+        <div className="flex w-2/5 justify-center items-center">
+          <span onClick={handleReset} className="cursor-pointer mx-4">
+            초기화
+          </span>
+        </div>
+        <div className="flex w-3/5 justify-center items-center px-2">
+          <Button
+            primary
+            rounded
+            className="text-lg py-2 cursor-pointer w-full "
+            onClick={handleUpdateChanges}
+          >
+            변경사항 저장
+          </Button>
+        </div>
       </div>
     </div>
   );
