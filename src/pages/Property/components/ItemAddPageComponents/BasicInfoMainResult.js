@@ -8,7 +8,7 @@ import {
   getDefaultBlueprint,
   getHideBlueprint,
 } from "./BasicInfoMainResultBluePrints";
-const cateArray = ["헬스장", "고깃집", "오락실", "카페", "병원"];
+const cateArray = ["치과", "미용", "감기", "통증", "한의원"];
 const areaArray = ["역세권", "유통권", "주거권"];
 export const BasicInfoMainResult = ({
   property,
@@ -48,7 +48,7 @@ export const BasicInfoMainResult = ({
     btns: [openableBtns, areaBtns, recommendedBtns],
   });
 
-  const scoreCompList = ["헬스장", "고깃집", "오락실", "카페", "병원"];
+  const scoreCompList = ["치과", "미용", "감기", "통증", "한의원"];
   const hospitalCompList = [
     "헬스장",
     "고깃집",

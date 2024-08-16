@@ -142,6 +142,13 @@ export const getPriceBlueprint = ({ customJSX: { myGridSlider } }) => [
           keyList: ["from_monthly_rent_by", "to_monthly_rent_by"],
         },
       ],
+      [
+        {
+          type: "label",
+          labelText: "",
+          style: "mb-20",
+        },
+      ],
     ],
   },
 ];
@@ -159,7 +166,7 @@ export const getTypeBlueprint = () => [
           type: "flatButtons2",
           btns: {
             name: "availableMdBtns",
-            categories: ["헬스장", "고깃집", "오락실", "카페", "병원"],
+            categories: ["치과", "미용", "감기", "통증", "한의원"],
             path: ["available_md_name"],
             mode: "multi",
           },
@@ -176,7 +183,7 @@ export const getTypeBlueprint = () => [
           type: "flatButtons2",
           btns: {
             name: "recommendedMdBtns",
-            categories: ["헬스장", "고깃집", "오락실", "카페", "병원"],
+            categories: ["치과", "미용", "감기", "통증", "한의원"],
             path: ["recommended_md_name"],
             mode: "multi",
           },

@@ -5,7 +5,7 @@ import { renderCategoryButtons } from "../../../../utils/formUtils";
 import StyleForm from "../../../../commonComponents/FormStyle";
 import { ToggleButton } from "../../../../commonComponents/ToggleButton";
 
-const cateArray = ["헬스장", "고깃집", "오락실", "카페", "병원"];
+const cateArray = ["치과", "미용", "감기", "통증", "한의원"];
 
 const FormCate = ({ property, setProperty, mode }) => {
   const [showMoreInfo, setShowMoreInfo] = useState(false);

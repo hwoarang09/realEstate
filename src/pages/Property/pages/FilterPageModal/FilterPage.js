@@ -137,7 +137,8 @@ function FilterPage() {
     newProperty.sort = PAGE_SORT;
     newProperty.limit = PAGE_LIMIT;
     newProperty.order = PAGE_ORDER;
-
+    newProperty.page = 1;
+    console.log("newProperty in sortreset", newProperty);
     setFilterObj(newProperty);
   };
 
@@ -161,12 +162,18 @@ function FilterPage() {
       page: 1,
     };
 
+    console.log("newProperty in filterreset", newProperty);
     setFilterObj(newProperty);
   };
 
   const handleReset = () => {
-    handleFilterReset();
-    handleDateSortReset();
+    console.log("handleReset");
+    const newProperty = {};
+    newProperty.sort = PAGE_SORT;
+    newProperty.limit = PAGE_LIMIT;
+    newProperty.order = PAGE_ORDER;
+    newProperty.page = 1;
+    setFilterObj(newProperty);
   };
 
   const sortBluePrint = getSortBlueprint();

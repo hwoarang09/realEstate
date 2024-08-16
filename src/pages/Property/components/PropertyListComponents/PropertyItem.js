@@ -5,7 +5,7 @@ import { Button } from "../../../../@/components/ui/button";
 import { SlArrowUp, SlArrowDown } from "react-icons/sl";
 import defaultImage from "../../../../Images/defaultImage.png";
 
-const cateArray = ["헬스장", "고깃집", "오락실", "카페", "병원"];
+const cateArray = ["치과", "미용", "감기", "통증", "한의원"];
 
 const PropertyItem = forwardRef(
   ({ property, showModal, setProperties }, ref) => {
@@ -84,7 +84,7 @@ const PropertyItem = forwardRef(
         return (
           <span
             key={`${cate}cate${key_id}`}
-            className="text-sm font-bold mr-3 text-gray-300"
+            className="font-bold mr-3 text-gray-300"
           >
             {cate}
           </span>
@@ -94,10 +94,7 @@ const PropertyItem = forwardRef(
       content = cateArray.map((cate) => {
         if (property.available_md_name.includes(cate)) {
           return (
-            <span
-              key={`${cate}cate${key_id}`}
-              className="text-sm font-bold mr-3"
-            >
+            <span key={`${cate}cate${key_id}`} className="font-bold mr-3">
               {cate}
             </span>
           );
@@ -105,7 +102,7 @@ const PropertyItem = forwardRef(
           return (
             <span
               key={`${cate}cate${key_id}`}
-              className="text-sm font-bold mr-3 text-gray-300"
+              className="font-bold mr-3 text-gray-300"
             >
               {cate}
             </span>
@@ -117,23 +114,37 @@ const PropertyItem = forwardRef(
     const imageUrl = property.file.image_outside[0]?.url || defaultImage;
 
     return (
-      <div ref={ref} className="bg-white p-1 shadow-md rounded pb-2 border-b">
-        <img
-          src={imageUrl}
-          alt="Listing"
-          className="w-full h-40 object-cover rounded"
-        />
+      <div ref={ref} className="bg-white m-4 shadow-md rounded pb-2 border-b ">
+        <div className="relative w-full">
+          <img
+            src={imageUrl}
+            alt="Listing"
+            className="w-full aspect-[3/2] object-cover rounded"
+          />
+          <div className="absolute bottom-3 right-14 border-2 border-black bg-white rounded-full p-2">
+            <FaRegBookmark className="text-black w-4 h-4" />
+          </div>
+          <div className="absolute bottom-3 right-3 border-2 border-black bg-white rounded-full p-2">
+            <IoMdDownload className="text-black w-4 h-4" />
+          </div>
+          <div className="absolute top-4 left-4 bg-blue-700 rounded-full py-1 px-2">
+            <div className="text-base text-white text-sm">
+              {property.is_verified ? "매물 확보" : "공동 매물"}
+            </div>
+          </div>
+        </div>
+
         <div className="mt-1.5 px-4">
           <div className="flex items-center space-x-5 text-base">
-            <div
+            <div className="mt-1.5 mb-2 text-sm">{content}</div>
+            <div className="flex-grow"></div>
+            {/* <div
               onClick={() => handleClick({ modalPath, selectedProperty })}
               className="text-blue-600 cursor-pointer"
             >
               {property?.group_id ? property.group_id : property.id}
-            </div>
+            </div> */}
 
-            <FaRegBookmark />
-            <IoMdDownload />
             {hasGroup && (
               <Button onClick={handleClickGroup} className="w-10 h-5">
                 {isGroupSpread ? (
@@ -149,53 +160,108 @@ const PropertyItem = forwardRef(
             ) : (
               ""
             )}
-            <div className="flex-grow"></div>
-            <div className="text-base text-sm">
-              확보 {property.is_verified ? "O" : "X"}
-            </div>
-          </div>
-          <div className="mt-1">
-            <p className="text-sm">{property.address}</p>
           </div>
 
-          <div className="flex flex-col justify-between">
+          {/* <div className="flex flex-col justify-between">
             {property.building_name}
-          </div>
-          <div className="flex flex-col justify-between">
-            <div className="flex justify-end space-x-4">
+          </div> */}
+
+          <div className="flex flex-col justify-start">
+            <div className="flex justify-start space-x-4">
               <span className="text-sm">
-                <span className="font-bold">전용</span>{" "}
-                {property.exclusive_area}평
+                <span>전용</span>
+                <span className="font-bold ml-2 text-lg">
+                  {property.exclusive_area}
+                </span>
+                <span>평</span>
               </span>
               <span className="text-sm">
-                <span className="font-bold">임대</span> {property.contact_area}
-                평
+                <span>임대</span>
+                <span className="font-bold ml-2 text-lg">
+                  {property.contact_area ? property.contact_area : "?"}
+                </span>
+                <span>평</span>
               </span>
             </div>
           </div>
-          <div className="mt-2 flex text-sm">
-            <div className="flex-grow text-left">
+          <div className="mt-2 flex text-sm justify-start">
+            <div className="mr-6">
               <span className="text-gray-400 font-bold">보 </span>
-              {Number(property.deposit) > 10000
-                ? `${Number(property.deposit) / 10000}억원`
-                : `${property.deposit === null ? "" : property.deposit} 만원`}
+
+              {Number(property.deposit) > 10000 ? (
+                <>
+                  <span className="font-bold ml-1 ">
+                    {Number(property.deposit) / 10000}
+                    {property.deposit === null ? "" : property.deposit}
+                  </span>
+                  <span>억</span>
+                </>
+              ) : (
+                <>
+                  <span className="font-bold ml-1 ">
+                    {property.deposit === null ? "" : property.deposit}
+                  </span>
+                  <span>만</span>
+                </>
+              )}
             </div>
-            <div className="flex-grow text-center ">
+            <div className="mr-6">
               <span className="text-gray-400 font-bold">임 </span>
-              {Number(property.monthly_rent) > 10000
-                ? `${Number(property.monthly_rent) / 10000}억원`
-                : `${
-                    property.monthly_rent === null ? "" : property.monthly_rent
-                  } 만원`}
+              {Number(property.monthly_rent) > 10000 ? (
+                <>
+                  <span className="font-bold ml-1 ">
+                    {Number(property.monthly_rent) / 10000}
+                    {property.monthly_rent === null ? "" : "억원"}
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span className="font-bold ml-1 ">
+                    {property.monthly_rent === null
+                      ? ""
+                      : property.monthly_rent}
+                  </span>
+                  <span>만</span>
+                </>
+              )}
             </div>
-            <div className="flex-grow text-right">
+            <div className="mr-6">
               <span className="text-gray-400 font-bold">관 </span>
-              {property.maintenance_cost_str
-                ? property.maintenance_cost_str
-                : "만원"}
+              {Number(property.deposit) > 10000 ? (
+                <>
+                  <span className="font-bold ml-1">
+                    {Number(property.deposit) / 10000}
+                    {property.deposit === null ? "" : "억"}
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span className="font-bold ml-1 ">
+                    {property.deposit === null ? "" : property.deposit}
+                  </span>
+                  <span>만</span>
+                </>
+              )}
             </div>
           </div>
-          <div className="mt-1.5 mb-2">{content}</div>
+
+          <div className="relative flex mt-4 mb-2 justify-between items-center">
+            <div className="w-full text-left">
+              <p className="text-sm  ">
+                {property.address}
+                {" 우리집 102동 304호"}
+              </p>
+            </div>
+            <div className="ml-4">
+              <Button
+                variant="outline_blue"
+                // className="absolute bottom-8 left-2 "
+                onClick={() => handleClick({ modalPath, selectedProperty })}
+              >
+                상세 정보
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
     );
