@@ -40,8 +40,13 @@ function FilterPage() {
   const [activeItem, setActiveItem] = React.useState(null);
 
   useEffect(() => {
-    console.log("filterObj가 변경되었습니다:", filterObj);
-  }, [filterObj]);
+    console.log(
+      "filterObj가 변경되었습니다:",
+      filterObj,
+      "params",
+      filterParams
+    );
+  }, [filterObj, filterParams]);
 
   const updateFilterDates = useCallback((tmpSortDate) => {
     console.log("updateFilterDates", tmpSortDate);

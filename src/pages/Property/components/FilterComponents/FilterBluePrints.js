@@ -219,7 +219,7 @@ export const getAreaBlueprint = () => {
             btns: {
               name: "gradeBtns",
               categories: ["상", "중", "하"],
-              path: ["area_type"],
+              path: ["grade"],
               mode: "single",
             },
           },

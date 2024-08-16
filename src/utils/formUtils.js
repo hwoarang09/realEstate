@@ -4,25 +4,28 @@ import _ from "lodash";
 
 const handleMultiCategoryClick = (cate, cateList, setFunction) => {
   setFunction((prevProperty) => {
-    console.log("cateList : ", cateList);
+    console.log("cateList in click : ", cateList);
     const newProperty = _.cloneDeep(prevProperty);
-    const lastKey = cateList.pop();
-    const target = cateList.reduce((obj, key) => obj[key], newProperty);
 
-    console.log(
-      `target : ${JSON.stringify(
-        target
-      )}, lastKey ${lastKey}, cate ${cate} cateList : ${cateList}`
-    );
+    // cateList.slice()를 사용하여 원본 배열을 변경하지 않음
+    const lastKey = cateList[cateList.length - 1];
+    const target = cateList
+      .slice(0, -1)
+      .reduce((obj, key) => obj[key], newProperty);
+
+    console.log("lastKey in click : ", lastKey, target[lastKey]);
     if (target[lastKey] === undefined) {
-      target[lastKey] = [];
+      target[lastKey] = [cate];
     } else {
+      console.log("target[lastKey] : ", lastKey, target[lastKey]);
       const newCategories = target[lastKey].includes(cate)
         ? target[lastKey].filter((category) => category !== cate)
         : [...target[lastKey], cate];
 
       target[lastKey] = newCategories;
     }
+    console.log("newProperty in click : ", newProperty);
+    console.log("target in click : ", target);
     return newProperty;
   });
 };
