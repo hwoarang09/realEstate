@@ -24,7 +24,7 @@ function StyleForm({
         "flex flex-wrap items-center ": flatButtons,
         "flex justify-center mt-3": toggleButtonWrapper,
         "text-base flex items-center font-bold w-1/3": label,
-        "flex mb-4 items-center": formRow,
+        "flex mb-4 items-center ": formRow,
         "flex w-full items-center": InnerformRow,
         // "text-blue-600 text-base font-bold mb-2":menuTitle,
         // "text-blue-500": outline && (primary || primary_add),

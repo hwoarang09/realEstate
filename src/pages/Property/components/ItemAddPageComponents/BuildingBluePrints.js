@@ -149,6 +149,8 @@ export const getHideBlueprint = ({ customJSX: { buildingSizeComp } }) => [
             mode: "single",
           },
         },
+      ],
+      [
         {
           type: "text",
           keyList: ["sm_md_open_available"],
@@ -180,7 +182,7 @@ export const getHideBlueprint = ({ customJSX: { buildingSizeComp } }) => [
             path: ["extra", "handicap_ele"],
             mode: "single",
           },
-          style: "mr-6",
+          style: "mr-6 ",
         },
         {
           type: "label",
